@@ -1,0 +1,94 @@
+//
+//  TabBarViewController.swift
+//  TravelSharing
+//
+//  Created by 王安妮 on 2018/4/26.
+//  Copyright © 2018年 Annie. All rights reserved.
+//
+
+import UIKit
+
+
+enum TabBar {
+    
+    case schedule
+    
+    case profile
+    
+    
+    func controller() -> UIViewController{
+        switch self {
+        case .schedule:
+            return UIStoryboard.scheduleStoryboard().instantiateInitialViewController()!
+        case .profile:
+            return UIStoryboard.profileStoryboard().instantiateInitialViewController()!
+            
+        }
+    }
+    
+    
+    func image() -> UIImage{
+        
+        switch self {
+        case .schedule:
+            return #imageLiteral(resourceName: "btn_like_selected")
+        case .profile:
+            return #imageLiteral(resourceName: "tab_profile_normal")
+        }
+    }
+    
+    
+    func selectedImage() -> UIImage {
+        
+        switch self {
+            
+        case .schedule:
+            
+            return #imageLiteral(resourceName: "btn_like_selected").withRenderingMode(.alwaysTemplate)
+            
+        case .profile:
+            
+            return #imageLiteral(resourceName: "tab_profile_normal").withRenderingMode(.alwaysTemplate)
+        }
+    }
+}
+
+
+class TabBarViewController: UITabBarController {
+    
+    let tabs: [TabBar] = [.schedule, .profile]
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+      
+        setupTab()
+    }
+
+    private func setupTab() {
+       // tabBar.barTintColor = UIColor(displayP3Red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
+        
+        var controllers: [UIViewController] = []
+        
+        for tab in tabs {
+            
+            let controller = tab.controller()
+            
+            let item = UITabBarItem(
+                title: nil,
+                image: tab.image(),
+                selectedImage: tab.selectedImage()
+            )
+            
+            item.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+            
+            controller.tabBarItem = item
+            
+            controllers.append(controller)
+        }
+        
+        setViewControllers(controllers, animated: false)
+        
+    }
+    
+    
+}

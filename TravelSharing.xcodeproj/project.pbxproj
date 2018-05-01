@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4B14BAF96DE255397327C523 /* Pods_TravelSharing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F353853584E1967591DC1429 /* Pods_TravelSharing.framework */; };
+		D1400B31209619F700B0040B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1400B30209619F700B0040B /* UserManager.swift */; };
+		D1400B3320961E8700B0040B /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1400B3220961E8700B0040B /* Register.storyboard */; };
+		D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1448FDC2096CAB000D699DB /* RegisterViewController.swift */; };
+		D1448FE12096DE9200D699DB /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1448FE02096DE9200D699DB /* UIImage.swift */; };
+		D1448FE32096E48700D699DB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1448FE22096E48700D699DB /* User.swift */; };
+		D14C0FEA209801CF00026AF1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FE9209801CF00026AF1 /* String.swift */; };
+		D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B75FC209729C400D27B86 /* RoundImage.swift */; };
+		D1BBA31C2095727C005E5AAE /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31B2095727C005E5AAE /* ScheduleTableViewController.swift */; };
+		D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */; };
+		D1BBA32220958157005E5AAE /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA32120958157005E5AAE /* LogInViewController.swift */; };
+		D1BBA324209581D6005E5AAE /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA323209581D5005E5AAE /* Login.storyboard */; };
+		D1BBA32620958FF8005E5AAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA32520958FF8005E5AAE /* GoogleService-Info.plist */; };
+		D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD6120914CA900310121 /* AppDelegate.swift */; };
+		D1E6CD6420914CA900310121 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD6320914CA900310121 /* ViewController.swift */; };
+		D1E6CD6720914CA900310121 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6520914CA900310121 /* Main.storyboard */; };
+		D1E6CD6920914CAA00310121 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6820914CAA00310121 /* Assets.xcassets */; };
+		D1E6CD6C20914CAA00310121 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6A20914CAA00310121 /* LaunchScreen.storyboard */; };
+		D1E6CD7420914D0B00310121 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD7320914D0B00310121 /* TabBarViewController.swift */; };
+		D1E6CD7920914E0E00310121 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD7820914E0E00310121 /* Profile.storyboard */; };
+		D1E6CD7B20914E2700310121 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD7A20914E2700310121 /* Schedule.storyboard */; };
+		D1E6CD7E20914EB700310121 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD7D20914EB700310121 /* UIStoryboard.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2899322EBE8B1C2AA88ED1D9 /* Pods-TravelSharing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.release.xcconfig"; sourceTree = "<group>"; };
+		69BAEA4434D7C88796C98B4C /* Pods-TravelSharing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.debug.xcconfig"; sourceTree = "<group>"; };
+		D1400B30209619F700B0040B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		D1400B3220961E8700B0040B /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		D1448FDC2096CAB000D699DB /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D1448FE02096DE9200D699DB /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		D1448FE22096E48700D699DB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D14C0FE9209801CF00026AF1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		D18B75FC209729C400D27B86 /* RoundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
+		D1BBA31B2095727C005E5AAE /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
+		D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D1BBA32120958157005E5AAE /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		D1BBA323209581D5005E5AAE /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		D1BBA32520958FF8005E5AAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D1E6CD5E20914CA900310121 /* TravelSharing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelSharing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1E6CD6120914CA900310121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D1E6CD6320914CA900310121 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D1E6CD6620914CA900310121 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D1E6CD6820914CAA00310121 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D1E6CD6B20914CAA00310121 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D1E6CD6D20914CAA00310121 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1E6CD7320914D0B00310121 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		D1E6CD7820914E0E00310121 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		D1E6CD7A20914E2700310121 /* Schedule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
+		D1E6CD7D20914EB700310121 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
+		F353853584E1967591DC1429 /* Pods_TravelSharing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravelSharing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D1E6CD5B20914CA900310121 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B14BAF96DE255397327C523 /* Pods_TravelSharing.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		50948007DADF8B7E2E56D08B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F353853584E1967591DC1429 /* Pods_TravelSharing.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		59DAAC990CAE8318A4F52452 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				69BAEA4434D7C88796C98B4C /* Pods-TravelSharing.debug.xcconfig */,
+				2899322EBE8B1C2AA88ED1D9 /* Pods-TravelSharing.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D1448FDB2096CA9C00D699DB /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				D1448FDC2096CAB000D699DB /* RegisterViewController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		D1BBA31920957222005E5AAE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D1BBA32020958144005E5AAE /* Login */,
+				D1448FDB2096CA9C00D699DB /* Register */,
+				D1BBA31D2095739C005E5AAE /* Profile */,
+				D1BBA31A20957256005E5AAE /* Schedule */,
+				D1E6CD7620914DA000310121 /* TabBar */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D1BBA31A20957256005E5AAE /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				D1BBA31B2095727C005E5AAE /* ScheduleTableViewController.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		D1BBA31D2095739C005E5AAE /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D1BBA32020958144005E5AAE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D1BBA32120958157005E5AAE /* LogInViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D1E6CD5520914CA900310121 = {
+			isa = PBXGroup;
+			children = (
+				D1E6CD6020914CA900310121 /* TravelSharing */,
+				D1E6CD5F20914CA900310121 /* Products */,
+				59DAAC990CAE8318A4F52452 /* Pods */,
+				50948007DADF8B7E2E56D08B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D1E6CD5F20914CA900310121 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D1E6CD5E20914CA900310121 /* TravelSharing.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D1E6CD6020914CA900310121 /* TravelSharing */ = {
+			isa = PBXGroup;
+			children = (
+				D1E6CD7720914DAC00310121 /* Model */,
+				D1BBA31920957222005E5AAE /* Controller */,
+				D1E6CD7C20914E9800310121 /* Extension */,
+				D1E6CD7520914D8C00310121 /* Storyboard */,
+				D1E6CD6120914CA900310121 /* AppDelegate.swift */,
+				D1E6CD6320914CA900310121 /* ViewController.swift */,
+				D1E6CD6820914CAA00310121 /* Assets.xcassets */,
+				D1E6CD6A20914CAA00310121 /* LaunchScreen.storyboard */,
+				D1E6CD6D20914CAA00310121 /* Info.plist */,
+				D1BBA32520958FF8005E5AAE /* GoogleService-Info.plist */,
+			);
+			path = TravelSharing;
+			sourceTree = "<group>";
+		};
+		D1E6CD7520914D8C00310121 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				D1BBA323209581D5005E5AAE /* Login.storyboard */,
+				D1E6CD6520914CA900310121 /* Main.storyboard */,
+				D1E6CD7820914E0E00310121 /* Profile.storyboard */,
+				D1E6CD7A20914E2700310121 /* Schedule.storyboard */,
+				D1400B3220961E8700B0040B /* Register.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		D1E6CD7620914DA000310121 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D1E6CD7320914D0B00310121 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		D1E6CD7720914DAC00310121 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D1400B30209619F700B0040B /* UserManager.swift */,
+				D1448FE22096E48700D699DB /* User.swift */,
+				D18B75FC209729C400D27B86 /* RoundImage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D1E6CD7C20914E9800310121 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D1E6CD7D20914EB700310121 /* UIStoryboard.swift */,
+				D1448FE02096DE9200D699DB /* UIImage.swift */,
+				D14C0FE9209801CF00026AF1 /* String.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D1E6CD5D20914CA900310121 /* TravelSharing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1E6CD7020914CAA00310121 /* Build configuration list for PBXNativeTarget "TravelSharing" */;
+			buildPhases = (
+				0833302B1D52357F641EA4F6 /* [CP] Check Pods Manifest.lock */,
+				D1E6CD5A20914CA900310121 /* Sources */,
+				D1E6CD5B20914CA900310121 /* Frameworks */,
+				D1E6CD5C20914CA900310121 /* Resources */,
+				42F57943A86CA2A056C3DF05 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TravelSharing;
+			productName = TravelSharing;
+			productReference = D1E6CD5E20914CA900310121 /* TravelSharing.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D1E6CD5620914CA900310121 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = Annie;
+				TargetAttributes = {
+					D1E6CD5D20914CA900310121 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = D1E6CD5920914CA900310121 /* Build configuration list for PBXProject "TravelSharing" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D1E6CD5520914CA900310121;
+			productRefGroup = D1E6CD5F20914CA900310121 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D1E6CD5D20914CA900310121 /* TravelSharing */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D1E6CD5C20914CA900310121 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1E6CD6C20914CAA00310121 /* LaunchScreen.storyboard in Resources */,
+				D1E6CD6920914CAA00310121 /* Assets.xcassets in Resources */,
+				D1BBA324209581D6005E5AAE /* Login.storyboard in Resources */,
+				D1E6CD7920914E0E00310121 /* Profile.storyboard in Resources */,
+				D1E6CD6720914CA900310121 /* Main.storyboard in Resources */,
+				D1E6CD7B20914E2700310121 /* Schedule.storyboard in Resources */,
+				D1BBA32620958FF8005E5AAE /* GoogleService-Info.plist in Resources */,
+				D1400B3320961E8700B0040B /* Register.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0833302B1D52357F641EA4F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TravelSharing-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		42F57943A86CA2A056C3DF05 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D1E6CD5A20914CA900310121 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,
+				D14C0FEA209801CF00026AF1 /* String.swift in Sources */,
+				D1448FE12096DE9200D699DB /* UIImage.swift in Sources */,
+				D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */,
+				D1E6CD7E20914EB700310121 /* UIStoryboard.swift in Sources */,
+				D1400B31209619F700B0040B /* UserManager.swift in Sources */,
+				D1BBA31C2095727C005E5AAE /* ScheduleTableViewController.swift in Sources */,
+				D1BBA32220958157005E5AAE /* LogInViewController.swift in Sources */,
+				D1E6CD6420914CA900310121 /* ViewController.swift in Sources */,
+				D1E6CD7420914D0B00310121 /* TabBarViewController.swift in Sources */,
+				D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */,
+				D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */,
+				D1448FE32096E48700D699DB /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D1E6CD6520914CA900310121 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D1E6CD6620914CA900310121 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D1E6CD6A20914CAA00310121 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D1E6CD6B20914CAA00310121 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D1E6CD6E20914CAA00310121 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D1E6CD6F20914CAA00310121 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D1E6CD7120914CAA00310121 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69BAEA4434D7C88796C98B4C /* Pods-TravelSharing.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2CWMHA84T8;
+				INFOPLIST_FILE = TravelSharing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D1E6CD7220914CAA00310121 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2899322EBE8B1C2AA88ED1D9 /* Pods-TravelSharing.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2CWMHA84T8;
+				INFOPLIST_FILE = TravelSharing/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D1E6CD5920914CA900310121 /* Build configuration list for PBXProject "TravelSharing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1E6CD6E20914CAA00310121 /* Debug */,
+				D1E6CD6F20914CAA00310121 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1E6CD7020914CAA00310121 /* Build configuration list for PBXNativeTarget "TravelSharing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1E6CD7120914CAA00310121 /* Debug */,
+				D1E6CD7220914CAA00310121 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D1E6CD5620914CA900310121 /* Project object */;
+}
