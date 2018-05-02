@@ -8,9 +8,4 @@
 
 import FirebaseDatabase
 
-struct  User {
-    let uid: String
-    let username : String
-    let eamil : String
-    let photoURL : String
-}
+

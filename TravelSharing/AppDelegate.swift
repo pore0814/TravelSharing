@@ -12,23 +12,22 @@ import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
+var window: UIWindow?
+static let shared = UIApplication.shared.delegate as! AppDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.makeKeyAndVisible()
-//
-//      let TabBar = TabBarViewController()
-//        window?.rootViewController = TabBar
-       
-     window?.rootViewController = UIStoryboard.logInStoryboard().instantiateInitialViewController()
-     
-     
+  
+       //跳轉
+       let a = UserManager.shared.getFireBaseUID()
+        if UserManager.shared.getFireBaseUID() != nil {
+            switchMainViewController()
+        }else {
+             window?.rootViewController = UIStoryboard.logInStoryboard().instantiateInitialViewController()
+        }
         
         
+    
         return true
     }
 
@@ -52,6 +51,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    //換頁_主頁面
+    func switchMainViewController() {
+        let TabBar = TabBarViewController()
+              window?.rootViewController = TabBar
+    }
+    
+    func switchToLoginViewController() {
+        guard  let loginPage = UIStoryboard.logInStoryboard().instantiateInitialViewController() else {return}
+        window?.rootViewController = loginPage
+        
     }
 
 

@@ -9,16 +9,18 @@
 import Foundation
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 typealias LoginHandler = (_ msg:String?) -> Void
 
-struct LoginErrorCode{
-    static let Invalid_Email = "Invalid Email Address，PleaseProvide A Real Email Address"
-    static let Worng_Password = "Wrong Password, Please Enter the Correct Password"
-    static let Problem_Connecting = "Problem Connecting to Deatabase"
-    static let User_not_Found = "User Not Found, Please Register"
-    static let Weak_Password = "Password Should be At Least 6 Characters Long"
-    static let Email_Already_In_Use = "Email Already in Use, Please Use Another Email"
+
+struct ErrorCode{
+    static let Invalid_Email = "無效Email"
+    static let Worng_Password = "密碼錯誤"
+    static let Problem_Connecting = "無法連接FireBase"
+    static let User_not_Found = "無此帳號，請註冊"
+    static let Weak_Password = "密碼需大於6碼"
+    static let Email_Already_In_Use = "此帳號已存在"
 }
 
 
@@ -27,10 +29,19 @@ class UserManager {
     private init (){}
     
     
+   var databaseRef: DatabaseReference {
+        return Database.database().reference()
+    }
+    
+    var  storeageProfileRef: StorageReference{
+        return Storage.storage().reference(forURL:"gs://travelshare-d17da.appspot.com").child(Constants.Profile_image)
+    }
+    
+    //登入
     func loginUser(email: String, password: String, loginHandler: LoginHandler?) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             
-            Auth.auth().currentUser?.createProfileChangeRequest()
+          //  Auth.auth().currentUser?.createProfileChangeRequest()
             if  error  != nil {
                 self.handleErrors(err: error! as NSError, loginHandler: loginHandler)
             }else {
@@ -39,22 +50,50 @@ class UserManager {
         }
     }
     
-    
-    func  SingUp(email: String, password: String,username:String,photoURL:String, loginHandler: LoginHandler?) {
+    //註冊
+    func  SingUp(email: String, password: String,username:String,userphoto:Data?, loginHandler: LoginHandler?) {
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if error != nil  {//有錯
+            if error != nil  {
                 self.handleErrors(err: error! as NSError, loginHandler: loginHandler)
-            }else {
-                
-                let userData = ["uid":user?.uid, "email":email,"username":username,"userPhote":photoURL]
-                FireBaseRef.userInfoRef.setValue(userData)
-                UserDefaults.standard.set(user?.uid, forKey: "userId")
-                UserDefaults.standard.synchronize()
+                return
+            }
+            guard let uid = user?.uid else {return}
+          
+            //設定image型態
+            let metadate = StorageMetadata()
+            metadate.contentType = "img/jpeg"
+            
+            if let imageData = userphoto {
+                self.storeageProfileRef.child(uid).putData(imageData, metadata: metadate, completion: { (metadata, imageError) in
+                    if imageError != nil {
+                        AlertToUser.shared.alerTheUserPurple(title: "錯誤訊息", message: imageError as! String)
+                    }
+                    if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                        let userData = [Constants.Uid: uid  ,Constants.Email: email,Constants.Password: password,Constants.PhotoUrl: profileImageUrl,Constants.UserName:username] as [String:Any]
+                        self.databaseRef.child("users").child(uid).setValue(userData)
+                        let userDefaults = UserDefaults.standard
+                        userDefaults.set(uid, forKey: "FireBaseUID")
+                        userDefaults.synchronize()
+                       NotificationCenter.default.post(name: .switchtoMainPage, object: nil)
+                    }
+                })
             }
         }
     }
     
+    // 登出
+    func logout(){
+        guard (UserDefaults.standard.value(forKey: "FireBaseUID") as? String) != nil else
+        {return}
+        try? Auth.auth().signOut()
+        UserDefaults.standard.removeObject(forKey: "FireBaseUID")
+    }
     
+    
+    //uid token
+    func getFireBaseUID() -> String? {
+        return UserDefaults.standard.string(forKey: "FireBaseUID")
+    }
     
     
     // 錯誤處理
@@ -63,19 +102,19 @@ class UserManager {
         if let errCode = AuthErrorCode(rawValue: err.code){
             switch errCode {
             case .wrongPassword:
-                loginHandler?(LoginErrorCode.Worng_Password)
+                loginHandler?(ErrorCode.Worng_Password)
                 break
             case .weakPassword:
-                loginHandler?(LoginErrorCode.Weak_Password)
+                loginHandler?(ErrorCode.Weak_Password)
                 break
             case .invalidEmail:
-                loginHandler?(LoginErrorCode.Invalid_Email)
+                loginHandler?(ErrorCode.Invalid_Email)
                 break
             case .userNotFound:
-                loginHandler?(LoginErrorCode.User_not_Found)
+                loginHandler?(ErrorCode.User_not_Found)
                 break
             case .emailAlreadyInUse:
-                loginHandler?(LoginErrorCode.Email_Already_In_Use)
+                loginHandler?(ErrorCode.Email_Already_In_Use)
                 break
             default:
                 break
@@ -83,10 +122,9 @@ class UserManager {
         }
     }
     
-    
-    struct FireBaseRef {
-        static let userInfoRef = Database.database().reference().child("users")
-        
-    }
-    
 }
+    
+    
+    
+    
+

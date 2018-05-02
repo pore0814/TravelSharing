@@ -14,6 +14,9 @@
 		D1448FE12096DE9200D699DB /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1448FE02096DE9200D699DB /* UIImage.swift */; };
 		D1448FE32096E48700D699DB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1448FE22096E48700D699DB /* User.swift */; };
 		D14C0FEA209801CF00026AF1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FE9209801CF00026AF1 /* String.swift */; };
+		D14C0FEE209823A800026AF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FED209823A800026AF1 /* Constants.swift */; };
+		D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FEF2098695B00026AF1 /* NotificationName.swift */; };
+		D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FF1209873E100026AF1 /* AlertToUser.swift */; };
 		D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B75FC209729C400D27B86 /* RoundImage.swift */; };
 		D1BBA31C2095727C005E5AAE /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31B2095727C005E5AAE /* ScheduleTableViewController.swift */; };
 		D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */; };
@@ -40,6 +43,9 @@
 		D1448FE02096DE9200D699DB /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		D1448FE22096E48700D699DB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D14C0FE9209801CF00026AF1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		D14C0FED209823A800026AF1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D14C0FEF2098695B00026AF1 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
+		D14C0FF1209873E100026AF1 /* AlertToUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertToUser.swift; sourceTree = "<group>"; };
 		D18B75FC209729C400D27B86 /* RoundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
 		D1BBA31B2095727C005E5AAE /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +200,8 @@
 				D1400B30209619F700B0040B /* UserManager.swift */,
 				D1448FE22096E48700D699DB /* User.swift */,
 				D18B75FC209729C400D27B86 /* RoundImage.swift */,
+				D14C0FED209823A800026AF1 /* Constants.swift */,
+				D14C0FF1209873E100026AF1 /* AlertToUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,6 +212,7 @@
 				D1E6CD7D20914EB700310121 /* UIStoryboard.swift */,
 				D1448FE02096DE9200D699DB /* UIImage.swift */,
 				D14C0FE9209801CF00026AF1 /* String.swift */,
+				D14C0FEF2098695B00026AF1 /* NotificationName.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -310,6 +319,7 @@
 				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -318,6 +328,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -334,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,
+				D14C0FEE209823A800026AF1 /* Constants.swift in Sources */,
 				D14C0FEA209801CF00026AF1 /* String.swift in Sources */,
 				D1448FE12096DE9200D699DB /* UIImage.swift in Sources */,
 				D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */,
@@ -345,6 +357,8 @@
 				D1E6CD7420914D0B00310121 /* TabBarViewController.swift in Sources */,
 				D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */,
 				D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */,
+				D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */,
+				D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */,
 				D1448FE32096E48700D699DB /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

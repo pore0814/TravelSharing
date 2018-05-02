@@ -20,7 +20,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qJO-sF-n1N"/>
                     </view>
-                    <navigationItem key="navigationItem" id="EAb-I4-kMr"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="EAb-I4-kMr">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="4m8-1c-bgO">
+                            <connections>
+                                <action selector="logOut:" destination="raj-es-Lyr" id="5jl-xs-91N"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jet-Ug-eZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
