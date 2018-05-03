@@ -50,6 +50,8 @@ class LogInViewController: UIViewController,UITextFieldDelegate {
 
     @IBAction func logIn(_ sender: Any) {
         if emailTextField.text != "" && passwordTextField.text != "" {
+            
+            
             UserManager.shared.loginUser(email: emailTextField.text!, password: passwordTextField.text!) { (message) in
                 if message != nil {
                 AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: message!)
@@ -68,4 +70,7 @@ class LogInViewController: UIViewController,UITextFieldDelegate {
        present(registerPage!, animated: true, completion: nil)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }

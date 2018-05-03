@@ -10,5 +10,8 @@ import Foundation
 
 extension Notification.Name {
     static let switchtoMainPage = Notification.Name("switchtoMainPage")
+    
+    static let switchtoSchedulePage = Notification.Name("switchtoSchedulePage")
+    
    
 }

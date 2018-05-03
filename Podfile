@@ -13,6 +13,7 @@ pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'Fusuma'
 pod 'SCLAlertView'
+pod 'JTAppleCalendar'
   
 
 end

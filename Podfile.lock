@@ -44,6 +44,7 @@ PODS:
     - "GoogleToolboxForMac/NSString+URLArguments (= 2.1.4)"
   - "GoogleToolboxForMac/NSString+URLArguments (2.1.4)"
   - GTMSessionFetcher/Core (1.1.15)
+  - JTAppleCalendar (7.1.5)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - Fusuma
+  - JTAppleCalendar
   - SCLAlertView
 
 SPEC REPOS:
@@ -72,6 +74,7 @@ SPEC REPOS:
     - Fusuma
     - GoogleToolboxForMac
     - GTMSessionFetcher
+    - JTAppleCalendar
     - leveldb-library
     - nanopb
     - SCLAlertView
@@ -87,10 +90,11 @@ SPEC CHECKSUMS:
   Fusuma: e85c394878a2e1549c67140ba7c038aff8d7581c
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
 
-PODFILE CHECKSUM: aca913122fd261ed1cd4c91be07b1d4ddbd55731
+PODFILE CHECKSUM: 1be8360c1604d6eceeb0bdb27dc5db4007c55064
 
 COCOAPODS: 1.5.0

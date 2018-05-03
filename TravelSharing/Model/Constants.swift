@@ -19,6 +19,7 @@ class Constants  {
     static let Profile_image = "profile_image"
     
     static let Wrong_Message = "錯誤訊息"
+    static let NoEmpty = "表格需填寫完整，不可為空白"
     
     
     

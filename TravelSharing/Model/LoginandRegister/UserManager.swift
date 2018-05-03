@@ -29,9 +29,7 @@ class UserManager {
     private init (){}
     
     
-   var databaseRef: DatabaseReference {
-        return Database.database().reference()
-    }
+  
     
     var  storeageProfileRef: StorageReference{
         return Storage.storage().reference(forURL:"gs://travelshare-d17da.appspot.com").child(Constants.Profile_image)
@@ -70,7 +68,7 @@ class UserManager {
                     }
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                         let userData = [Constants.Uid: uid  ,Constants.Email: email,Constants.Password: password,Constants.PhotoUrl: profileImageUrl,Constants.UserName:username] as [String:Any]
-                        self.databaseRef.child("users").child(uid).setValue(userData)
+                             fireBaseConnect.databaseRef.child("users").child(uid).setValue(userData)
                         let userDefaults = UserDefaults.standard
                         userDefaults.set(uid, forKey: "FireBaseUID")
                         userDefaults.synchronize()

@@ -19,7 +19,6 @@ static let shared = UIApplication.shared.delegate as! AppDelegate
         FirebaseApp.configure()
   
        //跳轉
-       let a = UserManager.shared.getFireBaseUID()
         if UserManager.shared.getFireBaseUID() != nil {
             switchMainViewController()
         }else {
@@ -62,6 +61,11 @@ static let shared = UIApplication.shared.delegate as! AppDelegate
     func switchToLoginViewController() {
         guard  let loginPage = UIStoryboard.logInStoryboard().instantiateInitialViewController() else {return}
         window?.rootViewController = loginPage
+        
+    }
+    func switchScheduleViewController() {
+        guard  let schedulePage = UIStoryboard.scheduleStoryboard().instantiateInitialViewController() else {return}
+        window?.rootViewController = schedulePage
         
     }
 
