@@ -26,10 +26,10 @@ struct ErrorCode{
 
 class UserManager {
     static let shared = UserManager()
+    //static let uuid = UserDefaults.standard.string(forKey: "FireBaseUID")
     private init (){}
     
-    
-  
+    let userDefaults = UserDefaults.standard
     
     var  storeageProfileRef: StorageReference{
         return Storage.storage().reference(forURL:"gs://travelshare-d17da.appspot.com").child(Constants.Profile_image)
@@ -38,12 +38,15 @@ class UserManager {
     //登入
     func loginUser(email: String, password: String, loginHandler: LoginHandler?) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            
+
           //  Auth.auth().currentUser?.createProfileChangeRequest()
             if  error  != nil {
                 self.handleErrors(err: error! as NSError, loginHandler: loginHandler)
+                
             }else {
                 loginHandler?(nil)
+                self.userDefaults.set(user?.uid, forKey: "FireBaseUID")
+                self.userDefaults.synchronize()
             }
         }
     }
@@ -69,9 +72,8 @@ class UserManager {
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                         let userData = [Constants.Uid: uid  ,Constants.Email: email,Constants.Password: password,Constants.PhotoUrl: profileImageUrl,Constants.UserName:username] as [String:Any]
                              fireBaseConnect.databaseRef.child("users").child(uid).setValue(userData)
-                        let userDefaults = UserDefaults.standard
-                        userDefaults.set(uid, forKey: "FireBaseUID")
-                        userDefaults.synchronize()
+                        self.userDefaults.set(uid, forKey: "FireBaseUID")
+                        self.userDefaults.synchronize()
                        NotificationCenter.default.post(name: .switchtoMainPage, object: nil)
                     }
                 })

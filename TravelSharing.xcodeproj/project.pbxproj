@@ -18,8 +18,11 @@
 		D14C0FEE209823A800026AF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FED209823A800026AF1 /* Constants.swift */; };
 		D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FEF2098695B00026AF1 /* NotificationName.swift */; };
 		D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FF1209873E100026AF1 /* AlertToUser.swift */; };
+		D1658265209AC2A300C37F8D /* ScheuleRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658263209AC2A300C37F8D /* ScheuleRightTableViewCell.swift */; };
+		D1658266209AC2A300C37F8D /* ScheuleRightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1658264209AC2A300C37F8D /* ScheuleRightTableViewCell.xib */; };
+		D1658268209AE78800C37F8D /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658267209AE78800C37F8D /* Struct.swift */; };
 		D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B75FC209729C400D27B86 /* RoundImage.swift */; };
-		D1BBA31C2095727C005E5AAE /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31B2095727C005E5AAE /* ScheduleTableViewController.swift */; };
+		D1BBA31C2095727C005E5AAE /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */; };
 		D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */; };
 		D1BBA32220958157005E5AAE /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA32120958157005E5AAE /* LogInViewController.swift */; };
 		D1BBA324209581D6005E5AAE /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA323209581D5005E5AAE /* Login.storyboard */; };
@@ -34,7 +37,7 @@
 		D1E6CD7B20914E2700310121 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD7A20914E2700310121 /* Schedule.storyboard */; };
 		D1E6CD7E20914EB700310121 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD7D20914EB700310121 /* UIStoryboard.swift */; };
 		D1F5422B2099EBAA007EBE96 /* FirBaseConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5422A2099EBAA007EBE96 /* FirBaseConnect.swift */; };
-		D1F5422D2099F09D007EBE96 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5422C2099F09D007EBE96 /* Schedule.swift */; };
+		D1F5422D2099F09D007EBE96 /* ScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5422C2099F09D007EBE96 /* ScheduleManager.swift */; };
 		D1F542312099FF42007EBE96 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5422F2099FF42007EBE96 /* ScheduleTableViewCell.swift */; };
 		D1F542322099FF42007EBE96 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F542302099FF42007EBE96 /* ScheduleTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -52,8 +55,11 @@
 		D14C0FED209823A800026AF1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D14C0FEF2098695B00026AF1 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		D14C0FF1209873E100026AF1 /* AlertToUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertToUser.swift; sourceTree = "<group>"; };
+		D1658263209AC2A300C37F8D /* ScheuleRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheuleRightTableViewCell.swift; sourceTree = "<group>"; };
+		D1658264209AC2A300C37F8D /* ScheuleRightTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheuleRightTableViewCell.xib; sourceTree = "<group>"; };
+		D1658267209AE78800C37F8D /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		D18B75FC209729C400D27B86 /* RoundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
-		D1BBA31B2095727C005E5AAE /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
+		D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1BBA32120958157005E5AAE /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		D1BBA323209581D5005E5AAE /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -70,7 +76,7 @@
 		D1E6CD7A20914E2700310121 /* Schedule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
 		D1E6CD7D20914EB700310121 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		D1F5422A2099EBAA007EBE96 /* FirBaseConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirBaseConnect.swift; sourceTree = "<group>"; };
-		D1F5422C2099F09D007EBE96 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		D1F5422C2099F09D007EBE96 /* ScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleManager.swift; sourceTree = "<group>"; };
 		D1F5422F2099FF42007EBE96 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		D1F542302099FF42007EBE96 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		F353853584E1967591DC1429 /* Pods_TravelSharing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravelSharing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +117,8 @@
 				D10418EF209982770084952E /* CustomCell.swift */,
 				D1F5422F2099FF42007EBE96 /* ScheduleTableViewCell.swift */,
 				D1F542302099FF42007EBE96 /* ScheduleTableViewCell.xib */,
+				D1658263209AC2A300C37F8D /* ScheuleRightTableViewCell.swift */,
+				D1658264209AC2A300C37F8D /* ScheuleRightTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -138,7 +146,7 @@
 		D1BBA31A20957256005E5AAE /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				D1BBA31B2095727C005E5AAE /* ScheduleTableViewController.swift */,
+				D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */,
 				D10418EC2099803B0084952E /* AddScheduleViewController.swift */,
 			);
 			path = Schedule;
@@ -225,6 +233,7 @@
 				D14C0FED209823A800026AF1 /* Constants.swift */,
 				D14C0FF1209873E100026AF1 /* AlertToUser.swift */,
 				D1F5422A2099EBAA007EBE96 /* FirBaseConnect.swift */,
+				D1658267209AE78800C37F8D /* Struct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -251,7 +260,7 @@
 		D1F5422E2099FE37007EBE96 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				D1F5422C2099F09D007EBE96 /* Schedule.swift */,
+				D1F5422C2099F09D007EBE96 /* ScheduleManager.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -316,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1658266209AC2A300C37F8D /* ScheuleRightTableViewCell.xib in Resources */,
 				D1E6CD6C20914CAA00310121 /* LaunchScreen.storyboard in Resources */,
 				D1E6CD6920914CAA00310121 /* Assets.xcassets in Resources */,
 				D1BBA324209581D6005E5AAE /* Login.storyboard in Resources */,
@@ -386,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1658265209AC2A300C37F8D /* ScheuleRightTableViewCell.swift in Sources */,
 				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,
 				D14C0FEE209823A800026AF1 /* Constants.swift in Sources */,
 				D10418ED2099803B0084952E /* AddScheduleViewController.swift in Sources */,
@@ -395,15 +406,16 @@
 				D1F542312099FF42007EBE96 /* ScheduleTableViewCell.swift in Sources */,
 				D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */,
 				D1E6CD7E20914EB700310121 /* UIStoryboard.swift in Sources */,
+				D1658268209AE78800C37F8D /* Struct.swift in Sources */,
 				D1400B31209619F700B0040B /* UserManager.swift in Sources */,
-				D1BBA31C2095727C005E5AAE /* ScheduleTableViewController.swift in Sources */,
+				D1BBA31C2095727C005E5AAE /* ScheduleViewController.swift in Sources */,
 				D1BBA32220958157005E5AAE /* LogInViewController.swift in Sources */,
 				D1E6CD6420914CA900310121 /* ViewController.swift in Sources */,
 				D1E6CD7420914D0B00310121 /* TabBarViewController.swift in Sources */,
 				D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */,
 				D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */,
 				D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */,
-				D1F5422D2099F09D007EBE96 /* Schedule.swift in Sources */,
+				D1F5422D2099F09D007EBE96 /* ScheduleManager.swift in Sources */,
 				D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */,
 				D1F5422B2099EBAA007EBE96 /* FirBaseConnect.swift in Sources */,
 			);

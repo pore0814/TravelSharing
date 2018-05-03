@@ -39,12 +39,12 @@ class AddScheduleViewController: UIViewController {
     
     @IBAction func saveBtn(_ sender: Any) {
        
-        
-        if startDataText.text != "", scheduleDays.text != "", scheduleName.text != "" { scheduleManager.shared.saveScheduleInfo(scheduleName: scheduleName.text!, scheudleDate: startDataText.text!, scheduleDay: scheduleDays.text!)
-        }else{
-            AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: "表格不可為空白")
-        }
-        
+//
+//        if startDataText.text != "", scheduleDays.text != "", scheduleName.text != "" { scheduleManager.shared.saveScheduleInfo(scheduleName: scheduleName.text!, scheudleDate: startDataText.text!, scheduleDay: scheduleDays.text!)
+//        }else{
+//            AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: "表格不可為空白")
+//        }
+//
     }
     
     override func viewDidLoad() {

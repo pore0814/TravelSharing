@@ -24,7 +24,6 @@ struct Schedule{
 
 
 struct ScheduleInfo{
- 
     var date: String
     var name: String
     var days: String
