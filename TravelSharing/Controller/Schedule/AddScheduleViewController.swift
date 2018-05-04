@@ -11,6 +11,7 @@ import JTAppleCalendar
 
 class AddScheduleViewController: UIViewController {
    
+    //日期
     let formatter:DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = Calendar.current.timeZone
@@ -19,55 +20,73 @@ class AddScheduleViewController: UIViewController {
         return dateFormatter
     }()
     
-    @IBOutlet weak var scheduleDays: UITextField!
-    
-    @IBOutlet weak var scheduleName: UITextField!
-    
-    @IBOutlet weak var startDataText: UITextField!
-    
+    @IBOutlet weak var scheduleDaysText: UITextField!
+    @IBOutlet weak var scheduleNameText: UITextField!
+    @IBOutlet weak var scheduleDateText: UITextField!
     @IBOutlet weak var calendarView: JTAppleCalendarView!
-    
     @IBOutlet weak var year: UILabel!
-    
     @IBOutlet weak var month: UILabel!
+    
     let outsideMonthColor = UIColor(colorWithHenValue: 0x584a66)
     let monthColor = UIColor.white
     let selectedMonthColor = UIColor(colorWithHenValue: 0x3a294b)
     let currentDateSelectedViewColor = UIColor(colorWithHenValue:0xa4e3f5d)
     
-  
-    
-    @IBAction func saveBtn(_ sender: Any) {
-       
-//
-//        if startDataText.text != "", scheduleDays.text != "", scheduleName.text != "" { scheduleManager.shared.saveScheduleInfo(scheduleName: scheduleName.text!, scheudleDate: startDataText.text!, scheduleDay: scheduleDays.text!)
-//        }else{
-//            AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: "表格不可為空白")
-//        }
-//
-    }
+    var scheduleInfoDetail:ScheduleInfo? //接收Schedule帶過來的資料
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        calendarView.scrollToDate(Date())
-        calendarView.selectDates([Date()])
-       
+        
+        navigationItem.title = scheduleInfoDetail?.name
+        //navigationController?.title = scheduleInfoDetail?.name
+        
+        //判斷是否有值(無值就顯今天日期，有值顯示Schedule帶過來的值）
+        if  let editDate = scheduleInfoDetail?.date { //有值
+            calendarView.scrollToDate(formatter.date(from: editDate)!)
+            calendarView.selectDates([formatter.date(from: editDate)!])
+        }else{
+            calendarView.scrollToDate(Date())
+            calendarView.selectDates([Date()])
+        }
+
+        
+        
+        
         setupCalendarView()
         
-         NotificationCenter.default.addObserver(self, selector: #selector(toSchedulePage), name:.switchtoSchedulePage, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(toSchedulePage), name:.switchtoSchedulePage, object: nil)
+        
+      
+        scheduleDaysText.text = scheduleInfoDetail?.days
+        scheduleDateText.text = scheduleInfoDetail?.date
+        scheduleNameText.text = scheduleInfoDetail?.name
+        
+          
+        
     }
-
+    //FireBase資料寫入
     @objc func toSchedulePage(notification:Notification) {
-     AppDelegate.shared.switchScheduleViewController()
+        AppDelegate.shared.switchScheduleViewController()
     }
+    
+  
+    
+    @IBAction func saveBtn(_ sender: Any) {
+        if scheduleDateText.text != "", scheduleDaysText.text != "", scheduleNameText.text != "" {
+            //寫入資料
+            ScheduleManager.shared.saveScheduleInfo(uid: scheduleInfoDetail?.uid, scheduleName: scheduleNameText.text!, scheudleDate: scheduleDateText.text!, scheduleDay: scheduleDaysText.text!)
+            AppDelegate.shared.switchMainViewController()
+        }else{
+            AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: "表格不可為空白")
+        }
+    }
+    
     
     func setupCalendarView(){
         // Setup calendar spacing
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
         // Setup labels
-        
         calendarView.visibleDates { dateSegment in
             self.setupCalendarViewData(dateSegment: dateSegment)
         }
@@ -84,6 +103,7 @@ class AddScheduleViewController: UIViewController {
          month.text = self.formatter.string(from: data)
     }
     
+    //收鍵盤
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -136,6 +156,7 @@ extension AddScheduleViewController :JTAppleCalendarViewDataSource,JTAppleCalend
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
         cell.datelabe.text = cellState.text
+
         configureCell(cell: cell, cellState: cellState)
         return cell
     }
@@ -144,8 +165,8 @@ extension AddScheduleViewController :JTAppleCalendarViewDataSource,JTAppleCalend
         configureCell(cell: cell, cellState: cellState)
         
         formatter.dateFormat = "yyyy MM dd"
-        startDataText.text = formatter.string(from: date)
-        print(formatter.string(from: date))
+        scheduleDateText.text = formatter.string(from: date)
+
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {

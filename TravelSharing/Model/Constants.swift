@@ -22,6 +22,10 @@ class Constants  {
     static let NoEmpty = "表格需填寫完整，不可為空白"
     
     
+    static let FireBaseSchedules = "schedules"
+    static let FireBaseSchedule = "schedule"
+    static let FireBaseUsers = "users"
+    
     
 }
 

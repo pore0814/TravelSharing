@@ -71,7 +71,7 @@ class UserManager {
                     }
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                         let userData = [Constants.Uid: uid  ,Constants.Email: email,Constants.Password: password,Constants.PhotoUrl: profileImageUrl,Constants.UserName:username] as [String:Any]
-                             fireBaseConnect.databaseRef.child("users").child(uid).setValue(userData)
+                             FireBaseConnect.databaseRef.child("users").child(uid).setValue(userData)
                         self.userDefaults.set(uid, forKey: "FireBaseUID")
                         self.userDefaults.synchronize()
                        NotificationCenter.default.post(name: .switchtoMainPage, object: nil)

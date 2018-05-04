@@ -13,7 +13,18 @@ class ScheduleViewController: UIViewController,UITableViewDataSource,UITableView
      var schedules = [ScheduleInfo]()
     
     @IBOutlet weak var tableView: UITableView!
- 
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        //FireBase刪完資料會通知
+        NotificationCenter.default.addObserver(self, selector: #selector(toreloadData), name:.finishDelete, object: nil)
+        
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,15 +40,24 @@ class ScheduleViewController: UIViewController,UITableViewDataSource,UITableView
        ScheduleManager.shared.getUserInfo()
        //FireBase撈完資料會通知傳資料回來
         NotificationCenter.default.addObserver(forName:.scheduleInfo, object: nil, queue:nil, using: catchNotification)
+      
     }
+    
+    @objc func toreloadData(notification:Notification) {
+        tableView.reloadData()
+    }
+    
+    
     
     func catchNotification(notification:Notification) -> Void{
         guard let userInfo = notification.userInfo,
+            let uid   = userInfo["uid"] as?  String,
             let name  = userInfo["name"] as? String,
-            let date  = userInfo["date"]    as? String,
-            let days  = userInfo["days"]    as? String else {return}
-        let  schedule = ScheduleInfo(date: date, name: name, days: days)
+            let date  = userInfo["date"] as? String,
+            let days  = userInfo["days"] as? String else {return}
+        let  schedule = ScheduleInfo(uid:uid,date: date, name: name, days: days)
         schedules.append(schedule)
+        print(schedules)
         tableView.reloadData()
     }
 
@@ -57,6 +77,46 @@ class ScheduleViewController: UIViewController,UITableViewDataSource,UITableView
             return cell
         }
     }
+
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+       //刪除（FireBase還沒刪）
+        print("67",self.schedules[indexPath.row].uid)
+        let deletAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
+       
+            
+          print("88",self.schedules[indexPath.row].uid)
+            ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid)
+           self.schedules.remove(at:indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with:.fade)
+            print("73",[indexPath])
+            // tableView.reloadData()
+            completionHandler(true)
+           
+        }
+        //編輯 Schedule
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, sourceView, completionHandler) in
+            let mainstoryboard: UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
+            let vc = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddScheduleViewController
+         self.navigationController?.pushViewController(vc, animated: true)
+            
+            vc.scheduleInfoDetail = self.schedules[indexPath.row]
+            
+            
+             completionHandler(true)
+        }
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deletAction,editAction])
+        return swipeConfiguration
+    }
+    
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let editButton = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexpath) in
+//            print("\(self.schedules[indexPath.row])")
+//        }
+//        editButton.backgroundColor = UIColor.yellow
+//        return[editButton]
+//    }
+    
 }
 
 

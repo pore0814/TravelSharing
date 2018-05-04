@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,7 +55,7 @@
         <!--Ib Calendar Data Source-->
         <scene sceneID="jmV-VW-3Na">
             <objects>
-                <viewController id="FOA-4s-0sI" customClass="AddScheduleViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddScheduleViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FOA-4s-0sI" customClass="AddScheduleViewController" customModule="TravelSharing" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jdB-vc-o7c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,21 +137,21 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iwK-G9-cFW" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
                                         <rect key="frame" x="0.0" y="60" width="375" height="318"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="77x-Us-6NO">
-                                            <size key="itemSize" width="72" height="69"/>
+                                            <size key="itemSize" width="72" height="76"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="CustomCell" id="zaP-qb-jlv" customClass="CustomCell" customModule="TravelSharing" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="72" height="69"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="72" height="76"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="69"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="76"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsT-KI-XZN">
-                                                            <rect key="frame" x="21" y="30.5" width="30" height="30"/>
+                                                            <rect key="frame" x="21" y="22" width="30" height="30"/>
                                                             <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="lgb-8v-WyB"/>
@@ -158,7 +159,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbA-6G-Foj">
-                                                            <rect key="frame" x="15" y="35" width="42" height="21"/>
+                                                            <rect key="frame" x="15" y="26.5" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -166,10 +167,10 @@
                                                     </subviews>
                                                 </view>
                                                 <constraints>
-                                                    <constraint firstItem="LsT-KI-XZN" firstAttribute="centerY" secondItem="zaP-qb-jlv" secondAttribute="centerY" constant="5.5" id="244-cY-Vss"/>
-                                                    <constraint firstItem="dbA-6G-Foj" firstAttribute="centerY" secondItem="zaP-qb-jlv" secondAttribute="centerY" constant="5.5" id="4dP-7b-Dmi"/>
-                                                    <constraint firstItem="dbA-6G-Foj" firstAttribute="centerX" secondItem="zaP-qb-jlv" secondAttribute="centerX" id="7ek-ZL-9Bl"/>
-                                                    <constraint firstItem="LsT-KI-XZN" firstAttribute="centerX" secondItem="zaP-qb-jlv" secondAttribute="centerX" id="J3M-Gb-f4d"/>
+                                                    <constraint firstItem="LsT-KI-XZN" firstAttribute="centerY" secondItem="dbA-6G-Foj" secondAttribute="centerY" id="8Em-6w-Ufs"/>
+                                                    <constraint firstItem="LsT-KI-XZN" firstAttribute="top" secondItem="zaP-qb-jlv" secondAttribute="topMargin" constant="14" id="QBT-lV-hr4"/>
+                                                    <constraint firstItem="LsT-KI-XZN" firstAttribute="centerX" secondItem="zaP-qb-jlv" secondAttribute="centerX" id="aH2-8D-k3n"/>
+                                                    <constraint firstItem="LsT-KI-XZN" firstAttribute="centerX" secondItem="dbA-6G-Foj" secondAttribute="centerX" id="xLl-9O-LbX"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="datelabe" destination="dbA-6G-Foj" id="tvs-ql-2yO"/>
@@ -306,15 +307,15 @@
                     <connections>
                         <outlet property="calendarView" destination="iwK-G9-cFW" id="na9-11-iyb"/>
                         <outlet property="month" destination="OVU-18-4OW" id="IaS-a5-kus"/>
-                        <outlet property="scheduleDays" destination="xc8-G8-GFN" id="Vlf-Y6-MpJ"/>
-                        <outlet property="scheduleName" destination="rXJ-zy-ZZ6" id="bmh-uT-x38"/>
-                        <outlet property="startDataText" destination="4j6-Jr-0qr" id="zGd-CA-j7G"/>
+                        <outlet property="scheduleDateText" destination="4j6-Jr-0qr" id="zGd-CA-j7G"/>
+                        <outlet property="scheduleDaysText" destination="xc8-G8-GFN" id="Vlf-Y6-MpJ"/>
+                        <outlet property="scheduleNameText" destination="rXJ-zy-ZZ6" id="bmh-uT-x38"/>
                         <outlet property="year" destination="0S8-7z-6B0" id="RN8-MD-Ys2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6TG-1Q-5qq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2605.5999999999999" y="118.29085457271366"/>
+            <point key="canvasLocation" x="2605.5" y="117.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="usm-48-sV4">

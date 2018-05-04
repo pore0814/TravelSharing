@@ -123,6 +123,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D1163A49209C49BC0098BDB0 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		D1448FDB2096CA9C00D699DB /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +206,7 @@
 				D1E6CD6820914CAA00310121 /* Assets.xcassets */,
 				D1E6CD6A20914CAA00310121 /* LaunchScreen.storyboard */,
 				D1E6CD6D20914CAA00310121 /* Info.plist */,
+				D1163A49209C49BC0098BDB0 /* New Group */,
 				D1BBA32520958FF8005E5AAE /* GoogleService-Info.plist */,
 			);
 			path = TravelSharing;
