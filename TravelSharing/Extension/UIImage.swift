@@ -13,10 +13,10 @@ extension UIImageView {
 
     
     func setRounded(){
-        self.layer.borderWidth = 1
+       // self.layer.borderWidth = 1
         self.layer.masksToBounds = true
         self.layer.borderColor = UIColor.darkGray.cgColor
-        self.layer.cornerRadius = (self.frame.height / 2)
+        self.layer.cornerRadius = 10
     }
 
 }

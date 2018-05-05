@@ -37,8 +37,15 @@ class AddScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor:
+//            UIColor.white]
+        //navigationItem.rightBarButtonItem = editButtonItem
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
+
+        
         navigationItem.title = scheduleInfoDetail?.name
-        //navigationController?.title = scheduleInfoDetail?.name
+      //  navigationController?.title = scheduleInfoDetail?.name
         
         //判斷是否有值(無值就顯今天日期，有值顯示Schedule帶過來的值）
         if  let editDate = scheduleInfoDetail?.date { //有值
@@ -66,7 +73,10 @@ class AddScheduleViewController: UIViewController {
     }
     //FireBase資料寫入
     @objc func toSchedulePage(notification:Notification) {
-        AppDelegate.shared.switchScheduleViewController()
+        
+    }
+    @objc func addTapped(sender: AnyObject) {
+        print("hjxdbsdhjbv")
     }
     
   
@@ -75,6 +85,7 @@ class AddScheduleViewController: UIViewController {
         if scheduleDateText.text != "", scheduleDaysText.text != "", scheduleNameText.text != "" {
             //寫入資料
             ScheduleManager.shared.saveScheduleInfo(uid: scheduleInfoDetail?.uid, scheduleName: scheduleNameText.text!, scheudleDate: scheduleDateText.text!, scheduleDay: scheduleDaysText.text!)
+            
             AppDelegate.shared.switchMainViewController()
         }else{
             AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: "表格不可為空白")

@@ -15,10 +15,12 @@ class LogInViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     var activeTextfield: UITextField!
     
+    @IBOutlet weak var logInImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        logInImageView.setRounded()
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     /*
