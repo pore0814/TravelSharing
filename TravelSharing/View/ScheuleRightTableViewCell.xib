@@ -65,6 +65,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="sLA-0X-LOh" id="fTi-mp-pGq"/>
+                <outlet property="daysLabel" destination="6XZ-t4-cvW" id="oDT-h8-VgW"/>
+                <outlet property="nameLabel" destination="6D8-a4-elY" id="IzI-7D-QKa"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

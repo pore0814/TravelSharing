@@ -62,9 +62,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="date" destination="BGq-Uz-vw7" id="kJa-tm-YV6"/>
-                <outlet property="days" destination="h1c-Xl-myo" id="W7j-Q5-b5E"/>
-                <outlet property="name" destination="Mhr-CK-yAE" id="fWC-tb-efz"/>
+                <outlet property="dateLabel" destination="BGq-Uz-vw7" id="kJa-tm-YV6"/>
+                <outlet property="daysLabel" destination="h1c-Xl-myo" id="W7j-Q5-b5E"/>
+                <outlet property="nameLabel" destination="Mhr-CK-yAE" id="fWC-tb-efz"/>
             </connections>
             <point key="canvasLocation" x="69" y="83"/>
         </tableViewCell>
