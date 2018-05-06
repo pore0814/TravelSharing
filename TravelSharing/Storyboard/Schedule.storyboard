@@ -80,20 +80,80 @@
             </objects>
             <point key="canvasLocation" x="1897" y="827"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Location View Controller-->
         <scene sceneID="NIY-eX-RVK">
             <objects>
-                <viewController id="cwR-LZ-DtX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddLocationViewController" id="cwR-LZ-DtX" customClass="AddLocationViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pba-cb-pHA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uQx-pv-eZb">
+                                <rect key="frame" x="20" y="164" width="335" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9d-fh-AjA">
+                                        <rect key="frame" x="0.0" y="0.0" width="108.5" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="RbU-GP-ap7"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="spot"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kak-WW-EZd">
+                                        <rect key="frame" x="113.5" y="0.0" width="108" height="120"/>
+                                        <state key="normal" title="Button" image="restaurant"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlS-fk-dXW">
+                                        <rect key="frame" x="226.5" y="0.0" width="108.5" height="120"/>
+                                        <state key="normal" title="Button" image="hotel"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="h9d-fh-AjA" firstAttribute="centerY" secondItem="uQx-pv-eZb" secondAttribute="centerY" id="GAG-Dx-I6A"/>
+                                </constraints>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ug5-2i-37O">
+                                <rect key="frame" x="214" y="326" width="122" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vtG-dw-7YF">
+                                <rect key="frame" x="38" y="326" width="177" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uUW-48-GGw">
+                                <rect key="frame" x="275" y="375" width="61" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xRx-z9-0sU">
+                                <rect key="frame" x="38" y="375" width="235" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uQx-pv-eZb" firstAttribute="top" secondItem="h1v-a5-Gpi" secondAttribute="top" constant="100" id="Flw-fQ-i2K"/>
+                            <constraint firstAttribute="trailing" secondItem="uQx-pv-eZb" secondAttribute="trailing" constant="20" id="Jrt-ZA-lT4"/>
+                            <constraint firstItem="uQx-pv-eZb" firstAttribute="leading" secondItem="h1v-a5-Gpi" secondAttribute="leading" constant="20" id="usp-VJ-DdQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="h1v-a5-Gpi"/>
                     </view>
+                    <connections>
+                        <outlet property="dateText" destination="vtG-dw-7YF" id="W5I-sv-cK2"/>
+                        <outlet property="stackView" destination="uQx-pv-eZb" id="cFI-x2-6el"/>
+                        <outlet property="timeText" destination="ug5-2i-37O" id="bbm-Zj-sxp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDK-yK-0Hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2721" y="826"/>
+            <point key="canvasLocation" x="2720.8000000000002" y="825.33733133433293"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="jmV-VW-3Na">
@@ -379,4 +439,9 @@
             <point key="canvasLocation" x="1108" y="119.1904047976012"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hotel" width="150" height="150"/>
+        <image name="restaurant" width="150" height="150"/>
+        <image name="spot" width="150" height="150"/>
+    </resources>
 </document>

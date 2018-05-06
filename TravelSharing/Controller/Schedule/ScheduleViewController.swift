@@ -18,10 +18,6 @@ class ScheduleViewController: UIViewController,UITableViewDataSource,UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        //FireBase刪完資料會通知
-        NotificationCenter.default.addObserver(self, selector: #selector(toreloadData), name:.finishDelete, object: nil)
-        
-        
     }
     
     
@@ -38,9 +34,8 @@ class ScheduleViewController: UIViewController,UITableViewDataSource,UITableView
         tableView.register(rightNibName, forCellReuseIdentifier: "ScheuleRightTableViewCell")
         //FireBase撈資料
        ScheduleManager.shared.getUserInfo()
-       //FireBase撈完資料會通知傳資料回來
+       //FireBase撈完資料會通知reloadData
         NotificationCenter.default.addObserver(forName:.scheduleInfo, object: nil, queue:nil, using: catchNotification)
-      
     }
     
     @objc func toreloadData(notification:Notification) {
