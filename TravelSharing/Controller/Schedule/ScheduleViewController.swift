@@ -68,20 +68,33 @@ class ScheduleViewController: UIViewController,UITableViewDataSource,UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.item % 2 == 0){
             let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
-                cell.date.text = schedules[indexPath.row].date
-                cell.name.text = schedules[indexPath.row].name
-                cell.days.text = schedules[indexPath.row].days
+        
+                cell.dateLabel.text = schedules[indexPath.row].date
+                cell.nameLabel.text = schedules[indexPath.row].name
+                cell.daysLabel.text = schedules[indexPath.row].days
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ScheuleRightTableViewCell", for: indexPath) as! ScheuleRightTableViewCell
+            
+            cell.dateLabel.text = schedules[indexPath.row].date
+            cell.nameLabel.text = schedules[indexPath.row].name
+            cell.daysLabel.text = schedules[indexPath.row].days
+            
+            
             return cell
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let scheduleDetailViewController = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "ScheduleDetailViewController") as!ScheduleDetailViewController
+        self.navigationController?.pushViewController(scheduleDetailViewController, animated: true)
+    }
+   
+    
 
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-       //刪除（FireBase還沒刪）
-        print("67",self.schedules[indexPath.row].uid)
+    
         let deletAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
        
             
@@ -97,10 +110,15 @@ class ScheduleViewController: UIViewController,UITableViewDataSource,UITableView
         //編輯 Schedule
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, sourceView, completionHandler) in
             let mainstoryboard: UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
-            let vc = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddScheduleViewController
-         self.navigationController?.pushViewController(vc, animated: true)
+        
+          
+            let newViewController = mainstoryboard.instantiateViewController(withIdentifier: "ScheduleDetailViewController") as! ScheduleDetailViewController
+            self.present(newViewController, animated: true, completion: nil)
+
             
-            vc.scheduleInfoDetail = self.schedules[indexPath.row]
+          
+            
+          //  vc.scheduleInfoDetail = self.schedules[indexPath.row]
             
             
              completionHandler(true)

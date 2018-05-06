@@ -46,11 +46,54 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="1tg-8o-iJv" id="noG-ne-aDO"/>
+                        <segue destination="BEf-nW-9ZD" kind="show" id="lR5-kH-pHs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0u2-4Q-CcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1896.8" y="118.29085457271366"/>
+        </scene>
+        <!--Schedule Detail View Controller-->
+        <scene sceneID="7Y9-NH-TwH">
+            <objects>
+                <viewController storyboardIdentifier="ScheduleDetailViewController" id="BEf-nW-9ZD" customClass="ScheduleDetailViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ypy-eA-W5o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cV-H3-ywm">
+                                <rect key="frame" x="166" y="248" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QoJ-PE-Ddj"/>
+                    </view>
+                    <connections>
+                        <segue destination="cwR-LZ-DtX" kind="show" id="5up-pH-eOd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4y3-ha-zbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1897" y="827"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="NIY-eX-RVK">
+            <objects>
+                <viewController id="cwR-LZ-DtX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pba-cb-pHA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="h1v-a5-Gpi"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fDK-yK-0Hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2721" y="826"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="jmV-VW-3Na">
@@ -315,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6TG-1Q-5qq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2605.5" y="117.5"/>
+            <point key="canvasLocation" x="2721" y="118"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="usm-48-sV4">
