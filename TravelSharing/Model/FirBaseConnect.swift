@@ -10,11 +10,9 @@ import Foundation
 import Firebase
 
 struct FireBaseConnect {
-    
+
   static var databaseRef: DatabaseReference {
         return Database.database().reference()
     }
-    
-    
-    
+
 }

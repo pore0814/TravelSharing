@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Constants  {
-    
+class Constants {
+
     static let User = "users"
     static let Email = "email"
     static let Password = "password"
@@ -17,15 +17,12 @@ class Constants  {
     static let Uid = "uid"
     static let UserName = "username"
     static let Profile_image = "profile_image"
-    
+
     static let Wrong_Message = "錯誤訊息"
     static let NoEmpty = "表格需填寫完整，不可為空白"
-    
-    
+
     static let FireBaseSchedules = "schedules"
     static let FireBaseSchedule = "schedule"
     static let FireBaseUsers = "users"
-    
-    
-}
 
+}

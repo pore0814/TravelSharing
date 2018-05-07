@@ -17,12 +17,11 @@ class ScheduleDetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = addBarButtonItem
     }
 
-    
     @objc func addTapped(sender: AnyObject) {
         print("hjxdbsdhjbv")
         let scheduleDetailToAddLocation = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "AddLocationViewController") as!
         AddLocationViewController
-       
+
         self.navigationController?.pushViewController(scheduleDetailToAddLocation, animated: true)
     }
 

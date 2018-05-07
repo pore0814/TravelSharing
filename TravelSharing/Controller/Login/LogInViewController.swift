@@ -9,17 +9,17 @@
 import UIKit
 import FirebaseAuth
 
-class LogInViewController: UIViewController,UITextFieldDelegate {
+class LogInViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     var activeTextfield: UITextField!
-    
+
     @IBOutlet weak var logInImageView: UIImageView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         logInImageView.setRounded()
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
@@ -48,30 +48,27 @@ class LogInViewController: UIViewController,UITextFieldDelegate {
     }
 */
 
-
-
     @IBAction func logIn(_ sender: Any) {
         if emailTextField.text != "" && passwordTextField.text != "" {
-            
-            
+
             UserManager.shared.loginUser(email: emailTextField.text!, password: passwordTextField.text!) { (message) in
                 if message != nil {
                 AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: message!)
-                }else{
+                } else {
                   AppDelegate.shared.switchMainViewController()
                 }
             }
-        }else{
+        } else {
             AlertToUser.shared.alerTheUserPurple(title: "請填寫表格", message: "填寫正確的Email和密碼")
         }
-       
+
     }
-    
+
     @IBAction func register(_ sender: Any) {
          let registerPage = UIStoryboard.registerStoryboard().instantiateInitialViewController()
        present(registerPage!, animated: true, completion: nil)
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
