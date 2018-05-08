@@ -14,6 +14,9 @@ pod 'Firebase/Storage'
 pod 'Fusuma'
 pod 'SCLAlertView'
 pod 'JTAppleCalendar'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
+pod 'SwiftLint'
   
 
 end

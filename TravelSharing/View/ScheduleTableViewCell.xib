@@ -16,48 +16,53 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="156" id="KGk-i7-Jjw" customClass="ScheduleTableViewCell" customModule="TravelSharing" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="364" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="364" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="worldwide" translatesAutoresizingMaskIntoConstraints="NO" id="gxf-ku-K8D">
-                        <rect key="frame" x="25" y="19" width="60" height="60"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="worldwide" translatesAutoresizingMaskIntoConstraints="NO" id="gxf-ku-K8D">
+                        <rect key="frame" x="10" y="19" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="2jl-ez-SDu"/>
                             <constraint firstAttribute="height" constant="60" id="Bln-8b-xVJ"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="RZ0-6m-85k"/>
                         </constraints>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Nk-Vt-794">
-                        <rect key="frame" x="112" y="19" width="69.5" height="61.5"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Nk-Vt-794">
+                        <rect key="frame" x="97" y="19" width="69.5" height="61"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="行程名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhr-CK-yAE">
-                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" ambiguous="YES" text="行程名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhr-CK-yAE">
+                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="日期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGq-Uz-vw7">
-                                <rect key="frame" x="0.0" y="20.5" width="69.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="日期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGq-Uz-vw7">
+                                <rect key="frame" x="0.0" y="21" width="69.5" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="天數" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1c-Xl-myo">
-                                <rect key="frame" x="0.0" y="41" width="69.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" text="天數" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1c-Xl-myo">
+                                <rect key="frame" x="0.0" y="41" width="69.5" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="BGq-Uz-vw7" secondAttribute="bottom" constant="20" symbolic="YES" id="8ld-fg-WG6"/>
+                            <constraint firstItem="h1c-Xl-myo" firstAttribute="top" secondItem="Mhr-CK-yAE" secondAttribute="bottom" constant="20" id="IF0-VE-WqI"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="gxf-ku-K8D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="297-zF-ZQk"/>
                     <constraint firstAttribute="bottomMargin" secondItem="gxf-ku-K8D" secondAttribute="bottom" constant="10" id="40T-Of-Pfw"/>
-                    <constraint firstItem="gxf-ku-K8D" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="9" id="P7L-C9-sUm"/>
-                    <constraint firstItem="gxf-ku-K8D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="RHm-B1-100"/>
                     <constraint firstItem="8Nk-Vt-794" firstAttribute="leading" secondItem="gxf-ku-K8D" secondAttribute="trailing" constant="27" id="Rvc-QT-RNj"/>
+                    <constraint firstItem="gxf-ku-K8D" firstAttribute="centerY" secondItem="8Nk-Vt-794" secondAttribute="centerY" id="fvp-9u-tZo"/>
                     <constraint firstItem="8Nk-Vt-794" firstAttribute="top" secondItem="gxf-ku-K8D" secondAttribute="top" id="vYw-kf-Wth"/>
+                    <constraint firstItem="gxf-ku-K8D" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="wDi-Pc-b8t"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

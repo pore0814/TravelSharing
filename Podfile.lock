@@ -33,6 +33,13 @@ PODS:
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - Fusuma (1.2.4)
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
+  - GooglePlaces (2.7.0):
+    - GoogleMaps/Base (= 2.7.0)
   - GoogleToolboxForMac/DebugUtils (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GoogleToolboxForMac/Defines (2.1.4)
@@ -52,6 +59,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - SCLAlertView (0.8)
+  - SwiftLint (0.25.1)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -59,8 +67,11 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - Fusuma
+  - GoogleMaps
+  - GooglePlaces
   - JTAppleCalendar
   - SCLAlertView
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -72,12 +83,15 @@ SPEC REPOS:
     - FirebaseInstanceID
     - FirebaseStorage
     - Fusuma
+    - GoogleMaps
+    - GooglePlaces
     - GoogleToolboxForMac
     - GTMSessionFetcher
     - JTAppleCalendar
     - leveldb-library
     - nanopb
     - SCLAlertView
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Firebase: 5ec5e863d269d82d66b4bf56856726f8fb8f0fb3
@@ -88,13 +102,16 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
   FirebaseStorage: 0c223481c8f89ed300cf1239ddd2d9833622c65f
   Fusuma: e85c394878a2e1549c67140ba7c038aff8d7581c
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
 
-PODFILE CHECKSUM: 1be8360c1604d6eceeb0bdb27dc5db4007c55064
+PODFILE CHECKSUM: 6484479075e420020df1291f8b8dacf195fc7ae3
 
 COCOAPODS: 1.5.0
