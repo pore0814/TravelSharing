@@ -33,24 +33,40 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         //FireBase撈資料
        ScheduleManager.shared.getUserInfo()
        //FireBase撈完資料會通知reloadData
-        NotificationCenter.default.addObserver(forName: .scheduleInfo, object: nil, queue: nil, using: catchNotification)
+       // NotificationCenter.default.addObserver(forName: .scheduleInfo, object: nil, queue: nil, using: catchNotification)
+        
+        
+        ScheduleManager.shared.getScheduleContent()
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
+        
     }
 
+    @objc func getData(notification:Notification){
+        
+        DispatchQueue.main.async {
+            self.schedules = ScheduleManager.shared.scheduleDataArray
+            self.tableView.reloadData()
+        }
+
+    }
 //    @objc func toreloadData(notification:Notification) {
 //        tableView.reloadData()
 //    }
 
-    func catchNotification(notification: Notification) {
-        guard let userInfo = notification.userInfo,
-            let uid   = userInfo["uid"] as?  String,
-            let name  = userInfo["name"] as? String,
-            let date  = userInfo["date"] as? String,
-            let days  = userInfo["days"] as? String else {return}
-        let  schedule = ScheduleInfo(uid: uid, date: date, name: name, days: days)
-        schedules.append(schedule)
-        print(schedules)
-        tableView.reloadData()
-    }
+//    func catchNotification(notification: Notification) {
+//        guard let userInfo = notification.userInfo,
+//            let uid   = userInfo["uid"] as?  String,
+//            let name  = userInfo["name"] as? String,
+//            let date  = userInfo["date"] as? String,
+//            let days  = userInfo["days"] as? String else {return}
+//        let  schedule = ScheduleInfo(uid: uid, date: date, name: name, days: days)
+//        schedules.append(schedule)
+//        //按時間排序
+//        //schedules.sort(by: {$0.date < $1.date})
+//         print("53",schedules)
+//        tableView.reloadData()
+//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return schedules.count
@@ -76,6 +92,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("79",schedules[indexPath.row].uid)
         let scheduleDetailViewController = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "ScheduleDetailViewController") as!ScheduleDetailViewController
         self.navigationController?.pushViewController(scheduleDetailViewController, animated: true)
     }
@@ -85,7 +102,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         let deletAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
 
           print("88", self.schedules[indexPath.row].uid)
-            ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid)
+          //  ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid)
            self.schedules.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             print("73", [indexPath])
@@ -95,12 +112,11 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         //編輯 Schedule
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
+            print("99","edit to next page")
             let mainstoryboard: UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
-
-            let newViewController = mainstoryboard.instantiateViewController(withIdentifier: "ScheduleDetailViewController") as! ScheduleDetailViewController
-            self.present(newViewController, animated: true, completion: nil)
-
-          //  vc.scheduleInfoDetail = self.schedules[indexPath.row]
+            let EditViewController = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddScheduleViewController
+            self.navigationController?.pushViewController(EditViewController, animated: true)
+         EditViewController.scheduleInfoDetail = self.schedules[indexPath.row]
 
              completionHandler(true)
         }

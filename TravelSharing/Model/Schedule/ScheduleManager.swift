@@ -10,30 +10,26 @@ import FirebaseDatabase
 
 class ScheduleManager {
    static let shared = ScheduleManager()
-
+    var scheduleDataInfo :ScheduleInfo?
+    var scheduleDataArray = [ScheduleInfo]()
+    
+  
     //新增Schedule資料
     func saveScheduleInfo(uid: String?, scheduleName: String, scheudleDate: String, scheduleDay: String) {
         //User Id
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
-        var scheduleUid: String?
-        if uid == nil {
-         scheduleUid = FireBaseConnect.databaseRef.childByAutoId().key
-        } else {
-           scheduleUid = uid
+      
+        let  scheduleUid = FireBaseConnect.databaseRef.childByAutoId().key
+       
+        let scheduleInfo = ["uid":scheduleUid,"name": scheduleName, "date": scheudleDate, "days": scheduleDay]
+        FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(userid).child(scheduleUid).setValue(scheduleInfo)
+
+//
+//          //資料寫入後Notification通知跳頁
+//            NotificationCenter.default.post(name: .switchtoSchedulePage, object: nil)
         }
 
-        let scheduleInfo = ["name": scheduleName, "date": scheudleDate, "days": scheduleDay, "uid": scheduleUid]
-        FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(scheduleUid!).setValue(scheduleInfo)
-
-        //users裡新增schedule_id
-         let  scheudlecontent = ["uid": scheduleUid, "name": scheduleName]
-     FireBaseConnect.databaseRef.child(Constants.FireBaseUsers).child(userid).child(Constants.FireBaseSchedule).child(scheduleUid!).setValue(scheudlecontent)
-
-          //資料寫入後Notification通知跳頁
-            NotificationCenter.default.post(name: .switchtoSchedulePage, object: nil)
-        }
-
-//取users裡將使用者的schedule_id放到Array裡，再到Schedules裡將這些uid的內容撈出來
+/*取users裡將使用者的schedule_id放到Array裡，再到Schedules裡將這些uid的內容撈出來
     func getUserInfo() {
         var ScheduleUidArray = [Schedule]()
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
@@ -53,21 +49,42 @@ class ScheduleManager {
                     }
                 }
                 let userInfo = User(email: email, photo: photo, schedule: ScheduleUidArray, uid: id, userName: username)
-                self.getScheduleContent(uid: userInfo.schedule)
+             //   self.getScheduleContent(uid: userInfo.schedule)
             }
         }
     }
+*/
+    
+    // 到FireBase  schedules 撈使用的post的 Scheudle內容
+    func getScheduleContent() {
+       guard let userid = UserManager.shared.getFireBaseUID() else {return}
+        scheduleDataArray.removeAll()
+            FireBaseConnect
+                .databaseRef
+                .child(Constants.FireBaseSchedules)
+                .child(userid)
+                .observe(.childAdded, with: { (snapshot) in
+                 //放background做
+                    DispatchQueue.global(qos: .background).async{
+                        guard let scheduleInfo =  snapshot.value as? [String: Any],
+                                let uid = scheduleInfo["uid"] as? String,
+                                let name  = scheduleInfo["name"] as? String,
+                                let date  = scheduleInfo["date"] as? String,
+                                let days  = scheduleInfo["days"] as? String
+                                else{return}
 
-    //傳入使用者Scheudle_id , 到Schedules裡撈資料，撈完資料發通知傳資料到ScheduleViewController
-    func getScheduleContent(uid: [Schedule]) {
-        for index in uid {
-            FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(index.uid).observe(.value) { (snapshot) in
-                print("56", snapshot)
-                guard let scheduleInfo =  snapshot.value as? [String: Any] else {return}
-                NotificationCenter.default.post(name: .scheduleInfo, object: nil, userInfo: scheduleInfo )
-            }
-        }
-    }
+                        let schedule =
+                               ScheduleInfo(uid: uid, date: date, name: name, days: days)
+                        self.scheduleDataArray.append(schedule)
+                        self.scheduleDataArray.sort(by: {$0.date < $1.date})
+                        print("89",self.scheduleDataArray)
+
+                        NotificationCenter.default.post(
+                            name: .scheduleInfo,
+                            object: nil)
+                    }
+                })
+           }
 
     //刪除(同時刪除Schedule下的uid 和User下Schedule的uid)
     func deleteSchedule(scheduleId: String) {
@@ -84,5 +101,5 @@ class ScheduleManager {
             }
         }
     }
-
 }
+

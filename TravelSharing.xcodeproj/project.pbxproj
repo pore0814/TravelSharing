@@ -25,6 +25,8 @@
 		D18B9B5E209DEE0A00EB8D16 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */; };
 		D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */; };
 		D18B9B62209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B61209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift */; };
+		D18B9B6420A0248500EB8D16 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6320A0248500EB8D16 /* Date.swift */; };
+		D18B9B6720A030E300EB8D16 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6620A030E300EB8D16 /* LocationManager.swift */; };
 		D1BBA31C2095727C005E5AAE /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */; };
 		D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */; };
 		D1BBA32220958157005E5AAE /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA32120958157005E5AAE /* LogInViewController.swift */; };
@@ -65,6 +67,8 @@
 		D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		D18B9B61209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaceAutocompleteViewController.swift; sourceTree = "<group>"; };
+		D18B9B6320A0248500EB8D16 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		D18B9B6620A030E300EB8D16 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1BBA32120958157005E5AAE /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +146,14 @@
 				D1448FDC2096CAB000D699DB /* RegisterViewController.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		D18B9B6520A030C900EB8D16 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				D18B9B6620A030E300EB8D16 /* LocationManager.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		D1BBA31920957222005E5AAE /* Controller */ = {
@@ -244,6 +256,7 @@
 		D1E6CD7720914DAC00310121 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D18B9B6520A030C900EB8D16 /* Location */,
 				D1F5422E2099FE37007EBE96 /* Schedule */,
 				D1F542292099EAD3007EBE96 /* LoginandRegister */,
 				D18B75FC209729C400D27B86 /* RoundImage.swift */,
@@ -251,6 +264,7 @@
 				D14C0FF1209873E100026AF1 /* AlertToUser.swift */,
 				D1F5422A2099EBAA007EBE96 /* FirBaseConnect.swift */,
 				D1658267209AE78800C37F8D /* Struct.swift */,
+				D18B9B6320A0248500EB8D16 /* Date.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -445,6 +459,7 @@
 				D1F542312099FF42007EBE96 /* ScheduleTableViewCell.swift in Sources */,
 				D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */,
 				D1E6CD7E20914EB700310121 /* UIStoryboard.swift in Sources */,
+				D18B9B6420A0248500EB8D16 /* Date.swift in Sources */,
 				D1658268209AE78800C37F8D /* Struct.swift in Sources */,
 				D1400B31209619F700B0040B /* UserManager.swift in Sources */,
 				D1BBA31C2095727C005E5AAE /* ScheduleViewController.swift in Sources */,
@@ -459,6 +474,7 @@
 				D18B9B62209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift in Sources */,
 				D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */,
 				D1F5422B2099EBAA007EBE96 /* FirBaseConnect.swift in Sources */,
+				D18B9B6720A030E300EB8D16 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +622,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -622,7 +641,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

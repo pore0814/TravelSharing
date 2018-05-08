@@ -11,7 +11,7 @@ import JTAppleCalendar
 
 class AddScheduleViewController: UIViewController {
 
-    //日期
+    //日期/
     let formatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = Calendar.current.timeZone
@@ -19,6 +19,7 @@ class AddScheduleViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy MM dd"
         return dateFormatter
     }()
+ 
 
     @IBOutlet weak var scheduleDaysText: UITextField!
     @IBOutlet weak var scheduleNameText: UITextField!
