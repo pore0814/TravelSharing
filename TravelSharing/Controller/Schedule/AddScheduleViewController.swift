@@ -78,7 +78,8 @@ class AddScheduleViewController: UIViewController {
             //寫入資料
             ScheduleManager.shared.saveScheduleInfo(uid: scheduleInfoDetail?.uid, scheduleName: scheduleNameText.text!, scheudleDate: scheduleDateText.text!, scheduleDay: scheduleDaysText.text!)
 
-            AppDelegate.shared.switchMainViewController()
+//            AppDelegate.shared.switchMainViewController()
+            self.navigationController?.popViewController(animated: true)
         } else {
             AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: "表格不可為空白")
         }

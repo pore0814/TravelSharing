@@ -58,23 +58,24 @@ class ScheduleManager {
     // 到FireBase  schedules 撈使用的post的 Scheudle內容
     func getScheduleContent() {
        guard let userid = UserManager.shared.getFireBaseUID() else {return}
-        scheduleDataArray.removeAll()
+       // scheduleDataArray.removeAll()
             FireBaseConnect
                 .databaseRef
                 .child(Constants.FireBaseSchedules)
                 .child(userid)
                 .observe(.childAdded, with: { (snapshot) in
                  //放background做
-                    DispatchQueue.global(qos: .background).async{
-                        guard let scheduleInfo =  snapshot.value as? [String: Any],
-                                let uid = scheduleInfo["uid"] as? String,
-                                let name  = scheduleInfo["name"] as? String,
-                                let date  = scheduleInfo["date"] as? String,
-                                let days  = scheduleInfo["days"] as? String
-                                else{return}
-
+//                    DispatchQueue.global(qos: .background).async{
+                        guard    let scheduleInfo =  snapshot.value as? [String: Any] else{return}
+                        guard    let uid = scheduleInfo["uid"] as? String else{return}
+                        guard    let name  = scheduleInfo["name"] as? String else{return}
+                        guard    let date  = scheduleInfo["date"] as? String else{return}
+                        guard    let days  = scheduleInfo["days"] as? String else{return}
+                        
                         let schedule =
                                ScheduleInfo(uid: uid, date: date, name: name, days: days)
+                        print("-----")
+                        print("79",self.scheduleDataArray.count)
                         self.scheduleDataArray.append(schedule)
                         self.scheduleDataArray.sort(by: {$0.date < $1.date})
                         print("89",self.scheduleDataArray)
@@ -82,9 +83,62 @@ class ScheduleManager {
                         NotificationCenter.default.post(
                             name: .scheduleInfo,
                             object: nil)
-                    }
+//                    }
+                  
                 })
            }
+    
+    
+    
+    func getScheduleContent_value() {
+        guard let userid = UserManager.shared.getFireBaseUID() else {return}
+        // scheduleDataArray.removeAll()
+        FireBaseConnect
+            .databaseRef
+            .child(Constants.FireBaseSchedules)
+            .child(userid)
+            .observe(.value)
+                { (snapshot) in
+                    
+                print(snapshot.value)
+                //放background做
+                DispatchQueue.global(qos: .background).async{
+                    guard    let scheduleInfo =  snapshot.value as? [String: Any] else{return}
+                    for data in scheduleInfo {
+                        print(data.value)
+                        guard  let datadetail = data.value as? [String:String]  else{return}
+           
+                        guard    let uid = datadetail["uid"] as? String else{return}
+                        guard    let name  = datadetail["name"] as? String else{return}
+                        guard    let date  = datadetail["date"] as? String else{return}
+                        guard    let days  = datadetail["days"] as? String else{return}
+              
+                        let schedule = ScheduleInfo(uid: uid, date: date, name: name, days: days)
+                        print(schedule)
+                        
+                        
+                    }
+
+//
+                  
+//                    print("-----")
+//                    print("79",self.scheduleDataArray.count)
+//                    self.scheduleDataArray.append(schedule)
+//                    self.scheduleDataArray.sort(by: {$0.date < $1.date})
+//                    print("89",self.scheduleDataArray)
+//
+//                    NotificationCenter.default.post(
+//                        name: .scheduleInfo,
+//                        object: nil)
+                }
+                
+            }
+    }
+    
+    
+    
+    
+    
 
     //刪除(同時刪除Schedule下的uid 和User下Schedule的uid)
     func deleteSchedule(scheduleId: String) {

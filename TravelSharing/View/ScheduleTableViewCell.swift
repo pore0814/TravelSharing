@@ -14,11 +14,24 @@ class ScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var daysLabel: UILabel!
     @IBOutlet weak var leftCellView: UIView!
 
+    @IBOutlet weak var leftImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        leftCellView.setShadow()
+        leftImageView.imageSetRounded()
     }
 
+    func updateCell(with schedule:ScheduleInfo) {
+
+        let myDateFormate = schedule.date
+        let changeDateFormate = myDateFormate.replacingOccurrences(of: " ", with: ".")
+
+         nameLabel.text = schedule.name
+         dateLabel.text = changeDateFormate
+         daysLabel.text = schedule.days + "天"
+    }
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
