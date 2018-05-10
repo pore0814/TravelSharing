@@ -20,7 +20,7 @@ class AddScheduleViewController: UIViewController {
         return dateFormatter
     }()
  
-
+    
     @IBOutlet weak var scheduleDaysText: UITextField!
     @IBOutlet weak var scheduleNameText: UITextField!
     @IBOutlet weak var scheduleDateText: UITextField!
@@ -40,8 +40,8 @@ class AddScheduleViewController: UIViewController {
 
 //        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor:
 //            UIColor.white]
-        //navigationItem.rightBarButtonItem = editButtonItem
-
+//        navigationItem.rightBarButtonItem = editButtonItem
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
 
         navigationItem.title = scheduleInfoDetail?.name
@@ -120,7 +120,7 @@ func configureCell(cell: JTAppleCell?, cellState: CellState) {
     }
 
     func handleCellTextColor(cell: CustomCell, cellState: CellState) {
-        cell.datelabe.textColor =  cellState.isSelected ? UIColor.red : UIColor.white
+        cell.datelabe.textColor =  cellState.isSelected ? UIColor.black : UIColor.white
     }
 
     func handleCellVisibility(cell: CustomCell, cellState: CellState) {

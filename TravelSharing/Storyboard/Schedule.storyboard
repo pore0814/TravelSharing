@@ -473,7 +473,7 @@
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="datelabe" destination="dbA-6G-Foj" id="tvs-ql-2yO"/>
-                                                    <outlet property="selecetedView" destination="LsT-KI-XZN" id="x3A-SB-FZC"/>
+                                                    <outlet property="selecetedView" destination="LsT-KI-XZN" id="ADj-na-eKA"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>

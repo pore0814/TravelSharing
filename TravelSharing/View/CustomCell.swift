@@ -12,4 +12,11 @@ import JTAppleCalendar
 class CustomCell: JTAppleCell {
     @IBOutlet weak var datelabe: UILabel!
     @IBOutlet weak var selecetedView: UIView!
+    
+    override func awakeFromNib() {
+        selecetedView.setCircle()
+        selecetedView.backgroundColor = UIColor.white
+    }
+
+    
 }

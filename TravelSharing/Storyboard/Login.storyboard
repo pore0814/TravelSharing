@@ -38,25 +38,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="o7x-Pp-Ivb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPage1" translatesAutoresizingMaskIntoConstraints="NO" id="o7x-Pp-Ivb">
                                 <rect key="frame" x="21" y="40" width="333.5" height="333.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="o7x-Pp-Ivb" secondAttribute="height" multiplier="1:1" id="aPD-nz-bDP"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="IYf-2l-KGh">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IYf-2l-KGh">
                                 <rect key="frame" x="21" y="563.5" width="335" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohx-Pi-ljU">
-                                        <rect key="frame" x="0.0" y="0.0" width="159.5" height="50"/>
-                                        <state key="normal" title="登入"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="50"/>
+                                        <color key="backgroundColor" red="0.60392156862745094" green="0.70980392156862748" blue="0.70588235294117652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="登入">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="logIn:" destination="myb-HG-zV8" eventType="touchUpInside" id="kDi-e6-MwS"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4E-fL-IC3">
-                                        <rect key="frame" x="175.5" y="0.0" width="159.5" height="50"/>
-                                        <state key="normal" title="註冊"/>
+                                        <rect key="frame" x="167.5" y="0.0" width="167.5" height="50"/>
+                                        <color key="backgroundColor" red="0.70196078431372544" green="0.2627450980392157" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="註冊">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="register:" destination="myb-HG-zV8" eventType="touchUpInside" id="pZ8-Js-6NW"/>
                                         </connections>
@@ -91,7 +99,9 @@
                     <connections>
                         <outlet property="emailTextField" destination="dqp-ww-XzT" id="MGE-Er-Vz4"/>
                         <outlet property="logInImageView" destination="o7x-Pp-Ivb" id="PmL-w5-nd7"/>
+                        <outlet property="loginBtn" destination="Ohx-Pi-ljU" id="g1y-c1-3B8"/>
                         <outlet property="passwordTextField" destination="DbP-7J-f4K" id="B87-Sp-6qa"/>
+                        <outlet property="registerBtn" destination="K4E-fL-IC3" id="LRt-Su-26z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9z-Zi-zhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,6 +110,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="500" height="500"/>
+        <image name="logoPage1" width="626" height="626"/>
     </resources>
 </document>
