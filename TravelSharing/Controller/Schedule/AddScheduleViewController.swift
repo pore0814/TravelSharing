@@ -9,6 +9,8 @@
 import UIKit
 import JTAppleCalendar
 
+
+
 class AddScheduleViewController: UIViewController {
 
     //日期/
@@ -27,22 +29,21 @@ class AddScheduleViewController: UIViewController {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
-
+    
+    //Property
+    var scheduleInfoDetail: ScheduleInfo? //接收Schedule帶過來的資料
     let outsideMonthColor = UIColor(colorWithHenValue: 0x584a66)
     let monthColor = UIColor.white
     let selectedMonthColor = UIColor(colorWithHenValue: 0x3a294b)
     let currentDateSelectedViewColor = UIColor(colorWithHenValue: 0xa4e3f5d)
 
-    var scheduleInfoDetail: ScheduleInfo? //接收Schedule帶過來的資料
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor:
-//            UIColor.white]
-//        navigationItem.rightBarButtonItem = editButtonItem
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
 
         navigationItem.title = scheduleInfoDetail?.name
 
@@ -62,24 +63,40 @@ class AddScheduleViewController: UIViewController {
         scheduleDaysText.text = scheduleInfoDetail?.days
         scheduleDateText.text = scheduleInfoDetail?.date
         scheduleNameText.text = scheduleInfoDetail?.name
-
+        
+      
     }
     //FireBase資料寫入
     @objc func toSchedulePage(notification: Notification) {
 
     }
+    
     @objc func addTapped(sender: AnyObject) {
-    if scheduleDateText.text != "", scheduleDaysText.text != "", scheduleNameText.text != "" {
-        //寫入資料
-        ScheduleManager.shared.saveScheduleInfo(uid: scheduleInfoDetail?.uid,
-        scheduleName: scheduleNameText.text!, scheudleDate: scheduleDateText.text!,
-        scheduleDay: scheduleDaysText.text!)
-        self.navigationController?.popViewController(animated: true)
-    } else {
-        AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: "表格不可為空白")
+        
+        if scheduleInfoDetail == nil {
+            print("ADD")
+        if scheduleDateText.text != "", scheduleDaysText.text != "", scheduleNameText.text != "" {
+                //寫入資料
+                 ScheduleManager.shared.saveScheduleInfo(uid: scheduleInfoDetail?.uid,
+                                 scheduleName: scheduleNameText.text!, scheudleDate: scheduleDateText.text!,scheduleDay: scheduleDaysText.text!)
+                 self.navigationController?.popViewController(animated: true)
+             }else {
+                 AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message,message: "表格不可為空白")
+             }
+        }else{
+            //UpDate
+            print("Edit")
+              ScheduleManager.shared.updateaveScheduleInfo(scheduleUid: scheduleInfoDetail?.uid, scheduleName: scheduleNameText.text!, scheudleDate: scheduleDateText.text!, scheduleDay: scheduleDaysText.text!)
+            
+            
+             self.navigationController?.popViewController(animated: true)
+            
         }
-    }
-
+}
+        
+        
+        
+    
     @IBAction func saveBtn(_ sender: Any) {
        
     }
@@ -92,7 +109,6 @@ class AddScheduleViewController: UIViewController {
         calendarView.visibleDates { dateSegment in
             self.setupCalendarViewData(dateSegment: dateSegment)
         }
-
     }
 
     func setupCalendarViewData(dateSegment: DateSegmentInfo) {

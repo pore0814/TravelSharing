@@ -8,25 +8,34 @@
 
 import UIKit
 
-class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
      var schedules = [ScheduleInfo]()
+     var indexNumber =  0
+    var getDataFromUpdate : ScheduleInfo?
+    
+    let scheduleManager = ScheduleManager.shared
+    
     
 
     @IBOutlet weak var tableView: UITableView!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
 
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        scheduleManager.delegate = self
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.backgroundView =  UIImageView(image: UIImage(named: "myScheduleBackground"))
+        tableView.backgroundView =  UIImageView(image: UIImage(named: "schedulePage"))
+        
 
         let leftNibName = UINib(nibName: "ScheduleTableViewCell", bundle: nil)
         tableView.register(leftNibName, forCellReuseIdentifier: "ScheduleTableViewCell")
@@ -47,7 +56,6 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     @objc func getData(notification:Notification){
-        
         DispatchQueue.main.async {
             self.schedules = ScheduleManager.shared.scheduleDataArray
             self.tableView.reloadData()
@@ -98,66 +106,42 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("79",schedules[indexPath.row].uid)
         let scheduleDetailViewController = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "ScheduleDetailViewController") as!ScheduleDetailViewController
         self.navigationController?.pushViewController(scheduleDetailViewController, animated: true)
         
     }
-
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-    }
     
-    
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//
-//        let deletAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
-//
-//          print("88", self.schedules[indexPath.row].uid)
-//          //  ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid)
-//           self.schedules.remove(at: indexPath.row)
-//            self.tableView.deleteRows(at: [indexPath], with: .fade)
-//            print("73", [indexPath])
-//            // tableView.reloadData()
-//            completionHandler(true)
-//
-//        }
-//        //編輯 Schedule
-//        let editAction = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
-//            print("99","edit to next page")
-//            let mainstoryboard: UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
-//            let EditViewController = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddScheduleViewController
-//            self.navigationController?.pushViewController(EditViewController, animated: true)
-//         EditViewController.scheduleInfoDetail = self.schedules[indexPath.row]
-//
-//             completionHandler(true)
-//        }
-//        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deletAction, editAction])
-//        return swipeConfiguration
-//    }
-
+   //Edit and Delete
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editButton = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexpath) in
-            print("\(self.schedules[indexPath.row])","edit")
-           let mainstoryboard: UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
+            let mainstoryboard: UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
             let EditViewController = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddScheduleViewController
-              self.navigationController?.pushViewController(EditViewController, animated: true)
-             EditViewController.scheduleInfoDetail = self.schedules[indexPath.row]
+         
             
+            self.navigationController?.pushViewController(EditViewController, animated: true)
+            EditViewController.scheduleInfoDetail = self.schedules[indexPath.row]
+            self.indexNumber = indexPath.row
         }
-        editButton.backgroundColor = UIColor.orange
+           editButton.backgroundColor = UIColor.orange
     
         
         let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexpath) in
-            print("\(self.schedules[indexPath.row])","delete")
+            ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid)
+            self.schedules.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
         }
-        deleteButton.backgroundColor = UIColor.red
-        
-        
-        return[editButton,deleteButton]
+            deleteButton.backgroundColor = UIColor.red
+            return[editButton,deleteButton]
     }
-    
-  
-    
+}
 
+
+extension ScheduleViewController : ScheduleManagerDelegate {
+    func manager(_ manager: ScheduleManager, didGet schedule: ScheduleInfo) {
+        print(schedule)
+        schedules[indexNumber] = schedule
+        schedules.sort(by: {$0.date < $1.date})
+        tableView.reloadData()
+    }
 }

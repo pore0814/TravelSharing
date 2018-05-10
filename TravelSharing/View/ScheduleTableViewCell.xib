@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7t-rm-DtJ">
                         <rect key="frame" x="6" y="5.5" width="363" height="122"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myScheduleBackground" translatesAutoresizingMaskIntoConstraints="NO" id="gxf-ku-K8D">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="travel" translatesAutoresizingMaskIntoConstraints="NO" id="gxf-ku-K8D">
                                 <rect key="frame" x="20" y="21" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="94d-xj-OV2"/>
@@ -91,6 +91,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="myScheduleBackground" width="622" height="350"/>
+        <image name="travel" width="64" height="64"/>
     </resources>
 </document>

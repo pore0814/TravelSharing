@@ -22,6 +22,9 @@ struct ErrorCode {
     static let Email_Already_In_Use = "此帳號已存在"
 }
 
+
+
+
 class UserManager {
     static let shared = UserManager()
     //static let uuid = UserDefaults.standard.string(forKey: "FireBaseUID")

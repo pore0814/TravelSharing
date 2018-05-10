@@ -28,30 +28,22 @@
                                     <action selector="uploadProfile:" destination="3Ve-GT-LCX" eventType="touchUpInside" id="YZt-an-VOg"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mBb-gb-9cK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xbt-aw-UL5">
                                 <rect key="frame" x="112" y="49" width="150" height="150"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xbt-aw-UL5">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
-                                        </accessibility>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="Lyn-N5-v3m"/>
-                                            <constraint firstAttribute="height" constant="150" id="ePV-DE-po0"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="width">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
-                                </subviews>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
                                 <constraints>
-                                    <constraint firstItem="xbt-aw-UL5" firstAttribute="centerX" secondItem="mBb-gb-9cK" secondAttribute="centerX" id="miX-uG-fOB"/>
+                                    <constraint firstAttribute="width" constant="150" id="Lyn-N5-v3m"/>
+                                    <constraint firstAttribute="height" constant="150" id="ePV-DE-po0"/>
                                 </constraints>
-                            </stackView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="width">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yZ-vM-SpO">
                                 <rect key="frame" x="187.5" y="617" width="187.5" height="50"/>
                                 <color key="backgroundColor" red="0.87450980392156863" green="0.33333333333333331" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -130,20 +122,20 @@
                             <constraint firstItem="1yZ-vM-SpO" firstAttribute="trailing" secondItem="3hi-dC-fEg" secondAttribute="trailing" id="5c3-Yh-DnI"/>
                             <constraint firstItem="kZO-Yc-LmM" firstAttribute="leading" secondItem="3hi-dC-fEg" secondAttribute="leading" constant="19" id="9YO-YT-TbG"/>
                             <constraint firstItem="1yZ-vM-SpO" firstAttribute="bottom" secondItem="3hi-dC-fEg" secondAttribute="bottom" id="ABu-lp-PmF"/>
-                            <constraint firstItem="mBb-gb-9cK" firstAttribute="centerY" secondItem="AcO-Kd-Fmi" secondAttribute="centerY" id="KaF-0y-Ye6"/>
+                            <constraint firstItem="AcO-Kd-Fmi" firstAttribute="centerY" secondItem="xbt-aw-UL5" secondAttribute="centerY" id="CQV-xS-dkI"/>
                             <constraint firstItem="1yZ-vM-SpO" firstAttribute="top" secondItem="kZO-Yc-LmM" secondAttribute="bottom" constant="17" id="Lsd-HL-ThG"/>
-                            <constraint firstItem="mBb-gb-9cK" firstAttribute="centerX" secondItem="AcO-Kd-Fmi" secondAttribute="centerX" id="MBy-Gv-Auv"/>
                             <constraint firstItem="yJq-Yc-ewh" firstAttribute="leading" secondItem="3hi-dC-fEg" secondAttribute="leading" id="PRR-w8-VPr"/>
                             <constraint firstItem="3hi-dC-fEg" firstAttribute="trailing" secondItem="kZO-Yc-LmM" secondAttribute="trailing" constant="20" id="QPF-uf-XEe"/>
                             <constraint firstItem="gAH-FF-5PD" firstAttribute="leading" secondItem="3hi-dC-fEg" secondAttribute="leading" id="TXo-U2-d5N"/>
                             <constraint firstItem="1yZ-vM-SpO" firstAttribute="top" secondItem="gAH-FF-5PD" secondAttribute="bottom" id="URc-nd-hWe"/>
                             <constraint firstItem="yJq-Yc-ewh" firstAttribute="bottom" secondItem="3hi-dC-fEg" secondAttribute="bottom" id="Uj5-xS-GEt"/>
                             <constraint firstItem="gAH-FF-5PD" firstAttribute="top" secondItem="YbK-y3-895" secondAttribute="top" id="WA4-ir-pKS"/>
+                            <constraint firstItem="xbt-aw-UL5" firstAttribute="top" secondItem="YbK-y3-895" secondAttribute="top" constant="49" id="XAu-pF-1f9"/>
+                            <constraint firstItem="AcO-Kd-Fmi" firstAttribute="centerX" secondItem="xbt-aw-UL5" secondAttribute="centerX" id="agl-zN-OgZ"/>
                             <constraint firstItem="1yZ-vM-SpO" firstAttribute="height" secondItem="yJq-Yc-ewh" secondAttribute="height" id="ckl-g0-KZh"/>
                             <constraint firstItem="1yZ-vM-SpO" firstAttribute="trailing" secondItem="3hi-dC-fEg" secondAttribute="trailing" id="fuC-vk-rtl"/>
-                            <constraint firstItem="mBb-gb-9cK" firstAttribute="top" secondItem="3hi-dC-fEg" secondAttribute="top" constant="29" id="iug-tJ-rUh"/>
                             <constraint firstItem="1yZ-vM-SpO" firstAttribute="leading" secondItem="yJq-Yc-ewh" secondAttribute="trailing" id="jGE-JR-0as"/>
-                            <constraint firstItem="mBb-gb-9cK" firstAttribute="centerX" secondItem="YbK-y3-895" secondAttribute="centerX" id="w9t-zR-OBS"/>
+                            <constraint firstItem="xbt-aw-UL5" firstAttribute="centerX" secondItem="YbK-y3-895" secondAttribute="centerX" id="ltB-79-ZOC"/>
                             <constraint firstItem="kZO-Yc-LmM" firstAttribute="top" secondItem="YbK-y3-895" secondAttribute="top" constant="352" id="waW-AY-IP5"/>
                             <constraint firstItem="1yZ-vM-SpO" firstAttribute="bottom" secondItem="3hi-dC-fEg" secondAttribute="bottom" id="xnr-eJ-Xb9"/>
                             <constraint firstItem="gAH-FF-5PD" firstAttribute="trailing" secondItem="3hi-dC-fEg" secondAttribute="trailing" id="zf8-vW-ZNU"/>
