@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B14BAF96DE255397327C523 /* Pods_TravelSharing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F353853584E1967591DC1429 /* Pods_TravelSharing.framework */; };
-		D10418ED2099803B0084952E /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EC2099803B0084952E /* AddScheduleViewController.swift */; };
+		D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */; };
 		D10418F0209982770084952E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EF209982770084952E /* CustomCell.swift */; };
 		D1400B31209619F700B0040B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1400B30209619F700B0040B /* UserManager.swift */; };
 		D1400B3320961E8700B0040B /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1400B3220961E8700B0040B /* Register.storyboard */; };
@@ -51,7 +51,7 @@
 /* Begin PBXFileReference section */
 		2899322EBE8B1C2AA88ED1D9 /* Pods-TravelSharing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.release.xcconfig"; sourceTree = "<group>"; };
 		69BAEA4434D7C88796C98B4C /* Pods-TravelSharing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.debug.xcconfig"; sourceTree = "<group>"; };
-		D10418EC2099803B0084952E /* AddScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
+		D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditScheduleViewController.swift; sourceTree = "<group>"; };
 		D10418EF209982770084952E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		D1400B30209619F700B0040B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		D1400B3220961E8700B0040B /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */,
-				D10418EC2099803B0084952E /* AddScheduleViewController.swift */,
+				D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */,
 				D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */,
 				D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */,
 				D18B9B61209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift */,
@@ -455,7 +455,7 @@
 				D1658265209AC2A300C37F8D /* ScheuleRightTableViewCell.swift in Sources */,
 				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,
 				D14C0FEE209823A800026AF1 /* Constants.swift in Sources */,
-				D10418ED2099803B0084952E /* AddScheduleViewController.swift in Sources */,
+				D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */,
 				D14C0FEA209801CF00026AF1 /* String.swift in Sources */,
 				D10418F0209982770084952E /* CustomCell.swift in Sources */,
 				D18B9B5E209DEE0A00EB8D16 /* ScheduleDetailViewController.swift in Sources */,

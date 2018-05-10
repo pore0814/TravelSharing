@@ -11,7 +11,7 @@ import JTAppleCalendar
 
 
 
-class AddScheduleViewController: UIViewController {
+class AddEditScheduleViewController: UIViewController {
 
     //日期/
     let formatter: DateFormatter = {
@@ -81,8 +81,8 @@ class AddScheduleViewController: UIViewController {
                                  scheduleName: scheduleNameText.text!, scheudleDate: scheduleDateText.text!,scheduleDay: scheduleDaysText.text!)
                  self.navigationController?.popViewController(animated: true)
              }else {
-                 AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message,message: "表格不可為空白")
-             }
+               AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message,message: "表格不可為空白")
+            }
         }else{
             //UpDate
             print("Edit")
@@ -157,7 +157,7 @@ func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
 }
 }
 
-extension AddScheduleViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
+extension AddEditScheduleViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
       let startDate = formatter.date(from: "2018 01 01")!
       let endData = formatter.date(from: "2018 12 31")!

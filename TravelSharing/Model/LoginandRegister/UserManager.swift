@@ -69,6 +69,7 @@ class UserManager {
                 self.storeageProfileRef.child(uid).putData(imageData, metadata: metadate, completion: { (metadata, imageError) in
                     if imageError != nil {
                         AlertToUser.shared.alerTheUserPurple(title: "錯誤訊息", message: imageError as! String)
+                        
                     }
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                         let userData = [Constants.Uid: uid, Constants.Email: email, Constants.Password: password, Constants.PhotoUrl: profileImageUrl, Constants.UserName: username] as [String: Any]

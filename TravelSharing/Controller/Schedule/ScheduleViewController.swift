@@ -28,7 +28,9 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.navigationBar.barTintColor = UIColor(red: 248.0/255.0, green: 187.0/255.0, blue: 208.0/255.0, alpha: 1 )
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
         scheduleManager.delegate = self
         
         tableView.dataSource = self
@@ -104,9 +106,36 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 //        }
         
     }
+    
+    func getDate(indexNumber: ScheduleInfo){
+        let dateformate = DateFormatter()
+            dateformate.dateFormat = "yyyy.MM.dd"
+        
+
+        print(indexNumber.date)
+        
+        guard let startdate = dateformate.date(from:indexNumber.date) else {return}
+        print(startdate)
+        print(indexNumber.days)
+        guard let day = Int(indexNumber.days) else {return}
+      
+        for i in 0...day {
+        let enddate = Calendar.current.date(byAdding:.day , value:i , to: startdate)
+       let a =  dateformate.string(from: enddate!)
+       let weekday = Calendar.current.component(.weekday, from: enddate!)
+        dateformate.dateFormat = "MM.dd"
+            print(a)
+         dateformate.dateFormat = "EE"
+        print(weekday)
+            
+        }
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let scheduleDetailViewController = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "ScheduleDetailViewController") as!ScheduleDetailViewController
+        let data = self.schedules[indexPath.row]
+        getDate(indexNumber: data)
+        
         self.navigationController?.pushViewController(scheduleDetailViewController, animated: true)
         
     }
@@ -115,7 +144,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editButton = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexpath) in
             let mainstoryboard: UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
-            let EditViewController = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddScheduleViewController
+            let EditViewController = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddEditScheduleViewController
          
             
             self.navigationController?.pushViewController(EditViewController, animated: true)
