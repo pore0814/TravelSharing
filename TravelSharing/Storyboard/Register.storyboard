@@ -21,12 +21,22 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPage1" translatesAutoresizingMaskIntoConstraints="NO" id="gAH-FF-5PD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcO-Kd-Fmi">
+                                <rect key="frame" x="155" y="92" width="64" height="64"/>
+                                <state key="normal" image="image2"/>
+                                <connections>
+                                    <action selector="uploadProfile:" destination="3Ve-GT-LCX" eventType="touchUpInside" id="YZt-an-VOg"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mBb-gb-9cK">
                                 <rect key="frame" x="112" y="49" width="150" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xbt-aw-UL5">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="Lyn-N5-v3m"/>
                                             <constraint firstAttribute="height" constant="150" id="ePV-DE-po0"/>
@@ -42,13 +52,6 @@
                                     <constraint firstItem="xbt-aw-UL5" firstAttribute="centerX" secondItem="mBb-gb-9cK" secondAttribute="centerX" id="miX-uG-fOB"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcO-Kd-Fmi">
-                                <rect key="frame" x="155" y="92" width="64" height="64"/>
-                                <state key="normal" image="image2"/>
-                                <connections>
-                                    <action selector="uploadProfile:" destination="3Ve-GT-LCX" eventType="touchUpInside" id="YZt-an-VOg"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yZ-vM-SpO">
                                 <rect key="frame" x="187.5" y="617" width="187.5" height="50"/>
                                 <color key="backgroundColor" red="0.87450980392156863" green="0.33333333333333331" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -150,6 +153,7 @@
                     <connections>
                         <outlet property="emailText" destination="Zsk-4T-JQs" id="k0g-m3-RV9"/>
                         <outlet property="passwordText" destination="Qgt-Yu-2bj" id="2rh-3D-J3I"/>
+                        <outlet property="photoBtn" destination="AcO-Kd-Fmi" id="EXX-0V-0Xe"/>
                         <outlet property="reEnterPasswordText" destination="Tlm-e8-rxY" id="7VW-on-7TZ"/>
                         <outlet property="registImageView" destination="xbt-aw-UL5" id="GqC-Cn-wY7"/>
                         <outlet property="userNameText" destination="4Hr-yb-cwY" id="WwU-UV-lg9"/>

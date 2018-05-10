@@ -12,6 +12,7 @@ import Fusuma
 
 class RegisterViewController: UIViewController, FusumaDelegate {
 
+    @IBOutlet weak var photoBtn: UIButton!
     @IBOutlet weak var registImageView: UIImageView!
     @IBOutlet weak var userNameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
@@ -23,6 +24,8 @@ class RegisterViewController: UIViewController, FusumaDelegate {
         super.viewDidLoad()
      
         registImageView.setCircle()
+        photoBtn.isUserInteractionEnabled = true
+       
         
       //換頁notification
         NotificationCenter.default.addObserver(self, selector: #selector(toMainPage), name: .switchtoMainPage, object: nil)
