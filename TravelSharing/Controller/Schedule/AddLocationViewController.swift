@@ -29,6 +29,7 @@ class AddLocationViewController: UIViewController {
         super.viewDidLoad()
     //中心點設在畫面寛度中心點再+200 , animate設時間帶, 將stackview中心點帶到畫面寬度的中心點
        stackView.center.x = self.view.frame.width + 200
+       
         UIView.animate(withDuration: 2.0, delay: 1.0, usingSpringWithDamping: 0.3,
                        initialSpringVelocity: 30,
                        options: [] ,

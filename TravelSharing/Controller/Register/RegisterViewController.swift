@@ -12,6 +12,7 @@ import Fusuma
 
 class RegisterViewController: UIViewController, FusumaDelegate {
 
+    @IBOutlet weak var photoBtn: UIButton!
     @IBOutlet weak var registImageView: UIImageView!
     @IBOutlet weak var userNameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
@@ -21,7 +22,11 @@ class RegisterViewController: UIViewController, FusumaDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+     
+        registImageView.setCircle()
+        photoBtn.isUserInteractionEnabled = true
+       
+        
       //換頁notification
         NotificationCenter.default.addObserver(self, selector: #selector(toMainPage), name: .switchtoMainPage, object: nil)
     }
@@ -49,8 +54,14 @@ class RegisterViewController: UIViewController, FusumaDelegate {
 
     //Register
     @IBAction func registerBtn(_ sender: Any) {
-        guard  let data = UIImageJPEGRepresentation(registImageView.image!, 0.1) else {
-            return}
+        
+        guard let imageCheck = registImageView.image else {
+              AlertToUser.shared.alerTheUserPurple(title: "", message: "請選擇照片哦")
+            return
+        }
+        let data = UIImageJPEGRepresentation(imageCheck , 0.1)
+          
+      
 
        //表格需全部填寫
         if userNameText.text != "", emailText.text != "", passwordText.text != "", reEnterPasswordText.text != "" {

@@ -27,3 +27,8 @@ struct ScheduleInfo {
     var name: String
     var days: String
 }
+
+struct DateInfo {
+    var weekDay: Int
+    var date: String
+}
