@@ -11,10 +11,10 @@ import UIKit
 class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
      var schedules = [ScheduleInfo]()
+     var dateInfoArray = [DateInfo]()
      var indexNumber =  0
-    var getDataFromUpdate : ScheduleInfo?
-    
-    let scheduleManager = ScheduleManager.shared
+     var getDataFromUpdate : ScheduleInfo?
+     let scheduleManager = ScheduleManager.shared
     
     
 
@@ -22,14 +22,11 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
-
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.barTintColor = UIColor(red: 248.0/255.0, green: 187.0/255.0, blue: 208.0/255.0, alpha: 1 )
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
         
         scheduleManager.delegate = self
         
@@ -54,6 +51,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
        // ScheduleManager.shared.getScheduleContent_value()
         
          NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
+        
         
     }
 
@@ -106,36 +104,38 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 //        }
         
     }
+    //算日期
     
-    func getDate(indexNumber: ScheduleInfo){
+    func getDate(indexNumber: ScheduleInfo) -> [DateInfo]{
         let dateformate = DateFormatter()
-            dateformate.dateFormat = "yyyy.MM.dd"
-        
-
+        dateformate.dateFormat = "yyyy MM dd"
         print(indexNumber.date)
         
-        guard let startdate = dateformate.date(from:indexNumber.date) else {return}
-        print(startdate)
-        print(indexNumber.days)
-        guard let day = Int(indexNumber.days) else {return}
+//        print(dateformate.date(from:indexNumber.date))
+//        print(Int(indexNumber.days)!)
+    if  let startdate = dateformate.date(from:indexNumber.date),
+        let day = Int(indexNumber.days) {
+        
       
         for i in 0...day {
-        let enddate = Calendar.current.date(byAdding:.day , value:i , to: startdate)
-       let a =  dateformate.string(from: enddate!)
-       let weekday = Calendar.current.component(.weekday, from: enddate!)
+        let endate = Calendar.current.date(byAdding:.day , value:i , to: startdate)
         dateformate.dateFormat = "MM.dd"
-            print(a)
-         dateformate.dateFormat = "EE"
+       let a =  dateformate.string(from: endate!)
+        dateformate.dateFormat = "EE"
+       let weekday = Calendar.current.component(.weekday, from: endate!)
         print(weekday)
-            
+        let vactionDate = DateInfo(weekDay: weekday, date: a)
+        dateInfoArray.append(vactionDate)
         }
+        }
+        return dateInfoArray
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let scheduleDetailViewController = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "ScheduleDetailViewController") as!ScheduleDetailViewController
         let data = self.schedules[indexPath.row]
-        getDate(indexNumber: data)
         
+        scheduleDetailViewController.getDateInfo = getDate(indexNumber: data)
         self.navigationController?.pushViewController(scheduleDetailViewController, animated: true)
         
     }
@@ -174,3 +174,5 @@ extension ScheduleViewController : ScheduleManagerDelegate {
         tableView.reloadData()
     }
 }
+
+

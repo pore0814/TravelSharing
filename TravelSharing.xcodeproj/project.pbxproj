@@ -10,6 +10,10 @@
 		4B14BAF96DE255397327C523 /* Pods_TravelSharing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F353853584E1967591DC1429 /* Pods_TravelSharing.framework */; };
 		D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */; };
 		D10418F0209982770084952E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EF209982770084952E /* CustomCell.swift */; };
+		D127E16D20A52EE300EBB5F7 /* NavigationCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */; };
+		D127E16F20A5360300EBB5F7 /* TrackLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */; };
+		D127E17220A53F9B00EBB5F7 /* TrackLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E17120A53F9B00EBB5F7 /* TrackLocationViewController.swift */; };
+		D127E17420A541AD00EBB5F7 /* TravelSharingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E17320A541AD00EBB5F7 /* TravelSharingColor.swift */; };
 		D1400B31209619F700B0040B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1400B30209619F700B0040B /* UserManager.swift */; };
 		D1400B3320961E8700B0040B /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1400B3220961E8700B0040B /* Register.storyboard */; };
 		D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1448FDC2096CAB000D699DB /* RegisterViewController.swift */; };
@@ -26,6 +30,8 @@
 		D18B9B62209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B61209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift */; };
 		D18B9B6420A0248500EB8D16 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6320A0248500EB8D16 /* Date.swift */; };
 		D18B9B6720A030E300EB8D16 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6620A030E300EB8D16 /* LocationManager.swift */; };
+		D19B2C2A20A4EACD0076E4ED /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */; };
+		D19B2C2B20A4EACD0076E4ED /* DetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */; };
 		D1B1608020A332A900B69222 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1607F20A332A900B69222 /* UIView.swift */; };
 		D1BBA31C2095727C005E5AAE /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */; };
 		D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */; };
@@ -53,6 +59,10 @@
 		69BAEA4434D7C88796C98B4C /* Pods-TravelSharing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.debug.xcconfig"; sourceTree = "<group>"; };
 		D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditScheduleViewController.swift; sourceTree = "<group>"; };
 		D10418EF209982770084952E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCotroller.swift; sourceTree = "<group>"; };
+		D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackLocation.storyboard; sourceTree = "<group>"; };
+		D127E17120A53F9B00EBB5F7 /* TrackLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackLocationViewController.swift; sourceTree = "<group>"; };
+		D127E17320A541AD00EBB5F7 /* TravelSharingColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSharingColor.swift; sourceTree = "<group>"; };
 		D1400B30209619F700B0040B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		D1400B3220961E8700B0040B /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		D1448FDC2096CAB000D699DB /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +79,8 @@
 		D18B9B61209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaceAutocompleteViewController.swift; sourceTree = "<group>"; };
 		D18B9B6320A0248500EB8D16 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		D18B9B6620A030E300EB8D16 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		D1B1607F20A332A900B69222 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +143,8 @@
 				D1F542302099FF42007EBE96 /* ScheduleTableViewCell.xib */,
 				D1658263209AC2A300C37F8D /* ScheuleRightTableViewCell.swift */,
 				D1658264209AC2A300C37F8D /* ScheuleRightTableViewCell.xib */,
+				D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */,
+				D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -140,6 +154,22 @@
 			children = (
 			);
 			name = "New Group";
+			sourceTree = "<group>";
+		};
+		D127E16B20A52ECA00EBB5F7 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		D127E17020A53F7800EBB5F7 /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				D127E17120A53F9B00EBB5F7 /* TrackLocationViewController.swift */,
+			);
+			path = Track;
 			sourceTree = "<group>";
 		};
 		D1448FDB2096CA9C00D699DB /* Register */ = {
@@ -161,6 +191,8 @@
 		D1BBA31920957222005E5AAE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D127E17020A53F7800EBB5F7 /* Track */,
+				D127E16B20A52ECA00EBB5F7 /* Navigation */,
 				D1BBA32020958144005E5AAE /* Login */,
 				D1448FDB2096CA9C00D699DB /* Register */,
 				D1BBA31D2095739C005E5AAE /* Profile */,
@@ -241,6 +273,7 @@
 			children = (
 				D1BBA323209581D5005E5AAE /* Login.storyboard */,
 				D1E6CD6520914CA900310121 /* Main.storyboard */,
+				D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */,
 				D1E6CD7820914E0E00310121 /* Profile.storyboard */,
 				D1E6CD7A20914E2700310121 /* Schedule.storyboard */,
 				D1400B3220961E8700B0040B /* Register.storyboard */,
@@ -259,6 +292,7 @@
 		D1E6CD7720914DAC00310121 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D127E17320A541AD00EBB5F7 /* TravelSharingColor.swift */,
 				D18B9B6520A030C900EB8D16 /* Location */,
 				D1F5422E2099FE37007EBE96 /* Schedule */,
 				D1F542292099EAD3007EBE96 /* LoginandRegister */,
@@ -363,6 +397,7 @@
 				D1658266209AC2A300C37F8D /* ScheuleRightTableViewCell.xib in Resources */,
 				D1E6CD6C20914CAA00310121 /* LaunchScreen.storyboard in Resources */,
 				D1E6CD6920914CAA00310121 /* Assets.xcassets in Resources */,
+				D19B2C2B20A4EACD0076E4ED /* DetailCollectionViewCell.xib in Resources */,
 				D1BBA324209581D6005E5AAE /* Login.storyboard in Resources */,
 				D1E6CD7920914E0E00310121 /* Profile.storyboard in Resources */,
 				D1F5C83A20A3BDD30066C636 /* logoPage.jpg in Resources */,
@@ -371,6 +406,7 @@
 				D1BBA32620958FF8005E5AAE /* GoogleService-Info.plist in Resources */,
 				D1F542322099FF42007EBE96 /* ScheduleTableViewCell.xib in Resources */,
 				D1400B3320961E8700B0040B /* Register.storyboard in Resources */,
+				D127E16F20A5360300EBB5F7 /* TrackLocation.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,10 +491,12 @@
 				D1658265209AC2A300C37F8D /* ScheuleRightTableViewCell.swift in Sources */,
 				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,
 				D14C0FEE209823A800026AF1 /* Constants.swift in Sources */,
+				D127E17220A53F9B00EBB5F7 /* TrackLocationViewController.swift in Sources */,
 				D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */,
 				D14C0FEA209801CF00026AF1 /* String.swift in Sources */,
 				D10418F0209982770084952E /* CustomCell.swift in Sources */,
 				D18B9B5E209DEE0A00EB8D16 /* ScheduleDetailViewController.swift in Sources */,
+				D19B2C2A20A4EACD0076E4ED /* DetailCollectionViewCell.swift in Sources */,
 				D1F542312099FF42007EBE96 /* ScheduleTableViewCell.swift in Sources */,
 				D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */,
 				D1E6CD7E20914EB700310121 /* UIStoryboard.swift in Sources */,
@@ -471,6 +509,7 @@
 				D1E6CD7420914D0B00310121 /* TabBarViewController.swift in Sources */,
 				D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */,
 				D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */,
+				D127E17420A541AD00EBB5F7 /* TravelSharingColor.swift in Sources */,
 				D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */,
 				D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */,
 				D1F5422D2099F09D007EBE96 /* ScheduleManager.swift in Sources */,
@@ -479,6 +518,7 @@
 				D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */,
 				D1F5422B2099EBAA007EBE96 /* FirBaseConnect.swift in Sources */,
 				D18B9B6720A030E300EB8D16 /* LocationManager.swift in Sources */,
+				D127E16D20A52EE300EBB5F7 /* NavigationCotroller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

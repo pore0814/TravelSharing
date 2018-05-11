@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="ZTy-8U-NRc">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PiO-ay-b8a" customClass="RoundedUIImageView" customModule="TravelSharing" customModuleProvider="target">
                                 <rect key="frame" x="10" y="164" width="355" height="120"/>
@@ -83,7 +83,7 @@
                             <constraint firstItem="qJO-sF-n1N" firstAttribute="bottom" secondItem="Vn1-qh-v8v" secondAttribute="bottom" constant="50" id="db3-jh-6SA"/>
                             <constraint firstItem="ZTy-8U-NRc" firstAttribute="trailing" secondItem="qJO-sF-n1N" secondAttribute="trailing" id="mb4-Lc-gSe"/>
                             <constraint firstItem="qJO-sF-n1N" firstAttribute="trailing" secondItem="PiO-ay-b8a" secondAttribute="trailing" constant="10" id="p1A-iq-zLX"/>
-                            <constraint firstItem="ZTy-8U-NRc" firstAttribute="bottom" secondItem="qJO-sF-n1N" secondAttribute="bottom" constant="44" id="vI2-L9-ITu"/>
+                            <constraint firstItem="ZTy-8U-NRc" firstAttribute="bottom" secondItem="qJO-sF-n1N" secondAttribute="bottom" id="vI2-L9-ITu"/>
                             <constraint firstItem="PiO-ay-b8a" firstAttribute="leading" secondItem="qJO-sF-n1N" secondAttribute="leading" constant="10" id="xWi-xd-1Xh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qJO-sF-n1N"/>
@@ -102,10 +102,10 @@
             </objects>
             <point key="canvasLocation" x="480.80000000000001" y="123.68815592203899"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Travel Sharing Navigation Controller-->
         <scene sceneID="Jbo-Im-vzT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ARj-0n-PcH" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ARj-0n-PcH" customClass="TravelSharingNavigationController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YcE-UA-q2V">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

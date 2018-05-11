@@ -41,10 +41,10 @@ class AddEditScheduleViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+navigationController
+        let rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
-
+        navigationItem.rightBarButtonItem =  rightBarButtonItem
         navigationItem.title = scheduleInfoDetail?.name
 
         //判斷是否有值(無值就顯今天日期，有值顯示Schedule帶過來的值）
