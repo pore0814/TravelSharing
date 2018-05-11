@@ -9,20 +9,33 @@
 import UIKit
 
 class ScheduleTableViewCell: UITableViewCell {
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var days: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var daysLabel: UILabel!
     @IBOutlet weak var leftCellView: UIView!
-    
+
+    @IBOutlet weak var leftImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        leftCellView.setShadow()
+        leftImageView.imageSetRounded()
     }
 
+    func updateCell(with schedule:ScheduleInfo) {
+
+        let myDateFormate = schedule.date
+        let changeDateFormate = myDateFormate.replacingOccurrences(of: " ", with: ".")
+
+         nameLabel.text = schedule.name
+         dateLabel.text = changeDateFormate
+         daysLabel.text = schedule.days + "天"
+    }
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    
+
 }

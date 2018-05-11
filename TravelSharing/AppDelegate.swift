@@ -8,25 +8,29 @@
 
 import UIKit
 import Firebase
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 var window: UIWindow?
+    let apiKey = "AIzaSyApfLr_yp72naCXwEQyuwwNc6JwiE8Cj1I"
+
 static let shared = UIApplication.shared.delegate as! AppDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-  
+        GMSServices.provideAPIKey(apiKey)
+        GMSPlacesClient.provideAPIKey(apiKey)
+
        //跳轉
         if UserManager.shared.getFireBaseUID() != nil {
             switchMainViewController()
-        }else {
+        } else {
              window?.rootViewController = UIStoryboard.logInStoryboard().instantiateInitialViewController()
         }
-        
-        
-    
+
         return true
     }
 
@@ -51,24 +55,22 @@ static let shared = UIApplication.shared.delegate as! AppDelegate
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
+
     //換頁_主頁面
     func switchMainViewController() {
         let TabBar = TabBarViewController()
               window?.rootViewController = TabBar
     }
-    
+
     func switchToLoginViewController() {
         guard  let loginPage = UIStoryboard.logInStoryboard().instantiateInitialViewController() else {return}
         window?.rootViewController = loginPage
-        
+
     }
     func switchScheduleViewController() {
         guard  let schedulePage = UIStoryboard.scheduleStoryboard().instantiateInitialViewController() else {return}
         window?.rootViewController = schedulePage
-        
+
     }
 
-
 }
-

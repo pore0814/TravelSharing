@@ -10,15 +10,26 @@ import Foundation
 import SCLAlertView
 
 class AlertToUser {
-    
+
     static let shared = AlertToUser()
-    private init (){}
-    
-
-    func alerTheUserPurple(title:String,message:String){
+    private init () {}
+    func alerTheUserPurple(title: String, message: String) {
         let alert = SCLAlertView()
-        alert.showEdit(title, subTitle: message)
 
+        alert.showEdit(title, subTitle: message)
+    }
+
+}
+
+class Alert {
+
+    static let alert = SCLAlertView()
+    static func alerTheUserPurple(title: String, message: String) {
+        alert.showEdit(title, subTitle: message)
     }
     
+   
+    
+    
+
 }

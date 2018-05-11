@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 extension String {
     func isValidEmail() -> Bool {
         // here, `try!` will always succeed because the pattern is valid

@@ -10,10 +10,10 @@ import Foundation
 
 extension Notification.Name {
     static let switchtoMainPage = Notification.Name("switchtoMainPage")
-    
+
     static let switchtoSchedulePage = Notification.Name("switchtoSchedulePage")
-    
+
     static let scheduleInfo = Notification.Name("scheduleInfo")
-    
+
     static let finishDelete = Notification.Name("finishDelete")
 }

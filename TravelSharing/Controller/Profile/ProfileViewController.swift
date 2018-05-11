@@ -20,6 +20,5 @@ class ProfileViewController: UIViewController {
         UserManager.shared.logout()
         AppDelegate.shared.switchToLoginViewController()
     }
-    
-    
+
 }

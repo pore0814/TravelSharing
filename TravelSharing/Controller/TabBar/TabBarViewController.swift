@@ -8,87 +8,98 @@
 
 import UIKit
 
-
 enum TabBar {
     
+    case trackLocation
+    
     case schedule
-    
+
     case profile
-    
-    
-    func controller() -> UIViewController{
+
+    func controller() -> UIViewController {
         switch self {
+        case .trackLocation:
+            return UIStoryboard.trackLocationStoryboard().instantiateInitialViewController()!
         case .schedule:
             return UIStoryboard.scheduleStoryboard().instantiateInitialViewController()!
         case .profile:
             return UIStoryboard.profileStoryboard().instantiateInitialViewController()!
-            
+
         }
     }
-    
-    
-    func image() -> UIImage{
-        
+
+    func image() -> UIImage {
+
         switch self {
+        case .trackLocation:
+            return #imageLiteral(resourceName: "foot")
         case .schedule:
-            return #imageLiteral(resourceName: "btn_like_selected")
+            return #imageLiteral(resourceName: "calendar1")
         case .profile:
-            return #imageLiteral(resourceName: "tab_profile_normal")
+            return #imageLiteral(resourceName: "user")
         }
     }
-    
-    
+
     func selectedImage() -> UIImage {
-        
+
         switch self {
             
+        case .trackLocation:
+            
+            return #imageLiteral(resourceName: "human-foot-prints").withRenderingMode(.alwaysTemplate)
+
         case .schedule:
-            
-            return #imageLiteral(resourceName: "btn_like_selected").withRenderingMode(.alwaysTemplate)
-            
+
+            return #imageLiteral(resourceName: "calendar2").withRenderingMode(.alwaysTemplate)
+
         case .profile:
-            
+
             return #imageLiteral(resourceName: "tab_profile_normal").withRenderingMode(.alwaysTemplate)
         }
     }
 }
+func changeColor(){
+    
+}
+
 
 
 class TabBarViewController: UITabBarController {
-    
-    let tabs: [TabBar] = [.schedule, .profile]
+
+    let tabs: [TabBar] = [.trackLocation, .schedule, .profile]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupTab()
     }
 
     private func setupTab() {
-       // tabBar.barTintColor = UIColor(displayP3Red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
+       //tabBar.barTintColor = UIColor(displayP3Red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
         
+         tabBar.tintColor = TravelSharingColor.tabBarTintColor.color()
+
         var controllers: [UIViewController] = []
-        
+
         for tab in tabs {
-            
+
             let controller = tab.controller()
-            
+
             let item = UITabBarItem(
                 title: nil,
                 image: tab.image(),
                 selectedImage: tab.selectedImage()
             )
-            
+
             item.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-            
+
             controller.tabBarItem = item
-            
+
             controllers.append(controller)
         }
-        
+
         setViewControllers(controllers, animated: false)
-        
+
     }
-    
-    
+
 }
