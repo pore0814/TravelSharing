@@ -13,7 +13,7 @@
 		D127E16D20A52EE300EBB5F7 /* NavigationCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */; };
 		D127E16F20A5360300EBB5F7 /* TrackLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */; };
 		D127E17220A53F9B00EBB5F7 /* TrackLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E17120A53F9B00EBB5F7 /* TrackLocationViewController.swift */; };
-		D127E17420A541AD00EBB5F7 /* TravelSharingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E17320A541AD00EBB5F7 /* TravelSharingColor.swift */; };
+		D127E17420A541AD00EBB5F7 /* TSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E17320A541AD00EBB5F7 /* TSColor.swift */; };
 		D1400B31209619F700B0040B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1400B30209619F700B0040B /* UserManager.swift */; };
 		D1400B3320961E8700B0040B /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1400B3220961E8700B0040B /* Register.storyboard */; };
 		D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1448FDC2096CAB000D699DB /* RegisterViewController.swift */; };
@@ -38,6 +38,9 @@
 		D1BBA32220958157005E5AAE /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA32120958157005E5AAE /* LogInViewController.swift */; };
 		D1BBA324209581D6005E5AAE /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA323209581D5005E5AAE /* Login.storyboard */; };
 		D1BBA32620958FF8005E5AAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA32520958FF8005E5AAE /* GoogleService-Info.plist */; };
+		D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A2620A5D6F6002D8CF6 /* TSDateFormatter.swift */; };
+		D1DA0A2920A654D4002D8CF6 /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1DA0A2820A654D4002D8CF6 /* LocationView.xib */; };
+		D1DA0A2D20A656CB002D8CF6 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */; };
 		D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD6120914CA900310121 /* AppDelegate.swift */; };
 		D1E6CD6420914CA900310121 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD6320914CA900310121 /* ViewController.swift */; };
 		D1E6CD6720914CA900310121 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6520914CA900310121 /* Main.storyboard */; };
@@ -62,7 +65,7 @@
 		D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCotroller.swift; sourceTree = "<group>"; };
 		D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackLocation.storyboard; sourceTree = "<group>"; };
 		D127E17120A53F9B00EBB5F7 /* TrackLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackLocationViewController.swift; sourceTree = "<group>"; };
-		D127E17320A541AD00EBB5F7 /* TravelSharingColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSharingColor.swift; sourceTree = "<group>"; };
+		D127E17320A541AD00EBB5F7 /* TSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSColor.swift; sourceTree = "<group>"; };
 		D1400B30209619F700B0040B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		D1400B3220961E8700B0040B /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		D1448FDC2096CAB000D699DB /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +90,9 @@
 		D1BBA32120958157005E5AAE /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		D1BBA323209581D5005E5AAE /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D1BBA32520958FF8005E5AAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D1DA0A2620A5D6F6002D8CF6 /* TSDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSDateFormatter.swift; sourceTree = "<group>"; };
+		D1DA0A2820A654D4002D8CF6 /* LocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
+		D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		D1E6CD5E20914CA900310121 /* TravelSharing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelSharing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E6CD6120914CA900310121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1E6CD6320914CA900310121 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +151,8 @@
 				D1658264209AC2A300C37F8D /* ScheuleRightTableViewCell.xib */,
 				D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */,
 				D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */,
+				D1DA0A2820A654D4002D8CF6 /* LocationView.xib */,
+				D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -292,7 +300,7 @@
 		D1E6CD7720914DAC00310121 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D127E17320A541AD00EBB5F7 /* TravelSharingColor.swift */,
+				D127E17320A541AD00EBB5F7 /* TSColor.swift */,
 				D18B9B6520A030C900EB8D16 /* Location */,
 				D1F5422E2099FE37007EBE96 /* Schedule */,
 				D1F542292099EAD3007EBE96 /* LoginandRegister */,
@@ -329,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				D1F5422C2099F09D007EBE96 /* ScheduleManager.swift */,
+				D1DA0A2620A5D6F6002D8CF6 /* TSDateFormatter.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -403,6 +412,7 @@
 				D1F5C83A20A3BDD30066C636 /* logoPage.jpg in Resources */,
 				D1E6CD6720914CA900310121 /* Main.storyboard in Resources */,
 				D1E6CD7B20914E2700310121 /* Schedule.storyboard in Resources */,
+				D1DA0A2920A654D4002D8CF6 /* LocationView.xib in Resources */,
 				D1BBA32620958FF8005E5AAE /* GoogleService-Info.plist in Resources */,
 				D1F542322099FF42007EBE96 /* ScheduleTableViewCell.xib in Resources */,
 				D1400B3320961E8700B0040B /* Register.storyboard in Resources */,
@@ -488,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */,
 				D1658265209AC2A300C37F8D /* ScheuleRightTableViewCell.swift in Sources */,
 				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,
 				D14C0FEE209823A800026AF1 /* Constants.swift in Sources */,
@@ -509,12 +520,13 @@
 				D1E6CD7420914D0B00310121 /* TabBarViewController.swift in Sources */,
 				D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */,
 				D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */,
-				D127E17420A541AD00EBB5F7 /* TravelSharingColor.swift in Sources */,
+				D127E17420A541AD00EBB5F7 /* TSColor.swift in Sources */,
 				D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */,
 				D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */,
 				D1F5422D2099F09D007EBE96 /* ScheduleManager.swift in Sources */,
 				D18B9B62209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift in Sources */,
 				D1B1608020A332A900B69222 /* UIView.swift in Sources */,
+				D1DA0A2D20A656CB002D8CF6 /* LocationView.swift in Sources */,
 				D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */,
 				D1F5422B2099EBAA007EBE96 /* FirBaseConnect.swift in Sources */,
 				D18B9B6720A030E300EB8D16 /* LocationManager.swift in Sources */,

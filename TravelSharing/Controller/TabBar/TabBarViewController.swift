@@ -77,7 +77,7 @@ class TabBarViewController: UITabBarController {
     private func setupTab() {
        //tabBar.barTintColor = UIColor(displayP3Red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
         
-         tabBar.tintColor = TravelSharingColor.tabBarTintColor.color()
+         tabBar.tintColor = TSColor.tabBarTintColor.color()
 
         var controllers: [UIViewController] = []
 

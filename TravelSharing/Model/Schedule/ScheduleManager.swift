@@ -56,7 +56,7 @@ class ScheduleManager {
     func updateaveScheduleInfo(scheduleUid: String?, scheduleName: String, scheudleDate: String, scheduleDay: String) {
          guard let userid = UserManager.shared.getFireBaseUID() else {return}
          let  updateScheduleInfo = ["uid":scheduleUid,"name": scheduleName,
-                                   "date": scheudleDate,"days": scheduleDay,"host":userid]
+                                    "date": scheudleDate,"days": scheduleDay,"host":userid]
         FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)
             .child(scheduleUid!)

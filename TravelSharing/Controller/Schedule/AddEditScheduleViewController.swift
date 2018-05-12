@@ -41,7 +41,7 @@ class AddEditScheduleViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-navigationController
+        
         let rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
         
         navigationItem.rightBarButtonItem =  rightBarButtonItem
@@ -59,12 +59,9 @@ navigationController
         setupCalendarView()
 
         NotificationCenter.default.addObserver(self, selector: #selector(toSchedulePage), name: .switchtoSchedulePage, object: nil)
-
         scheduleDaysText.text = scheduleInfoDetail?.days
         scheduleDateText.text = scheduleInfoDetail?.date
         scheduleNameText.text = scheduleInfoDetail?.name
-        
-      
     }
     //FireBase資料寫入
     @objc func toSchedulePage(notification: Notification) {
@@ -78,7 +75,9 @@ navigationController
         if scheduleDateText.text != "", scheduleDaysText.text != "", scheduleNameText.text != "" {
                 //寫入資料
                  ScheduleManager.shared.saveScheduleInfo(uid: scheduleInfoDetail?.uid,
-                                 scheduleName: scheduleNameText.text!, scheudleDate: scheduleDateText.text!,scheduleDay: scheduleDaysText.text!)
+                                                         scheduleName: scheduleNameText.text!,
+                                                         scheudleDate: scheduleDateText.text!,
+                                                         scheduleDay: scheduleDaysText.text!)
                  self.navigationController?.popViewController(animated: true)
              }else {
                AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message,message: "表格不可為空白")
@@ -88,7 +87,6 @@ navigationController
             print("Edit")
               ScheduleManager.shared.updateaveScheduleInfo(scheduleUid: scheduleInfoDetail?.uid, scheduleName: scheduleNameText.text!, scheudleDate: scheduleDateText.text!, scheduleDay: scheduleDaysText.text!)
             
-            
              self.navigationController?.popViewController(animated: true)
             
         }
@@ -97,10 +95,8 @@ navigationController
         
         
     
-    @IBAction func saveBtn(_ sender: Any) {
-       
-    }
-
+    @IBAction func saveBtn(_ sender: Any) {}
+    
     func setupCalendarView() {
         // Setup calendar spacing
         calendarView.minimumLineSpacing = 0
@@ -153,9 +149,8 @@ func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
     } else {
         validCell.selecetedView.isHidden = true
     }
-
-}
-}
+   }
+ }
 
 extension AddEditScheduleViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {

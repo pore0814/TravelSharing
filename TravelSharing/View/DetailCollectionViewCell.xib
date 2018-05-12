@@ -38,7 +38,7 @@
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="Ef2-OG-Dn7"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="Ef2-OG-Dn7"/>
                             <constraint firstAttribute="height" constant="50" id="JCK-jy-bY0"/>
                         </constraints>
                     </stackView>
