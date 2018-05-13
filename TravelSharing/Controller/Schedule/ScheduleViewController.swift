@@ -82,6 +82,8 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         let data = self.schedules[indexPath.row]
             cell.backgroundColor  = UIColor.clear
             cell.updateCell(with: data)
+        
+        cell.selectionStyle = .none
         return cell
         
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "ScheuleRightTableViewCell", for: indexPath) as! ScheuleRightTableViewCell
@@ -106,6 +108,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     
         scheduleDetailViewController.getDateInfo = dateFormatter.getTSDate(indexNumer: data)
         self.navigationController?.pushViewController(scheduleDetailViewController, animated: true)
+        
     }
     
    //Edit and Delete
@@ -130,7 +133,6 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
             return[editButton,deleteButton]
      }
 }
-
 
 extension ScheduleViewController : ScheduleManagerDelegate {
     func manager(_ manager: ScheduleManager, didGet schedule: ScheduleInfo) {

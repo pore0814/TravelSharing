@@ -41,6 +41,7 @@
 		D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A2620A5D6F6002D8CF6 /* TSDateFormatter.swift */; };
 		D1DA0A2920A654D4002D8CF6 /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1DA0A2820A654D4002D8CF6 /* LocationView.xib */; };
 		D1DA0A2D20A656CB002D8CF6 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */; };
+		D1DA0A3720A6FFF4002D8CF6 /* DismenstionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A3620A6FFF4002D8CF6 /* DismenstionViewController.swift */; };
 		D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD6120914CA900310121 /* AppDelegate.swift */; };
 		D1E6CD6420914CA900310121 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD6320914CA900310121 /* ViewController.swift */; };
 		D1E6CD6720914CA900310121 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6520914CA900310121 /* Main.storyboard */; };
@@ -93,6 +94,7 @@
 		D1DA0A2620A5D6F6002D8CF6 /* TSDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSDateFormatter.swift; sourceTree = "<group>"; };
 		D1DA0A2820A654D4002D8CF6 /* LocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
 		D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		D1DA0A3620A6FFF4002D8CF6 /* DismenstionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismenstionViewController.swift; sourceTree = "<group>"; };
 		D1E6CD5E20914CA900310121 /* TravelSharing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelSharing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E6CD6120914CA900310121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1E6CD6320914CA900310121 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */,
 				D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */,
 				D18B9B61209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift */,
+				D1DA0A3620A6FFF4002D8CF6 /* DismenstionViewController.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 			files = (
 				D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */,
 				D1658265209AC2A300C37F8D /* ScheuleRightTableViewCell.swift in Sources */,
+				D1DA0A3720A6FFF4002D8CF6 /* DismenstionViewController.swift in Sources */,
 				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,
 				D14C0FEE209823A800026AF1 /* Constants.swift in Sources */,
 				D127E17220A53F9B00EBB5F7 /* TrackLocationViewController.swift in Sources */,

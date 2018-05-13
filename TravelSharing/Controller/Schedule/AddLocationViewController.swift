@@ -12,7 +12,6 @@ import GooglePlaces
 
 class AddLocationViewController: UIViewController {
 
-    //@IBOutlet weak var stackview: UIStackView!
 
     @IBOutlet weak var locationText: UITextField!
     @IBOutlet weak var categoryText: UITextField!
@@ -128,6 +127,21 @@ extension AddLocationViewController: GMSAutocompleteViewControllerDelegate {
         print("Place latitude: \(place.coordinate.latitude)")
         lat = place.coordinate.latitude
         long = place.coordinate.longitude
+        
+        if lat != nil && long != nil {
+        let dismenstionViewController = UIStoryboard(name: "Schedule",bundle: nil)
+            .instantiateViewController(withIdentifier: "DismenstionViewController")
+            as! DismenstionViewController
+        dismenstionViewController.lat = place.coordinate.latitude
+        dismenstionViewController.long  = place.coordinate.longitude
+        self.navigationController?.pushViewController(dismenstionViewController, animated: true)
+        }else{
+            AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: "需要正確位置哦")
+        }
+        
+
+        
+        
 //        self.googleMapsView.camera = camera
         
         //placeText 顯示 Locaion Name

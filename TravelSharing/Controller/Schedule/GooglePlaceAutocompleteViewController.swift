@@ -13,16 +13,17 @@ import GooglePlaces
 
 class GooglePlaceAutocompleteViewController: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate{
     
-
     
     @IBOutlet weak var googleMapsView: GMSMapView!
+    @IBOutlet weak var googleMapStreetView: GMSPanoramaView!
+    
     var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(searchTapped))
-        
+//
+//       navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(searchTapped))
+//
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -34,37 +35,40 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .pla
         initGoogleMaps()
         
         var position = CLLocationCoordinate2D(latitude: 25.034028,longitude: 121.56426)
-        var marker = GMSMarker(position: position)
+        let marker = GMSMarker(position: position)
         marker.title = "Hello World"
         marker.map = googleMapsView
-
+        
+//        GMSPanoramaService().requestPanoramaNearCoordinate(position) { (pano, error) in
+//            self.googleMapStreetView.panorama = p
+//        }
+     
     }
     
     
     func initGoogleMaps(){
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.isMyLocationEnabled = true
-        self.googleMapsView.camera = camera
+//        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+//        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+//        mapView.isMyLocationEnabled = true
+//        self.googleMapsView.camera = camera
 
         
         self.googleMapsView.delegate = self
         self.googleMapsView.isMyLocationEnabled = true
         self.googleMapsView.settings.myLocationButton = true
         
-        
     }
     
     
     
-    
-   @objc func searchTapped(){
-    let autocompleteController = GMSAutocompleteViewController()
-    autocompleteController.delegate = self
-    self.locationManager.startUpdatingLocation()
-    self.present(autocompleteController, animated: true, completion: nil)
-        
-    }
+//
+//   @objc func searchTapped(){
+//    let autocompleteController = GMSAutocompleteViewController()
+//    autocompleteController.delegate = self
+//    self.locationManager.startUpdatingLocation()
+//    self.present(autocompleteController, animated: true, completion: nil)
+//
+//    }
 
    
    //  MARK: CLLocation Manager Delegate
@@ -83,6 +87,14 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .pla
 
        
     }
+    
+//    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+//        //googleMapsView.isHidden = true
+//       // mapView.isHidden = true
+//        
+//        print("aa")
+//    }
+    
     
     //  MARK: GMSMapView Delegate
     

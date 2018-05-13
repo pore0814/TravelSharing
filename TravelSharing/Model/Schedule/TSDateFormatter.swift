@@ -15,7 +15,8 @@ class TSDateFormatter {
     private func getYYMMDD(indexNumber: ScheduleInfo) -> Date {
         dateformate.dateFormat = "yyyy MM dd"
         
-        guard let startDate = dateformate.date(from:indexNumber.date), let day = Int(indexNumber.days) else { return Date(timeIntervalSince1970: 0)}
+        guard let startDate = dateformate.date(from:indexNumber.date),
+            let day = Int(indexNumber.days) else { return Date(timeIntervalSince1970: 0)}
         
         return startDate
     }

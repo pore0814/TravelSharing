@@ -33,7 +33,4 @@ extension UIStoryboard {
     static func trackLocationStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "TrackLocation", bundle: nil)
     }
-    
-    
-
 }

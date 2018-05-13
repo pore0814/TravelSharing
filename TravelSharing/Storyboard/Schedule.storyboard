@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -269,25 +270,60 @@
             </objects>
             <point key="canvasLocation" x="2720.8000000000002" y="825.33733133433293"/>
         </scene>
-        <!--Google Place Autocomplete View Controller-->
+        <!--Dismenstion View Controller-->
         <scene sceneID="AIH-fW-H8i">
             <objects>
-                <viewController id="1mk-ED-o8M" customClass="GooglePlaceAutocompleteViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DismenstionViewController" id="1mk-ED-o8M" customClass="DismenstionViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UfS-ja-dta">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1X-Lo-aKJ" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOs-S4-d9H" customClass="GMSPanoramaView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="313.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="B1E-A3-NmS" appends="YES" id="biL-h3-Zo5"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ax6-AS-a76" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="2H0-4b-72G" appends="YES" id="g2v-1c-Pl9"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LOs-S4-d9H" firstAttribute="leading" secondItem="MTq-Ct-yDB" secondAttribute="leading" id="4YS-ja-lvm"/>
+                            <constraint firstItem="MTq-Ct-yDB" firstAttribute="trailing" secondItem="LOs-S4-d9H" secondAttribute="trailing" id="69U-vS-C3d"/>
+                            <constraint firstItem="Ax6-AS-a76" firstAttribute="bottom" secondItem="MTq-Ct-yDB" secondAttribute="bottom" id="8jc-jB-WPn"/>
+                            <constraint firstItem="Ax6-AS-a76" firstAttribute="top" secondItem="LOs-S4-d9H" secondAttribute="bottom" id="IC0-Yu-3DZ"/>
+                            <constraint firstItem="Ax6-AS-a76" firstAttribute="trailing" secondItem="MTq-Ct-yDB" secondAttribute="trailing" id="PJK-ev-DgN"/>
+                            <constraint firstItem="Ax6-AS-a76" firstAttribute="leading" secondItem="MTq-Ct-yDB" secondAttribute="leading" id="Y9F-aH-QYp"/>
+                            <constraint firstItem="Ax6-AS-a76" firstAttribute="height" secondItem="UfS-ja-dta" secondAttribute="height" multiplier="0.5" id="iza-3l-72F"/>
+                            <constraint firstItem="LOs-S4-d9H" firstAttribute="top" secondItem="MTq-Ct-yDB" secondAttribute="top" id="u6M-uu-t3U"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MTq-Ct-yDB"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="Ax6-AS-a76" id="mqm-yN-zqV"/>
+                        <outlet property="streetView" destination="LOs-S4-d9H" id="faq-jM-0yS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nU-Pz-4NF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="2H0-4b-72G">
+                    <connections>
+                        <action selector="mpaViewPressed:" destination="1mk-ED-o8M" id="sMF-tP-TjG"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="B1E-A3-NmS">
+                    <connections>
+                        <action selector="streetViewPressed:" destination="1mk-ED-o8M" id="GGj-AI-3Cl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3456.8000000000002" y="824.43778110944538"/>
         </scene>
