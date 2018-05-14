@@ -6,82 +6,74 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheuleRightTableViewCell" rowHeight="202" id="KGk-i7-Jjw" customClass="ScheuleRightTableViewCell" customModule="TravelSharing" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheuleRightTableViewCell" rowHeight="374" id="KGk-i7-Jjw" customClass="ScheuleRightTableViewCell" customModule="TravelSharing" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="306"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="133.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="305.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkY-na-HaN">
-                        <rect key="frame" x="6" y="6" width="363" height="121"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="158"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="s7b-N3-lov">
-                                <rect key="frame" x="137" y="21" width="96" height="80"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="行程名稱" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6D8-a4-elY">
-                                        <rect key="frame" x="0.0" y="0.0" width="96" height="25.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text=" 日期" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLA-0X-LOh">
-                                        <rect key="frame" x="0.0" y="27.5" width="96" height="25"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 天數" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-t4-cvW">
-                                        <rect key="frame" x="0.0" y="54.5" width="96" height="25.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                        <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="global2" translatesAutoresizingMaskIntoConstraints="NO" id="Ij3-W5-yXh">
-                                <rect key="frame" x="263" y="21" width="80" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="fGe-WD-yjL"/>
-                                    <constraint firstAttribute="width" constant="80" id="hxH-jo-N03"/>
-                                </constraints>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 天數" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-t4-cvW">
+                                <rect key="frame" x="313" y="23" width="35" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" fixedFrame="YES" text="行程名稱" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6D8-a4-elY">
+                                <rect key="frame" x="140" y="23" width="96" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" fixedFrame="YES" text=" 日期" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLA-0X-LOh">
+                                <rect key="frame" x="19" y="23" width="39" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Ij3-W5-yXh" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" constant="21" id="HA4-3r-bFR"/>
-                            <constraint firstItem="Ij3-W5-yXh" firstAttribute="top" secondItem="s7b-N3-lov" secondAttribute="top" id="mlp-z7-RxI"/>
-                            <constraint firstAttribute="bottom" secondItem="Ij3-W5-yXh" secondAttribute="bottom" constant="20" id="quK-zd-bO9"/>
-                            <constraint firstAttribute="trailing" secondItem="Ij3-W5-yXh" secondAttribute="trailing" constant="20" id="ufl-Gv-VB9"/>
-                            <constraint firstItem="Ij3-W5-yXh" firstAttribute="leading" secondItem="s7b-N3-lov" secondAttribute="trailing" constant="30" id="ujG-xw-OJj"/>
-                            <constraint firstItem="Ij3-W5-yXh" firstAttribute="height" secondItem="s7b-N3-lov" secondAttribute="height" id="zx4-1r-gd9"/>
-                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IyD-BT-1Yc" customClass="GMSMapView">
+                        <rect key="frame" x="0.0" y="72" width="375" height="233.5"/>
+                        <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hkY-na-HaN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="8kF-8W-sVR"/>
-                    <constraint firstItem="hkY-na-HaN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="AgZ-wQ-HY4"/>
-                    <constraint firstAttribute="trailing" secondItem="hkY-na-HaN" secondAttribute="trailing" constant="6" id="GNE-J6-72a"/>
-                    <constraint firstAttribute="bottom" secondItem="hkY-na-HaN" secondAttribute="bottom" constant="6.5" id="dnE-SY-WOY"/>
+                    <constraint firstItem="IyD-BT-1Yc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FGk-0s-JVr"/>
+                    <constraint firstAttribute="bottom" secondItem="IyD-BT-1Yc" secondAttribute="bottom" id="JQM-cX-5TG"/>
+                    <constraint firstAttribute="trailing" secondItem="IyD-BT-1Yc" secondAttribute="trailing" id="N5k-V5-AiA"/>
+                    <constraint firstItem="IyD-BT-1Yc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="TJJ-zT-EOa"/>
+                    <constraint firstAttribute="trailing" secondItem="IyD-BT-1Yc" secondAttribute="trailing" id="ccP-Gu-zv7"/>
+                    <constraint firstItem="hkY-na-HaN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="e0a-sj-gOS"/>
+                    <constraint firstAttribute="bottom" secondItem="hkY-na-HaN" secondAttribute="bottom" constant="147.5" id="eLe-Zp-WUg"/>
+                    <constraint firstAttribute="trailing" secondItem="hkY-na-HaN" secondAttribute="trailing" id="gyQ-GO-P5p"/>
+                    <constraint firstItem="IyD-BT-1Yc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="61" id="nKi-4p-lOd"/>
+                    <constraint firstItem="hkY-na-HaN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rBr-Hf-1XU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dateLabel" destination="sLA-0X-LOh" id="fTi-mp-pGq"/>
                 <outlet property="daysLabel" destination="6XZ-t4-cvW" id="oDT-h8-VgW"/>
+                <outlet property="mapView" destination="IyD-BT-1Yc" id="IrJ-tL-ipn"/>
                 <outlet property="nameLabel" destination="6D8-a4-elY" id="IzI-7D-QKa"/>
                 <outlet property="rightUiview" destination="hkY-na-HaN" id="DkM-ro-nNT"/>
             </connections>
-            <point key="canvasLocation" x="141.5" y="104"/>
+            <point key="canvasLocation" x="497.5" y="-72"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="global2" width="150" height="150"/>
-    </resources>
 </document>

@@ -9,25 +9,19 @@
 import UIKit
 
 class ScheuleRightTableViewCell: UITableViewCell {
-    @IBOutlet weak var rightimageView: UIImageView!
-    
+   
     @IBOutlet weak var nameLabel: UILabel!
-
     @IBOutlet weak var dateLabel: UILabel!
-
     @IBOutlet weak var daysLabel: UILabel!
-
     @IBOutlet weak var rightUiview: UIView!
+    
+    @IBOutlet weak var mapView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-      rightUiview.setShadow()
-     
+        
+        rightUiview.setShadow()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    
+    
 }

@@ -17,7 +17,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
      let scheduleManager = ScheduleManager.shared
      let dateFormatter = TSDateFormatter()
     
-    
+     let destination = DestinationManager()
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -44,6 +44,9 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         ScheduleManager.shared.getScheduleContent()
         
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
+        
+        print("--------")
+      
       }
 
     @objc func getData(notification:Notification){

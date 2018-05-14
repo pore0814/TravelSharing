@@ -116,13 +116,9 @@ class ScheduleManager {
                         guard    let date  = scheduleInfo["date"] as? String else{return}
                         guard    let days  = scheduleInfo["days"] as? String else{return}
 
-                        let schedule =
-                               ScheduleInfo(uid: uid, date: date, name: name, days: days)
-                        print("-----")
-                        print("79",self.scheduleDataArray.count)
+                        let schedule = ScheduleInfo(uid: uid, date: date, name: name, days: days)
                         self.scheduleDataArray.append(schedule)
                         self.scheduleDataArray.sort(by: {$0.date < $1.date})
-                        print("89",self.scheduleDataArray)
 
                         NotificationCenter.default.post(
                             name: .scheduleInfo,

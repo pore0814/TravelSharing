@@ -32,3 +32,9 @@ struct DateInfo {
     var weekDay: Int
     var date: String
 }
+
+struct Destination {
+    var name:String
+    var time:String
+    var category:String
+}

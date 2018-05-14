@@ -47,21 +47,28 @@ class DismenstionViewController: UIViewController,GMSMapViewDelegate {
         mapView.delegate = self
 
     }
+    
+    
 
     @IBAction func mpaViewPressed(_ sender: Any) {
 //        streetView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
 //        streetView.layoutSubviews()
-        mapView.frame = CGRect(x: 0, y: 0, width:  self.view.frame.width, height:  self.view.frame.height)
+        let screen = UIScreen.main.bounds
+        mapView.frame = CGRect(x: 0, y: 0, width: screen.width, height: screen.height)
+        print("================")
+        print(screen.width)
+        print(screen.height)
        // mapView.isHidden = false
         print("aaa")
        
     }
     
     
+    
     @IBAction func streetViewPressed(_ sender: Any) {
         streetView.frame = CGRect(x: 0, y: 0, width:  self.view.frame.width, height:  self.view.frame.height)
          print("bbbb")
     }
-    
+
 
 }

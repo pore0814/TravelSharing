@@ -27,8 +27,6 @@ enum TSColor:String {
     
     case tabBarTintColor = "#00ccff"
     
-    case tabBarItem
-    
     case textColor = "1F1F1F"
     
 

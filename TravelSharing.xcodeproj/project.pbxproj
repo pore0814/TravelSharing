@@ -24,12 +24,13 @@
 		D1658265209AC2A300C37F8D /* ScheuleRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658263209AC2A300C37F8D /* ScheuleRightTableViewCell.swift */; };
 		D1658266209AC2A300C37F8D /* ScheuleRightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1658264209AC2A300C37F8D /* ScheuleRightTableViewCell.xib */; };
 		D1658268209AE78800C37F8D /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658267209AE78800C37F8D /* Struct.swift */; };
+		D179F86020A93A7500D7DC25 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D179F85F20A93A7500D7DC25 /* TestViewController.swift */; };
 		D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B75FC209729C400D27B86 /* RoundImage.swift */; };
 		D18B9B5E209DEE0A00EB8D16 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */; };
 		D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */; };
 		D18B9B62209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B61209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift */; };
 		D18B9B6420A0248500EB8D16 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6320A0248500EB8D16 /* Date.swift */; };
-		D18B9B6720A030E300EB8D16 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6620A030E300EB8D16 /* LocationManager.swift */; };
+		D18B9B6720A030E300EB8D16 /* DestinationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6620A030E300EB8D16 /* DestinationManager.swift */; };
 		D19B2C2A20A4EACD0076E4ED /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */; };
 		D19B2C2B20A4EACD0076E4ED /* DetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */; };
 		D1B1608020A332A900B69222 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1607F20A332A900B69222 /* UIView.swift */; };
@@ -77,12 +78,13 @@
 		D1658263209AC2A300C37F8D /* ScheuleRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheuleRightTableViewCell.swift; sourceTree = "<group>"; };
 		D1658264209AC2A300C37F8D /* ScheuleRightTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheuleRightTableViewCell.xib; sourceTree = "<group>"; };
 		D1658267209AE78800C37F8D /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
+		D179F85F20A93A7500D7DC25 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D18B75FC209729C400D27B86 /* RoundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
 		D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		D18B9B61209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaceAutocompleteViewController.swift; sourceTree = "<group>"; };
 		D18B9B6320A0248500EB8D16 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		D18B9B6620A030E300EB8D16 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		D18B9B6620A030E300EB8D16 /* DestinationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationManager.swift; sourceTree = "<group>"; };
 		D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		D1B1607F20A332A900B69222 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -193,7 +195,7 @@
 		D18B9B6520A030C900EB8D16 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				D18B9B6620A030E300EB8D16 /* LocationManager.swift */,
+				D18B9B6620A030E300EB8D16 /* DestinationManager.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -201,6 +203,7 @@
 		D1BBA31920957222005E5AAE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D179F85F20A93A7500D7DC25 /* TestViewController.swift */,
 				D127E17020A53F7800EBB5F7 /* Track */,
 				D127E16B20A52ECA00EBB5F7 /* Navigation */,
 				D1BBA32020958144005E5AAE /* Login */,
@@ -501,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D179F86020A93A7500D7DC25 /* TestViewController.swift in Sources */,
 				D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */,
 				D1658265209AC2A300C37F8D /* ScheuleRightTableViewCell.swift in Sources */,
 				D1DA0A3720A6FFF4002D8CF6 /* DismenstionViewController.swift in Sources */,
@@ -533,7 +537,7 @@
 				D1DA0A2D20A656CB002D8CF6 /* LocationView.swift in Sources */,
 				D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */,
 				D1F5422B2099EBAA007EBE96 /* FirBaseConnect.swift in Sources */,
-				D18B9B6720A030E300EB8D16 /* LocationManager.swift in Sources */,
+				D18B9B6720A030E300EB8D16 /* DestinationManager.swift in Sources */,
 				D127E16D20A52EE300EBB5F7 /* NavigationCotroller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
