@@ -36,9 +36,6 @@ class DismenstionViewController: UIViewController,GMSMapViewDelegate {
             self.streetView.panorama = pano
         }
         //選擇的地點
-       
-        
-        
 //       let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapBlurButton(recignizer:)))
 //        tapGesture.numberOfTouchesRequired = 1
 //        streetView.addGestureRecognizer(tapGesture)

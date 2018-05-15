@@ -75,9 +75,7 @@ class DistinationViewController: UIViewController,UITableViewDelegate,UITableVie
         tableView.beginUpdates()
         tableView.endUpdates()
         previous = tag
-        
-        
-   
+    
     }
 }
 

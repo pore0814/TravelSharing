@@ -16,6 +16,8 @@ class ScheduleDetailViewController: UIViewController,UICollectionViewDelegate,UI
             print("set data in ScheduleDetailViewController")
         }
     }
+    var schedulDetail:ScheduleInfo?
+    let dateFormatter1 = TSDateFormatter1()
     
     @IBOutlet weak var destinationScrollView: UIScrollView!
     @IBOutlet weak var detailCollectionViwe: UICollectionView!
@@ -23,6 +25,10 @@ class ScheduleDetailViewController: UIViewController,UICollectionViewDelegate,UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let detail = schedulDetail else {return}
+        getDateInfo =  dateFormatter1.getYYMMDD(indexNumber: detail)
+        print(getDateInfo)
+         navigationItem.title = schedulDetail?.name
         
         let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as! DistinationViewController
         
@@ -72,8 +78,23 @@ class ScheduleDetailViewController: UIViewController,UICollectionViewDelegate,UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let  cell = detailCollectionViwe.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as! DetailCollectionViewCell
-        cell.dateLabel.text = getDateInfo[indexPath.row].date
-        cell.weekLabel.text = String(getDateInfo[indexPath.row].weekDay)
+        
+        
+        
+//        cell.dateLabel.text = getDateInfo[indexPath.row].date
+//        switch getDateInfo[indexPath.row].weekDay {
+//         case WeekDay.Mon.rawValue : cell.weekLabel.text = "週一"
+//         case WeekDay.Tue.rawValue : cell.weekLabel.text = "週二"
+//         case WeekDay.Tue.rawValue : cell.weekLabel.text = "週三"
+//         case WeekDay.Tue.rawValue : cell.weekLabel.text = "週四"
+//         case WeekDay.Tue.rawValue : cell.weekLabel.text = "週五"
+//         case WeekDay.Tue.rawValue : cell.weekLabel.text = "週六"
+//         default:
+//            cell.weekLabel.text = "週日"
+//        }
+        
+       cell.dateLabel.text = getDateInfo[indexPath.row].date
+       cell.weekLabel.text = String(getWeekDayStr(aa: getDateInfo[indexPath.row].weekDay))
         print(getDateInfo[indexPath.row].date)
         return cell
     }

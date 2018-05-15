@@ -12,6 +12,8 @@ class TSDateFormatter {
     
     let dateformate = DateFormatter()
     
+
+    
     private func getYYMMDD(indexNumber: ScheduleInfo) -> Date {
         dateformate.dateFormat = "yyyy MM dd"
         
@@ -50,8 +52,6 @@ class TSDateFormatter {
         
         for i in 0...days {
             let endate = Calendar.current.date(byAdding:.day , value:i , to: startdate)
-            
-            dateformate.dateFormat = "EE"
             let weekday = Calendar.current.component(.weekday, from: endate!)
             
             dateInfoEE.append(weekday)

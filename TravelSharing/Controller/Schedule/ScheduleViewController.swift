@@ -16,6 +16,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
      var getDataFromUpdate : ScheduleInfo?
      let scheduleManager = ScheduleManager.shared
      let dateFormatter = TSDateFormatter()
+      let dateFormatter1 = TSDateFormatter1()
     
      let destination = DestinationManager()
 
@@ -45,7 +46,11 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
         
-        print("--------")
+         print("=======")
+        let date = "2018 05 22"
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "MM/dd"
+        print(date)
       
       }
 
@@ -82,22 +87,13 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
 
-        let data = self.schedules[indexPath.row]
-            cell.backgroundColor  = UIColor.clear
-            cell.updateCell(with: data)
+            let data = self.schedules[indexPath.row]
+                cell.backgroundColor  = UIColor.clear
+                cell.updateCell(with: data)
+                cell.selectionStyle = .none
         
-        cell.selectionStyle = .none
         return cell
-        
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "ScheuleRightTableViewCell", for: indexPath) as! ScheuleRightTableViewCell
-//            cell.backgroundColor  = UIColor.clear
-//            cell.dateLabel.text = changeDateFormate
-//            cell.nameLabel.text = schedules[indexPath.row].name
-//            cell.daysLabel.text = schedules[indexPath.row].days + "天"
-//
-//            return cell
-//        }
-        
+  
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -106,10 +102,10 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
                      as! ScheduleDetailViewController
 
         let data = self.schedules[indexPath.row]
-        
+        scheduleDetailViewController.schedulDetail = data
 //        dateInfoArray.removeAll()
     
-        scheduleDetailViewController.getDateInfo = dateFormatter.getTSDate(indexNumer: data)
+     //   scheduleDetailViewController.getDateInfo = dateFormatter.getTSDate(indexNumer: data)
         self.navigationController?.pushViewController(scheduleDetailViewController, animated: true)
         
     }
