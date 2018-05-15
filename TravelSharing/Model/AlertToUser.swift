@@ -12,24 +12,20 @@ import SCLAlertView
 class AlertToUser {
 
     static let shared = AlertToUser()
-    private init () {}
-    func alerTheUserPurple(title: String, message: String) {
-        let alert = SCLAlertView()
+           let alert = SCLAlertView()
 
+    func alerTheUserPurple(title: String, message: String) {
         alert.showEdit(title, subTitle: message)
     }
+    
+    
 
 }
 
-class Alert {
 
-    static let alert = SCLAlertView()
-    static func alerTheUserPurple(title: String, message: String) {
-        alert.showEdit(title, subTitle: message)
-    }
     
    
     
     
 
-}
+

@@ -26,17 +26,18 @@ struct DestinationManager{
             .child("destination")
             .queryOrdered(byChild: "date")
             .queryEqual(toValue: "2018 05 11")
-            
             .observe(.childAdded, with: { (snapshot) in
-                print("---------")
-                print(snapshot)
                 
                 guard  let destinationInfo =  snapshot.value as? [String: Any] else{return}
                 guard  let category = destinationInfo["category"] as? String else{return}
                 guard  let time  = destinationInfo["time"] as? String else{return}
                 guard  let name  = destinationInfo["name"] as? String else{return}
+                guard  let latitude  = destinationInfo["lat"] as? Double else{return}
+                guard  let longitude = destinationInfo["long"] as? Double else {return}
+                print("37",latitude)
                 
-                let destination =  Destination(name: name, time: time, category: category)
+                
+                let destination =  Destination(name: name, time: time, category: category, latitude: latitude,longitude :longitude)
                 print(destination)
                 destinationArray.append(destination)
                 print(destinationArray)

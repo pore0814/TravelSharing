@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ScheduleDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
     
     var getDateInfo = [DateInfo]() {
@@ -17,34 +18,28 @@ class ScheduleDetailViewController: UIViewController,UICollectionViewDelegate,UI
     }
     
     @IBOutlet weak var destinationScrollView: UIScrollView!
-    
-    let destination1 = ["destination":"Annie's Home","time":"9:00"]
-    let destination2 = ["destination":"Sam's Home","time":"10:00"]
-    let destination3 = ["destination":"Luke's Home","time":"12:00"]
-    
-    var Array = [Dictionary<String,String>]()
-    
     @IBOutlet weak var detailCollectionViwe: UICollectionView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailCollectionViwe.reloadData()
-        Array = [destination1,destination2,destination3]
+        
+        let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as! DistinationViewController
+        
+        
+        destinationScrollView.frame = obj1.view.frame
+        self.destinationScrollView.addSubview(obj1.view)
+      //  Array = [destination1,destination2,destination3]
         destinationScrollView.isPagingEnabled = true
-        destinationScrollView.contentSize = CGSize(width: self.view.bounds.width * CGFloat(Array.count), height: 250)
+       destinationScrollView.contentSize = CGSize(width: self.view.bounds.width * CGFloat(getDateInfo.count), height: 250)
         destinationScrollView.showsVerticalScrollIndicator = false
         
         
-        
-        
-        
-        let addBarButtonItem = UIBarButtonItem.init(title: "Add", style: .done, target: self, action: #selector(addTapped))
+        let addBarButtonItem = UIBarButtonItem.init(title: "Add", style: .done, target: self,
+                                                    action: #selector(addTapped))
         navigationItem.rightBarButtonItem = addBarButtonItem
         
+        detailCollectionViwe.reloadData()
         detailCollectionViwe.delegate =  self
         detailCollectionViwe.dataSource =  self
         
@@ -60,27 +55,8 @@ class ScheduleDetailViewController: UIViewController,UICollectionViewDelegate,UI
             layout.minimumLineSpacing = 2.0
             layout.minimumInteritemSpacing = 2.0
         detailCollectionViwe.setCollectionViewLayout(layout, animated: false)
-        
-        loadFeatures()
-        
     }
 
-    func loadFeatures(){
-        for (index, destination) in Array.enumerated(){
-            if let destinationView = Bundle.main.loadNibNamed("LocationView", owner: self, options: nil)?.first as? LocationView{
-                destinationView.destinationLabel.text = destination["destination"]
-                destinationView.arrivalLabel.text = destination["time"]
-                
-                destinationScrollView.addSubview(destinationView)
-                destinationView.frame.size.width = self.view.bounds.size.width
-                destinationView.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
-            }
-        }
-        
-    }
-    
-    
-    
     @objc func addTapped(sender: AnyObject) {
         print("hjxdbsdhjbv")
         let scheduleDetailToAddLocation = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "AddLocationViewController") as!

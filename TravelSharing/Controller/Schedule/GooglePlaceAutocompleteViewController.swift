@@ -38,10 +38,6 @@ class GooglePlaceAutocompleteViewController: UIViewController,CLLocationManagerD
         let marker = GMSMarker(position: position)
         marker.title = "Hello World"
         marker.map = googleMapsView
-        
-//        GMSPanoramaService().requestPanoramaNearCoordinate(position) { (pano, error) in
-//            self.googleMapStreetView.panorama = p
-//        }
      
     }
     
@@ -122,13 +118,7 @@ extension GooglePlaceAutocompleteViewController: GMSAutocompleteViewControllerDe
     
         
         
-        
-        
-//        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-//        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-//        mapView.isMyLocationEnabled = true
-//        self.googleMapsView.camera = camera
-        
+
         
         let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 15.0)
       

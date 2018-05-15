@@ -91,14 +91,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ro7-WI-Acb">
                                 <rect key="frame" x="0.0" y="164" width="375" height="503"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6a-iv-k9F">
-                                <rect key="frame" x="56" y="128" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="S8E-Xi-Tgn" kind="show" id="AHd-CZ-a3q"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -125,10 +117,10 @@
             </objects>
             <point key="canvasLocation" x="1896.8" y="826.23688155922048"/>
         </scene>
-        <!--Test View Controller-->
+        <!--Distination View Controller-->
         <scene sceneID="sLh-fE-Bnc">
             <objects>
-                <viewController id="S8E-Xi-Tgn" customClass="TestViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DistinationViewController" id="S8E-Xi-Tgn" customClass="DistinationViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Hh-aR-qvr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -324,17 +316,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="313.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="zAL-p7-FOb" appends="YES" id="r8U-kT-Rzp"/>
-                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ax6-AS-a76" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="C0d-nw-zm0" appends="YES" id="Fhs-bw-D19"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -356,16 +342,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nU-Pz-4NF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="zAL-p7-FOb">
+                <swipeGestureRecognizer direction="right" id="ypI-Of-2do">
                     <connections>
-                        <action selector="mpaViewPressed:" destination="1mk-ED-o8M" id="hSm-CU-rom"/>
+                        <action selector="mapViewFullScreenTaped:" destination="1mk-ED-o8M" id="EaB-eu-Oyr"/>
                     </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="C0d-nw-zm0">
-                    <connections>
-                        <action selector="streetViewPressed:" destination="1mk-ED-o8M" id="EfF-Z5-NoZ"/>
-                    </connections>
-                </tapGestureRecognizer>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3456.8000000000002" y="824.43778110944538"/>
         </scene>

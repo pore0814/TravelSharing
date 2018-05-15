@@ -111,6 +111,7 @@ class AddLocationViewController: UIViewController {
     //Search Location
     @IBAction func searchLocation(_ sender: Any) {
         let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.secondaryTextColor = UIColor.black
         autocompleteController.delegate = self
         self.present(autocompleteController, animated: true, completion: nil)
     }
