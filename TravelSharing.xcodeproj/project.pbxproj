@@ -207,7 +207,6 @@
 		D1BBA31920957222005E5AAE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D179F85F20A93A7500D7DC25 /* DistinationViewController.swift */,
 				D127E17020A53F7800EBB5F7 /* Track */,
 				D127E16B20A52ECA00EBB5F7 /* Navigation */,
 				D1BBA32020958144005E5AAE /* Login */,
@@ -228,6 +227,7 @@
 				D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */,
 				D18B9B61209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift */,
 				D1DA0A3620A6FFF4002D8CF6 /* DismenstionViewController.swift */,
+				D179F85F20A93A7500D7DC25 /* DistinationViewController.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -361,6 +361,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1E6CD7020914CAA00310121 /* Build configuration list for PBXNativeTarget "TravelSharing" */;
 			buildPhases = (
+				D199608420AC113C004C7D8E /* ShellScript */,
 				0833302B1D52357F641EA4F6 /* [CP] Check Pods Manifest.lock */,
 				D1E6CD5A20914CA900310121 /* Sources */,
 				D1E6CD5B20914CA900310121 /* Frameworks */,
@@ -502,6 +503,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D199608420AC113C004C7D8E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -23,7 +23,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         logInImageView.imageSetRounded()
-       
+
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     /*
@@ -52,13 +52,15 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 */
 
     @IBAction func logIn(_ sender: Any) {
+        guard let passToNextPage = AppDelegate.shared?.switchMainViewController() else {return}
+
         if emailTextField.text != "" && passwordTextField.text != "" {
 
             UserManager.shared.loginUser(email: emailTextField.text!, password: passwordTextField.text!) { (message) in
                 if message != nil {
-                AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: message!)
+                AlertToUser.shared.alerTheUserPurple(title: Constants.WrongMessage, message: message!)
                 } else {
-                  AppDelegate.shared.switchMainViewController()
+                    passToNextPage
                 }
             }
         } else {

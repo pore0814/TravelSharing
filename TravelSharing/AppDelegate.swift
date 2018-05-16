@@ -17,14 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 var window: UIWindow?
     let apiKey = "AIzaSyApfLr_yp72naCXwEQyuwwNc6JwiE8Cj1I"
 
-static let shared = UIApplication.shared.delegate as! AppDelegate
+     static let shared = UIApplication.shared.delegate as? AppDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         GMSServices.provideAPIKey(apiKey)
         GMSPlacesClient.provideAPIKey(apiKey)
 
-       //跳轉
+//跳轉到MainViewController()
         if UserManager.shared.getFireBaseUID() != nil {
             switchMainViewController()
         } else {
@@ -58,8 +58,8 @@ static let shared = UIApplication.shared.delegate as! AppDelegate
 
     //換頁_主頁面
     func switchMainViewController() {
-        let TabBar = TabBarViewController()
-              window?.rootViewController = TabBar
+        let tabBar = TabBarViewController()
+              window?.rootViewController = tabBar
     }
 
     func switchToLoginViewController() {

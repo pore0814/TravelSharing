@@ -29,7 +29,7 @@ extension UIStoryboard {
     static func profileStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "Profile", bundle: nil)
     }
-    
+
     static func trackLocationStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "TrackLocation", bundle: nil)
     }

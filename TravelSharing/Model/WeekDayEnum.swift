@@ -8,27 +8,25 @@
 
 import Foundation
 
-enum WeekDay:Int{
-    case Mon = 2,Tues,Wed,Thur,Fri,Sat,Sun
+enum WeekDay: Int {
+    case mon = 2, tues, wed, thur, fri, sat, sun
 }
 
-func getWeekDayStr(aa:Int) -> String{
-    switch aa{
-    case WeekDay.Mon.rawValue:
+func getWeekDayStr(weekDay: Int) -> String {
+    switch weekDay {
+    case WeekDay.mon.rawValue:
         return "週一"
-    case WeekDay.Tues.rawValue:
+    case WeekDay.tues.rawValue:
         return "週二"
-    case WeekDay.Wed.rawValue:
+    case WeekDay.wed.rawValue:
         return "週三"
-    case WeekDay.Thur.rawValue:
+    case WeekDay.thur.rawValue:
         return "週四"
-    case WeekDay.Fri.rawValue:
+    case WeekDay.fri.rawValue:
         return "週五"
-    case WeekDay.Sat.rawValue:
+    case WeekDay.sat.rawValue:
         return "週六"
     default:
         return "週日"
     }
-    return "Error"
 }
-

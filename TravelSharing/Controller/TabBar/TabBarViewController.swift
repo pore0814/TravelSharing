@@ -9,9 +9,9 @@
 import UIKit
 
 enum TabBar {
-    
+
     case trackLocation
-    
+
     case schedule
 
     case profile
@@ -43,9 +43,9 @@ enum TabBar {
     func selectedImage() -> UIImage {
 
         switch self {
-            
+
         case .trackLocation:
-            
+
             return #imageLiteral(resourceName: "human-foot-prints").withRenderingMode(.alwaysTemplate)
 
         case .schedule:
@@ -58,11 +58,9 @@ enum TabBar {
         }
     }
 }
-func changeColor(){
-    
+func changeColor() {
+
 }
-
-
 
 class TabBarViewController: UITabBarController {
 
@@ -76,7 +74,7 @@ class TabBarViewController: UITabBarController {
 
     private func setupTab() {
        //tabBar.barTintColor = UIColor(displayP3Red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
-        
+
          tabBar.tintColor = TSColor.tabBarTintColor.color()
 
         var controllers: [UIViewController] = []

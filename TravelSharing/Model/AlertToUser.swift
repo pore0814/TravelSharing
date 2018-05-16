@@ -17,15 +17,5 @@ class AlertToUser {
     func alerTheUserPurple(title: String, message: String) {
         alert.showEdit(title, subTitle: message)
     }
-    
-    
 
 }
-
-
-    
-   
-    
-    
-
-

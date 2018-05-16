@@ -8,105 +8,85 @@
 
 import UIKit
 
+class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-class ScheduleDetailViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
-    
     var getDateInfo = [DateInfo]() {
         didSet {
             print("set data in ScheduleDetailViewController")
         }
     }
-    var schedulDetail:ScheduleInfo?
+    var schedulDetail: ScheduleInfo?
     let dateFormatter1 = TSDateFormatter1()
-    
+
     @IBOutlet weak var destinationScrollView: UIScrollView!
     @IBOutlet weak var detailCollectionViwe: UICollectionView!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+//nagivation Bar 顯示Scheudle名稱
+        navigationItem.title = schedulDetail?.name
+//日期dateFormatter function 用起程日期及天數計算出所有date 
         guard let detail = schedulDetail else {return}
         getDateInfo =  dateFormatter1.getYYMMDD(indexNumber: detail)
-        print(getDateInfo)
-         navigationItem.title = schedulDetail?.name
-        
-        let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as! DistinationViewController
-        
-        
+    //呼叫Destination Detail ViewController內容
+        guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as?
+                                                                    DistinationViewController else {return}
         destinationScrollView.frame = obj1.view.frame
         self.destinationScrollView.addSubview(obj1.view)
-      //  Array = [destination1,destination2,destination3]
+    //ScrollView 設定
         destinationScrollView.isPagingEnabled = true
-       destinationScrollView.contentSize = CGSize(width: self.view.bounds.width * CGFloat(getDateInfo.count), height: 250)
+        destinationScrollView.contentSize = CGSize(
+                              width: self.view.bounds.width * CGFloat(getDateInfo.count),
+                              height: 250)
         destinationScrollView.showsVerticalScrollIndicator = false
-        
-        
+    //navigation bar ButtonItem
         let addBarButtonItem = UIBarButtonItem.init(title: "Add", style: .done, target: self,
                                                     action: #selector(addTapped))
         navigationItem.rightBarButtonItem = addBarButtonItem
-        
+    // CollectionView  reload
         detailCollectionViwe.reloadData()
         detailCollectionViwe.delegate =  self
         detailCollectionViwe.dataSource =  self
-        
+    //註冊CollectionViewCell
         let nib = UINib(nibName: "DetailCollectionViewCell", bundle: nil)
         self.detailCollectionViwe.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
-
-        //CollectionView 間距設定
-        let layout = detailCollectionViwe.collectionViewLayout as! UICollectionViewFlowLayout
-            layout.itemSize = CGSize(width: (self.view.frame.size.width/2.0) - 2.0 , height: 100)
-        let insetX = (view.bounds.width - (self.view.frame.size.width/2.0)) / 2.0
-            layout.scrollDirection = .horizontal
-            layout.sectionInset = UIEdgeInsets(top: 0, left: insetX , bottom: 0, right: insetX)
-            layout.minimumLineSpacing = 2.0
-            layout.minimumInteritemSpacing = 2.0
+    //CollectionView 間距設定
+        guard let layout = detailCollectionViwe.collectionViewLayout as?
+                                                UICollectionViewFlowLayout else {return}
+        layout.itemSize = CGSize(width: (self.view.frame.size.width/2.0) - 2.0, height: 100)
+         let insetX = (view.bounds.width - (self.view.frame.size.width/2.0)) / 2.0
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
+        layout.minimumLineSpacing = 2.0
+        layout.minimumInteritemSpacing = 2.0
         detailCollectionViwe.setCollectionViewLayout(layout, animated: false)
     }
 
     @objc func addTapped(sender: AnyObject) {
-        print("hjxdbsdhjbv")
-        let scheduleDetailToAddLocation = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "AddLocationViewController") as!
-        AddLocationViewController
-    self.navigationController?.pushViewController(scheduleDetailToAddLocation, animated: true)
-        getDateInfo.removeAll()
+          guard let scheduleDetailToAddLocation = UIStoryboard(name: "Schedule", bundle: nil)
+                            .instantiateViewController(withIdentifier: "AddLocationViewController")
+                                                        as? AddLocationViewController else {return}
+          self.navigationController?.pushViewController(scheduleDetailToAddLocation, animated: true)
+          getDateInfo.removeAll()
     }
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return getDateInfo.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let  cell = detailCollectionViwe.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as! DetailCollectionViewCell
-        
-        
-        
-//        cell.dateLabel.text = getDateInfo[indexPath.row].date
-//        switch getDateInfo[indexPath.row].weekDay {
-//         case WeekDay.Mon.rawValue : cell.weekLabel.text = "週一"
-//         case WeekDay.Tue.rawValue : cell.weekLabel.text = "週二"
-//         case WeekDay.Tue.rawValue : cell.weekLabel.text = "週三"
-//         case WeekDay.Tue.rawValue : cell.weekLabel.text = "週四"
-//         case WeekDay.Tue.rawValue : cell.weekLabel.text = "週五"
-//         case WeekDay.Tue.rawValue : cell.weekLabel.text = "週六"
-//         default:
-//            cell.weekLabel.text = "週日"
-//        }
-        
-       cell.dateLabel.text = getDateInfo[indexPath.row].date
-       cell.weekLabel.text = String(getWeekDayStr(aa: getDateInfo[indexPath.row].weekDay))
-        print(getDateInfo[indexPath.row].date)
-        return cell
+       if let  cell = detailCollectionViwe.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell {
+            cell.dateLabel.text = getDateInfo[indexPath.row].date
+            cell.weekLabel.text = String(getWeekDayStr(weekDay: getDateInfo[indexPath.row].weekDay))
+            print(getDateInfo[indexPath.row].date)
+            return cell
+         }else{
+                return UICollectionViewCell()
+         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
     }
-//    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-//        scrollView.contentOffset.x / scrollView.frame.width
-//
-//    }
-    
 }
 /*
 extension ScheduleDetailViewController : UIScrollViewDelegate{

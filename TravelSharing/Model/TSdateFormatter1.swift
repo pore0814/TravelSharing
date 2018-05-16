@@ -8,32 +8,29 @@
 
 import Foundation
 
-
-class TSDateFormatter1{
+class TSDateFormatter1 {
 
     let dateformate = DateFormatter()
-    
-    func getYYMMDD(indexNumber:ScheduleInfo) -> [DateInfo]{
-        
+
+    func getYYMMDD(indexNumber: ScheduleInfo) -> [DateInfo] {
+
         dateformate.dateFormat = "yyyy MM dd"
-         print("----------")
-        print(indexNumber.date)
         dateformate.timeZone = TimeZone(abbreviation: "GMT+0:00")
         guard let startDate = dateformate.date(from: indexNumber.date),
               let  days     = Int(indexNumber.days) else {return []}
-        
+
         print("----------")
-        print("23",startDate)
-        
+        print("23", startDate)
+
         var TSDateArray = [DateInfo]()
-     
-        for i in 0...days {
-            guard let enddate = Calendar.current.date(byAdding: .day, value: i, to: startDate) else {return []}
+
+        for day in 0...days - 1 {
+            guard let enddate = Calendar.current.date(byAdding: .day, value: day, to: startDate) else {return []}
             dateformate.dateFormat = "MM/dd"
-            print("33",enddate)
+            print("33", enddate)
             let weekday = Calendar.current.component(.weekday, from: enddate)
             print(weekday)
-           
+
             let endDateStr = dateformate.string(from: enddate)
             let TSDate = DateInfo(weekDay: weekday, date: endDateStr)
             TSDateArray.append(TSDate)
@@ -41,5 +38,3 @@ class TSDateFormatter1{
       return TSDateArray
     }
 }
-
-

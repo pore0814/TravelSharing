@@ -14,36 +14,29 @@ import FirebaseStorage
 typealias LoginHandler = (_ msg: String?) -> Void
 
 struct ErrorCode {
-    static let Invalid_Email = "無效Email"
-    static let Worng_Password = "密碼錯誤"
-    static let Problem_Connecting = "無法連接FireBase"
-    static let User_not_Found = "無此帳號，請註冊"
-    static let Weak_Password = "密碼需大於6碼"
-    static let Email_Already_In_Use = "此帳號已存在"
+    static let inValidEmail = "無效Email"
+    static let worngPassword = "密碼錯誤"
+    static let problemConnecting = "無法連接FireBase"
+    static let userNotFound = "無此帳號，請註冊"
+    static let weakPassword = "密碼需大於6碼"
+    static let emailAlreadyInUse = "此帳號已存在"
 }
-
-
-
 
 class UserManager {
     static let shared = UserManager()
-    //static let uuid = UserDefaults.standard.string(forKey: "FireBaseUID")
     private init () {}
 
     let userDefaults = UserDefaults.standard
 
     var  storeageProfileRef: StorageReference {
-        return Storage.storage().reference(forURL: "gs://travelshare-d17da.appspot.com").child(Constants.Profile_image)
+        return Storage.storage().reference(forURL: "gs://travelshare-d17da.appspot.com").child(Constants.ProfileImage)
     }
 
     //登入
     func loginUser(email: String, password: String, loginHandler: LoginHandler?) {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-
-          //  Auth.auth().currentUser?.createProfileChangeRequest()
             if  error  != nil {
                 self.handleErrors(err: error! as NSError, loginHandler: loginHandler)
-
             } else {
                 loginHandler?(nil)
                 self.userDefaults.set(user?.uid, forKey: "FireBaseUID")
@@ -53,14 +46,14 @@ class UserManager {
     }
 
     //註冊
-    func  SingUp(email: String, password: String, username: String, userphoto: Data?, loginHandler: LoginHandler?) {
+    func  singUp(email: String, password: String, username: String, userphoto: Data?, loginHandler: LoginHandler?) {
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error != nil {
                 self.handleErrors(err: error! as NSError, loginHandler: loginHandler)
                 return
             }
+            
             guard let uid = user?.uid else {return}
-
             //設定image型態
             let metadate = StorageMetadata()
             metadate.contentType = "img/jpeg"
@@ -68,8 +61,9 @@ class UserManager {
             if let imageData = userphoto {
                 self.storeageProfileRef.child(uid).putData(imageData, metadata: metadate, completion: { (metadata, imageError) in
                     if imageError != nil {
-                        AlertToUser.shared.alerTheUserPurple(title: "錯誤訊息", message: imageError as! String)
-                        
+                        guard let imgError = imageError as? String else {return}
+                        AlertToUser.shared.alerTheUserPurple(title: "錯誤訊息", message: imgError)
+
                     }
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                         let userData = [Constants.Uid: uid, Constants.Email: email, Constants.Password: password, Constants.PhotoUrl: profileImageUrl, Constants.UserName: username] as [String: Any]
@@ -101,19 +95,19 @@ class UserManager {
         if let errCode = AuthErrorCode(rawValue: err.code) {
             switch errCode {
             case .wrongPassword:
-                loginHandler?(ErrorCode.Worng_Password)
+                loginHandler?(ErrorCode.worngPassword)
                 break
             case .weakPassword:
-                loginHandler?(ErrorCode.Weak_Password)
+                loginHandler?(ErrorCode.weakPassword)
                 break
             case .invalidEmail:
-                loginHandler?(ErrorCode.Invalid_Email)
+                loginHandler?(ErrorCode.inValidEmail)
                 break
             case .userNotFound:
-                loginHandler?(ErrorCode.User_not_Found)
+                loginHandler?(ErrorCode.userNotFound)
                 break
             case .emailAlreadyInUse:
-                loginHandler?(ErrorCode.Email_Already_In_Use)
+                loginHandler?(ErrorCode.emailAlreadyInUse)
                 break
             default:
                 break

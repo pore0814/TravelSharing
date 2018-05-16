@@ -17,8 +17,9 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func logOut(_ sender: Any) {
+        guard let switchToLoginPage = AppDelegate.shared?.switchToLoginViewController() else {return}
         UserManager.shared.logout()
-        AppDelegate.shared.switchToLoginViewController()
+        switchToLoginPage
     }
 
 }

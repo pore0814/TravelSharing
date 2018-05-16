@@ -11,6 +11,6 @@ import UIKit
 class LocationView: UIView {
 
     @IBOutlet weak var destinationLabel: UILabel!
-    
+
     @IBOutlet weak var arrivalLabel: UILabel!
 }
