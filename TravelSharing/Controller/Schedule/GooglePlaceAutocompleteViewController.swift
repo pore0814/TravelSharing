@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import SVProgressHUD
 
 class GooglePlaceAutocompleteViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
@@ -16,6 +17,10 @@ class GooglePlaceAutocompleteViewController: UIViewController, CLLocationManager
     @IBOutlet weak var googleMapStreetView: GMSPanoramaView!
 
     var locationManager = CLLocationManager()
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        SVProgressHUD.show(withStatus: "loading")
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +69,8 @@ class GooglePlaceAutocompleteViewController: UIViewController, CLLocationManager
 
         self.googleMapsView.animate(to: camera)
         self.locationManager.stopUpdatingHeading()
+        
+      
     }
 
     // MARK: GMSMapView Delegate
@@ -88,6 +95,8 @@ extension GooglePlaceAutocompleteViewController: GMSAutocompleteViewControllerDe
         print(camera)
         self.dismiss(animated: true, completion: nil) // dismiss after select place
         mapView.camera = camera
+        
+       
     }
 
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {

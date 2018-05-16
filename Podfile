@@ -18,6 +18,8 @@ pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'SwiftLint'
 pod 'IQKeyboardManagerSwift'
+pod 'SVProgressHUD'
+
   
 
 end

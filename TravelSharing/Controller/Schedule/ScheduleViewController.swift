@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -17,10 +18,19 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
      let dateFormatter1 = TSDateFormatter1()
      let destination = DestinationManager()
      @IBOutlet weak var tableView: UITableView!
+     var indicator = true
+    
+    
+
+    override func viewDidAppear(_ animated: Bool) {
+        if indicator  == true {
+        SVProgressHUD.show(withStatus: "loading")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      
         scheduleManager.delegate = self
 
         tableView.dataSource = self
@@ -41,6 +51,8 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
             self.schedules = ScheduleManager.shared.scheduleDataArray
             self.tableView.reloadData()
         }
+         SVProgressHUD.dismiss()
+         self.indicator = false
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
