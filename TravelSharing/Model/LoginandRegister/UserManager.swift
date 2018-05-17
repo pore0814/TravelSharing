@@ -41,6 +41,7 @@ class UserManager {
                 loginHandler?(nil)
                 self.userDefaults.set(user?.uid, forKey: "FireBaseUID")
                 self.userDefaults.synchronize()
+
             }
         }
     }
@@ -52,7 +53,7 @@ class UserManager {
                 self.handleErrors(err: error! as NSError, loginHandler: loginHandler)
                 return
             }
-            
+
             guard let uid = user?.uid else {return}
             //設定image型態
             let metadate = StorageMetadata()
@@ -62,8 +63,7 @@ class UserManager {
                 self.storeageProfileRef.child(uid).putData(imageData, metadata: metadate, completion: { (metadata, imageError) in
                     if imageError != nil {
                         guard let imgError = imageError as? String else {return}
-                        AlertToUser.shared.alerTheUserPurple(title: "錯誤訊息", message: imgError)
-
+                        AlertToUser().alert.showEdit("錯誤訊息", subTitle: imgError)
                     }
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                         let userData = [Constants.Uid: uid, Constants.Email: email, Constants.Password: password, Constants.PhotoUrl: profileImageUrl, Constants.UserName: username] as [String: Any]

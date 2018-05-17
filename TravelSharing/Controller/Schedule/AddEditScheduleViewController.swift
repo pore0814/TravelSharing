@@ -41,7 +41,7 @@ class AddEditScheduleViewController: UIViewController {
         navigationItem.rightBarButtonItem =  rightBarButtonItem
         navigationItem.title = scheduleInfoDetail?.name
 
-        //判斷是否有值(無值就顯今天日期，有值顯示Schedule帶過來的值）
+//判斷是否有值(無值就顯今天日期，有值顯示Schedule帶過來的值）
         if  let editDate = scheduleInfoDetail?.date { //有值
             calendarView.scrollToDate(formatter.date(from: editDate)!)
             calendarView.selectDates([formatter.date(from: editDate)!])
@@ -66,18 +66,17 @@ class AddEditScheduleViewController: UIViewController {
 
         if scheduleInfoDetail == nil {
             if scheduleDateText.text != "", scheduleDaysText.text != "", scheduleNameText.text != "" {
-                    //寫入資料
+    //儲存資料  pop 回上頁
                      ScheduleManager.shared.saveScheduleInfo(uid: scheduleInfoDetail?.uid,
                                                              scheduleName: scheduleNameText.text!,
                                                              scheudleDate: scheduleDateText.text!,
                                                              scheduleDay: scheduleDaysText.text!)
                      self.navigationController?.popViewController(animated: true)
-                 }else {
-                       AlertToUser.shared.alerTheUserPurple(title: Constants.WrongMessage,
-                                                            message: "表格不可為空白")
+                 } else {
+                       AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "表格不可為空白")
                 }
-         }else{
-            //UpDate
+         } else {
+    //更新資料  pop 回上頁
               ScheduleManager.shared.updateaveScheduleInfo(scheduleUid: scheduleInfoDetail?.uid,
                                                            scheduleName: scheduleNameText.text!,
                                                            scheudleDate: scheduleDateText.text!,
@@ -106,7 +105,7 @@ class AddEditScheduleViewController: UIViewController {
          month.text = self.formatter.string(from: data) + "月"
     }
 
-    //收鍵盤
+//收鍵盤
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -172,7 +171,7 @@ extension AddEditScheduleViewController: JTAppleCalendarViewDataSource, JTAppleC
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         setupCalendarViewData(dateSegment: visibleDates)
     }
-    
+
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
     }
 }

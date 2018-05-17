@@ -24,7 +24,7 @@ class DistinationTableViewCell: UITableViewCell, GMSMapViewDelegate {
     }
 
     func mapViewCell(latitude: Double, longitude: Double, destination: String) {
-       
+
         guard let lat = latitude as? Double,
               let long = longitude as? Double,
               let name = destination as? String else {return}

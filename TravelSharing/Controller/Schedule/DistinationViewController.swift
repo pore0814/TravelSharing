@@ -29,7 +29,7 @@ class DistinationViewController: UIViewController, UITableViewDelegate, UITableV
         let nib = UINib(nibName: "DistinationTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "DistinationTableViewCell")
 
-        tableView.separatorStyle = .none
+       // tableView.separatorStyle = .none
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

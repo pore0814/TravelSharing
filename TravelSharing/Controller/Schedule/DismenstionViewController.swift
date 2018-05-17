@@ -39,6 +39,7 @@ class DismenstionViewController: UIViewController, GMSMapViewDelegate {
 //        streetView.addGestureRecognizer(tapGesture)
 //       streetView.isUserInteractionEnabled = true
 
+// 在location 上顯示 Marker
         initGooglemap(latitude: latitude, longitude: longtitude, name: "Annie")
     }
 
@@ -59,40 +60,40 @@ class DismenstionViewController: UIViewController, GMSMapViewDelegate {
 //    @objc func tapBlurButton(recignizer: UITapGestureRecognizer) {
 //        print("Please Help!")
 //    }
-
-    @IBAction func mapViewFullScreenTaped(_ sender: Any) {
-        let fullScreen = UIScreen.main.bounds
-        mapView.frame = CGRect(x: 0, y: 0, width: fullScreen.width, height: fullScreen.height)
-        print("================")
-        print(fullScreen .width)
-        print(fullScreen .height)
-        print("aaa")
-    }
-
-    @IBAction func streedViewFullScreenTaped(_ sender: Any) {
-        let fullScreen = UIScreen.main.bounds
-        streetView.frame = CGRect(x: 0, y: 0, width: fullScreen.width, height: fullScreen.height)
-        print("================")
-        print(fullScreen .width)
-        print(fullScreen .height)
-    }
-
-    @IBAction func mpaViewPressed(_ sender: Any) {
-//        streetView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-//        streetView.layoutSubviews()
-        let screen = UIScreen.main.bounds
-        mapView.frame = CGRect(x: 0, y: 0, width: screen.width, height: screen.height)
-        print("================")
-        print(screen.width)
-        print(screen.height)
-       // mapView.isHidden = false
-        print("aaa")
-
-    }
-
-    @IBAction func streetViewPressed(_ sender: Any) {
-        streetView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-         print("bbbb")
-    }
+//
+//    @IBAction func mapViewFullScreenTaped(_ sender: Any) {
+//        let fullScreen = UIScreen.main.bounds
+//        mapView.frame = CGRect(x: 0, y: 0, width: fullScreen.width, height: fullScreen.height)
+//        print("================")
+//        print(fullScreen .width)
+//        print(fullScreen .height)
+//        print("aaa")
+//    }
+//
+//    @IBAction func streedViewFullScreenTaped(_ sender: Any) {
+//        let fullScreen = UIScreen.main.bounds
+//        streetView.frame = CGRect(x: 0, y: 0, width: fullScreen.width, height: fullScreen.height)
+//        print("================")
+//        print(fullScreen .width)
+//        print(fullScreen .height)
+//    }
+//
+//    @IBAction func mpaViewPressed(_ sender: Any) {
+////        streetView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+////        streetView.layoutSubviews()
+//        let screen = UIScreen.main.bounds
+//        mapView.frame = CGRect(x: 0, y: 0, width: screen.width, height: screen.height)
+//        print("================")
+//        print(screen.width)
+//        print(screen.height)
+//       // mapView.isHidden = false
+//        print("aaa")
+//
+//    }
+//
+//    @IBAction func streetViewPressed(_ sender: Any) {
+//        streetView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+//         print("bbbb")
+//    }
 
 }

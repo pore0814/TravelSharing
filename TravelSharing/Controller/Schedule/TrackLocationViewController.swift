@@ -11,20 +11,17 @@ import GoogleMaps
 import GooglePlaces
 import SVProgressHUD
 
-class GooglePlaceAutocompleteViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
+class  UserLocationViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
     @IBOutlet weak var googleMapsView: GMSMapView!
     @IBOutlet weak var googleMapStreetView: GMSPanoramaView!
 
     var locationManager = CLLocationManager()
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        SVProgressHUD.show(withStatus: "loading")
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+//詢問使用者權限
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -69,8 +66,7 @@ class GooglePlaceAutocompleteViewController: UIViewController, CLLocationManager
 
         self.googleMapsView.animate(to: camera)
         self.locationManager.stopUpdatingHeading()
-        
-      
+
     }
 
     // MARK: GMSMapView Delegate
@@ -80,31 +76,8 @@ class GooglePlaceAutocompleteViewController: UIViewController, CLLocationManager
 
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         self.googleMapsView.isMyLocationEnabled = true
-        if (gesture){
+        if (gesture) {
             mapView.selectedMarker = nil
         }
     }
-}
-
-extension GooglePlaceAutocompleteViewController: GMSAutocompleteViewControllerDelegate {
-
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude,
-                                              longitude: place.coordinate.longitude, zoom: 15.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        print(camera)
-        self.dismiss(animated: true, completion: nil) // dismiss after select place
-        mapView.camera = camera
-        
-       
-    }
-
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        print("Error auto complete\(error)")
-    }
-
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        self.dismiss(animated: true, completion: nil)
-    }
-
 }

@@ -28,12 +28,12 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 //日期dateFormatter function 用起程日期及天數計算出所有date 
         guard let detail = schedulDetail else {return}
         getDateInfo =  dateFormatter1.getYYMMDD(indexNumber: detail)
-    //呼叫Destination Detail ViewController內容
+//呼叫Destination Detail ViewController內容
         guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as?
                                                                     DistinationViewController else {return}
         destinationScrollView.frame = obj1.view.frame
         self.destinationScrollView.addSubview(obj1.view)
-    //ScrollView 設定
+//ScrollView 設定
         destinationScrollView.isPagingEnabled = true
         destinationScrollView.contentSize = CGSize(
                               width: self.view.bounds.width * CGFloat(getDateInfo.count),
@@ -67,7 +67,6 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
                             .instantiateViewController(withIdentifier: "AddLocationViewController")
                                                         as? AddLocationViewController else {return}
           self.navigationController?.pushViewController(scheduleDetailToAddLocation, animated: true)
-          getDateInfo.removeAll()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -80,7 +79,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
             cell.weekLabel.text = String(getWeekDayStr(weekDay: getDateInfo[indexPath.row].weekDay))
             print(getDateInfo[indexPath.row].date)
             return cell
-         }else{
+         } else {
                 return UICollectionViewCell()
          }
     }

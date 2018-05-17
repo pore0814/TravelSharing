@@ -42,7 +42,7 @@ class AddLocationViewController: UIViewController {
 
 }
 
-//現在時間
+//取得現在時間
     func getTime() {
         let date = Date()
         let calendar = Calendar.current
@@ -115,24 +115,22 @@ extension AddLocationViewController: GMSAutocompleteViewControllerDelegate {
 
             if lat != nil && long != nil {
                 guard let dismenstionViewController = UIStoryboard(name: "Schedule", bundle: nil)
-                                .instantiateViewController(withIdentifier: "DismenstionViewController")   as? DismenstionViewController else {return}
-                
+                                .instantiateViewController(withIdentifier: "DismenstionViewController")as? DismenstionViewController else {return}
                 dismenstionViewController.lat = place.coordinate.latitude
                 dismenstionViewController.long  = place.coordinate.longitude
                 self.navigationController?.pushViewController(dismenstionViewController, animated: true)
-              }else{
-                AlertToUser.shared.alerTheUserPurple(title: Constants.WrongMessage, message: "需要正確位置哦")
+              } else {
+                AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "需要正確位置哦")
             }
-        
-    //placeText 顯示 Locaion Name
+//placeText 顯示 Locaion Name
         placeText.text = place.name
         self.dismiss(animated: true, completion: nil) // dismiss after select place
     }
-    
+
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         print("Error auto complete\(error)")
     }
-    
+
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         self.dismiss(animated: true, completion: nil)
 }

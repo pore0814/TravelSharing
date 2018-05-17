@@ -10,6 +10,7 @@
 		4B14BAF96DE255397327C523 /* Pods_TravelSharing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F353853584E1967591DC1429 /* Pods_TravelSharing.framework */; };
 		D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */; };
 		D10418F0209982770084952E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EF209982770084952E /* CustomCell.swift */; };
+		D126D05920AD2F6400F46AE3 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126D05820AD2F6400F46AE3 /* TrackViewController.swift */; };
 		D127E16D20A52EE300EBB5F7 /* NavigationCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */; };
 		D127E16F20A5360300EBB5F7 /* TrackLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */; };
 		D127E17220A53F9B00EBB5F7 /* TrackLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E17120A53F9B00EBB5F7 /* TrackLocationViewController.swift */; };
@@ -28,7 +29,6 @@
 		D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B75FC209729C400D27B86 /* RoundImage.swift */; };
 		D18B9B5E209DEE0A00EB8D16 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */; };
 		D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */; };
-		D18B9B62209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B61209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift */; };
 		D18B9B6420A0248500EB8D16 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6320A0248500EB8D16 /* Date.swift */; };
 		D18B9B6720A030E300EB8D16 /* DestinationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6620A030E300EB8D16 /* DestinationManager.swift */; };
 		D19B2C2A20A4EACD0076E4ED /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */; };
@@ -66,6 +66,7 @@
 		69BAEA4434D7C88796C98B4C /* Pods-TravelSharing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.debug.xcconfig"; sourceTree = "<group>"; };
 		D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditScheduleViewController.swift; sourceTree = "<group>"; };
 		D10418EF209982770084952E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		D126D05820AD2F6400F46AE3 /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCotroller.swift; sourceTree = "<group>"; };
 		D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackLocation.storyboard; sourceTree = "<group>"; };
 		D127E17120A53F9B00EBB5F7 /* TrackLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackLocationViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		D18B75FC209729C400D27B86 /* RoundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
 		D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
-		D18B9B61209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaceAutocompleteViewController.swift; sourceTree = "<group>"; };
 		D18B9B6320A0248500EB8D16 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		D18B9B6620A030E300EB8D16 /* DestinationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationManager.swift; sourceTree = "<group>"; };
 		D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -221,11 +221,11 @@
 		D1BBA31A20957256005E5AAE /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				D126D05820AD2F6400F46AE3 /* TrackViewController.swift */,
 				D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */,
 				D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */,
 				D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */,
 				D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */,
-				D18B9B61209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift */,
 				D1DA0A3620A6FFF4002D8CF6 /* DismenstionViewController.swift */,
 				D179F85F20A93A7500D7DC25 /* DistinationViewController.swift */,
 			);
@@ -532,6 +532,7 @@
 				D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */,
 				D1658265209AC2A300C37F8D /* DistinationTableViewCell.swift in Sources */,
 				D1DA0A3720A6FFF4002D8CF6 /* DismenstionViewController.swift in Sources */,
+				D126D05920AD2F6400F46AE3 /* TrackViewController.swift in Sources */,
 				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,
 				D14C0FEE209823A800026AF1 /* Constants.swift in Sources */,
 				D127E17220A53F9B00EBB5F7 /* TrackLocationViewController.swift in Sources */,
@@ -557,7 +558,6 @@
 				D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */,
 				D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */,
 				D1F5422D2099F09D007EBE96 /* ScheduleManager.swift in Sources */,
-				D18B9B62209EFB8C00EB8D16 /* GooglePlaceAutocompleteViewController.swift in Sources */,
 				D1B1608020A332A900B69222 /* UIView.swift in Sources */,
 				D1A01CA720AB047600E00988 /* WeekDayEnum.swift in Sources */,
 				D1DA0A2D20A656CB002D8CF6 /* LocationView.swift in Sources */,
@@ -712,7 +712,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -728,7 +731,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

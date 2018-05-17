@@ -19,9 +19,8 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
      let destination = DestinationManager()
      @IBOutlet weak var tableView: UITableView!
      var indicator = true
-    
-    
 
+// display progress before loading data
     override func viewDidAppear(_ animated: Bool) {
         if indicator  == true {
         SVProgressHUD.show(withStatus: "loading")
@@ -30,7 +29,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+
         scheduleManager.delegate = self
 
         tableView.dataSource = self
@@ -66,7 +65,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell.updateCell(with: data)
                 cell.selectionStyle = .none
                 return cell
-        }else{
+        } else {
             return UITableViewCell()
         }
     }

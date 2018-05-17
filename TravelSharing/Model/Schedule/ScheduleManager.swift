@@ -40,7 +40,7 @@ class ScheduleManager {
             if error == nil {
                 FireBaseConnect.databaseRef.child(Constants.FireBaseUsers).child(userid).child(Constants.FireBaseSchedule).child(scheduleId).removeValue { error, _ in
                     if error != nil {
-                        AlertToUser.shared.alerTheUserPurple(title: Constants.WrongMessage, message: "刪除失敗")
+                        AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "刪除失敗")
                     }
                 }
             }

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import SCLAlertView
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
 
@@ -52,19 +53,22 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 */
 
     @IBAction func logIn(_ sender: Any) {
-        guard let passToNextPage = AppDelegate.shared?.switchMainViewController() else {return}
 
         if emailTextField.text != "" && passwordTextField.text != "" {
 
             UserManager.shared.loginUser(email: emailTextField.text!, password: passwordTextField.text!) { (message) in
-                if message != nil {
-                AlertToUser.shared.alerTheUserPurple(title: Constants.WrongMessage, message: message!)
+                if  message != nil {
+                    let meg = "message" + message!
+                     // AlertToUser().alert.showError(Constants.WrongMessage, subTitle: message!)
+                    AlerToUser1.alert.showError("Error", subTitle: message!)
+                     //AlerToUser2.shared.alertToUser(title: Constants.WrongMessage, subTitle: message!)
                 } else {
-                    passToNextPage
+                   // passToNextPage
+                   guard let passToNextPage = AppDelegate.shared?.switchMainViewController() else {return}
                 }
             }
         } else {
-            AlertToUser.shared.alerTheUserPurple(title: "請填寫表格", message: "填寫正確的Email和密碼")
+            AlertToUser().alert.showEdit("請填寫表格", subTitle: "填寫正確的Email和密碼")
         }
 
     }

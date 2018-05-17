@@ -9,13 +9,20 @@
 import Foundation
 import SCLAlertView
 
-class AlertToUser {
+struct AlertToUser {
+    let alert = SCLAlertView()
+}
 
-    static let shared = AlertToUser()
+struct AlerToUser1{
+    static let alert = SCLAlertView()
+}
+
+class AlerToUser2{
+    static let shared = AlerToUser2()
            let alert = SCLAlertView()
-
-    func alerTheUserPurple(title: String, message: String) {
-        alert.showEdit(title, subTitle: message)
+    
+     func alertToUser(title:String,subTitle:String){
+           alert.showEdit(title, subTitle: subTitle)
     }
-
+    
 }

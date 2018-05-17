@@ -46,7 +46,7 @@ class TSDateFormatter {
         let startdate = getYYMMDD(indexNumber: indexNumber)
         var dateInfoEE = [Int]()
         guard let days = Int(indexNumber.days) else {return [0]}
-        
+
             for day in 0...days {
                 let endate = Calendar.current.date(byAdding: .day, value: day, to: startdate)
                 let weekday = Calendar.current.component(.weekday, from: endate!)
@@ -64,7 +64,7 @@ class TSDateFormatter {
                 let TSDate = DateInfo(weekDay: weekArray[day], date: aArray[day])
                 TSDateArray.append(TSDate)
             }
-        
+
         return TSDateArray
     }
 
