@@ -20,7 +20,7 @@ class DistinationTableViewCell: UITableViewCell, GMSMapViewDelegate {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        rightUiview.setShadow()
+        rightUiview.imageSetRounded()
     }
 
     func mapViewCell(latitude: Double, longitude: Double, destination: String) {

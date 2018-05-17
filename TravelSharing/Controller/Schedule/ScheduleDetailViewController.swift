@@ -17,6 +17,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
     var schedulDetail: ScheduleInfo?
     let dateFormatter1 = TSDateFormatter1()
+    var destinationManger = DestinationManager()
 
     @IBOutlet weak var destinationScrollView: UIScrollView!
     @IBOutlet weak var detailCollectionViwe: UICollectionView!
@@ -27,7 +28,12 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         navigationItem.title = schedulDetail?.name
 //日期dateFormatter function 用起程日期及天數計算出所有date 
         guard let detail = schedulDetail else {return}
+        
         getDateInfo =  dateFormatter1.getYYMMDD(indexNumber: detail)
+        print("----------31")
+        for aaad in 0...(getDateInfo.count-1) {
+        print(getDateInfo[aaad].date)
+        }
 //呼叫Destination Detail ViewController內容
         guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as?
                                                                     DistinationViewController else {return}
@@ -39,18 +45,18 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
                               width: self.view.bounds.width * CGFloat(getDateInfo.count),
                               height: 250)
         destinationScrollView.showsVerticalScrollIndicator = false
-    //navigation bar ButtonItem
+//navigation bar ButtonItem
         let addBarButtonItem = UIBarButtonItem.init(title: "Add", style: .done, target: self,
                                                     action: #selector(addTapped))
         navigationItem.rightBarButtonItem = addBarButtonItem
-    // CollectionView  reload
+// CollectionView  reload
         detailCollectionViwe.reloadData()
         detailCollectionViwe.delegate =  self
         detailCollectionViwe.dataSource =  self
-    //註冊CollectionViewCell
+//註冊CollectionViewCell
         let nib = UINib(nibName: "DetailCollectionViewCell", bundle: nil)
         self.detailCollectionViwe.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
-    //CollectionView 間距設定
+//CollectionView 間距設定
         guard let layout = detailCollectionViwe.collectionViewLayout as?
                                                 UICollectionViewFlowLayout else {return}
         layout.itemSize = CGSize(width: (self.view.frame.size.width/2.0) - 2.0, height: 100)
@@ -60,6 +66,10 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         layout.minimumLineSpacing = 2.0
         layout.minimumInteritemSpacing = 2.0
         detailCollectionViwe.setCollectionViewLayout(layout, animated: false)
+//test
+        destinationManger.getDestinationInfo()
+        
+        
     }
 
     @objc func addTapped(sender: AnyObject) {

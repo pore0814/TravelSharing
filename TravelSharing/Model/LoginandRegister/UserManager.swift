@@ -110,7 +110,7 @@ class UserManager {
                 loginHandler?(ErrorCode.emailAlreadyInUse)
                 break
             default:
-                break
+                loginHandler?("請檢查錯誤")
             }
         }
     }
