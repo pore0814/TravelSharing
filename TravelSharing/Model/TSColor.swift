@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum TravelSharingColor:String {
+enum TSColor:String {
 
     case gradientPurple = "7830B8"
     

@@ -42,9 +42,6 @@ class AddLocationViewController: UIViewController {
         categoryText.text = "景點"
         createDatePicker()
         
-     
-        
-        
 }
     
      //現在時間
@@ -81,7 +78,7 @@ class AddLocationViewController: UIViewController {
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
         toolbar.setItems([done], animated: false)
         
-        timeText.inputAccessoryView = toolbar
+         timeText.inputAccessoryView = toolbar
          timeText.inputView = picker
          picker.datePickerMode = .time
     }

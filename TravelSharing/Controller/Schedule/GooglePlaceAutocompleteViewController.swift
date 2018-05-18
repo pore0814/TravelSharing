@@ -13,8 +13,7 @@ import GooglePlaces
 
 class GooglePlaceAutocompleteViewController: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate{
     
-   
-    
+
     
     @IBOutlet weak var googleMapsView: GMSMapView!
     var locationManager = CLLocationManager()
@@ -30,13 +29,36 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .pla
         locationManager.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
         
+       // 25.048381, 121.516975  //25.042798, 121.564869
         
         initGoogleMaps()
+        
+        var position = CLLocationCoordinate2D(latitude: 25.034028,longitude: 121.56426)
+        var marker = GMSMarker(position: position)
+        marker.title = "Hello World"
+        marker.map = googleMapsView
+
     }
     
     
-   @objc func searchTapped(){
+    func initGoogleMaps(){
+        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.isMyLocationEnabled = true
+        self.googleMapsView.camera = camera
+
+        
+        self.googleMapsView.delegate = self
+        self.googleMapsView.isMyLocationEnabled = true
+        self.googleMapsView.settings.myLocationButton = true
+        
+        
+    }
     
+    
+    
+    
+   @objc func searchTapped(){
     let autocompleteController = GMSAutocompleteViewController()
     autocompleteController.delegate = self
     self.locationManager.startUpdatingLocation()
@@ -44,27 +66,7 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .pla
         
     }
 
-    func initGoogleMaps(){
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.isMyLocationEnabled = true
-        self.googleMapsView.camera = camera
-        
-        
-        self.googleMapsView.delegate = self
-        self.googleMapsView.isMyLocationEnabled = true
-        self.googleMapsView.settings.myLocationButton = true
-        
-        
-        
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
-    }
-    
+   
    //  MARK: CLLocation Manager Delegate
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -73,10 +75,12 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .pla
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
+       
         let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 17.0)
-
+        
         self.googleMapsView.animate(to: camera)
         self.locationManager.stopUpdatingHeading()
+
        
     }
     

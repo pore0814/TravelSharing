@@ -11,10 +11,11 @@ import UIKit
 class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
      var schedules = [ScheduleInfo]()
-     var dateInfoArray = [DateInfo]()
+//     var dateInfoArray = [DateInfo]()
      var indexNumber =  0
      var getDataFromUpdate : ScheduleInfo?
      let scheduleManager = ScheduleManager.shared
+     let dateFormatter = TSDateFormatter()
     
     
 
@@ -27,33 +28,23 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         scheduleManager.delegate = self
         
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.backgroundView =  UIImageView(image: UIImage(named: "schedulePage"))
-        
 
         let leftNibName = UINib(nibName: "ScheduleTableViewCell", bundle: nil)
         tableView.register(leftNibName, forCellReuseIdentifier: "ScheduleTableViewCell")
 
         let rightNibName = UINib(nibName: "ScheuleRightTableViewCell", bundle: nil)
         tableView.register(rightNibName, forCellReuseIdentifier: "ScheuleRightTableViewCell")
-        //FireBase撈資料
-    //   ScheduleManager.shared.getUserInfo()
-       //FireBase撈完資料會通知reloadData
-       // NotificationCenter.default.addObserver(forName: .scheduleInfo, object: nil, queue: nil, using: catchNotification)
-        
-    
+
         ScheduleManager.shared.getScheduleContent()
-       // ScheduleManager.shared.getScheduleContent_value()
         
-         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
-        
-        
-    }
+        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
+      }
 
     @objc func getData(notification:Notification){
         DispatchQueue.main.async {
@@ -91,7 +82,6 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         let data = self.schedules[indexPath.row]
             cell.backgroundColor  = UIColor.clear
             cell.updateCell(with: data)
-        
         return cell
         
 //            let cell = tableView.dequeueReusableCell(withIdentifier: "ScheuleRightTableViewCell", for: indexPath) as! ScheuleRightTableViewCell
@@ -104,40 +94,18 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 //        }
         
     }
-    //算日期
-    
-    func getDate(indexNumber: ScheduleInfo) -> [DateInfo]{
-        let dateformate = DateFormatter()
-        dateformate.dateFormat = "yyyy MM dd"
-        print(indexNumber.date)
-        
-//        print(dateformate.date(from:indexNumber.date))
-//        print(Int(indexNumber.days)!)
-    if  let startdate = dateformate.date(from:indexNumber.date),
-        let day = Int(indexNumber.days) {
-        
-      
-        for i in 0...day {
-        let endate = Calendar.current.date(byAdding:.day , value:i , to: startdate)
-        dateformate.dateFormat = "MM.dd"
-       let a =  dateformate.string(from: endate!)
-        dateformate.dateFormat = "EE"
-       let weekday = Calendar.current.component(.weekday, from: endate!)
-        print(weekday)
-        let vactionDate = DateInfo(weekDay: weekday, date: a)
-        dateInfoArray.append(vactionDate)
-        }
-        }
-        return dateInfoArray
-    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let scheduleDetailViewController = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "ScheduleDetailViewController") as!ScheduleDetailViewController
+        let scheduleDetailViewController = UIStoryboard(name: "Schedule",bundle: nil)
+                    .instantiateViewController(withIdentifier: "ScheduleDetailViewController")
+                     as! ScheduleDetailViewController
+
         let data = self.schedules[indexPath.row]
         
-        scheduleDetailViewController.getDateInfo = getDate(indexNumber: data)
+//        dateInfoArray.removeAll()
+    
+        scheduleDetailViewController.getDateInfo = dateFormatter.getTSDate(indexNumer: data)
         self.navigationController?.pushViewController(scheduleDetailViewController, animated: true)
-        
     }
     
    //Edit and Delete
@@ -145,14 +113,12 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         let editButton = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexpath) in
             let mainstoryboard: UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
             let EditViewController = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddEditScheduleViewController
-         
-            
+
             self.navigationController?.pushViewController(EditViewController, animated: true)
             EditViewController.scheduleInfoDetail = self.schedules[indexPath.row]
             self.indexNumber = indexPath.row
         }
            editButton.backgroundColor = UIColor.orange
-    
         
         let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexpath) in
             ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid)
@@ -162,7 +128,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         }
             deleteButton.backgroundColor = UIColor.red
             return[editButton,deleteButton]
-    }
+     }
 }
 
 
