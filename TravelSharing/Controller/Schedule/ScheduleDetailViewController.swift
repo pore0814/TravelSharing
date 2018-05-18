@@ -36,7 +36,6 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         }
         
 //ScrollView 設定
-        
         destinationScrollView.isDirectionalLockEnabled = true // 是否限制滑動時只能單個方向 垂直或水平滑動
         destinationScrollView.showsHorizontalScrollIndicator = true
         destinationScrollView.bounces = true //無彈回效果
@@ -106,21 +105,44 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }
-/*
+
 extension ScheduleDetailViewController : UIScrollViewDelegate{
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let layout = self.detailCollectionViwe.collectionViewLayout as!
-        UICollectionViewFlowLayout
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    
+        guard  let screenshotsCollectionViewFlowLayout = self.detailCollectionViwe.collectionViewLayout as? UICollectionViewFlowLayout else {return}
+       
+
         
-        let cellwidthIncludingSapcing = layout.itemSize.width + layout.minimumLineSpacing
-        var offset = targetContentOffset.pointee
-        let index = (offset.x + scrollView.contentInset.left) / cellwidthIncludingSapcing
-        let roundedIndex = round(index)
+       let screenshotsDistanceBetweenItemsCenter = screenshotsCollectionViewFlowLayout.minimumLineSpacing + screenshotsCollectionViewFlowLayout.itemSize.width
+        let offsetFactor = screenshotsDistanceBetweenItemsCenter / self.view.frame.size.width
+        if (scrollView == detailCollectionViwe) {
+            let xOffset = scrollView.contentOffset.x - scrollView.frame.origin.x
+            destinationScrollView.contentOffset.x = xOffset / offsetFactor
+        }else if(scrollView == destinationScrollView) {
+            print("AAAAAAA")
+//            let xOffset = scrollView.contentOffset.x - scrollView.frame.origin.x
+//            detailCollectionViwe.contentOffset.x = xOffset * offsetFactor
+        }
         
-        offset = CGPoint(x: roundedIndex * cellwidthIncludingSapcing - scrollView.contentInset.left, y: roundedIndex * cellwidthIncludingSapcing - scrollView.contentInset.left)
-        targetContentOffset.pointee = offset
+        
+        
+        
+//
+//        let cellwidthIncludingSapcing = layout.itemSize.width + layout.minimumLineSpacing
+//        var offset = targetContentOffset.pointee
+//        let index = (offset.x + scrollView.contentInset.left) / cellwidthIncludingSapcing
+//        let roundedIndex = round(index)
+        
+        
+        
+        
+        
+//
+//        offset = CGPoint(x: roundedIndex * cellwidthIncludingSapcing - scrollView.contentInset.left, y: roundedIndex * cellwidthIncludingSapcing - scrollView.contentInset.left)
+//        targetContentOffset.pointee = offset
+    
     }
     
 }
- */
+
