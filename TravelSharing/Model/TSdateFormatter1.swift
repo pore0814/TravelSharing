@@ -31,8 +31,10 @@ class TSDateFormatter1 {
             let weekday = Calendar.current.component(.weekday, from: enddate)
             print(weekday)
 
+            let dayth = "Day"+String(day+1)
+
             let endDateStr = dateformate.string(from: enddate)
-            let TSDate = DateInfo(weekDay: weekday, date: endDateStr)
+            let TSDate = DateInfo(weekDay: weekday, date: endDateStr, dayth: dayth)
             TSDateArray.append(TSDate)
         }
       return TSDateArray

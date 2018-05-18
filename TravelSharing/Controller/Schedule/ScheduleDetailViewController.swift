@@ -28,23 +28,31 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         navigationItem.title = schedulDetail?.name
 //日期dateFormatter function 用起程日期及天數計算出所有date 
         guard let detail = schedulDetail else {return}
-        
         getDateInfo =  dateFormatter1.getYYMMDD(indexNumber: detail)
         print("----------31")
         for aaad in 0...(getDateInfo.count-1) {
         print(getDateInfo[aaad].date)
+        print(getDateInfo[aaad].dayth)
         }
-//呼叫Destination Detail ViewController內容
-        guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as?
-                                                                    DistinationViewController else {return}
-        destinationScrollView.frame = obj1.view.frame
-        self.destinationScrollView.addSubview(obj1.view)
+//呼叫DestinationDetailViewController內容
+        for index in 0...3 {
+            guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as? DestinationViewController else {return}
+            obj1.scheduleUid = schedulDetail?.uid
+            obj1.dayths = getDateInfo[1].dayth
+            var frame = CGRect(x:destinationScrollView.frame.width * CGFloat(index), y:0 , width: destinationScrollView.frame.width, height:250)
+            obj1.view.frame = frame
+            
+            //obj1.dayths = getDateInfo[1].dayth
+            destinationScrollView.addSubview(obj1.view)
+        }
 //ScrollView 設定
         destinationScrollView.isPagingEnabled = true
+        
         destinationScrollView.contentSize = CGSize(
                               width: self.view.bounds.width * CGFloat(getDateInfo.count),
                               height: 250)
         destinationScrollView.showsVerticalScrollIndicator = false
+        
 //navigation bar ButtonItem
         let addBarButtonItem = UIBarButtonItem.init(title: "Add", style: .done, target: self,
                                                     action: #selector(addTapped))
@@ -66,16 +74,16 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         layout.minimumLineSpacing = 2.0
         layout.minimumInteritemSpacing = 2.0
         detailCollectionViwe.setCollectionViewLayout(layout, animated: false)
-//test
-        destinationManger.getDestinationInfo()
-        
-        
     }
 
+    
     @objc func addTapped(sender: AnyObject) {
           guard let scheduleDetailToAddLocation = UIStoryboard(name: "Schedule", bundle: nil)
                             .instantiateViewController(withIdentifier: "AddLocationViewController")
                                                         as? AddLocationViewController else {return}
+        scheduleDetailToAddLocation.dateSelected = getDateInfo
+        scheduleDetailToAddLocation.uid = schedulDetail?.uid
+
           self.navigationController?.pushViewController(scheduleDetailToAddLocation, animated: true)
     }
 
@@ -87,7 +95,6 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
        if let  cell = detailCollectionViwe.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell {
             cell.dateLabel.text = getDateInfo[indexPath.row].date
             cell.weekLabel.text = String(getWeekDayStr(weekDay: getDateInfo[indexPath.row].weekDay))
-            print(getDateInfo[indexPath.row].date)
             return cell
          } else {
                 return UICollectionViewCell()

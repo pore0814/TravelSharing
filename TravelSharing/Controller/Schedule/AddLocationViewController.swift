@@ -10,21 +10,27 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class AddLocationViewController: UIViewController {
+class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    @IBOutlet weak var locationText: UITextField!
+    @IBOutlet weak var dateSelectedText: UITextField!
     @IBOutlet weak var categoryText: UITextField!
     @IBOutlet weak var timeText: UITextField!
-    @IBOutlet weak var placeText: UITextField!
+    @IBOutlet weak var destinationText: UITextField!
     @IBOutlet weak var stackView: UIStackView!
 
     let picker =  UIDatePicker()
+    let destinationManager = DestinationManager()
 
-    var lat: Double?
-    var long: Double?
+    var lat = 0.0
+    var long = 0.0
+    var dateSelected: [DateInfo]?
+    var uid: String?
+    var pickerView = UIPickerView()
+    var daythRow = "Day1"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
 //中心點設在畫面寛度中心點再+200 , animate設時間帶, 將stackview中心點帶到畫面寬度的中心點
        stackView.center.x = self.view.frame.width + 200
 
@@ -40,6 +46,18 @@ class AddLocationViewController: UIViewController {
         categoryText.text = "景點"
         createDatePicker()
 
+        for index in dateSelected! {
+            print(index.date)
+            dateSelectedText.text = index.date
+        }
+// pickView
+        guard let dateselect = dateSelected else {return}
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        dateSelectedText.inputView = pickerView
+        dateSelectedText.textAlignment = .center
+        dateSelectedText.text = dateselect[0].date
+
 }
 
 //取得現在時間
@@ -48,16 +66,33 @@ class AddLocationViewController: UIViewController {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
-        timeText.text = "\(hour):\(minutes)"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        let timeString = formatter.string(from: date)
+        timeText.text = "\(timeString)"
+        //timeText.text = "\(hour):\(minutes)"
     }
 
     @IBAction func saveBtn(_ sender: Any) {
+        if destinationText.text! == "" {
+            AlerToUser1.alert.showError(Constants.WrongMessage, subTitle: "請選擇目的地")
+        } else {
         print("-----------")
-        print("43", timeText.text)
-        print(categoryText.text)
-        print(placeText.text)
-        print(long)
-        print(lat)
+        print("79", timeText.text)
+        print("80", categoryText.text)
+        print("81", destinationText.text)
+        print("82", daythRow)
+        print("83", lat)
+        print("84", long)
+        print(dateSelectedText.text)
+         print(dateSelectedText.text! + "_" + timeText.text!)
+        print(uid!)
+
+         let saveDate = Destination(name: destinationText.text!, time: timeText.text!, date: dateSelectedText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!)
+          print(saveDate)
+          destinationManager.saveDestinationInfo(uid: uid!, dayth: daythRow, destination: saveDate)
+          destinationText.text = ""
+        }
     }
 //Time Picker
     func createDatePicker() {
@@ -75,12 +110,11 @@ class AddLocationViewController: UIViewController {
     @objc func donePressed() {
 // format date
         let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm"
+        formatter.dateFormat = "HH:mm"
         let timeString = formatter.string(from: picker.date)
 
         timeText.text = "\(timeString)"
         self.view.endEditing(true)
-
     }
 
 //MARK： category 類別設定，要換圖
@@ -94,12 +128,30 @@ class AddLocationViewController: UIViewController {
      categoryText.text = "住宿"
     }
 
-    //Search Location
+//Search Location
     @IBAction func searchLocation(_ sender: Any) {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.secondaryTextColor = UIColor.black
         autocompleteController.delegate = self
         self.present(autocompleteController, animated: true, completion: nil)
+    }
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        guard let selected = dateSelected else {return 0}
+        return selected.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        guard let selected = dateSelected else {return ""}
+        daythRow = selected[row].dayth
+        return selected[row].date + "   " + selected[row].dayth
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let selected = dateSelected else {return}
+        dateSelectedText.text = selected[row].date
     }
 
 }
@@ -123,7 +175,7 @@ extension AddLocationViewController: GMSAutocompleteViewControllerDelegate {
                 AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "需要正確位置哦")
             }
 //placeText 顯示 Locaion Name
-        placeText.text = place.name
+        destinationText.text = place.name
         self.dismiss(animated: true, completion: nil) // dismiss after select place
     }
 

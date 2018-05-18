@@ -9,7 +9,6 @@
 import Foundation
 import FirebaseDatabase
 
-
 protocol DestinationManagerDelegate: class {
     func manager(_ manager: DestinationManager, didGet schedule: [Destination])
 }
@@ -18,79 +17,90 @@ struct DestinationManager {
 
     var delegate: DestinationManagerDelegate?
 
-    func getDestinationData() {
-        var destinationArray = [Destination]()
-        guard let userid = UserManager.shared.getFireBaseUID() else {return}
+//    func getDestinationData() {
+//        var destinationArray = [Destination]()
+//        guard let userid = UserManager.shared.getFireBaseUID() else {return}
+//        FireBaseConnect
+//            .databaseRef
+//            .child(Constants.FireBaseSchedules)
+//            .child("-LCBuqrtebBfGAT8iis_")
+//            .child("destination")
+//            .queryOrdered(byChild: "date")
+//            .queryEqual(toValue: "2018 05 11")
+//            .observe(.childAdded, with: { (snapshot) in
+//
+//                guard  let destinationInfo =  snapshot.value as? [String: Any] else {return}
+//                guard  let category = destinationInfo["category"] as? String else {return}
+//                guard  let time  = destinationInfo["time"] as? String else {return}
+//                guard  let name  = destinationInfo["name"] as? String else {return}
+//                guard  let latitude  = destinationInfo["lat"] as? Double else {return}
+//                guard  let longitude = destinationInfo["long"] as? Double else {return}
+//                guard  let date = destinationInfo["date"] as? String else {return}
+//                guard  let query = destinationInfo["query"] as? String else {return}
+//
+//                let destination =  Destination(name: name, time: time, date: date, category: category, latitude: latitude, longitude: longitude, query: query)
+//                destinationArray.append(destination)
+//                destinationArray.sort(by: {$0.time < $1.time})
+//
+//                DispatchQueue.main.async {
+//                    self.delegate?.manager(self, didGet: destinationArray)
+//                }
+//            })
+//    }
+
+//SaveDate
+    func saveDestinationInfo(uid: String, dayth: String, destination: Destination) {
+
+        print("101-------")
+        let destinationUid = FireBaseConnect.databaseRef.childByAutoId().key
+        let destinationInfo = ["category": destination.category,
+                                "date": destination.date, "lat": destination.latitude,
+                                "long": destination.longitude, "name": destination.name,
+                                "query": destination.query, "time": destination.time]
+                                as [String: Any]
+
+        FireBaseConnect.databaseRef
+            .child(Constants.FireBaseSchedules)
+            .child(uid)
+            .child("destination")
+            .child(dayth)
+            .child(destinationUid)
+            .setValue(destinationInfo)
+    }
+    
+//getData
+    func getDestinationInfo(destinationUid:String,dayth:String) {
         FireBaseConnect
             .databaseRef
             .child(Constants.FireBaseSchedules)
-            .child("-LCBuqrtebBfGAT8iis_")
-            .child("destination")
-            .queryOrdered(byChild: "date")
-            .queryEqual(toValue: "2018 05 11")
-            .observe(.childAdded, with: { (snapshot) in
+            .child(destinationUid)
+            .child("destination/"+dayth).queryOrdered(byChild: "time")
+            .observe(.value, with: { (snapshot) in
 
-                guard  let destinationInfo =  snapshot.value as? [String: Any] else {return}
-                guard  let category = destinationInfo["category"] as? String else {return}
-                guard  let time  = destinationInfo["time"] as? String else {return}
-                guard  let name  = destinationInfo["name"] as? String else {return}
-                guard  let latitude  = destinationInfo["lat"] as? Double else {return}
-                guard  let longitude = destinationInfo["long"] as? Double else {return}
-                guard  let date = destinationInfo["date"] as? String else {return}
+                var destinationInfoArray = [Destination]()
 
-                let destination =  Destination(name: name, time: time, date: date, category: category, latitude: latitude, longitude: longitude)
-                destinationArray.append(destination)
-                destinationArray.sort(by: {$0.time < $1.time})
+                if let values = snapshot.value as? NSDictionary {
+                    for value in values.allValues {
+                       // guard let destination = value as? [String:Any] else {return}
+                        guard  let destinationInfo =  value as? [String: Any] else {return}
+                        guard  let category = destinationInfo["category"] as? String else {return}
+                        guard  let time  = destinationInfo["time"] as? String else {return}
+                        guard  let name  = destinationInfo["name"] as? String else {return}
+                        guard  let latitude  = destinationInfo["lat"] as? Double else {return}
+                        guard  let longitude = destinationInfo["long"] as? Double else {return}
+                        guard  let date = destinationInfo["date"] as? String else {return}
+                        guard  let query = destinationInfo["query"] as? String else {return}
 
-                DispatchQueue.main.async {
-                    self.delegate?.manager(self, didGet: destinationArray)
+                        let destination =  Destination(name: name, time: time, date: date, category: category, latitude: latitude, longitude: longitude, query: query)
+                        destinationInfoArray.append(destination)
+                        print("----------99")
+                        print(destinationInfoArray)
+                        destinationInfoArray.sort(by: {$0.time < $1.time})
+                    }
+                    DispatchQueue.main.async {
+                        self.delegate?.manager(self, didGet: destinationInfoArray)
+                    }
                 }
             })
-    }
-
-    func getDestinationInfo(){
-        let uid = "-LCBuqrtebBfGAT8iis_"
-        let dates = ["2018 05 11","2018 05 12","2018 05 13","2018 05 14"]
-        var destinationArray : [Destination] = []
-      
-        
-            for index in 0...(dates.count - 1){
-                FireBaseConnect
-                .databaseRef
-                .child(Constants.FireBaseSchedules)
-                .child(uid)
-                .child("destination")
-                .queryOrdered(byChild: "query")
-                .queryStarting(atValue: dates[index]+"_00:00")
-                .queryEnding(atValue: dates[index]+"_24:00")
-                .observe(.childAdded, with: { (snapshot) in
-                    guard  let destinationInfo =  snapshot.value
-                                                    as? [String: Any] else {return}
-                    guard  let category = destinationInfo["category"]
-                                                    as? String else {return}
-                    guard  let time  = destinationInfo["time"]
-                                                    as? String else {return}
-                    guard  let name  = destinationInfo["name"]
-                                                    as? String else {return}
-                    guard  let latitude  = destinationInfo["lat"]
-                                                    as? Double else {return}
-                    guard  let longitude = destinationInfo["long"]
-                                                    as? Double else {return}
-                    guard  let date = destinationInfo["date"]  as? String else {return}
-
-                    let destination =  Destination(name: name,
-                                                   time: time,
-                                                   date: date,
-                                                   category: category,
-                                                   latitude: latitude,
-                                                   longitude: longitude)
-                    print("--------88")
-                    print(destination)
-                    
-                    destinationArray.append(destination)
-//                    destinationArray.sort(by: {$0.time < $1.time})
-                    
-                })
-           }
-       }
+        }
    }

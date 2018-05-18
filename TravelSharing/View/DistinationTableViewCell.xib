@@ -22,14 +22,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkY-na-HaN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 天數" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-t4-cvW">
-                                <rect key="frame" x="320" y="34" width="35" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 天數" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-t4-cvW">
+                                <rect key="frame" x="317" y="34" width="38" height="18"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="行程名稱" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6D8-a4-elY">
-                                <rect key="frame" x="140" y="23" width="96" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="行程名稱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6D8-a4-elY">
+                                <rect key="frame" x="69" y="23" width="238" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -45,11 +45,13 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="6XZ-t4-cvW" secondAttribute="trailing" constant="20" id="3Vf-S1-1Su"/>
                             <constraint firstAttribute="height" constant="75" id="EPH-nW-Xfc"/>
-                            <constraint firstItem="sLA-0X-LOh" firstAttribute="leading" secondItem="hkY-na-HaN" secondAttribute="leading" constant="20" id="Ujt-FZ-00Y"/>
+                            <constraint firstItem="sLA-0X-LOh" firstAttribute="leading" secondItem="hkY-na-HaN" secondAttribute="leading" priority="999" constant="20" id="Ujt-FZ-00Y"/>
+                            <constraint firstItem="6D8-a4-elY" firstAttribute="leading" secondItem="sLA-0X-LOh" secondAttribute="trailing" constant="10" id="Vjf-KO-yLd"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="centerY" secondItem="hkY-na-HaN" secondAttribute="centerY" id="bsK-Kg-bnY"/>
                             <constraint firstItem="6XZ-t4-cvW" firstAttribute="bottom" secondItem="sLA-0X-LOh" secondAttribute="bottom" id="lTT-iz-Y6g"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="bottom" secondItem="sLA-0X-LOh" secondAttribute="bottom" id="miM-32-Nuz"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="centerX" secondItem="hkY-na-HaN" secondAttribute="centerX" id="nA3-ug-O1H"/>
+                            <constraint firstItem="6XZ-t4-cvW" firstAttribute="leading" secondItem="6D8-a4-elY" secondAttribute="trailing" constant="10" id="r13-Ug-UaZ"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IyD-BT-1Yc" customClass="GMSMapView">

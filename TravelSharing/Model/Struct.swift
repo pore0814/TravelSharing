@@ -31,6 +31,7 @@ struct ScheduleInfo {
 struct DateInfo {
     var weekDay: Int
     var date: String
+    var dayth: String
 }
 
 struct Destination {
@@ -40,4 +41,5 @@ struct Destination {
     var category: String
     var latitude: Double
     var longitude: Double
+    var query: String
 }

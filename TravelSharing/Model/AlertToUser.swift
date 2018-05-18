@@ -13,16 +13,16 @@ struct AlertToUser {
     let alert = SCLAlertView()
 }
 
-struct AlerToUser1{
+struct AlerToUser1 {
     static let alert = SCLAlertView()
 }
 
-class AlerToUser2{
+class AlerToUser2 {
     static let shared = AlerToUser2()
            let alert = SCLAlertView()
-    
-     func alertToUser(title:String,subTitle:String){
+
+     func alertToUser(title: String, subTitle: String) {
            alert.showEdit(title, subTitle: subTitle)
     }
-    
+
 }

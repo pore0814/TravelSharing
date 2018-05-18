@@ -59,7 +59,6 @@ class AddEditScheduleViewController: UIViewController {
     }
     //FireBase資料寫入
     @objc func toSchedulePage(notification: Notification) {
-
     }
 
     @objc func addTapped(sender: AnyObject) {

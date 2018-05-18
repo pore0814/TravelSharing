@@ -22,4 +22,4 @@ class ProfileViewController: UIViewController {
         switchToLoginPage
     }
 
-}
+    }

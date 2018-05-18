@@ -113,10 +113,10 @@
             </objects>
             <point key="canvasLocation" x="1896.8" y="826.23688155922048"/>
         </scene>
-        <!--Distination View Controller-->
+        <!--Destination View Controller-->
         <scene sceneID="sLh-fE-Bnc">
             <objects>
-                <viewController storyboardIdentifier="DistinationViewController" id="S8E-Xi-Tgn" customClass="DistinationViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DistinationViewController" id="S8E-Xi-Tgn" customClass="DestinationViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Hh-aR-qvr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -244,13 +244,13 @@
                                             <constraint firstAttribute="height" constant="50" id="bEc-RB-nwu"/>
                                         </constraints>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="備註" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7PC-pf-gpf">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7PC-pf-gpf">
                                         <rect key="frame" x="0.0" y="101" width="560" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="efw-Z8-v5h"/>
                                         </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.64313725489999995" green="0.45882352939999999" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -264,7 +264,6 @@
                                 <state key="normal" image="check"/>
                                 <connections>
                                     <action selector="saveBtn:" destination="cwR-LZ-DtX" eventType="touchUpInside" id="RT1-6H-xQS"/>
-                                    <segue destination="1mk-ED-o8M" kind="show" id="JmP-wc-W2n"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2g-l5-C4P">
@@ -290,8 +289,8 @@
                     </view>
                     <connections>
                         <outlet property="categoryText" destination="vtG-dw-7YF" id="W5I-sv-cK2"/>
-                        <outlet property="locationText" destination="7PC-pf-gpf" id="3Rd-qz-pPP"/>
-                        <outlet property="placeText" destination="xRx-z9-0sU" id="vWd-Af-bkn"/>
+                        <outlet property="dateSelectedText" destination="7PC-pf-gpf" id="3Rd-qz-pPP"/>
+                        <outlet property="destinationText" destination="xRx-z9-0sU" id="vWd-Af-bkn"/>
                         <outlet property="stackView" destination="uQx-pv-eZb" id="cFI-x2-6el"/>
                         <outlet property="timeText" destination="ug5-2i-37O" id="bbm-Zj-sxp"/>
                     </connections>

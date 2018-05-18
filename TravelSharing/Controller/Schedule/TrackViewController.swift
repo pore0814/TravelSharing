@@ -12,16 +12,17 @@ import GooglePlaces
 import SVProgressHUD
 
 class  TrackViewController: UIViewController, CLLocationManagerDelegate {
-    
+
     @IBOutlet weak var googleMapsView: GMSMapView!
     @IBOutlet weak var googleMapStreetView: GMSPanoramaView!
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
     //因為ＧＰＳ功能很耗電,所以被敬執行時關閉定位功能
         locationManager.stopUpdatingLocation()
+
     }
-    
+    var destinationManager = DestinationManager()
     var locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +35,11 @@ class  TrackViewController: UIViewController, CLLocationManagerDelegate {
     //開始接收目前位置資訊
         locationManager.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
-   
+
         self.googleMapsView.isMyLocationEnabled = true
         self.googleMapsView.settings.myLocationButton = true
-        
-
     }
 
-   
 // MARK: CLLocation Manager Delegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while get location\(error)")

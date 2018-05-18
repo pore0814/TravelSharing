@@ -61,7 +61,7 @@ class TSDateFormatter {
         var TSDateArray = [DateInfo]()
 
             for day in 0...aArray.count - 1 {
-                let TSDate = DateInfo(weekDay: weekArray[day], date: aArray[day])
+                let TSDate = DateInfo(weekDay: weekArray[day], date: aArray[day], dayth: "1" )
                 TSDateArray.append(TSDate)
             }
 
