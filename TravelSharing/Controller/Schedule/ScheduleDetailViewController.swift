@@ -34,25 +34,27 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         print(getDateInfo[aaad].date)
         print(getDateInfo[aaad].dayth)
         }
+        
+//ScrollView 設定
+        
+        destinationScrollView.isDirectionalLockEnabled = true // 是否限制滑動時只能單個方向 垂直或水平滑動
+        destinationScrollView.showsHorizontalScrollIndicator = true
+        destinationScrollView.bounces = true //無彈回效果
+        destinationScrollView.isPagingEnabled = true
+        destinationScrollView.contentSize = CGSize(
+            width: self.view.bounds.width * CGFloat(getDateInfo.count),
+            height: detailCollectionViwe.frame.height)
+        destinationScrollView.showsVerticalScrollIndicator = false
+
 //呼叫DestinationDetailViewController內容
-        for index in 0...3 {
+        for index in 0..<(getDateInfo.count) {
             guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as? DestinationViewController else {return}
             obj1.scheduleUid = schedulDetail?.uid
-            obj1.dayths = getDateInfo[1].dayth
-            var frame = CGRect(x:destinationScrollView.frame.width * CGFloat(index), y:0 , width: destinationScrollView.frame.width, height:250)
+            obj1.dayths = getDateInfo[index].dayth
+            var frame = CGRect(x:self.view.frame.width * CGFloat(index), y:0 , width: destinationScrollView.frame.width, height:destinationScrollView.frame.height)
             obj1.view.frame = frame
-            
-            //obj1.dayths = getDateInfo[1].dayth
             destinationScrollView.addSubview(obj1.view)
         }
-//ScrollView 設定
-        destinationScrollView.isPagingEnabled = true
-        
-        destinationScrollView.contentSize = CGSize(
-                              width: self.view.bounds.width * CGFloat(getDateInfo.count),
-                              height: 250)
-        destinationScrollView.showsVerticalScrollIndicator = false
-        
 //navigation bar ButtonItem
         let addBarButtonItem = UIBarButtonItem.init(title: "Add", style: .done, target: self,
                                                     action: #selector(addTapped))

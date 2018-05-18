@@ -36,12 +36,12 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.backgroundView =  UIImageView(image: UIImage(named: "schedulePage"))
-     //註冊tableViewCell
+//註冊tableViewCell
         let leftNibName = UINib(nibName: "ScheduleTableViewCell", bundle: nil)
         tableView.register(leftNibName, forCellReuseIdentifier: "ScheduleTableViewCell")
-    //撈Schedule資料
+//撈Schedule資料
         ScheduleManager.shared.getScheduleContent()
-    //收通知
+//收通知
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
       }
 

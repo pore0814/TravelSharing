@@ -64,7 +64,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         cell.nameLabel.text = testArray[indexPath.row].name
         cell.mapViewCell(latitude: testArray[indexPath.row].latitude, longitude: testArray[indexPath.row].longitude, destination: testArray[indexPath.row].name)
         cell.selectionStyle =  .none
-            return cell
+        return cell
 
     }
 
