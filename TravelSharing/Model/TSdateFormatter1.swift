@@ -26,7 +26,7 @@ class TSDateFormatter1 {
 
         for day in 0...days - 1 {
             guard let enddate = Calendar.current.date(byAdding: .day, value: day, to: startDate) else {return []}
-           // dateformate.dateFormat = "MM/dd"
+            dateformate.dateFormat = "MM/dd"
             print("33", enddate)
             let weekday = Calendar.current.component(.weekday, from: enddate)
             print(weekday)

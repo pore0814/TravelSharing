@@ -18,10 +18,21 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var previous: Int?
     var dayths:String?
     var scheduleUid:String?
+    let cellSpacingHeight: CGFloat = 5
 
     var testArray = [Destination]()
     var schedulePassDataToDestination:ScheduleInfo?
     var destinationManger = DestinationManager()
+    
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        let fff = tableView.frame
+//        let frrr = UIEdgeInsetsInsetRect(fff, UIEdgeInsetsMake(10, 10, 10, 10))
+//        tableView.frame = frrr
+//    }
+   
+    
+    
     
 
     override func viewDidLoad() {
@@ -52,11 +63,13 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
               return 70
     }
     
-
+   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return testArray.count
     }
-
+    
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let  cell = tableView.dequeueReusableCell(withIdentifier: "DistinationTableViewCell") as? DistinationTableViewCell else {return UITableViewCell()}
         cell.dateLabel.text = testArray[indexPath.row].category
@@ -65,8 +78,9 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         cell.mapViewCell(latitude: testArray[indexPath.row].latitude, longitude: testArray[indexPath.row].longitude, destination: testArray[indexPath.row].name)
         cell.selectionStyle =  .none
         return cell
-
     }
+   
+   
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tag = indexPath.row

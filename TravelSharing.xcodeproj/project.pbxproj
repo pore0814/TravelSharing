@@ -184,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				D127E17120A53F9B00EBB5F7 /* TrackLocationViewController.swift */,
+				D126D05820AD2F6400F46AE3 /* TrackViewController.swift */,
 			);
 			path = Track;
 			sourceTree = "<group>";
@@ -221,7 +222,6 @@
 		D1BBA31A20957256005E5AAE /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				D126D05820AD2F6400F46AE3 /* TrackViewController.swift */,
 				D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */,
 				D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */,
 				D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */,
@@ -390,6 +390,11 @@
 				TargetAttributes = {
 					D1E6CD5D20914CA900310121 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

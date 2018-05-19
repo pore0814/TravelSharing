@@ -70,7 +70,6 @@ class RegisterViewController: UIViewController, FusumaDelegate {
                 AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "二個密碼不同")
         //Email格式
             } else if emailText.text!.isEmail == false {
-            //else if emailText.text! == "" {
                 AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "無效Email")
         //開始註冊＋FireBaseApi Error檢查
             } else {

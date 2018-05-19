@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkY-na-HaN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                        <rect key="frame" x="0.0" y="3" width="375" height="75"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 天數" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-t4-cvW">
                                 <rect key="frame" x="317" y="34" width="38" height="18"/>
@@ -28,7 +28,7 @@
                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="行程名稱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6D8-a4-elY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="752" text="行程名稱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6D8-a4-elY">
                                 <rect key="frame" x="69" y="23" width="238" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                 <nil key="textColor"/>
@@ -41,13 +41,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="6XZ-t4-cvW" secondAttribute="trailing" constant="20" id="3Vf-S1-1Su"/>
-                            <constraint firstAttribute="height" constant="75" id="EPH-nW-Xfc"/>
                             <constraint firstItem="sLA-0X-LOh" firstAttribute="leading" secondItem="hkY-na-HaN" secondAttribute="leading" priority="999" constant="20" id="Ujt-FZ-00Y"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="leading" secondItem="sLA-0X-LOh" secondAttribute="trailing" constant="10" id="Vjf-KO-yLd"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="centerY" secondItem="hkY-na-HaN" secondAttribute="centerY" id="bsK-Kg-bnY"/>
+                            <constraint firstItem="6D8-a4-elY" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" priority="750" constant="23" id="kqr-bg-XXw"/>
                             <constraint firstItem="6XZ-t4-cvW" firstAttribute="bottom" secondItem="sLA-0X-LOh" secondAttribute="bottom" id="lTT-iz-Y6g"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="bottom" secondItem="sLA-0X-LOh" secondAttribute="bottom" id="miM-32-Nuz"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="centerX" secondItem="hkY-na-HaN" secondAttribute="centerX" id="nA3-ug-O1H"/>
@@ -55,22 +55,21 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IyD-BT-1Yc" customClass="GMSMapView">
-                        <rect key="frame" x="0.0" y="75" width="375" height="231"/>
+                        <rect key="frame" x="0.0" y="81" width="375" height="221.5"/>
                         <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hkY-na-HaN" firstAttribute="trailing" secondItem="IyD-BT-1Yc" secondAttribute="trailing" id="83Q-hK-LiE"/>
-                    <constraint firstItem="IyD-BT-1Yc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FGk-0s-JVr"/>
-                    <constraint firstItem="hkY-na-HaN" firstAttribute="leading" secondItem="IyD-BT-1Yc" secondAttribute="leading" id="FYD-a2-OBg"/>
-                    <constraint firstAttribute="bottom" secondItem="IyD-BT-1Yc" secondAttribute="bottom" id="JQM-cX-5TG"/>
-                    <constraint firstAttribute="trailing" secondItem="IyD-BT-1Yc" secondAttribute="trailing" id="N5k-V5-AiA"/>
-                    <constraint firstItem="IyD-BT-1Yc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="TJJ-zT-EOa"/>
-                    <constraint firstItem="IyD-BT-1Yc" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="bottom" id="ZRX-ye-vVQ"/>
-                    <constraint firstAttribute="trailing" secondItem="IyD-BT-1Yc" secondAttribute="trailing" id="ccP-Gu-zv7"/>
-                    <constraint firstItem="hkY-na-HaN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ys7-Bd-eb2"/>
+                    <constraint firstItem="IyD-BT-1Yc" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="bottom" constant="3" id="7i9-tz-Spv"/>
+                    <constraint firstItem="IyD-BT-1Yc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="L9b-1g-Vve"/>
+                    <constraint firstAttribute="bottom" secondItem="IyD-BT-1Yc" secondAttribute="bottom" constant="3" id="Pwk-JZ-rDc"/>
+                    <constraint firstItem="IyD-BT-1Yc" firstAttribute="trailing" secondItem="hkY-na-HaN" secondAttribute="trailing" id="RVQ-6J-wYW"/>
+                    <constraint firstItem="IyD-BT-1Yc" firstAttribute="leading" secondItem="hkY-na-HaN" secondAttribute="leading" id="SpP-Mu-Yhs"/>
+                    <constraint firstItem="hkY-na-HaN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="hFv-WJ-VDZ"/>
+                    <constraint firstAttribute="trailing" secondItem="IyD-BT-1Yc" secondAttribute="trailing" id="uQg-AH-lB8"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dateLabel" destination="sLA-0X-LOh" id="fTi-mp-pGq"/>

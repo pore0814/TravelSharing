@@ -10,6 +10,8 @@ import UIKit
 
 class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    
+    
     var getDateInfo = [DateInfo]() {
         didSet {
             print("set data in ScheduleDetailViewController")
@@ -17,42 +19,65 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
     var schedulDetail: ScheduleInfo?
     let dateFormatter1 = TSDateFormatter1()
+    
     var destinationManger = DestinationManager()
 
+    var scrollViewCurrentPage:Int = 0
+    
     @IBOutlet weak var destinationScrollView: UIScrollView!
     @IBOutlet weak var detailCollectionViwe: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 //nagivation Bar 顯示Scheudle名稱
+        
+        
         navigationItem.title = schedulDetail?.name
 //日期dateFormatter function 用起程日期及天數計算出所有date 
         guard let detail = schedulDetail else {return}
         getDateInfo =  dateFormatter1.getYYMMDD(indexNumber: detail)
         print("----------31")
-        for aaad in 0...(getDateInfo.count-1) {
-        print(getDateInfo[aaad].date)
-        print(getDateInfo[aaad].dayth)
+        for dateList in 0...(getDateInfo.count-1) {
+        print(getDateInfo[dateList].date)
+        print(getDateInfo[dateList].dayth)
         }
         
+        
+      
+        
 //ScrollView 設定
-        destinationScrollView.isDirectionalLockEnabled = true // 是否限制滑動時只能單個方向 垂直或水平滑動
+        destinationScrollView.isDirectionalLockEnabled = true
+        // 是否限制滑動時只能單個方向 垂直或水平滑動
+        
+        destinationScrollView.alwaysBounceVertical = false
         destinationScrollView.showsHorizontalScrollIndicator = true
-        destinationScrollView.bounces = true //無彈回效果
+        destinationScrollView.bounces = false //無彈回效果
+        destinationScrollView.delegate = self
         destinationScrollView.isPagingEnabled = true
+ 
         destinationScrollView.contentSize = CGSize(
             width: self.view.bounds.width * CGFloat(getDateInfo.count),
-            height: detailCollectionViwe.frame.height)
-        destinationScrollView.showsVerticalScrollIndicator = false
+            height: 100)
+    
+        
+        //destinationScrollView.contentSize = CGSize(width: 1000, height: 100)
 
 //呼叫DestinationDetailViewController內容
+        
+//        let view1 = UIView(frame: CGRect(x: 10, y: 10, width: 375, height: 547))
+//        view1.backgroundColor = UIColor.white
+//        destinationScrollView.addSubview(view1)
+
+        
         for index in 0..<(getDateInfo.count) {
+//            for index in 0..<1{
             guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as? DestinationViewController else {return}
             obj1.scheduleUid = schedulDetail?.uid
             obj1.dayths = getDateInfo[index].dayth
             var frame = CGRect(x:self.view.frame.width * CGFloat(index), y:0 , width: destinationScrollView.frame.width, height:destinationScrollView.frame.height)
             obj1.view.frame = frame
             destinationScrollView.addSubview(obj1.view)
+                print("ddddddd", obj1.view)
         }
 //navigation bar ButtonItem
         let addBarButtonItem = UIBarButtonItem.init(title: "Add", style: .done, target: self,
@@ -107,24 +132,31 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 }
 
 extension ScheduleDetailViewController : UIScrollViewDelegate{
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    
-        guard  let screenshotsCollectionViewFlowLayout = self.detailCollectionViwe.collectionViewLayout as? UICollectionViewFlowLayout else {return}
-       
 
-        
-       let screenshotsDistanceBetweenItemsCenter = screenshotsCollectionViewFlowLayout.minimumLineSpacing + screenshotsCollectionViewFlowLayout.itemSize.width
-        let offsetFactor = screenshotsDistanceBetweenItemsCenter / self.view.frame.size.width
-        if (scrollView == detailCollectionViwe) {
-            let xOffset = scrollView.contentOffset.x - scrollView.frame.origin.x
-            destinationScrollView.contentOffset.x = xOffset / offsetFactor
-        }else if(scrollView == destinationScrollView) {
-            print("AAAAAAA")
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        self.scrollViewCurrentPage = Int(round(scrollView.contentOffset.x/scrollView.frame.size.width))
+        print(scrollViewCurrentPage)
+
+        collectionView(detailCollectionViwe, didSelectItemAt: [0,scrollViewCurrentPage])
+        detailCollectionViwe.scrollToItem(at: [0,self.scrollViewCurrentPage], at: .left, animated: true)
+    }
+    
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard  let screenshotsCollectionViewFlowLayout = self.detailCollectionViwe.collectionViewLayout as? UICollectionViewFlowLayout else {return}
+//
+//
+//
+//       let screenshotsDistanceBetweenItemsCenter = screenshotsCollectionViewFlowLayout.minimumLineSpacing + screenshotsCollectionViewFlowLayout.itemSize.width
+//        let offsetFactor = screenshotsDistanceBetweenItemsCenter / self.view.frame.size.width
+//        if (scrollView == detailCollectionViwe) {
 //            let xOffset = scrollView.contentOffset.x - scrollView.frame.origin.x
+//            destinationScrollView.contentOffset.x = xOffset / offsetFactor
+//        }else if(scrollView == destinationScrollView) {
+//          let xOffset = scrollView.contentOffset.x - scrollView.frame.origin.x
 //            detailCollectionViwe.contentOffset.x = xOffset * offsetFactor
-        }
-        
+//
+//        }
+
         
         
         
@@ -143,6 +175,7 @@ extension ScheduleDetailViewController : UIScrollViewDelegate{
 //        targetContentOffset.pointee = offset
     
     }
-    
 }
+
+
 
