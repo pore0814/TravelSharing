@@ -97,6 +97,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="profileImage" destination="Vn1-qh-v8v" id="OE3-BS-R4l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jet-Ug-eZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

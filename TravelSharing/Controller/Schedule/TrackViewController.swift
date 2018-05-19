@@ -12,6 +12,7 @@ import GooglePlaces
 import SVProgressHUD
 
 class  TrackViewController: UIViewController, CLLocationManagerDelegate {
+    
 
     @IBOutlet weak var googleMapsView: GMSMapView!
     @IBOutlet weak var googleMapStreetView: GMSPanoramaView!
