@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseAuth
-import SCLAlertView
+
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
 
@@ -58,10 +58,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
             UserManager.shared.loginUser(email: emailTextField.text!, password: passwordTextField.text!) { (message) in
                 if  message != nil {
-                    let meg = "message" + message!
-                     // AlertToUser().alert.showError(Constants.WrongMessage, subTitle: message!)
-                    AlerToUser1.alert.showError("Error", subTitle: message!)
-                     //AlerToUser2.shared.alertToUser(title: Constants.WrongMessage, subTitle: message!)
+                      AlertToUser().alert.showError(Constants.WrongMessage, subTitle: message!)
                 } else {
                    // passToNextPage
                    guard let passToNextPage = AppDelegate.shared?.switchMainViewController() else {return}

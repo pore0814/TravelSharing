@@ -16,6 +16,14 @@ struct User {
     var userName: String
 }
 
+
+struct UserInfo {
+    var email: String
+    var photoUrl: String
+    var uid: String
+    var userName: String
+}
+
 struct Schedule {
     var uid: String
     var name: String
