@@ -32,7 +32,7 @@ class ScheduleManager {
                     .setValue(scheduleInfo)
         }
 
-    //刪除(同時刪除Schedule下的uid 和User下Schedule的uid)
+//刪除(同時刪除Schedule下的uid 和User下Schedule的uid)
     func deleteSchedule(scheduleId: String) {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
         /* 先刪除Schedule_id */ FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(scheduleId).removeValue { error, _ in
@@ -49,14 +49,13 @@ class ScheduleManager {
 
     //修改
     func updateaveScheduleInfo(scheduleUid: String?, scheduleName: String, scheudleDate: String, scheduleDay: String) {
-         guard let userid = UserManager.shared.getFireBaseUID(),let scheduleUUid = scheduleUid else {return}
+         guard let userid = UserManager.shared.getFireBaseUID(), let scheduleUUid = scheduleUid else {return}
          let  updateScheduleInfo = ["uid": scheduleUid, "name": scheduleName,
                                     "date": scheudleDate, "days": scheduleDay, "host": userid]
         FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)
             .child(scheduleUUid)
             .updateChildValues(updateScheduleInfo)
-            
 
         let data =  ScheduleInfo(uid: scheduleUid!, date: scheudleDate, name: scheduleName, days: scheduleDay)
 

@@ -58,14 +58,24 @@
                         <rect key="frame" x="0.0" y="81" width="375" height="221.5"/>
                         <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAE-hN-1pn">
+                        <rect key="frame" x="341" y="271.5" width="24" height="24"/>
+                        <color key="backgroundColor" red="0.87798293969999996" green="0.47912479330000002" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" image="foot"/>
+                        <connections>
+                            <action selector="deleteBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VWA-OI-qxv"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="IyD-BT-1Yc" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="bottom" constant="3" id="7i9-tz-Spv"/>
+                    <constraint firstAttribute="trailing" secondItem="fAE-hN-1pn" secondAttribute="trailing" constant="10" id="B4X-YR-Hgb"/>
                     <constraint firstItem="IyD-BT-1Yc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="L9b-1g-Vve"/>
                     <constraint firstAttribute="bottom" secondItem="IyD-BT-1Yc" secondAttribute="bottom" constant="3" id="Pwk-JZ-rDc"/>
                     <constraint firstItem="IyD-BT-1Yc" firstAttribute="trailing" secondItem="hkY-na-HaN" secondAttribute="trailing" id="RVQ-6J-wYW"/>
                     <constraint firstItem="IyD-BT-1Yc" firstAttribute="leading" secondItem="hkY-na-HaN" secondAttribute="leading" id="SpP-Mu-Yhs"/>
                     <constraint firstItem="hkY-na-HaN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="hFv-WJ-VDZ"/>
+                    <constraint firstAttribute="bottom" secondItem="fAE-hN-1pn" secondAttribute="bottom" constant="10" id="mO8-pG-nQE"/>
                     <constraint firstAttribute="trailing" secondItem="IyD-BT-1Yc" secondAttribute="trailing" id="uQg-AH-lB8"/>
                 </constraints>
             </tableViewCellContentView>
@@ -74,6 +84,7 @@
             <connections>
                 <outlet property="dateLabel" destination="sLA-0X-LOh" id="fTi-mp-pGq"/>
                 <outlet property="daysLabel" destination="6XZ-t4-cvW" id="oDT-h8-VgW"/>
+                <outlet property="deleteBtn" destination="fAE-hN-1pn" id="5V7-ML-wux"/>
                 <outlet property="mapView" destination="IyD-BT-1Yc" id="IrJ-tL-ipn"/>
                 <outlet property="nameLabel" destination="6D8-a4-elY" id="IzI-7D-QKa"/>
                 <outlet property="rightUiview" destination="hkY-na-HaN" id="DkM-ro-nNT"/>
@@ -81,4 +92,7 @@
             <point key="canvasLocation" x="497.5" y="-72"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="foot" width="24" height="24"/>
+    </resources>
 </document>

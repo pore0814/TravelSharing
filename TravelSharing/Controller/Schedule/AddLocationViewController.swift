@@ -77,18 +77,11 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         if destinationText.text! == "" {
             AlertToUser().alert.showError(Constants.WrongMessage, subTitle: "請選擇目的地")
         } else {
-        print("-----------")
-        print("79", timeText.text)
-        print("80", categoryText.text)
-        print("81", destinationText.text)
-        print("82", daythRow)
-        print("83", lat)
-        print("84", long)
         print(dateSelectedText.text)
          print(dateSelectedText.text! + "_" + timeText.text!)
         print(uid!)
 
-         let saveDate = Destination(name: destinationText.text!, time: timeText.text!, date: dateSelectedText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!)
+            let saveDate = Destination(name: destinationText.text!, time: timeText.text!, date: dateSelectedText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!, uid: "")
           print(saveDate)
           destinationManager.saveDestinationInfo(uid: uid!, dayth: daythRow, destination: saveDate)
           destinationText.text = ""

@@ -16,7 +16,6 @@ struct User {
     var userName: String
 }
 
-
 struct UserInfo {
     var email: String
     var photoUrl: String
@@ -50,4 +49,5 @@ struct Destination {
     var latitude: Double
     var longitude: Double
     var query: String
+    var uid: String
 }

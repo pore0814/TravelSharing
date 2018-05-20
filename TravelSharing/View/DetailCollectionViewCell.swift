@@ -16,7 +16,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
        containerView.imageSetRounded()
-        
+
     }
 
 }

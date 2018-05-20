@@ -18,6 +18,8 @@ class DistinationTableViewCell: UITableViewCell, GMSMapViewDelegate {
     @IBOutlet weak var rightUiview: UIView!
     @IBOutlet weak var mapView: GMSMapView!
 
+    @IBOutlet weak var deleteBtn: UIButton!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         rightUiview.imageSetRounded()
@@ -38,6 +40,14 @@ class DistinationTableViewCell: UITableViewCell, GMSMapViewDelegate {
         let marker = GMSMarker(position: position)
         marker.title = name
         marker.map = cellMapview!
+    }
+
+    @IBAction func deleteBtn(_ sender: UIButton) {
+        if sender.currentImage == #imageLiteral(resourceName: "foot") {
+            sender.setImage(#imageLiteral(resourceName: "human-foot-prints"), for: .normal)
+        } else {
+            sender.setImage(#imageLiteral(resourceName: "foot"), for: .normal)
+        }
     }
 
 }

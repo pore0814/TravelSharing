@@ -56,8 +56,9 @@ struct DestinationManager {
         let destinationInfo = ["category": destination.category,
                                 "date": destination.date, "lat": destination.latitude,
                                 "long": destination.longitude, "name": destination.name,
-                                "query": destination.query, "time": destination.time]
-                                as [String: Any]
+                                "query": destination.query, "time": destination.time,
+                                "uid":destinationUid] as [String: Any]
+        
 
         FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)
@@ -67,9 +68,9 @@ struct DestinationManager {
             .child(destinationUid)
             .setValue(destinationInfo)
     }
-    
+
 //getData
-    func getDestinationInfo(destinationUid:String,dayth:String) {
+    func getDestinationInfo(destinationUid: String, dayth: String) {
         FireBaseConnect
             .databaseRef
             .child(Constants.FireBaseSchedules)
@@ -90,8 +91,9 @@ struct DestinationManager {
                         guard  let longitude = destinationInfo["long"] as? Double else {return}
                         guard  let date = destinationInfo["date"] as? String else {return}
                         guard  let query = destinationInfo["query"] as? String else {return}
+                        guard  let uid = destinationInfo["uid"] as? String else {return}
 
-                        let destination =  Destination(name: name, time: time, date: date, category: category, latitude: latitude, longitude: longitude, query: query)
+                        let destination =  Destination(name: name, time: time, date: date, category: category, latitude: latitude, longitude: longitude, query: query, uid: uid)
                         destinationInfoArray.append(destination)
                         print("----------99")
                         print(destinationInfoArray)
@@ -103,4 +105,15 @@ struct DestinationManager {
                 }
             })
         }
+    
+//    func deleteDestinationInfo(){
+//guard let userid = UserManager.shared.getFireBaseUID() else {return}
+//        /* 先刪除Schedule_id */
+//        FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child("-LCBuqrtebBfGAT8iis_").child("").
+//        FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(scheduleId).
+//            //.removeValue { error, _ in
+//            /* 再刪除使用者Schedule下的Schedule_id  */
+//        }
+        
+  
    }
