@@ -79,7 +79,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         self.navigationController?.pushViewController(scheduleDetailViewController, animated: true)
         }
     }
-   //Edit and Delete
+//Edit and Delete
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editButton = UITableViewRowAction(style: .normal, title: "Edit") { (_, _) in
             let mainstoryboard: UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)

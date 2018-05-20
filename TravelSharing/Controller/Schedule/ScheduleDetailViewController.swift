@@ -33,14 +33,15 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         
         
         navigationItem.title = schedulDetail?.name
-//日期dateFormatter function 用起程日期及天數計算出所有date 
+        //日期dateFormatter function 用起程日期及天數計算出所有date
         guard let detail = schedulDetail else {return}
         getDateInfo =  dateFormatter1.getYYMMDD(indexNumber: detail)
         print("----------31")
         for dateList in 0...(getDateInfo.count-1) {
-        print(getDateInfo[dateList].date)
-        print(getDateInfo[dateList].dayth)
+            print(getDateInfo[dateList].date)
+            print(getDateInfo[dateList].dayth)
         }
+
         
         
       
@@ -58,19 +59,10 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         destinationScrollView.contentSize = CGSize(
             width: self.view.bounds.width * CGFloat(getDateInfo.count),
             height: 100)
-    
-        
-        //destinationScrollView.contentSize = CGSize(width: 1000, height: 100)
-
 //呼叫DestinationDetailViewController內容
         
-//        let view1 = UIView(frame: CGRect(x: 10, y: 10, width: 375, height: 547))
-//        view1.backgroundColor = UIColor.white
-//        destinationScrollView.addSubview(view1)
 
-        
         for index in 0..<(getDateInfo.count) {
-//            for index in 0..<1{
             guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as? DestinationViewController else {return}
             obj1.scheduleUid = schedulDetail?.uid
             obj1.dayths = getDateInfo[index].dayth
@@ -79,6 +71,8 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
             destinationScrollView.addSubview(obj1.view)
                 print("ddddddd", obj1.view)
         }
+
+        
 //navigation bar ButtonItem
         let addBarButtonItem = UIBarButtonItem.init(title: "Add", style: .done, target: self,
                                                     action: #selector(addTapped))

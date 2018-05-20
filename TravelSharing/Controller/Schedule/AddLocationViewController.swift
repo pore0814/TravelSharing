@@ -75,7 +75,7 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
 
     @IBAction func saveBtn(_ sender: Any) {
         if destinationText.text! == "" {
-            AlerToUser1.alert.showError(Constants.WrongMessage, subTitle: "請選擇目的地")
+            AlertToUser().alert.showError(Constants.WrongMessage, subTitle: "請選擇目的地")
         } else {
         print("-----------")
         print("79", timeText.text)

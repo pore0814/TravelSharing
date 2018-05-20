@@ -55,7 +55,8 @@ class ScheduleManager {
         FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)
             .child(scheduleUUid)
-            .setValue(updateScheduleInfo)
+            .updateChildValues(updateScheduleInfo)
+            
 
         let data =  ScheduleInfo(uid: scheduleUid!, date: scheudleDate, name: scheduleName, days: scheduleDay)
 

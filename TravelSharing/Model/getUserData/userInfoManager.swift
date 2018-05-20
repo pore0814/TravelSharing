@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import FirebaseDatabase
+import FirebaseStorage
 
 protocol GetUserInfoManagerDelegate:class {
     func manager(_ manager:GetUserInfoManager,didGet userInfo: UserInfo)
@@ -15,7 +17,7 @@ protocol GetUserInfoManagerDelegate:class {
 class GetUserInfoManager {
     var delegate: GetUserInfoManagerDelegate?
     
-    // 到FireBase  schedules 撈使用者的post的 Scheudle內容
+// 到FireBase  schedules 撈使用者的post的 Scheudle內容
     func getScheduleContent() {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
         FireBaseConnect
@@ -38,4 +40,26 @@ class GetUserInfoManager {
                 }
             })
         }
+    
+     func updateUserInfo(username: String, photo: Data?) {
+        guard let userid = UserManager.shared.getFireBaseUID() else {return}
+      
+      
+        //設定image型態
+        let metadate = StorageMetadata()
+        metadate.contentType = "img/jpeg"
+        
+        if let imageData = photo {
+            FireBaseConnect.storeageProfileRef.child(userid).putData(imageData, metadata: metadate, completion: { (metadata, imageError) in
+                if imageError != nil {
+                    guard let imgError = imageError as? String else {return}
+                    AlertToUser().alert.showEdit("錯誤訊息", subTitle: imgError)
+                }
+                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                    let userData = [Constants.UserName: username,  Constants.PhotoUrl: profileImageUrl] as [String: Any]
+                    FireBaseConnect.databaseRef.child("users").child(userid).updateChildValues(userData)
+                }
+            })
+        }
     }
+}

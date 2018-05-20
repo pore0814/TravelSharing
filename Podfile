@@ -19,6 +19,7 @@ pod 'GooglePlaces'
 pod 'SwiftLint'
 pod 'IQKeyboardManagerSwift'
 pod 'SVProgressHUD'
+pod 'SDWebImage'
 
   
 

@@ -41,6 +41,7 @@
 		D1BBA32220958157005E5AAE /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA32120958157005E5AAE /* LogInViewController.swift */; };
 		D1BBA324209581D6005E5AAE /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA323209581D5005E5AAE /* Login.storyboard */; };
 		D1BBA32620958FF8005E5AAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA32520958FF8005E5AAE /* GoogleService-Info.plist */; };
+		D1D45E9B20B0617700E3E7BE /* userInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D45E9A20B0617700E3E7BE /* userInfoManager.swift */; };
 		D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A2620A5D6F6002D8CF6 /* TSDateFormatter.swift */; };
 		D1DA0A2920A654D4002D8CF6 /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1DA0A2820A654D4002D8CF6 /* LocationView.xib */; };
 		D1DA0A2D20A656CB002D8CF6 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */; };
@@ -97,6 +98,7 @@
 		D1BBA32120958157005E5AAE /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		D1BBA323209581D5005E5AAE /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D1BBA32520958FF8005E5AAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D1D45E9A20B0617700E3E7BE /* userInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfoManager.swift; sourceTree = "<group>"; };
 		D1DA0A2620A5D6F6002D8CF6 /* TSDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSDateFormatter.swift; sourceTree = "<group>"; };
 		D1DA0A2820A654D4002D8CF6 /* LocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
 		D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
@@ -197,14 +199,6 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
-		D18B9B6520A030C900EB8D16 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				D18B9B6620A030E300EB8D16 /* DestinationManager.swift */,
-			);
-			path = Location;
-			sourceTree = "<group>";
-		};
 		D1BBA31920957222005E5AAE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +240,22 @@
 				D1BBA32120958157005E5AAE /* LogInViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		D1D45E9820B0611600E3E7BE /* Destination */ = {
+			isa = PBXGroup;
+			children = (
+				D18B9B6620A030E300EB8D16 /* DestinationManager.swift */,
+			);
+			path = Destination;
+			sourceTree = "<group>";
+		};
+		D1D45E9920B0613C00E3E7BE /* getUserData */ = {
+			isa = PBXGroup;
+			children = (
+				D1D45E9A20B0617700E3E7BE /* userInfoManager.swift */,
+			);
+			path = getUserData;
 			sourceTree = "<group>";
 		};
 		D1E6CD5520914CA900310121 = {
@@ -310,11 +320,12 @@
 		D1E6CD7720914DAC00310121 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D127E17320A541AD00EBB5F7 /* TSColor.swift */,
-				D18B9B6520A030C900EB8D16 /* Location */,
+				D1D45E9920B0613C00E3E7BE /* getUserData */,
+				D1D45E9820B0611600E3E7BE /* Destination */,
 				D1F5422E2099FE37007EBE96 /* Schedule */,
 				D1F542292099EAD3007EBE96 /* LoginandRegister */,
 				D18B75FC209729C400D27B86 /* RoundImage.swift */,
+				D127E17320A541AD00EBB5F7 /* TSColor.swift */,
 				D1A01CA420AAC5FE00E00988 /* TSdateFormatter1.swift */,
 				D1A01CA620AB047600E00988 /* WeekDayEnum.swift */,
 				D1DA0A2620A5D6F6002D8CF6 /* TSDateFormatter.swift */,
@@ -472,6 +483,7 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -484,6 +496,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -535,6 +548,7 @@
 			files = (
 				D179F86020A93A7500D7DC25 /* DestinationViewController.swift in Sources */,
 				D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */,
+				D1D45E9B20B0617700E3E7BE /* userInfoManager.swift in Sources */,
 				D1658265209AC2A300C37F8D /* DistinationTableViewCell.swift in Sources */,
 				D1DA0A3720A6FFF4002D8CF6 /* DismenstionViewController.swift in Sources */,
 				D126D05920AD2F6400F46AE3 /* TrackViewController.swift in Sources */,
@@ -717,10 +731,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -736,10 +747,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

@@ -13,8 +13,8 @@ struct AlertToUser {
     let alert = SCLAlertView()
 }
 
-struct AlerToUser1 {
-   static let alert = SCLAlertView()
+struct AlertToUser1 {
+    static var alert = SCLAlertView()
 }
 
 class AlerToUser2 {

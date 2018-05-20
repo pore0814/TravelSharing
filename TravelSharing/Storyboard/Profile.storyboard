@@ -52,12 +52,13 @@
                                     <constraint firstItem="khI-lK-4ZF" firstAttribute="leading" secondItem="PiO-ay-b8a" secondAttribute="leading" constant="10" id="riE-KN-sj9"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="target" translatesAutoresizingMaskIntoConstraints="NO" id="Vn1-qh-v8v">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="target" translatesAutoresizingMaskIntoConstraints="NO" id="Vn1-qh-v8v">
                                 <rect key="frame" x="205" y="423" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.77710410279999997" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Lgz-fE-XaS"/>
                                     <constraint firstAttribute="width" constant="150" id="vfD-BM-3FE"/>
@@ -67,6 +68,9 @@
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="53O-MN-Q0S" appends="YES" id="K3K-1I-PWo"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,6 +103,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jet-Ug-eZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="53O-MN-Q0S">
+                    <connections>
+                        <action selector="updateProfileImage:" destination="raj-es-Lyr" id="WoQ-Hh-Y8o"/>
+                        <outlet property="delegate" destination="Vn1-qh-v8v" id="eia-Pn-IgY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="480.80000000000001" y="123.68815592203899"/>
         </scene>
