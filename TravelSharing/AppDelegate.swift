@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GoogleMaps
 import GooglePlaces
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,22 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 var window: UIWindow?
     let apiKey = "AIzaSyApfLr_yp72naCXwEQyuwwNc6JwiE8Cj1I"
 
-static let shared = UIApplication.shared.delegate as! AppDelegate
+     static let shared = UIApplication.shared.delegate as? AppDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        IQKeyboardManager.shared.enable = true
         FirebaseApp.configure()
         GMSServices.provideAPIKey(apiKey)
         GMSPlacesClient.provideAPIKey(apiKey)
 
-       //跳轉
+//跳轉到MainViewController()
         if UserManager.shared.getFireBaseUID() != nil {
             switchMainViewController()
-        } else {
-             window?.rootViewController = UIStoryboard.logInStoryboard().instantiateInitialViewController()
+            } else {
+                window?.rootViewController = UIStoryboard.logInStoryboard().instantiateInitialViewController()
+            }
+            return true
         }
-
-        return true
-    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -58,8 +59,8 @@ static let shared = UIApplication.shared.delegate as! AppDelegate
 
     //換頁_主頁面
     func switchMainViewController() {
-        let TabBar = TabBarViewController()
-              window?.rootViewController = TabBar
+        let tabBar = TabBarViewController()
+              window?.rootViewController = tabBar
     }
 
     func switchToLoginViewController() {

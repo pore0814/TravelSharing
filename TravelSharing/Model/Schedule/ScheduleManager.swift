@@ -8,36 +8,31 @@
 
 import FirebaseDatabase
 
-
-
-protocol ScheduleManagerDelegate : class {
-    func manager(_ manager :  ScheduleManager, didGet schedule:ScheduleInfo)
+protocol ScheduleManagerDelegate: class {
+    func manager(_ manager: ScheduleManager, didGet schedule: ScheduleInfo)
 }
-
 
 class ScheduleManager {
    static let shared = ScheduleManager()
-    
-    weak var delegate : ScheduleManagerDelegate?
-    var scheduleDataInfo :ScheduleInfo?
+
+    weak var delegate: ScheduleManagerDelegate?
+    var scheduleDataInfo: ScheduleInfo?
     var scheduleDataArray = [ScheduleInfo]()
-    
-  
+
     //新增Schedule資料
     func saveScheduleInfo(uid: String?, scheduleName: String, scheudleDate: String, scheduleDay: String) {
         //User Id
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
               let  scheduleUid = FireBaseConnect.databaseRef.childByAutoId().key
-              let  scheduleInfo = ["uid":scheduleUid,"name": scheduleName,
-                                "date": scheudleDate,"days": scheduleDay,"host":userid]
+              let  scheduleInfo = ["uid": scheduleUid, "name": scheduleName,
+                                  "date": scheudleDate, "days": scheduleDay, "host": userid]
               FireBaseConnect.databaseRef
                     .child(Constants.FireBaseSchedules)
                     .child(scheduleUid)
                     .setValue(scheduleInfo)
         }
-    
-    
-    //刪除(同時刪除Schedule下的uid 和User下Schedule的uid)
+
+//刪除(同時刪除Schedule下的uid 和User下Schedule的uid)
     func deleteSchedule(scheduleId: String) {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
         /* 先刪除Schedule_id */ FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(scheduleId).removeValue { error, _ in
@@ -45,32 +40,30 @@ class ScheduleManager {
             if error == nil {
                 FireBaseConnect.databaseRef.child(Constants.FireBaseUsers).child(userid).child(Constants.FireBaseSchedule).child(scheduleId).removeValue { error, _ in
                     if error != nil {
-                        AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: "刪除失敗")
+                        AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "刪除失敗")
                     }
                 }
             }
         }
     }
-    
+
     //修改
     func updateaveScheduleInfo(scheduleUid: String?, scheduleName: String, scheudleDate: String, scheduleDay: String) {
-         guard let userid = UserManager.shared.getFireBaseUID() else {return}
-         let  updateScheduleInfo = ["uid":scheduleUid,"name": scheduleName,
-                                    "date": scheudleDate,"days": scheduleDay,"host":userid]
+         guard let userid = UserManager.shared.getFireBaseUID(), let scheduleUUid = scheduleUid else {return}
+         let  updateScheduleInfo = ["uid": scheduleUid, "name": scheduleName,
+                                    "date": scheudleDate, "days": scheduleDay, "host": userid]
         FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)
-            .child(scheduleUid!)
-            .setValue(updateScheduleInfo)
+            .child(scheduleUUid)
+            .updateChildValues(updateScheduleInfo)
 
         let data =  ScheduleInfo(uid: scheduleUid!, date: scheudleDate, name: scheduleName, days: scheduleDay)
+
         DispatchQueue.main.async {
             self.delegate?.manager(self, didGet: data)
             print(self.delegate)
         }
     }
-    
-    
-    
 
 /*取users裡將使用者的schedule_id放到Array裡，再到Schedules裡將這些uid的內容撈出來
     func getUserInfo() {
@@ -97,7 +90,7 @@ class ScheduleManager {
         }
     }
 */
-    
+
     // 到FireBase  schedules 撈使用者的post的 Scheudle內容
     func getScheduleContent() {
        guard let userid = UserManager.shared.getFireBaseUID() else {return}
@@ -110,19 +103,15 @@ class ScheduleManager {
                 .observe(.childAdded, with: { (snapshot) in
                  //放background做
 //                    DispatchQueue.global(qos: .background).async{
-                        guard    let scheduleInfo =  snapshot.value as? [String: Any] else{return}
-                        guard    let uid = scheduleInfo["uid"] as? String else{return}
-                        guard    let name  = scheduleInfo["name"] as? String else{return}
-                        guard    let date  = scheduleInfo["date"] as? String else{return}
-                        guard    let days  = scheduleInfo["days"] as? String else{return}
+                        guard    let scheduleInfo =  snapshot.value as? [String: Any] else {return}
+                        guard    let uid = scheduleInfo["uid"] as? String else {return}
+                        guard    let name  = scheduleInfo["name"] as? String else {return}
+                        guard    let date  = scheduleInfo["date"] as? String else {return}
+                        guard    let days  = scheduleInfo["days"] as? String else {return}
 
-                        let schedule =
-                               ScheduleInfo(uid: uid, date: date, name: name, days: days)
-                        print("-----")
-                        print("79",self.scheduleDataArray.count)
+                        let schedule = ScheduleInfo(uid: uid, date: date, name: name, days: days)
                         self.scheduleDataArray.append(schedule)
                         self.scheduleDataArray.sort(by: {$0.date < $1.date})
-                        print("89",self.scheduleDataArray)
 
                         NotificationCenter.default.post(
                             name: .scheduleInfo,
@@ -131,4 +120,3 @@ class ScheduleManager {
                 })
            }
       }
-

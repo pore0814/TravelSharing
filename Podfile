@@ -17,6 +17,10 @@ pod 'JTAppleCalendar'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'SwiftLint'
+pod 'IQKeyboardManagerSwift'
+pod 'SVProgressHUD'
+pod 'SDWebImage'
+
   
 
 end

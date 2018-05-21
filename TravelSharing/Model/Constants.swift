@@ -16,9 +16,9 @@ class Constants {
     static let PhotoUrl = "photoUrl"
     static let Uid = "uid"
     static let UserName = "username"
-    static let Profile_image = "profile_image"
+    static let ProfileImage = "profileImage"
 
-    static let Wrong_Message = "錯誤訊息"
+    static let WrongMessage = "錯誤訊息"
     static let NoEmpty = "表格需填寫完整，不可為空白"
 
     static let FireBaseSchedules = "schedules"

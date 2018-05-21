@@ -21,7 +21,7 @@ class ScheduleTableViewCell: UITableViewCell {
         leftImageView.imageSetRounded()
     }
 
-    func updateCell(with schedule:ScheduleInfo) {
+    func updateCell(with schedule: ScheduleInfo) {
 
         let myDateFormate = schedule.date
         let changeDateFormate = myDateFormate.replacingOccurrences(of: " ", with: ".")
@@ -30,8 +30,7 @@ class ScheduleTableViewCell: UITableViewCell {
          dateLabel.text = changeDateFormate
          daysLabel.text = schedule.days + "天"
     }
-    
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

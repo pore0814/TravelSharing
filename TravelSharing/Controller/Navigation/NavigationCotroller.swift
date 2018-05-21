@@ -9,7 +9,7 @@
 import UIKit
 
 class TravelSharingNavigationController: UINavigationController {
-    
+
     override func viewDidLoad() {
        // navigationBar.barTintColor = TravelSharingColor.tabBarTintColor.color()
         var colors = [UIColor]()
@@ -18,8 +18,7 @@ class TravelSharingNavigationController: UINavigationController {
         navigationBar.setGradientBackground(colors: colors)
         arrangeShadowLayer()
     }
-    
-    
+
     private func arrangeShadowLayer() {
         self.navigationBar.layer.shadowColor = UIColor.black.cgColor
         self.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 4 )
@@ -29,7 +28,7 @@ class TravelSharingNavigationController: UINavigationController {
 }
 //漸層
 extension CAGradientLayer {
-    
+
     convenience init(frame: CGRect, colors: [UIColor]) {
         self.init()
         self.frame = frame
@@ -40,9 +39,9 @@ extension CAGradientLayer {
         startPoint = CGPoint(x: 0, y: 0)
         endPoint = CGPoint(x: 1, y: 0)
     }
-    
+
     func createGradientImage() -> UIImage? {
-        
+
         var image: UIImage? = nil
         UIGraphicsBeginImageContext(bounds.size)
         if let context = UIGraphicsGetCurrentContext() {
@@ -52,7 +51,7 @@ extension CAGradientLayer {
         UIGraphicsEndImageContext()
         return image
     }
-    
+
 }
 
 extension CAGradientLayer {
@@ -72,4 +71,3 @@ extension UINavigationBar {
         setBackgroundImage(gradientLayer.createGradientImage(), for: UIBarMetrics.default)
     }
 }
-
