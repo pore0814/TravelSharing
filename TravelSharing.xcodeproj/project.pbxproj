@@ -10,6 +10,7 @@
 		4B14BAF96DE255397327C523 /* Pods_TravelSharing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F353853584E1967591DC1429 /* Pods_TravelSharing.framework */; };
 		D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */; };
 		D10418F0209982770084952E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EF209982770084952E /* CustomCell.swift */; };
+		D11E007220B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */; };
 		D126D05920AD2F6400F46AE3 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126D05820AD2F6400F46AE3 /* TrackViewController.swift */; };
 		D127E16D20A52EE300EBB5F7 /* NavigationCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */; };
 		D127E16F20A5360300EBB5F7 /* TrackLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */; };
@@ -67,6 +68,7 @@
 		69BAEA4434D7C88796C98B4C /* Pods-TravelSharing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.debug.xcconfig"; sourceTree = "<group>"; };
 		D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditScheduleViewController.swift; sourceTree = "<group>"; };
 		D10418EF209982770084952E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POMCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		D126D05820AD2F6400F46AE3 /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCotroller.swift; sourceTree = "<group>"; };
 		D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackLocation.storyboard; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				D1F5422A2099EBAA007EBE96 /* FirBaseConnect.swift */,
 				D1658267209AE78800C37F8D /* Struct.swift */,
 				D18B9B6320A0248500EB8D16 /* Date.swift */,
+				D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				D1F542312099FF42007EBE96 /* ScheduleTableViewCell.swift in Sources */,
 				D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */,
 				D1E6CD7E20914EB700310121 /* UIStoryboard.swift in Sources */,
+				D11E007220B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift in Sources */,
 				D18B9B6420A0248500EB8D16 /* Date.swift in Sources */,
 				D1658268209AE78800C37F8D /* Struct.swift in Sources */,
 				D1400B31209619F700B0040B /* UserManager.swift in Sources */,

@@ -38,6 +38,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    
         if indexPath.row == tag {
             if cellExpanded {
                return 400
@@ -80,8 +81,11 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tag = indexPath.row
+        
 //展開
         guard   let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
+            selectedCell.deleteBtn.isHidden = false
+        
         if cellExpanded {
                     cellExpanded = false
              selectedCell.deleteBtn.isHidden = true
@@ -91,6 +95,8 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
                 }
         tableView.beginUpdates()
         tableView.endUpdates()
+        
+        
         previous = tag
     }
 
