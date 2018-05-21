@@ -106,6 +106,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
        if let  cell = detailCollectionViwe.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell {
             cell.dateLabel.text = getDateInfo[indexPath.row].date
             cell.weekLabel.text = String(getWeekDayStr(weekDay: getDateInfo[indexPath.row].weekDay))
@@ -116,23 +117,27 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+   let pageNumbe = indexPath.row
+        print(pageNumbe)
+        print(self.view.frame.width * CGFloat(indexPath.row))
+            destinationScrollView.setContentOffset(CGPoint(x: self.view.frame.width * CGFloat(indexPath.row), y: 0), animated: true)
     }
 }
 
 extension ScheduleDetailViewController: UIScrollViewDelegate {
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//Page
-        let datePageNum = Int(round(detailCollectionViwe.contentOffset.x / detailCollectionViwe.frame.size.width))
-        let destinationPageNum = Int(round(scrollView.contentOffset.x/scrollView.frame.size.width))
-        
-       
-        if  datePageNum != destinationPageNum {
-            collectionView(detailCollectionViwe, didSelectItemAt: [0, destinationPageNum])
-            detailCollectionViwe.scrollToItem(at: [0, destinationPageNum], at: .centeredHorizontally, animated: true)
-        }
-        collectionView(detailCollectionViwe, didSelectItemAt: [0, destinationPageNum])
-     }
+//
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+////Page
+//        let datePageNum = Int(round(detailCollectionViwe.contentOffset.x / detailCollectionViwe.frame.size.width))
+//        let destinationPageNum = Int(round(scrollView.contentOffset.x/scrollView.frame.size.width))
+//
+//
+//        if  datePageNum != destinationPageNum {
+//            collectionView(detailCollectionViwe, didSelectItemAt: [0, destinationPageNum])
+//            detailCollectionViwe.scrollToItem(at: [0, destinationPageNum], at: .centeredHorizontally, animated: true)
+//        }
+//        collectionView(detailCollectionViwe, didSelectItemAt: [0, destinationPageNum])
+//     }
     
 //滑動
 //        guard  let screenshotsCollectionViewFlowLayout = self.detailCollectionViwe.collectionViewLayout as? UICollectionViewFlowLayout else {return}
