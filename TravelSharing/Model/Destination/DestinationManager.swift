@@ -57,8 +57,7 @@ struct DestinationManager {
                                 "date": destination.date, "lat": destination.latitude,
                                 "long": destination.longitude, "name": destination.name,
                                 "query": destination.query, "time": destination.time,
-                                "uid":destinationUid] as [String: Any]
-        
+                                "uid": destinationUid] as [String: Any]
 
         FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)
@@ -105,8 +104,8 @@ struct DestinationManager {
                 }
             })
         }
-    
-    func deleteDestinationInfo(scheduleUid:String,dayth:String, destinationUid:String){
+
+    func deleteDestinationInfo(scheduleUid: String, dayth: String, destinationUid: String) {
    FireBaseConnect.databaseRef.child("schedules")
                                 .child(scheduleUid)
                                 .child("destination")
@@ -115,12 +114,12 @@ struct DestinationManager {
                                 .removeValue { error, _ in
                                     print(error)
                                     }
-       
+
 //    FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child("uuid").child("-LCy_6MTMs-0cvBYL4SQ")
 //        FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(scheduleId).
 //            //.removeValue { error, _ in
 //            /* 再刪除使用者Schedule下的Schedule_id  */
 ////        }
-        
+
     }
    }

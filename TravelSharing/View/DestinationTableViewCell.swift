@@ -43,7 +43,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate {
     }
 
     @IBAction func deleteBtn(_ sender: UIButton) {
-       
+
     }
 
 }

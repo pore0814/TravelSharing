@@ -26,9 +26,9 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         destinationManger.delegate = self
-        
+
         guard let dayth = dayths, let scheduleuid = scheduleUid else {return}
         destinationManger.getDestinationInfo(destinationUid: scheduleuid, dayth: dayth)
 
@@ -36,7 +36,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.register(nib, forCellReuseIdentifier: "DestinationTableViewCell")
         tableView.separatorStyle = .none
     }
-  
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == tag {
             if cellExpanded {
@@ -63,19 +63,16 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
 
-    
 @objc    func deleteTapBtn(_ sender: UIButton) {
 // Fetch Item
         if  let superview = sender.superview,
-            let cell = superview.superview as? DestinationTableViewCell{
+            let cell = superview.superview as? DestinationTableViewCell {
                     cell.deleteBtn.isHidden = false
             }
-
-
 //刪除Destination
-        guard let scheduleId = scheduleUid,let dayth = dayths else{return}
-    
-        destinationManger.deleteDestinationInfo(scheduleUid: scheduleUid!, dayth:dayth ,
+        guard let scheduleId = scheduleUid, let dayth = dayths else {return}
+
+        destinationManger.deleteDestinationInfo(scheduleUid: scheduleUid!, dayth: dayth ,
                                                 destinationUid: testArray[sender.tag].uid)
         tableView.beginUpdates()
         tableView.endUpdates()

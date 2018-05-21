@@ -74,16 +74,28 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 //註冊CollectionViewCell
         let nib = UINib(nibName: "DetailCollectionViewCell", bundle: nil)
         self.detailCollectionViwe.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
-//CollectionView 間距設定
-        guard let layout = detailCollectionViwe.collectionViewLayout as?
-                                                UICollectionViewFlowLayout else {return}
-        layout.itemSize = CGSize(width: (self.view.frame.size.width/2.0) - 2.0, height: 100)
-         let insetX = (view.bounds.width - (self.view.frame.size.width/2.0)) / 2.0
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
-        layout.minimumLineSpacing = 2.0
-        layout.minimumInteritemSpacing = 2.0
-        detailCollectionViwe.setCollectionViewLayout(layout, animated: false)
+
+        setCollectionViewlayout()
+
+    }
+
+    func setCollectionViewlayout() {
+        let screenSize = UIScreen.main.bounds
+
+           guard  let layout = detailCollectionViwe.collectionViewLayout as?
+            UICollectionViewFlowLayout else {return}
+
+            layout.itemSize = CGSize(width: screenSize.width / 2.0, height: detailCollectionViwe.frame.height)
+            print("layout.itemSzie", layout.itemSize)
+
+             let insetX = screenSize.width / 4.0
+            print("inset", insetX)
+
+            layout.sectionInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
+            layout.minimumLineSpacing = 50
+            layout.minimumInteritemSpacing = 0
+            detailCollectionViwe.setCollectionViewLayout(layout, animated: false)
+
     }
 
     @objc func addTapped(sender: AnyObject) {
@@ -113,7 +125,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }
-
+/*
 extension ScheduleDetailViewController: UIScrollViewDelegate {
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -152,3 +164,4 @@ extension ScheduleDetailViewController: UIScrollViewDelegate {
 
     }
 }
+ */
