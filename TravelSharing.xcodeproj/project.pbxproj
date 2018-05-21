@@ -22,8 +22,8 @@
 		D14C0FEE209823A800026AF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FED209823A800026AF1 /* Constants.swift */; };
 		D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FEF2098695B00026AF1 /* NotificationName.swift */; };
 		D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FF1209873E100026AF1 /* AlertToUser.swift */; };
-		D1658265209AC2A300C37F8D /* DistinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658263209AC2A300C37F8D /* DistinationTableViewCell.swift */; };
-		D1658266209AC2A300C37F8D /* DistinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1658264209AC2A300C37F8D /* DistinationTableViewCell.xib */; };
+		D1658265209AC2A300C37F8D /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658263209AC2A300C37F8D /* DestinationTableViewCell.swift */; };
+		D1658266209AC2A300C37F8D /* DestinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */; };
 		D1658268209AE78800C37F8D /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658267209AE78800C37F8D /* Struct.swift */; };
 		D179F86020A93A7500D7DC25 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D179F85F20A93A7500D7DC25 /* DestinationViewController.swift */; };
 		D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B75FC209729C400D27B86 /* RoundImage.swift */; };
@@ -79,8 +79,8 @@
 		D14C0FED209823A800026AF1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D14C0FEF2098695B00026AF1 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		D14C0FF1209873E100026AF1 /* AlertToUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertToUser.swift; sourceTree = "<group>"; };
-		D1658263209AC2A300C37F8D /* DistinationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistinationTableViewCell.swift; sourceTree = "<group>"; };
-		D1658264209AC2A300C37F8D /* DistinationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistinationTableViewCell.xib; sourceTree = "<group>"; };
+		D1658263209AC2A300C37F8D /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
+		D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinationTableViewCell.xib; sourceTree = "<group>"; };
 		D1658267209AE78800C37F8D /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		D179F85F20A93A7500D7DC25 /* DestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
 		D18B75FC209729C400D27B86 /* RoundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 				D10418EF209982770084952E /* CustomCell.swift */,
 				D1F5422F2099FF42007EBE96 /* ScheduleTableViewCell.swift */,
 				D1F542302099FF42007EBE96 /* ScheduleTableViewCell.xib */,
-				D1658263209AC2A300C37F8D /* DistinationTableViewCell.swift */,
-				D1658264209AC2A300C37F8D /* DistinationTableViewCell.xib */,
+				D1658263209AC2A300C37F8D /* DestinationTableViewCell.swift */,
+				D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */,
 				D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */,
 				D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */,
 				D1DA0A2820A654D4002D8CF6 /* LocationView.xib */,
@@ -432,7 +432,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1658266209AC2A300C37F8D /* DistinationTableViewCell.xib in Resources */,
+				D1658266209AC2A300C37F8D /* DestinationTableViewCell.xib in Resources */,
 				D1E6CD6C20914CAA00310121 /* LaunchScreen.storyboard in Resources */,
 				D1E6CD6920914CAA00310121 /* Assets.xcassets in Resources */,
 				D19B2C2B20A4EACD0076E4ED /* DetailCollectionViewCell.xib in Resources */,
@@ -549,7 +549,7 @@
 				D179F86020A93A7500D7DC25 /* DestinationViewController.swift in Sources */,
 				D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */,
 				D1D45E9B20B0617700E3E7BE /* userInfoManager.swift in Sources */,
-				D1658265209AC2A300C37F8D /* DistinationTableViewCell.swift in Sources */,
+				D1658265209AC2A300C37F8D /* DestinationTableViewCell.swift in Sources */,
 				D1DA0A3720A6FFF4002D8CF6 /* DismenstionViewController.swift in Sources */,
 				D126D05920AD2F6400F46AE3 /* TrackViewController.swift in Sources */,
 				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,

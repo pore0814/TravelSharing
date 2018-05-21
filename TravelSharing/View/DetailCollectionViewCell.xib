@@ -26,33 +26,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="127" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3ma-hg-RXc">
-                                        <rect key="frame" x="0.0" y="0.0" width="127" height="50"/>
+                                        <rect key="frame" x="41.5" y="4.5" width="44.5" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGT-6Y-gXd">
-                                                <rect key="frame" x="0.0" y="0.0" width="127" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlf-h3-LWa">
-                                                <rect key="frame" x="0.0" y="25" width="127" height="25"/>
+                                                <rect key="frame" x="0.0" y="20.5" width="44.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="rlf-h3-LWa" firstAttribute="height" secondItem="sGT-6Y-gXd" secondAttribute="height" id="Dlg-6g-MYi"/>
-                                            <constraint firstItem="sGT-6Y-gXd" firstAttribute="trailing" secondItem="rlf-h3-LWa" secondAttribute="trailing" id="cAa-mh-oBN"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.8116551277047912" green="0.75734352816462525" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="3ma-hg-RXc" secondAttribute="trailing" id="3vb-bL-jYI"/>
-                                    <constraint firstItem="3ma-hg-RXc" firstAttribute="leading" secondItem="5BI-S0-xqa" secondAttribute="leading" id="KV4-jJ-zJe"/>
-                                    <constraint firstItem="3ma-hg-RXc" firstAttribute="top" secondItem="5BI-S0-xqa" secondAttribute="top" id="MFB-Zt-no2"/>
-                                    <constraint firstAttribute="bottom" secondItem="3ma-hg-RXc" secondAttribute="bottom" id="On2-y7-LeT"/>
+                                    <constraint firstItem="3ma-hg-RXc" firstAttribute="centerY" secondItem="5BI-S0-xqa" secondAttribute="centerY" id="ja9-lI-gzP"/>
+                                    <constraint firstItem="3ma-hg-RXc" firstAttribute="centerX" secondItem="5BI-S0-xqa" secondAttribute="centerX" id="of7-O7-gkU"/>
                                 </constraints>
                             </view>
                         </subviews>

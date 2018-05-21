@@ -106,14 +106,21 @@ struct DestinationManager {
             })
         }
     
-//    func deleteDestinationInfo(){
-//guard let userid = UserManager.shared.getFireBaseUID() else {return}
-//        /* 先刪除Schedule_id */
-//        FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child("-LCBuqrtebBfGAT8iis_").child("").
+    func deleteDestinationInfo(scheduleUid:String,dayth:String, destinationUid:String){
+   FireBaseConnect.databaseRef.child("schedules")
+                                .child(scheduleUid)
+                                .child("destination")
+                                .child(dayth)
+                                .child(destinationUid)
+                                .removeValue { error, _ in
+                                    print(error)
+                                    }
+       
+//    FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child("uuid").child("-LCy_6MTMs-0cvBYL4SQ")
 //        FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(scheduleId).
 //            //.removeValue { error, _ in
 //            /* 再刪除使用者Schedule下的Schedule_id  */
-//        }
+////        }
         
-  
+    }
    }

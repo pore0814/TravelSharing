@@ -30,7 +30,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 //nagivation Bar 顯示Scheudle名稱
 
         navigationItem.title = schedulDetail?.name
-        //日期dateFormatter function 用起程日期及天數計算出所有date
+//日期dateFormatter function 用起程日期及天數計算出所有date
         guard let detail = schedulDetail else {return}
         getDateInfo =  dateFormatter1.getYYMMDD(indexNumber: detail)
         print("----------31")
@@ -42,7 +42,6 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 //ScrollView 設定
         destinationScrollView.isDirectionalLockEnabled = true
         // 是否限制滑動時只能單個方向 垂直或水平滑動
-
         destinationScrollView.alwaysBounceVertical = false
         destinationScrollView.showsHorizontalScrollIndicator = true
         destinationScrollView.bounces = false //無彈回效果

@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class DistinationTableViewCell: UITableViewCell, GMSMapViewDelegate {
+class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -43,11 +43,7 @@ class DistinationTableViewCell: UITableViewCell, GMSMapViewDelegate {
     }
 
     @IBAction func deleteBtn(_ sender: UIButton) {
-        if sender.currentImage == #imageLiteral(resourceName: "foot") {
-            sender.setImage(#imageLiteral(resourceName: "human-foot-prints"), for: .normal)
-        } else {
-            sender.setImage(#imageLiteral(resourceName: "foot"), for: .normal)
-        }
+       
     }
 
 }
