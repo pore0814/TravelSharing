@@ -23,6 +23,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var testArray = [Destination]()
     var schedulePassDataToDestination: ScheduleInfo?
     var destinationManger = DestinationManager()
+    var locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,21 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         let nib = UINib(nibName: "DestinationTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "DestinationTableViewCell")
         tableView.separatorStyle = .none
+       
+    }
+    
+    func initMapLocaionManager(){
+        //配置 locationManager
+        locationManager.delegate = self
+        //詢問使用者權限
+        locationManager.requestAlwaysAuthorization()
+        //開始接收目前位置資訊
+        locationManager.startUpdatingLocation()
+        locationManager.startMonitoringSignificantLocationChanges()
+        
+        
+        
+        
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -56,6 +72,8 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         cell.dateLabel.text = testArray[indexPath.row].category
         cell.daysLabel.text = testArray[indexPath.row].time
         cell.nameLabel.text = testArray[indexPath.row].name
+        cell.mapView.isMyLocationEnabled = true
+        cell.mapView.settings.myLocationButton = true
         cell.mapViewCell(latitude: testArray[indexPath.row].latitude, longitude: testArray[indexPath.row].longitude, destination: testArray[indexPath.row].name)
         cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
         cell.mapView.bringSubview(toFront: cell.deleteBtn)
@@ -94,11 +112,23 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     }
 }
 
-extension DestinationViewController: DestinationManagerDelegate {
+extension DestinationViewController: DestinationManagerDelegate,CLLocationManagerDelegate {
 
     func manager(_ manager: DestinationManager, didGet schedule: [Destination]) {
         testArray = schedule
         tableView.reloadData()
     }
 
+    // MARK: CLLocation Manager Delegate
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error while get location\(error)")
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let camera = GMSCameraPosition.camera(
+            withLatitude: (location?.coordinate.latitude)!,
+            longitude: (location?.coordinate.longitude)!, zoom: 17.0)
+        self.locationManager.stopUpdatingHeading()
+}
 }
