@@ -38,6 +38,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         if indexPath.row == tag {
             if cellExpanded {
                return 400
@@ -46,8 +47,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
                 }
              }
               return 70
-         }
-
+        }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return testArray.count
     }
@@ -59,7 +59,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         cell.nameLabel.text = testArray[indexPath.row].name
         cell.mapViewCell(latitude: testArray[indexPath.row].latitude, longitude: testArray[indexPath.row].longitude, destination: testArray[indexPath.row].name)
         cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
-        cell.deleteBtn.isHidden =  true
+        cell.mapView.bringSubview(toFront: cell.deleteBtn)
         cell.selectionStyle =  .none
         return cell
     }
@@ -68,36 +68,29 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 // Fetch Item
         if  let superview = sender.superview,
             let cell = superview.superview as? DestinationTableViewCell {
-                    cell.deleteBtn.isHidden = false
             }
 //刪除Destination
         guard let scheduleId = scheduleUid, let dayth = dayths else {return}
 
-        destinationManger.deleteDestinationInfo(scheduleUid: scheduleUid!, dayth: dayth ,
+        destinationManger.deleteDestinationInfo(scheduleUid: scheduleUid!,
+                                                dayth: dayth ,
                                                 destinationUid: testArray[sender.tag].uid)
         tableView.beginUpdates()
         tableView.endUpdates()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        tag = indexPath.row
+         tag = indexPath.row
 //展開
         guard   let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
-
-        selectedCell.deleteBtn.isHidden = false
-
-            if cellExpanded {
-                        cellExpanded = false
-                        selectedCell.deleteBtn.isHidden = true
-                } else {
-                        selectedCell.deleteBtn.isHidden = false
-                        cellExpanded = true
+           if cellExpanded {
+                cellExpanded = false
+            } else {
+                cellExpanded = true
             }
 
         tableView.beginUpdates()
         tableView.endUpdates()
-
         previous = tag
     }
 }
