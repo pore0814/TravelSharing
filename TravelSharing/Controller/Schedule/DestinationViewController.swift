@@ -38,7 +38,6 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         if indexPath.row == tag {
             if cellExpanded {
                return 400
