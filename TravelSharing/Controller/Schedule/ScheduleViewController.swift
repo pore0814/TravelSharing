@@ -50,8 +50,8 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
             self.schedules = ScheduleManager.shared.scheduleDataArray
             self.tableView.reloadData()
         }
-         SVProgressHUD.dismiss()
-         self.indicator = false
+        SVProgressHUD.dismiss()
+        self.indicator = false
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -104,7 +104,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 
 extension ScheduleViewController: ScheduleManagerDelegate {
     func manager(_ manager: ScheduleManager, didGet schedule: ScheduleInfo) {
-        print(schedule)
+        print("107",schedule)
         schedules[indexNumber] = schedule
         schedules.sort(by: {$0.date < $1.date})
         tableView.reloadData()

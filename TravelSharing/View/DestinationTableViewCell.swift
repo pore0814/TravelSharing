@@ -17,7 +17,6 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate {
     @IBOutlet weak var daysLabel: UILabel!
     @IBOutlet weak var rightUiview: UIView!
     @IBOutlet weak var mapView: GMSMapView!
-
     @IBOutlet weak var deleteBtn: UIButton!
 
     override func awakeFromNib() {
@@ -42,6 +41,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate {
         marker.map = cellMapview!
     }
 
+ 
     @IBAction func deleteBtn(_ sender: UIButton) {
 
     }

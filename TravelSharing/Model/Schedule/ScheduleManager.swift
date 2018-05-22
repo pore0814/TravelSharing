@@ -93,9 +93,16 @@ class ScheduleManager {
 
     // 到FireBase  schedules 撈使用者的post的 Scheudle內容
     func getScheduleContent() {
-       guard let userid = UserManager.shared.getFireBaseUID() else {return}
+       
+        guard let userid = UserManager.shared.getFireBaseUID() else {
+            
+            return
+            
+        }
+        
         scheduleDataArray.removeAll()
-             FireBaseConnect
+        
+        FireBaseConnect
                 .databaseRef
                 .child(Constants.FireBaseSchedules)
                 .queryOrdered(byChild: "host")
@@ -111,7 +118,7 @@ class ScheduleManager {
 
                         let schedule = ScheduleInfo(uid: uid, date: date, name: name, days: days)
                         self.scheduleDataArray.append(schedule)
-                        self.scheduleDataArray.sort(by: {$0.date < $1.date})
+                        self.scheduleDataArray.sort(by: {$0.date > $1.date})
 
                         NotificationCenter.default.post(
                             name: .scheduleInfo,

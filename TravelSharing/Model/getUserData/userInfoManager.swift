@@ -61,4 +61,30 @@ class GetUserInfoManager {
             })
         }
     }
+    
+    func getAllUserInfo(){
+        FireBaseConnect.databaseRef.child("users").observe(.value) { (snapshot) in
+            if let allUserInfos = snapshot.value as?  [String: Any] {
+                print(allUserInfos)
+                for allUserInfo in allUserInfos{
+//                    print(allUserInfo.value)
+//                    if let profileInfo = snapshot.value as?  [String: Any] {
+//                        let uid = profileInfo["uid"] as? String
+//                        let email = profileInfo["email"] as? String
+//                        let photoUrl = profileInfo["photoUrl"] as? String
+//                        let username = profileInfo["username"] as? String
+//
+//                        let userProfile = UserInfo(email: email!, photoUrl: photoUrl!, uid: uid!, userName: username!)
+//
+//                        DispatchQueue.main.async {
+//                            self.delegate?.manager(self, didGet: userProfile)
+//                        }
+                   // }
+                }
+                
+            }
+            
+        }
+    }
+    
 }

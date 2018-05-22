@@ -56,13 +56,13 @@
         <!--Schedule Detail View Controller-->
         <scene sceneID="7Y9-NH-TwH">
             <objects>
-                <viewController storyboardIdentifier="ScheduleDetailViewController" id="BEf-nW-9ZD" customClass="ScheduleDetailViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScheduleDetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="BEf-nW-9ZD" customClass="ScheduleDetailViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ypy-eA-W5o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x51-i8-sp7">
-                                <rect key="frame" x="0.0" y="20" width="375" height="66.5"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x51-i8-sp7" customClass="LukeCollectionView" customModule="TravelSharing" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="67"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="D6n-Lv-JG4" customClass="POMCollectionViewFlowLayout" customModule="TravelSharing" customModuleProvider="target">
                                     <size key="itemSize" width="50" height="50"/>
@@ -81,12 +81,12 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="BEf-nW-9ZD" id="vl5-wF-fcc"/>
-                                    <outlet property="delegate" destination="BEf-nW-9ZD" id="dkr-Wm-hLu"/>
+                                    <outlet property="dataSource" destination="BEf-nW-9ZD" id="fKR-95-1ra"/>
+                                    <outlet property="delegate" destination="BEf-nW-9ZD" id="Qh6-rG-1yg"/>
                                 </connections>
                             </collectionView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ro7-WI-Acb">
-                                <rect key="frame" x="0.0" y="86.5" width="375" height="580.5"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ro7-WI-Acb" customClass="LukeScrollView" customModule="TravelSharing" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="87" width="375" height="580"/>
                                 <color key="backgroundColor" red="0.53233631810688942" green="0.29154179329051844" blue="0.60934391578249336" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </scrollView>
                         </subviews>
@@ -132,11 +132,23 @@
                                     <outlet property="delegate" destination="S8E-Xi-Tgn" id="1aM-00-D02"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTu-lT-LJj">
+                                <rect key="frame" x="319" y="627" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.21318712414579233" blue="0.211331999061108" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="0.72870614842305637" blue="0.6308892799000726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="5eC-XY-gTP" kind="show" id="UcH-ek-WIP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mcD-4g-kSF" firstAttribute="leading" secondItem="5Hh-aR-qvr" secondAttribute="leading" id="6Vq-Bu-8qK"/>
                             <constraint firstAttribute="trailing" secondItem="mcD-4g-kSF" secondAttribute="trailing" id="9C5-17-uGd"/>
+                            <constraint firstItem="FsV-sx-Y2q" firstAttribute="bottom" secondItem="XTu-lT-LJj" secondAttribute="bottom" constant="10" id="JcM-nA-2Az"/>
+                            <constraint firstItem="FsV-sx-Y2q" firstAttribute="trailing" secondItem="XTu-lT-LJj" secondAttribute="trailing" constant="10" id="XIU-2D-v7a"/>
                             <constraint firstItem="mcD-4g-kSF" firstAttribute="bottom" secondItem="FsV-sx-Y2q" secondAttribute="bottom" id="pso-Nr-yNo"/>
                             <constraint firstItem="mcD-4g-kSF" firstAttribute="top" secondItem="5Hh-aR-qvr" secondAttribute="top" id="yrU-Iu-YsZ"/>
                         </constraints>
@@ -149,6 +161,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIY-HN-NCG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1896.8" y="1582.7586206896553"/>
+        </scene>
+        <!--Invite Friends View Controller-->
+        <scene sceneID="63L-Nc-u0o">
+            <objects>
+                <viewController id="5eC-XY-gTP" customClass="InviteFriendsViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rdw-lJ-Aii">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Vc5-ko-SLb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qkh-tL-JMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2866" y="1577"/>
         </scene>
         <!--Add Location View Controller-->
         <scene sceneID="NIY-eX-RVK">

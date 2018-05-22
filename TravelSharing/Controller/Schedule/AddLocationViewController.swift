@@ -81,7 +81,7 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
          print(dateSelectedText.text! + "_" + timeText.text!)
         print(uid!)
 
-            let saveDate = Destination(name: destinationText.text!, time: timeText.text!, date: dateSelectedText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!, uid: "")
+            let saveDate = Destination(name: destinationText.text!, time: timeText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!, uid: "")
           print(saveDate)
           destinationManager.saveDestinationInfo(uid: uid!, dayth: daythRow, destination: saveDate)
           destinationText.text = ""

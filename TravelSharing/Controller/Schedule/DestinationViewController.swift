@@ -19,7 +19,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var dayths: String?
     var scheduleUid: String?
     let cellSpacingHeight: CGFloat = 5
-
+    var selectedBool: [Bool] = []
     var testArray = [Destination]()
     var schedulePassDataToDestination: ScheduleInfo?
     var destinationManger = DestinationManager()
@@ -38,7 +38,6 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    
         if indexPath.row == tag {
             if cellExpanded {
                return 400
@@ -60,6 +59,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         cell.nameLabel.text = testArray[indexPath.row].name
         cell.mapViewCell(latitude: testArray[indexPath.row].latitude, longitude: testArray[indexPath.row].longitude, destination: testArray[indexPath.row].name)
         cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
+        cell.deleteBtn.isHidden =  true
         cell.selectionStyle =  .none
         return cell
     }
@@ -80,26 +80,26 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         tag = indexPath.row
-        
 //展開
         guard   let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
-            selectedCell.deleteBtn.isHidden = false
-        
-        if cellExpanded {
-                    cellExpanded = false
-             selectedCell.deleteBtn.isHidden = true
+
+        selectedCell.deleteBtn.isHidden = false
+
+            if cellExpanded {
+                        cellExpanded = false
+                        selectedCell.deleteBtn.isHidden = true
                 } else {
-                 selectedCell.deleteBtn.isHidden = false
-                    cellExpanded = true
-                }
+                        selectedCell.deleteBtn.isHidden = false
+                        cellExpanded = true
+            }
+
         tableView.beginUpdates()
         tableView.endUpdates()
-        
-        
+
         previous = tag
     }
-
 }
 
 extension DestinationViewController: DestinationManagerDelegate {
