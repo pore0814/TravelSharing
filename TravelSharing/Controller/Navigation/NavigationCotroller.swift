@@ -71,3 +71,5 @@ extension UINavigationBar {
         setBackgroundImage(gradientLayer.createGradientImage(), for: UIBarMetrics.default)
     }
 }
+
+

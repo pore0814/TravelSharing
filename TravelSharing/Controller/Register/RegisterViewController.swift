@@ -23,7 +23,7 @@ class RegisterViewController: UIViewController, FusumaDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        registImageView.setCircle()
+        registImageView.setRounded()
         photoBtn.isUserInteractionEnabled = true
 
       //換頁notification

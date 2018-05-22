@@ -9,8 +9,16 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import Alamofire
+import SwiftyJSON
 
-class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate {
+enum Location{
+    case myLocaion
+    case destinationLocation
+}
+
+
+class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationManagerDelegate{
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -18,32 +26,134 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate {
     @IBOutlet weak var rightUiview: UIView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var deleteBtn: UIButton!
+    
+    var locationManager = CLLocationManager()
+    var locationSelected = Location.myLocaion
+    
+    var locationstart     = CLLocation()
+    var destinationLocaion = CLLocation()
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        rightUiview.imageSetRounded()
+        //rightUiview.setConerRectWithBorder()
+        
+        rightUiview.setGradientBackground(colorOne: UIColor.blue, colorTwo: UIColor.white)
+        mapDelegateAndInitiation()
+    }
+
+    func mapDelegateAndInitiation(){
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startMonitoringSignificantLocationChanges()
+
+        let camera = GMSCameraPosition.camera(withLatitude: -7.9293122, longitude: 112.5879156, zoom: 15.0)
+        self.mapView.camera = camera
+        self.mapView.isMyLocationEnabled = true
+        self.mapView.settings.myLocationButton = true
+        self.mapView.settings.compassButton = true
+        self.mapView.settings.zoomGestures = true
+        
     }
 
     func mapViewCell(latitude: Double, longitude: Double, destination: String) {
-
+        
         guard let lat = latitude as? Double,
-              let long = longitude as? Double,
-              let name = destination as? String else {return}
-
+            let long = longitude as? Double,
+            let name = destination as? String else {return}
+        
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 16)
         let cellMapview = mapView
         cellMapview?.camera = camera
         cellMapview?.animate(to: camera)
-
+        
         let position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let marker = GMSMarker(position: position)
         marker.title = name
         marker.map = cellMapview!
     }
+    
+    // MARK: CLLocation Manager Delegate
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error while get location\(error)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let camera = GMSCameraPosition.camera(
+            withLatitude: (location?.coordinate.latitude)!,
+            longitude: (location?.coordinate.longitude)!, zoom: 17.0)
+        
+        self.locationManager.stopUpdatingHeading()
+    }
+    // Mark: - GMSMapViewDelegate
+    
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        mapView.isMyLocationEnabled = true
+    }
+    
+    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        mapView.isMyLocationEnabled = true
+        if (gesture){
+            mapView.selectedMarker = nil
+        }
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        mapView.isMyLocationEnabled = true
+        return false
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        print("coordinatio\(coordinate)")
+    }
+    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+        mapView.isMyLocationEnabled = true
+        mapView.selectedMarker = nil
+        return false
+    }
+    
+    func drawPath(myLocaion: CLLocation, endLocation: CLLocation){
+ //   func drawPath(){
+       let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.latitude)"
+        let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.latitude)"
 
- 
-    @IBAction func deleteBtn(_ sender: UIButton) {
-
+     
+        
+        let url = "https://maps.googleapis.com/maps/api/directions/json?=origin=\(origin)&destination=\(destination)&mode=driving"
+        
+     //   let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=25.032963,121.5654262&mode=driving"
+        
+        
+        Alamofire.request(url).responseJSON { response in
+            print(response.request as Any)  // original URL request
+            print(response.response as Any) // HTTP URL response
+            print(response.data as Any)     // server data
+            print(response.result as Any)   // result of response serialization
+            
+            let json = try? JSON(data: response.data!)
+            print("-------")
+            print(json)
+            let routes = json!["routes"].arrayValue
+            
+            // print route using Polyline
+            for route in routes
+            {
+                let routeOverviewPolyline = route["overview_polyline"].dictionary
+                let points = routeOverviewPolyline?["points"]?.stringValue
+                let path = GMSPath.init(fromEncodedPath: points!)
+                let polyline = GMSPolyline.init(path: path)
+                polyline.strokeWidth = 4
+                polyline.strokeColor = UIColor.red
+                polyline.map = self.mapView
+            }
+        }
+       
+            
+        
+        }
     }
 
-}

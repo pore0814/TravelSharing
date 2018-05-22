@@ -14,7 +14,7 @@ class CustomCell: JTAppleCell {
     @IBOutlet weak var selecetedView: UIView!
 
     override func awakeFromNib() {
-        selecetedView.setCircle()
+        selecetedView.setRounded()
         selecetedView.backgroundColor = UIColor.white
     }
 

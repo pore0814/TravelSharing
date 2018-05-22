@@ -19,18 +19,27 @@ extension UIView {
         self.layer.cornerRadius = 10
     }
 
-    func imageSetRounded() {
+    func setConerRectWithBorder() {
          self.layer.borderWidth = 1
         self.layer.masksToBounds = true
         self.layer.borderColor = UIColor.darkGray.cgColor
         self.layer.cornerRadius = 10
     }
 
-    func setCircle() {
+    func setRounded() {
         self.layer.borderWidth = 1
         self.layer.masksToBounds = true
         self.layer.borderColor = UIColor.darkGray.cgColor
         self.layer.cornerRadius = self.frame.width / 2
     }
-
+    
+    func setGradientBackground(colorOne:UIColor,colorTwo:UIColor){
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [colorOne.cgColor,colorTwo.cgColor]
+        gradientLayer.locations = [0.0,0.1]
+        gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+        layer.insertSublayer(gradientLayer, at: 0)
+  }
 }

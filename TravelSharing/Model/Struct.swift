@@ -50,3 +50,9 @@ struct Destination {
     var query: String
     var uid: String
 }
+
+enum Locaion{
+    case myLocation
+    case destinationLocation
+}
+

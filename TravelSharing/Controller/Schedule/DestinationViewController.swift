@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class DestinationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GMSMapViewDelegate {
+class DestinationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     var cellExpanded: Bool = false
@@ -19,11 +19,12 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var dayths: String?
     var scheduleUid: String?
     let cellSpacingHeight: CGFloat = 5
-    var selectedBool: [Bool] = []
     var testArray = [Destination]()
     var schedulePassDataToDestination: ScheduleInfo?
     var destinationManger = DestinationManager()
     var locationManager = CLLocationManager()
+    var lat :Double?
+    var long :Double?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func initMapLocaionManager(){
+        locationManager = CLLocationManager()
         //配置 locationManager
         locationManager.delegate = self
         //詢問使用者權限
@@ -72,8 +74,6 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         cell.dateLabel.text = testArray[indexPath.row].category
         cell.daysLabel.text = testArray[indexPath.row].time
         cell.nameLabel.text = testArray[indexPath.row].name
-        cell.mapView.isMyLocationEnabled = true
-        cell.mapView.settings.myLocationButton = true
         cell.mapViewCell(latitude: testArray[indexPath.row].latitude, longitude: testArray[indexPath.row].longitude, destination: testArray[indexPath.row].name)
         cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
         cell.mapView.bringSubview(toFront: cell.deleteBtn)
@@ -97,7 +97,9 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         tag = indexPath.row
+        print("----------")
+        tag = indexPath.row
+        
 //展開
         guard   let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
            if cellExpanded {
@@ -112,23 +114,10 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     }
 }
 
-extension DestinationViewController: DestinationManagerDelegate,CLLocationManagerDelegate {
-
+extension DestinationViewController: DestinationManagerDelegate,CLLocationManagerDelegate, GMSMapViewDelegate {
+    //Delegate 拿資料
     func manager(_ manager: DestinationManager, didGet schedule: [Destination]) {
         testArray = schedule
         tableView.reloadData()
     }
-
-    // MARK: CLLocation Manager Delegate
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error while get location\(error)")
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        let camera = GMSCameraPosition.camera(
-            withLatitude: (location?.coordinate.latitude)!,
-            longitude: (location?.coordinate.longitude)!, zoom: 17.0)
-        self.locationManager.stopUpdatingHeading()
-}
 }
