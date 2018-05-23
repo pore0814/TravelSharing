@@ -31,18 +31,12 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-      
-        print("--------will")
-        print(schedules.count)
-        //撈Schedule資料
-       //
     }
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
- ScheduleManager.shared.getScheduleContent()
         
         scheduleManager.delegate = self
 
@@ -53,7 +47,9 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 //註冊tableViewCell
         let leftNibName = UINib(nibName: "ScheduleTableViewCell", bundle: nil)
         tableView.register(leftNibName, forCellReuseIdentifier: "ScheduleTableViewCell")
-
+//FireBase 撈資料
+        ScheduleManager.shared.getScheduleContent()
+        
 //收通知
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
       }

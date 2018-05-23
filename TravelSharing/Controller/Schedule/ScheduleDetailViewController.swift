@@ -31,11 +31,6 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 //日期dateFormatter function 用起程日期及天數計算出所有date
         guard let detail = schedulDetail else {return}
         getDateInfo =  dateFormatter1.getYYMMDD(indexNumber: detail)
-        print("----------31")
-        for dateList in 0...(getDateInfo.count-1) {
-            print(getDateInfo[dateList].date)
-            print(getDateInfo[dateList].dayth)
-        }
 
 //ScrollView 設定
         destinationScrollView.isDirectionalLockEnabled = true

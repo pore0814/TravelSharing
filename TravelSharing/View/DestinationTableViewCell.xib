@@ -36,7 +36,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-t4-cvW">
-                                <rect key="frame" x="326.5" y="32" width="40" height="23.5"/>
+                                <rect key="frame" x="326.5" y="23" width="40" height="36"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.94117647058823528" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -44,8 +44,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6XZ-t4-cvW" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" priority="999" constant="32" id="S15-dL-Mrt"/>
+                            <constraint firstItem="6XZ-t4-cvW" firstAttribute="bottom" secondItem="6D8-a4-elY" secondAttribute="bottom" id="Re5-TZ-ox1"/>
                             <constraint firstItem="Ipy-l5-zdh" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" constant="19" id="SsI-ZD-R5u"/>
+                            <constraint firstItem="6XZ-t4-cvW" firstAttribute="height" secondItem="6D8-a4-elY" secondAttribute="height" id="Tk9-NE-vOK"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="centerY" secondItem="hkY-na-HaN" secondAttribute="centerY" id="bsK-Kg-bnY"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="bottom" secondItem="Ipy-l5-zdh" secondAttribute="bottom" id="ddl-JQ-qYQ"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="bottom" secondItem="Ipy-l5-zdh" secondAttribute="bottom" id="j9W-9z-uxI"/>
@@ -73,7 +74,7 @@
                         <rect key="frame" x="0.0" y="82" width="375" height="221"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAE-hN-1pn">
-                                <rect key="frame" x="334" y="188" width="24" height="24"/>
+                                <rect key="frame" x="326" y="127" width="24" height="24"/>
                                 <color key="backgroundColor" red="0.87798293969999996" green="0.47912479330000002" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="delete"/>
                                 <connections>
@@ -83,8 +84,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="fAE-hN-1pn" secondAttribute="trailing" constant="17" id="P0F-jw-ZYQ"/>
-                            <constraint firstAttribute="bottom" secondItem="fAE-hN-1pn" secondAttribute="bottom" constant="8.5" id="aZR-L5-rJs"/>
+                            <constraint firstAttribute="trailing" secondItem="fAE-hN-1pn" secondAttribute="trailing" constant="25" id="P0F-jw-ZYQ"/>
+                            <constraint firstAttribute="bottom" secondItem="fAE-hN-1pn" secondAttribute="bottom" constant="70" id="UqX-OF-WvK"/>
                         </constraints>
                     </view>
                 </subviews>

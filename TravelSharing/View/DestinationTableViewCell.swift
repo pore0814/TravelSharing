@@ -95,11 +95,6 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationM
        
         guard let lat = location?.coordinate.latitude, let long = location?.coordinate.longitude else {return}
         locationstart = CLLocation(latitude: lat, longitude: long)
-       
-        print("-------------------------------mylocation")
-        print(lat)
-        print(long)
-        
         self.locationManager.stopUpdatingHeading()
     }
 // Mark: - GMSMapViewDelegate
@@ -131,11 +126,11 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationM
     }
     
     func drawPath(myLocaion: CLLocation, endLocation: CLLocation){
-//  func drawPath(){
-       let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
-        let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
 
-     
+      let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
+      let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
+
+
         
       let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
         
@@ -143,15 +138,15 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationM
         
         
         Alamofire.request(url).responseJSON { response in
-            print(response.request as Any)  // original URL request
-            print(response.response as Any) // HTTP URL response
-            print(response.data as Any)     // server data
-            print(response.result as Any)   // result of response serialization
+//            print(response.request as Any)  // original URL request
+//            print(response.response as Any) // HTTP URL response
+//            print(response.data as Any)     // server data
+//            print(response.result as Any)   // result of response serialization
             
-            let json = try? JSON(data: response.data!)
-            print("-------")
-            print(json)
-            let routes = json!["routes"].arrayValue
+            guard let json = try? JSON(data: response.data!) else {return}
+            
+            let routes = json["routes"].arrayValue
+            
             
             // print route using Polyline
             for route in routes

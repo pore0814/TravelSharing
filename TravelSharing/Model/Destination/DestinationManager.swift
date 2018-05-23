@@ -92,8 +92,6 @@ struct DestinationManager {
 
                         let destination =  Destination(name: name, time: time, category: category, latitude: latitude, longitude: longitude, query: query, uid: uid)
                         destinationInfoArray.append(destination)
-                        print("----------99")
-                        print(destinationInfoArray)
                         destinationInfoArray.sort(by: {$0.time < $1.time})
                     }
                     DispatchQueue.main.async {
@@ -102,16 +100,16 @@ struct DestinationManager {
                 }
             })
         }
-
+//Delete
     func deleteDestinationInfo(scheduleUid: String, dayth: String, destinationUid: String) {
-   FireBaseConnect.databaseRef.child("schedules")
-                                .child(scheduleUid)
-                                .child("destination")
-                                .child(dayth)
-                                .child(destinationUid)
-                                .removeValue { error, _ in
-                                    print(error)
-                                    }
+       FireBaseConnect.databaseRef.child("schedules")
+                                    .child(scheduleUid)
+                                    .child("destination")
+                                    .child(dayth)
+                                    .child(destinationUid)
+                                    .removeValue { error, _ in
+                                        print(error)
+                                        }
 
 //    FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child("uuid").child("-LCy_6MTMs-0cvBYL4SQ")
 //        FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(scheduleId).

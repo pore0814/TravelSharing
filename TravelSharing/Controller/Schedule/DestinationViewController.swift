@@ -26,11 +26,12 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var locationManager = CLLocationManager()
     var lat :Double?
     var long :Double?
+    var indexPathInGlobal:IndexPath?
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        tableView.reloadData()
+       tableView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +75,6 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let  cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell") as? DestinationTableViewCell else {return UITableViewCell()}
         cell.categoryImage.image = UIImage(named: testArray[indexPath.row].category)
-//        cell.dateLabel.text = testArray[indexPath.row].category
         cell.daysLabel.text = testArray[indexPath.row].time
         cell.nameLabel.text = testArray[indexPath.row].name
         cell.mapViewCell(latitude: testArray[indexPath.row].latitude, longitude: testArray[indexPath.row].longitude, destination: testArray[indexPath.row].name)
@@ -86,27 +86,25 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
 @objc    func deleteTapBtn(_ sender: UIButton) {
 // Fetch Item
-//        guard let superview = sender.superview,
-//            let cell = superview.superview as? DestinationTableViewCell else {return}
+      //  guard let superview = sender.superview,
+      //     let cell = superview.superview as? DestinationTableViewCell else {return}
     
 //刪除Destination
         guard let scheduleId = scheduleUid, let dayth = dayths else {return}
     
         destinationManger.deleteDestinationInfo(scheduleUid: scheduleUid!,
                                                 dayth: dayth ,
-                                                destinationUid: testArray[sender.tag].uid)
-  //      tableView.beginUpdates()
-    DispatchQueue.main.async {
-        self.tableView.reloadData()
-    }
-        tableView.endUpdates()
-    
+                                            destinationUid: testArray[tag!].uid)
 
+        testArray.remove(at: tag!)
+        tableView.deleteRows(at: [indexPathInGlobal!], with: .automatic)
+        tableView.reloadData()
+    
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tag = indexPath.row
-        
+        indexPathInGlobal = indexPath
 //展開
         guard   let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
            if cellExpanded {
