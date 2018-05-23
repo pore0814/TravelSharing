@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Schedule View Controller-->
+        <!--我的行程-->
         <scene sceneID="pgo-fe-0ub">
             <objects>
                 <viewController id="blb-F8-r9Y" customClass="ScheduleViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,7 +38,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o0O-l3-2aW"/>
                     </view>
-                    <navigationItem key="navigationItem" id="50R-x8-yMG">
+                    <navigationItem key="navigationItem" title="我的行程" id="50R-x8-yMG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rCJ-av-oKP">
                             <connections>
                                 <segue destination="FOA-4s-0sI" kind="show" id="scU-cL-moh"/>
@@ -51,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0u2-4Q-CcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1896.8" y="118.29085457271366"/>
+            <point key="canvasLocation" x="1767" y="119"/>
         </scene>
         <!--Schedule Detail View Controller-->
         <scene sceneID="7Y9-NH-TwH">
@@ -62,8 +62,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x51-i8-sp7" customClass="LukeCollectionView" customModule="TravelSharing" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="66.5"/>
-                                <color key="backgroundColor" red="0.8224780338196287" green="0.8224780338196287" blue="0.8224780338196287" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="18" width="375" height="66.5"/>
+                                <color key="backgroundColor" red="0.32549019607843138" green="0.75686274509803919" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="D6n-Lv-JG4" customClass="POMCollectionViewFlowLayout" customModule="TravelSharing" customModuleProvider="target">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -86,7 +86,7 @@
                                 </connections>
                             </collectionView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ro7-WI-Acb" customClass="LukeScrollView" customModule="TravelSharing" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="86.5" width="375" height="580.5"/>
+                                <rect key="frame" x="0.0" y="84.5" width="375" height="582.5"/>
                                 <color key="backgroundColor" red="0.53233631810688942" green="0.29154179329051844" blue="0.60934391578249336" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </scrollView>
                         </subviews>
@@ -96,9 +96,9 @@
                             <constraint firstItem="QoJ-PE-Ddj" firstAttribute="bottom" secondItem="ro7-WI-Acb" secondAttribute="bottom" id="4a6-Ar-NHz"/>
                             <constraint firstItem="x51-i8-sp7" firstAttribute="leading" secondItem="QoJ-PE-Ddj" secondAttribute="leading" id="DLs-xG-GTX"/>
                             <constraint firstItem="ro7-WI-Acb" firstAttribute="leading" secondItem="QoJ-PE-Ddj" secondAttribute="leading" id="IeH-Yd-qj0"/>
+                            <constraint firstItem="x51-i8-sp7" firstAttribute="top" secondItem="QoJ-PE-Ddj" secondAttribute="top" constant="-2" id="Osw-LB-btw"/>
                             <constraint firstItem="ro7-WI-Acb" firstAttribute="trailing" secondItem="QoJ-PE-Ddj" secondAttribute="trailing" id="XqM-WY-Spi"/>
                             <constraint firstItem="x51-i8-sp7" firstAttribute="trailing" secondItem="ro7-WI-Acb" secondAttribute="trailing" id="YoY-rT-JRA"/>
-                            <constraint firstItem="x51-i8-sp7" firstAttribute="top" secondItem="QoJ-PE-Ddj" secondAttribute="top" id="j4b-OY-1Yc"/>
                             <constraint firstItem="x51-i8-sp7" firstAttribute="height" secondItem="ypy-eA-W5o" secondAttribute="height" multiplier="0.1" id="kDo-CO-hwW"/>
                             <constraint firstItem="x51-i8-sp7" firstAttribute="trailing" secondItem="QoJ-PE-Ddj" secondAttribute="trailing" id="lg8-Zz-s50"/>
                             <constraint firstItem="ro7-WI-Acb" firstAttribute="top" secondItem="x51-i8-sp7" secondAttribute="bottom" id="r63-gC-ltO"/>
@@ -132,14 +132,14 @@
                                     <outlet property="delegate" destination="S8E-Xi-Tgn" id="1aM-00-D02"/>
                                 </connections>
                             </tableView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTu-lT-LJj">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTu-lT-LJj">
                                 <rect key="frame" x="319" y="627" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.21318712414579233" blue="0.211331999061108" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" red="1" green="0.72870614842305637" blue="0.6308892799000726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="5eC-XY-gTP" kind="show" id="UcH-ek-WIP"/>
+                                    <action selector="inviteFrineds:" destination="S8E-Xi-Tgn" eventType="touchUpInside" id="Lll-yC-Z2u"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -161,21 +161,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIY-HN-NCG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1896.8" y="1582.7586206896553"/>
-        </scene>
-        <!--Invite Friends View Controller-->
-        <scene sceneID="63L-Nc-u0o">
-            <objects>
-                <viewController id="5eC-XY-gTP" customClass="InviteFriendsViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rdw-lJ-Aii">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Vc5-ko-SLb"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qkh-tL-JMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2866" y="1577"/>
         </scene>
         <!--Add Destination View Controller-->
         <scene sceneID="NIY-eX-RVK">
@@ -327,7 +312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDK-yK-0Hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2720.8000000000002" y="825.33733133433293"/>
+            <point key="canvasLocation" x="2721" y="889"/>
         </scene>
         <!--Dismenstion View Controller-->
         <scene sceneID="AIH-fW-H8i">
@@ -633,6 +618,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AKg-Zx-sya">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.18978958039999999" green="0.72418648740000002" blue="0.59879618280000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

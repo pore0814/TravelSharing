@@ -11,7 +11,7 @@ import SDWebImage
 import Fusuma
 import SCLAlertView
 
-class ProfileViewController: UIViewController, GetUserInfoManagerDelegate, FusumaDelegate {
+class ProfileViewController: UIViewController, FusumaDelegate {
 
     var getUserInfoManager = GetUserInfoManager()
     @IBOutlet weak var userNameText: UITextField!
@@ -26,13 +26,17 @@ class ProfileViewController: UIViewController, GetUserInfoManagerDelegate, Fusum
         let addBarButtonItem = UIBarButtonItem.init(title: "更新·", style: .done, target: self,
                                                     action: #selector(addTapped))
         navigationItem.rightBarButtonItem = addBarButtonItem
+        
+        profileImage.setRounded()
+        
+
     }
 
     @objc func addTapped(sender: AnyObject) {
 
         let appearance = SCLAlertView.SCLAppearance(
-         showCloseButton: false
-        )
+         showCloseButton: false)
+
         let alertView = SCLAlertView(appearance: appearance)
 
         alertView.addButton("確定") {
@@ -65,14 +69,6 @@ class ProfileViewController: UIViewController, GetUserInfoManagerDelegate, Fusum
     func fusumaVideoCompleted(withFileURL fileURL: URL) {}
     func fusumaCameraRollUnauthorized() {}
 
-    func manager(_ manager: GetUserInfoManager, didGet userInfo: UserInfo) {
-        userNameText.text = userInfo.userName
-        emailLabel.text = userInfo.email
-        let url = URL(string: userInfo.photoUrl)
-        profileImage.sd_setImage(with: url) { (_, _, _, _) in
-            print("yes")
-        }
-    }
 //navigation bar ButtonItem
 
     @IBAction func logOut(_ sender: Any) {
@@ -80,4 +76,18 @@ class ProfileViewController: UIViewController, GetUserInfoManagerDelegate, Fusum
             UserManager.shared.logout()
             switchToLoginPage
         }
+    }
+
+extension ProfileViewController: GetUserInfoManagerDelegate {
+
+    func managerArray(_ manager: GetUserInfoManager, didGet userInfo: [UserInfo]) {}
+
+    func manager(_ manager: GetUserInfoManager, didGet userInfo: UserInfo) {
+        userNameText.text = userInfo.userName
+        emailLabel.text = userInfo.email
+        let url = URL(string: userInfo.photoUrl)
+        profileImage.sd_setImage(with: url) { (_, _, _, _) in
+            print("yes")
+        }
+      }
     }

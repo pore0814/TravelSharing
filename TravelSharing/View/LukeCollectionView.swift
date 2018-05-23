@@ -15,7 +15,7 @@ class LukeCollectionView: UICollectionView {
             print("Did set delegate in collection view.")
         }
     }
-    
+
     override var contentOffset: CGPoint {
         didSet {
             print("Yoyoyo")

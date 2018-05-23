@@ -54,9 +54,9 @@ struct DestinationManager {
         print("101-------")
         let destinationUid = FireBaseConnect.databaseRef.childByAutoId().key
         let destinationInfo = ["category": destination.category,
-                               "lat": destination.latitude,"long": destination.longitude,
+                               "lat": destination.latitude, "long": destination.longitude,
                                "name": destination.name, "query": destination.query,
-                               "time": destination.time,"uid": destinationUid] as [String: Any]
+                               "time": destination.time, "uid": destinationUid] as [String: Any]
 
         FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)

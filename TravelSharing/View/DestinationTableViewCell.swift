@@ -12,38 +12,40 @@ import GooglePlaces
 import Alamofire
 import SwiftyJSON
 
-enum Location{
+enum Location {
     case myLocaion
     case destinationLocation
 }
 
-
-class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationManagerDelegate{
+class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var daysLabel: UILabel!
     @IBOutlet weak var rightUiview: UIView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var deleteBtn: UIButton!
-    
+
     var locationManager = CLLocationManager()
     var locationSelected = Location.myLocaion
-    
+
     var locationstart     = CLLocation()
     var destinationLocaion = CLLocation()
-    
+
+    var totalDistanceInMeters: UInt = 0
+    var totalDistance: String!
+    var totalDurationInSeconds: UInt = 0
+    var totalDuration: String!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         //rightUiview.setConerRectWithBorder()
-        
+
       //  rightUiview.setGradientBackground(colorOne: UIColor.blue, colorTwo: UIColor.white)
         mapDelegateAndInitiation()
     }
 
-    func mapDelegateAndInitiation(){
+    func mapDelegateAndInitiation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -57,115 +59,113 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationM
         self.mapView.settings.myLocationButton = true
         self.mapView.settings.compassButton = true
         self.mapView.settings.zoomGestures = true
-        
+
     }
 
     func mapViewCell(latitude: Double, longitude: Double, destination: String) {
-        
+
         guard let lat = latitude as? Double,
             let long = longitude as? Double,
             let name = destination as? String else {return}
             print("---------------endlocation")
-            print("68",lat)
-            print("69",long)
+            print("68", lat)
+            print("69", long)
         destinationLocaion = CLLocation(latitude: lat, longitude: long)
+        drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 16)
         let cellMapview = mapView
         cellMapview?.camera = camera
         cellMapview?.animate(to: camera)
-        
+
         let position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let marker = GMSMarker(position: position)
         marker.title = name
         marker.map = cellMapview!
-        
-         drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
+
     }
-    
+
     // MARK: CLLocation Manager Delegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while get location\(error)")
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         let camera = GMSCameraPosition.camera(
             withLatitude: (location?.coordinate.latitude)!,
             longitude: (location?.coordinate.longitude)!, zoom: 5)
-       
+
         guard let lat = location?.coordinate.latitude, let long = location?.coordinate.longitude else {return}
         locationstart = CLLocation(latitude: lat, longitude: long)
         self.locationManager.stopUpdatingHeading()
     }
 // Mark: - GMSMapViewDelegate
-    
+
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         mapView.isMyLocationEnabled = true
     }
-    
+
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         mapView.isMyLocationEnabled = true
-        if (gesture){
+        if (gesture) {
             mapView.selectedMarker = nil
         }
     }
-    
+
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         mapView.isMyLocationEnabled = true
         return false
     }
-    
+
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print("coordinatio\(coordinate)")
     }
     func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
         mapView.isMyLocationEnabled = true
         mapView.selectedMarker = nil
-        
+
         return false
     }
-    
-    func drawPath(myLocaion: CLLocation, endLocation: CLLocation){
+
+    func drawPath(myLocaion: CLLocation, endLocation: CLLocation) {
 
       let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
       let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
 
-
-        
       let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
-        
+
      // let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=22.9998999,120.2268758&mode=driving"
-        
-        
+
         Alamofire.request(url).responseJSON { response in
 //            print(response.request as Any)  // original URL request
 //            print(response.response as Any) // HTTP URL response
 //            print(response.data as Any)     // server data
 //            print(response.result as Any)   // result of response serialization
-            
-            guard let json = try? JSON(data: response.data!) else {return}
-            
-            let routes = json["routes"].arrayValue
-            
-            
+
+          let json = try? JSON(data: response.data!)
+
+            let routes = json!["routes"].arrayValue
+            print("routes-----------------")
+            print(routes)
+
             // print route using Polyline
-            for route in routes
-            {
+            for route in routes {
                 let routeOverviewPolyline = route["overview_polyline"].dictionary
                 let points = routeOverviewPolyline?["points"]?.stringValue
+               let distance = routeOverviewPolyline?["distance"]?.stringValue
+//                let duration = routeOverviewPolyline?["duration"]?.stringValue
                 let path = GMSPath.init(fromEncodedPath: points!)
                 let polyline = GMSPolyline.init(path: path)
                 polyline.strokeWidth = 5
                 polyline.strokeColor = UIColor.blue
                 polyline.map = self.mapView
+                print("----------------------------------------")
+
             }
-         }
         }
-    
+    }
+
     @IBAction func deleteBtn(_ sender: Any) {
     }
-    
+
     }
-
-
-

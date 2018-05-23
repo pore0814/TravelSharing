@@ -22,7 +22,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7IX-kv-vWy">
                         <rect key="frame" x="0.0" y="0.0" width="127" height="50"/>
                         <subviews>
-                            <view contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="5BI-S0-xqa" customClass="GradientView" customModule="TravelSharing" customModuleProvider="target">
+                            <view contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="5BI-S0-xqa">
                                 <rect key="frame" x="0.0" y="0.0" width="127" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3ma-hg-RXc">
@@ -43,7 +43,6 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.8116551277047912" green="0.75734352816462525" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="3ma-hg-RXc" firstAttribute="centerY" secondItem="5BI-S0-xqa" secondAttribute="centerY" id="ja9-lI-gzP"/>
                                     <constraint firstItem="3ma-hg-RXc" firstAttribute="centerX" secondItem="5BI-S0-xqa" secondAttribute="centerX" id="of7-O7-gkU"/>

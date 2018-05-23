@@ -12,6 +12,7 @@ import SVProgressHUD
 class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
      var schedules = [ScheduleInfo]()
+    var userProfile:UserInfo?
      var indexNumber =  0
      var getDataFromUpdate: ScheduleInfo?
      let scheduleManager = ScheduleManager.shared
@@ -22,22 +23,20 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 
 // display progress before loading data
     override func viewDidAppear(_ animated: Bool) {
-     
+
         if indicator  == true {
         SVProgressHUD.show(withStatus: "loading")
         }
-        
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         scheduleManager.delegate = self
 
         tableView.dataSource = self
@@ -49,9 +48,10 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.register(leftNibName, forCellReuseIdentifier: "ScheduleTableViewCell")
 //FireBase 撈資料
         ScheduleManager.shared.getScheduleContent()
-        
+
 //收通知
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
+      
       }
 
     @objc func getData(notification: Notification) {
@@ -59,9 +59,9 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
             self.schedules = ScheduleManager.shared.scheduleDataArray
             self.tableView.reloadData()
         }
-        SVProgressHUD.dismiss()
-        self.indicator = false
-    }
+            SVProgressHUD.dismiss()
+            self.indicator = false
+        }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return schedules.count
@@ -73,8 +73,8 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell.backgroundColor  = UIColor.clear
                 cell.updateCell(with: data)
                 cell.selectionStyle = .none
-                return cell
-        } else {
+              return cell
+             } else {
             return UITableViewCell()
         }
     }
@@ -101,7 +101,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
            editButton.backgroundColor = UIColor.orange
 
         let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (_, _) in
-            ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid , arrrayIndexPath:indexPath.row)
+            ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid, arrrayIndexPath: indexPath.row)
             self.schedules.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
@@ -111,9 +111,10 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
      }
 }
 
+
 extension ScheduleViewController: ScheduleManagerDelegate {
     func manager(_ manager: ScheduleManager, didGet schedule: ScheduleInfo) {
-        print("107",schedule)
+        print("107", schedule)
         schedules[indexNumber] = schedule
         schedules.sort(by: {$0.date < $1.date})
         tableView.reloadData()

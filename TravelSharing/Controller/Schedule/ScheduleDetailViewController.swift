@@ -21,8 +21,6 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     @IBOutlet weak var destinationScrollView: LukeScrollView!
     @IBOutlet weak var detailCollectionViwe: LukeCollectionView!
 
-  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 //nagivation Bar 顯示Scheudle名稱
@@ -61,9 +59,15 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         }
 
 //navigation bar ButtonItem
-        let addBarButtonItem = UIBarButtonItem.init(title: "Add", style: .done, target: self,
-                                                    action: #selector(addTapped))
-        navigationItem.rightBarButtonItem = addBarButtonItem
+        let barButton = UIBarButtonItem(image: UIImage(named: "car"), landscapeImagePhone: nil, style: .done, target: self, action: #selector(addTapped))
+        self.navigationItem.rightBarButtonItem = barButton
+       
+        let item = UIBarButtonItem(title: "返回", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = barButton
+        
+        //let addBarButtonItem = UIBarButtonItem.init(title: "Add", style: .done, target: self,
+         //                                           action: #selector(addTapped))
+        //navigationItem.rightBarButtonItem = addBarButtonItem
 // CollectionView  
         detailCollectionViwe.delegate =  self
         detailCollectionViwe.dataSource =  self
@@ -72,6 +76,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         self.detailCollectionViwe.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
 
         setCollectionViewLayout()
+       
     }
 
     func setCollectionViewLayout() {
@@ -102,7 +107,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
        if let  cell = detailCollectionViwe.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell {
             cell.dateLabel.text = getDateInfo[indexPath.row].date
             cell.weekLabel.text = String(getWeekDayStr(weekDay: getDateInfo[indexPath.row].weekDay))
@@ -150,7 +155,7 @@ extension ScheduleDetailViewController: UIScrollViewDelegate {
         }
     }
  -------------Luke*/
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard  let screenshotsCollectionViewFlowLayout = self.detailCollectionViwe.collectionViewLayout as? UICollectionViewFlowLayout else {return}
         let screenshotsDistanceBetweenItemsCenter = screenshotsCollectionViewFlowLayout.minimumLineSpacing + screenshotsCollectionViewFlowLayout.itemSize.width
@@ -159,13 +164,13 @@ extension ScheduleDetailViewController: UIScrollViewDelegate {
         // let offsetFactor1 = screenshotsDistanceBetweenItemsCenter / self.view.frame.size.width
         if(scrollView == destinationScrollView) {
             let xOffset = scrollView.contentOffset.x - scrollView.frame.origin.x
-            
+
             detailCollectionViwe.bounds.origin = CGPoint(x: xOffset * offsetFactor, y: detailCollectionViwe.bounds.origin.y)
             //  detailCollectionViwe.contentOffset.x = xOffset * offsetFactor
             print("-----------SCrollview------------------")
-            print("scrollview",destinationScrollView.contentOffset)
-            print("collectionview",detailCollectionViwe.contentOffset)
-            
+            print("scrollview", destinationScrollView.contentOffset)
+            print("collectionview", detailCollectionViwe.contentOffset)
+
         }
     }
 }

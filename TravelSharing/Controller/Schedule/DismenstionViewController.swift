@@ -24,6 +24,10 @@ class DismenstionViewController: UIViewController, GMSMapViewDelegate {
         super.viewDidLoad()
 
     guard let latitude = lat, let longtitude = long else {return}
+        
+    let barButton = UIBarButtonItem(image: UIImage(named: "check"), landscapeImagePhone: nil, style: .done, target: self, action: #selector(addTapped))
+    self.navigationItem.rightBarButtonItem = barButton
+        
 //街景圖
      GMSPanoramaService().requestPanoramaNearCoordinate(
             CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)) { (pano, error) in
@@ -33,6 +37,10 @@ class DismenstionViewController: UIViewController, GMSMapViewDelegate {
             }
             self.streetView.panorama = pano
         }
+        
+        
+       
+        
 //手勢放大
 //       let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapBlurButton(recignizer:)))
 //        tapGesture.numberOfTouchesRequired = 1
@@ -41,6 +49,10 @@ class DismenstionViewController: UIViewController, GMSMapViewDelegate {
 
 // 在location 上顯示 Marker
         initGooglemap(latitude: latitude, longitude: longtitude, name: "Annie")
+    }
+    
+ @objc   func addTapped(sender: AnyObject) {
+        print("aaaa")
     }
 
     func initGooglemap(latitude: Double, longitude: Double, name: String) {

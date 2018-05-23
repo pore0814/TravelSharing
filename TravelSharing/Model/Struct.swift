@@ -51,8 +51,7 @@ struct Destination {
     var uid: String
 }
 
-enum Locaion{
+enum Locaion {
     case myLocation
     case destinationLocation
 }
-

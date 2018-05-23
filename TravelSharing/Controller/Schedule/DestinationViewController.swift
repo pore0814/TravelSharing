@@ -24,11 +24,10 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var schedulePassDataToDestination: ScheduleInfo?
     var destinationManger = DestinationManager()
     var locationManager = CLLocationManager()
-    var lat :Double?
-    var long :Double?
-    var indexPathInGlobal:IndexPath?
-    
-    
+    var lat: Double?
+    var long: Double?
+    var indexPathInGlobal: IndexPath?
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
        tableView.reloadData()
@@ -44,10 +43,10 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         let nib = UINib(nibName: "DestinationTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "DestinationTableViewCell")
         tableView.separatorStyle = .none
-       
+
     }
-    
-    func initMapLocaionManager(){
+
+    func initMapLocaionManager() {
         locationManager = CLLocationManager()
         //配置 locationManager
         locationManager.delegate = self
@@ -74,13 +73,15 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let  cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell") as? DestinationTableViewCell else {return UITableViewCell()}
-        cell.categoryImage.image = UIImage(named: testArray[indexPath.row].category)
-        cell.daysLabel.text = testArray[indexPath.row].time
-        cell.nameLabel.text = testArray[indexPath.row].name
-        cell.mapViewCell(latitude: testArray[indexPath.row].latitude, longitude: testArray[indexPath.row].longitude, destination: testArray[indexPath.row].name)
-        cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
-        cell.mapView.bringSubview(toFront: cell.deleteBtn)
-        cell.selectionStyle =  .none
+            cell.categoryImage.image = UIImage(named: testArray[indexPath.row].category)
+            cell.daysLabel.text = testArray[indexPath.row].time
+            cell.nameLabel.text = testArray[indexPath.row].name
+            cell.mapViewCell(latitude: testArray[indexPath.row].latitude,
+                             longitude: testArray[indexPath.row].longitude,
+                             destination: testArray[indexPath.row].name)
+            cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
+            cell.mapView.bringSubview(toFront: cell.deleteBtn)
+            cell.selectionStyle =  .none
         return cell
     }
 
@@ -88,10 +89,10 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 // Fetch Item
       //  guard let superview = sender.superview,
       //     let cell = superview.superview as? DestinationTableViewCell else {return}
-    
+
 //刪除Destination
         guard let scheduleId = scheduleUid, let dayth = dayths else {return}
-    
+
         destinationManger.deleteDestinationInfo(scheduleUid: scheduleUid!,
                                                 dayth: dayth ,
                                             destinationUid: testArray[tag!].uid)
@@ -99,7 +100,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         testArray.remove(at: tag!)
         tableView.deleteRows(at: [indexPathInGlobal!], with: .automatic)
         tableView.reloadData()
-    
+
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -117,9 +118,15 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.endUpdates()
         previous = tag
     }
+
+    @IBAction func inviteFrineds(_ sender: Any) {
+        let allUsersPage = UIStoryboard.allUsersStoryboard().instantiateInitialViewController()
+
+        present(allUsersPage!, animated: true, completion: nil)
+    }
 }
 
-extension DestinationViewController: DestinationManagerDelegate,CLLocationManagerDelegate, GMSMapViewDelegate {
+extension DestinationViewController: DestinationManagerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate {
     //Delegate 拿資料
     func manager(_ manager: DestinationManager, didGet schedule: [Destination]) {
         testArray = schedule

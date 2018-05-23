@@ -12,6 +12,12 @@ import FirebaseStorage
 
 protocol GetUserInfoManagerDelegate: class {
     func manager(_ manager: GetUserInfoManager, didGet userInfo: UserInfo)
+
+    func managerArray(_ manager: GetUserInfoManager, didGet userInfo: [UserInfo])
+}
+
+protocol GetAllUserInfoManagerDelegate: class {
+     func manager(_ manager: GetUserInfoManager, didGet userInfo: [UserInfo])
 }
 
 class GetUserInfoManager {
@@ -61,30 +67,37 @@ class GetUserInfoManager {
             })
         }
     }
-    
-    func getAllUserInfo(){
+
+    func getAllUserInfo() {
+        var allUsersInfoArray = [UserInfo]()
         FireBaseConnect.databaseRef.child("users").observe(.value) { (snapshot) in
             if let allUserInfos = snapshot.value as?  [String: Any] {
                 print(allUserInfos)
-                for allUserInfo in allUserInfos{
-//                    print(allUserInfo.value)
-//                    if let profileInfo = snapshot.value as?  [String: Any] {
-//                        let uid = profileInfo["uid"] as? String
-//                        let email = profileInfo["email"] as? String
-//                        let photoUrl = profileInfo["photoUrl"] as? String
-//                        let username = profileInfo["username"] as? String
-//
-//                        let userProfile = UserInfo(email: email!, photoUrl: photoUrl!, uid: uid!, userName: username!)
-//
-//                        DispatchQueue.main.async {
-//                            self.delegate?.manager(self, didGet: userProfile)
-//                        }
-                   // }
+                for allUserInfo in allUserInfos {
+
+                   if let allUsersInfo = snapshot.value as?  [String: Any] {
+                    print(allUserInfo.value)
+                    if let allUsers = allUserInfo.value as? [String: String] {
+                        let uid = allUsers["uid"] as? String
+                        let email = allUsers["email"] as? String
+                        let photoUrl = allUsers["photoUrl"] as? String
+                        let username = allUsers["username"] as? String
+
+                        let userProfile = UserInfo(email: email!, photoUrl: photoUrl!, uid: uid!, userName: username!)
+                        allUsersInfoArray.append(userProfile)
+
+                       }
+                    DispatchQueue.main.async {
+                        self.delegate?.managerArray(self, didGet: allUsersInfoArray)
+                    }
+                    }
+
                 }
-                
+
             }
-            
+
         }
+
     }
-    
+
 }

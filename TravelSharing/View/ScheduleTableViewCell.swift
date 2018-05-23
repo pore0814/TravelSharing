@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
@@ -15,10 +16,11 @@ class ScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var leftCellView: UIView!
 
     @IBOutlet weak var leftImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        leftCellView.setShadow()
-        leftImageView.setConerRectWithBorder()
+     leftCellView.setShadow()
+     //   leftImageView.setConerRectWithBorder()
     }
 
     func updateCell(with schedule: ScheduleInfo) {

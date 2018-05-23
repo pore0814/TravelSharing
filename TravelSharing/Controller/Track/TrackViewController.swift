@@ -24,7 +24,7 @@ class  TrackViewController: UIViewController, CLLocationManagerDelegate {
     }
     var destinationManager = DestinationManager()
     var locationManager = CLLocationManager()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     //創建 locationManager

@@ -13,10 +13,10 @@ extension UIView {
 
     func setShadow() {
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = 10
-        self.layer.cornerRadius = 10
+       // self.layer.cornerRadius = 10
     }
 
     func setConerRectWithBorder() {
@@ -32,12 +32,12 @@ extension UIView {
         self.layer.borderColor = UIColor.darkGray.cgColor
         self.layer.cornerRadius = self.frame.width / 2
     }
-    
-    func setGradientBackground(colorOne:UIColor,colorTwo:UIColor){
+
+    func setGradientBackground(colorOne: UIColor, colorTwo: UIColor) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
-        gradientLayer.colors = [colorOne.cgColor,colorTwo.cgColor]
-        gradientLayer.locations = [0.0,0.1]
+        gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
+        gradientLayer.locations = [0.0, 0.1]
         gradientLayer.startPoint = CGPoint(x: 1.0, y: 0.0)
         gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
         layer.insertSublayer(gradientLayer, at: 0)
