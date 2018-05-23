@@ -65,7 +65,7 @@ class AddEditScheduleViewController: UIViewController {
 
         if scheduleInfoDetail == nil {
             if scheduleDateText.text != "", scheduleDaysText.text != "", scheduleNameText.text != "" {
-    //儲存資料  pop 回上頁
+    //新增資料  pop 回上頁
                      ScheduleManager.shared.saveScheduleInfo(uid: scheduleInfoDetail?.uid,
                                                              scheduleName: scheduleNameText.text!,
                                                              scheudleDate: scheduleDateText.text!,

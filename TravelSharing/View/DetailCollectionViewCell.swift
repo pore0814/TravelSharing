@@ -15,7 +15,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var weekLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-       containerView.setConerRectWithBorder()
+       //containerView.setConerRectWithBorder()
 
     }
 

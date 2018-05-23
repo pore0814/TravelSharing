@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var dateSelectedText: UITextField!
     @IBOutlet weak var categoryText: UITextField!
@@ -151,7 +151,7 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
 }
 
 //Search Location  (Auto complete)
-extension AddLocationViewController: GMSAutocompleteViewControllerDelegate {
+extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate {
 
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 15.0)

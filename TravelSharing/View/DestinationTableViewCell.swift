@@ -20,6 +20,7 @@ enum Location{
 
 class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationManagerDelegate{
 
+    @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var daysLabel: UILabel!
@@ -38,7 +39,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationM
         super.awakeFromNib()
         //rightUiview.setConerRectWithBorder()
         
-        rightUiview.setGradientBackground(colorOne: UIColor.blue, colorTwo: UIColor.white)
+      //  rightUiview.setGradientBackground(colorOne: UIColor.blue, colorTwo: UIColor.white)
         mapDelegateAndInitiation()
     }
 
@@ -64,7 +65,10 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationM
         guard let lat = latitude as? Double,
             let long = longitude as? Double,
             let name = destination as? String else {return}
-        
+            print("---------------endlocation")
+            print("68",lat)
+            print("69",long)
+        destinationLocaion = CLLocation(latitude: lat, longitude: long)
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 16)
         let cellMapview = mapView
         cellMapview?.camera = camera
@@ -74,6 +78,8 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationM
         let marker = GMSMarker(position: position)
         marker.title = name
         marker.map = cellMapview!
+        
+         drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
     }
     
     // MARK: CLLocation Manager Delegate
@@ -85,11 +91,18 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationM
         let location = locations.last
         let camera = GMSCameraPosition.camera(
             withLatitude: (location?.coordinate.latitude)!,
-            longitude: (location?.coordinate.longitude)!, zoom: 17.0)
+            longitude: (location?.coordinate.longitude)!, zoom: 5)
+       
+        guard let lat = location?.coordinate.latitude, let long = location?.coordinate.longitude else {return}
+        locationstart = CLLocation(latitude: lat, longitude: long)
+       
+        print("-------------------------------mylocation")
+        print(lat)
+        print(long)
         
         self.locationManager.stopUpdatingHeading()
     }
-    // Mark: - GMSMapViewDelegate
+// Mark: - GMSMapViewDelegate
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         mapView.isMyLocationEnabled = true
@@ -113,19 +126,20 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationM
     func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
         mapView.isMyLocationEnabled = true
         mapView.selectedMarker = nil
+        
         return false
     }
     
     func drawPath(myLocaion: CLLocation, endLocation: CLLocation){
- //   func drawPath(){
-       let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.latitude)"
-        let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.latitude)"
+//  func drawPath(){
+       let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
+        let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
 
      
         
-        let url = "https://maps.googleapis.com/maps/api/directions/json?=origin=\(origin)&destination=\(destination)&mode=driving"
+      let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
         
-     //   let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=25.032963,121.5654262&mode=driving"
+     // let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=22.9998999,120.2268758&mode=driving"
         
         
         Alamofire.request(url).responseJSON { response in
@@ -146,14 +160,17 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate ,CLLocationM
                 let points = routeOverviewPolyline?["points"]?.stringValue
                 let path = GMSPath.init(fromEncodedPath: points!)
                 let polyline = GMSPolyline.init(path: path)
-                polyline.strokeWidth = 4
-                polyline.strokeColor = UIColor.red
+                polyline.strokeWidth = 5
+                polyline.strokeColor = UIColor.blue
                 polyline.map = self.mapView
             }
+         }
         }
-       
-            
-        
-        }
+    
+    @IBAction func deleteBtn(_ sender: Any) {
     }
+    
+    }
+
+
 

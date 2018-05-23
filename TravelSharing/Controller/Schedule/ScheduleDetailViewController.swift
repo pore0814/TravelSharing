@@ -17,13 +17,12 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
     var schedulDetail: ScheduleInfo?
     let dateFormatter1 = TSDateFormatter1()
-
     var destinationManger = DestinationManager()
-
-  
     @IBOutlet weak var destinationScrollView: LukeScrollView!
     @IBOutlet weak var detailCollectionViwe: LukeCollectionView!
 
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //nagivation Bar 顯示Scheudle名稱
@@ -54,31 +53,33 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 
         for index in 0..<(getDateInfo.count) {
             guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as? DestinationViewController else {return}
+
             obj1.scheduleUid = schedulDetail?.uid
+
             obj1.dayths = getDateInfo[index].dayth
+
             var frame = CGRect(x: self.view.frame.width * CGFloat(index), y: 0, width: destinationScrollView.frame.width, height: destinationScrollView.frame.height)
+
             obj1.view.frame = frame
             destinationScrollView.addSubview(obj1.view)
-                print("ddddddd", obj1.view)
+
         }
 
 //navigation bar ButtonItem
         let addBarButtonItem = UIBarButtonItem.init(title: "Add", style: .done, target: self,
                                                     action: #selector(addTapped))
         navigationItem.rightBarButtonItem = addBarButtonItem
-// CollectionView  reload
-        
+// CollectionView  
         detailCollectionViwe.delegate =  self
         detailCollectionViwe.dataSource =  self
 //註冊CollectionViewCell
         let nib = UINib(nibName: "DetailCollectionViewCell", bundle: nil)
         self.detailCollectionViwe.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
 
-        setCollectionViewlayout()
-
+        setCollectionViewLayout()
     }
 
-    func setCollectionViewlayout() {
+    func setCollectionViewLayout() {
         let screenSize = UIScreen.main.bounds
         guard  let layout = detailCollectionViwe.collectionViewLayout as?
             UICollectionViewFlowLayout else {return}
@@ -94,7 +95,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     @objc func addTapped(sender: AnyObject) {
           guard let scheduleDetailToAddLocation = UIStoryboard(name: "Schedule", bundle: nil)
                             .instantiateViewController(withIdentifier: "AddLocationViewController")
-                                                        as? AddLocationViewController else {return}
+                                                        as? AddDestinationViewController else {return}
         scheduleDetailToAddLocation.dateSelected = getDateInfo
         scheduleDetailToAddLocation.uid = schedulDetail?.uid
 
@@ -117,44 +118,15 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let pageNumbe = indexPath.row
-        detailCollectionViwe.setContentOffset(CGPoint(x:(view.frame.width + 20) /  2  * CGFloat(pageNumbe),y:0), animated: true)
-//            destinationScrollView.setContentOffset(
-//                CGPoint(x: self.view.frame.width * CGFloat(indexPath.row),
-//                        y: 0), animated: true)
+        destinationScrollView.setContentOffset(
+                CGPoint(x: self.view.frame.width * CGFloat(indexPath.row),
+                        y: 0), animated: true)
     }
 }
 
 extension ScheduleDetailViewController: UIScrollViewDelegate {
-//
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-////Page
-//        let datePageNum = Int(round(detailCollectionViwe.contentOffset.x / detailCollectionViwe.frame.size.width))
-//        let destinationPageNum = Int(round(scrollView.contentOffset.x/scrollView.frame.size.width))
-//
-//
-//        if  datePageNum != destinationPageNum {
-//            collectionView(detailCollectionViwe, didSelectItemAt: [0, destinationPageNum])
-//            detailCollectionViwe.scrollToItem(at: [0, destinationPageNum], at: .centeredHorizontally, animated: true)
-//        }
-//        collectionView(detailCollectionViwe, didSelectItemAt: [0, destinationPageNum])
-//     }
-    
-//滑動
-//        guard  let screenshotsCollectionViewFlowLayout = self.detailCollectionViwe.collectionViewLayout as? UICollectionViewFlowLayout else {return}
-//        
-//        let screenshotsDistanceBetweenItemsCenter = screenshotsCollectionViewFlowLayout.minimumLineSpacing + screenshotsCollectionViewFlowLayout.itemSize.width
-//        let offsetFactor = screenshotsDistanceBetweenItemsCenter / self.view.frame.size.width
-//        
-//        if (scrollView == detailCollectionViwe) {
-//            let xOffset = scrollView.contentOffset.x - scrollView.frame.origin.x
-//            destinationScrollView.contentOffset.x = xOffset / offsetFactor
-//        } else if(scrollView == destinationScrollView) {
-//            let xOffset = scrollView.contentOffset.x - scrollView.frame.origin.x
-//            detailCollectionViwe.contentOffset.x = xOffset * offsetFactor
-//        }
 
-
+/*-----------------Luke
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard  let screenshotsCollectionViewFlowLayout = self.detailCollectionViwe.collectionViewLayout as? UICollectionViewFlowLayout else {return}
         let screenshotsDistanceBetweenItemsCenter = screenshotsCollectionViewFlowLayout.minimumLineSpacing + screenshotsCollectionViewFlowLayout.itemSize.width
@@ -180,6 +152,25 @@ extension ScheduleDetailViewController: UIScrollViewDelegate {
             print(detailCollectionViwe.contentOffset)
              print(destinationScrollView.contentOffset)
 
+        }
+    }
+ -------------Luke*/
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard  let screenshotsCollectionViewFlowLayout = self.detailCollectionViwe.collectionViewLayout as? UICollectionViewFlowLayout else {return}
+        let screenshotsDistanceBetweenItemsCenter = screenshotsCollectionViewFlowLayout.minimumLineSpacing + screenshotsCollectionViewFlowLayout.itemSize.width
+        let fullScreen =  UIScreen.main.bounds.width
+        let offsetFactor = screenshotsDistanceBetweenItemsCenter / fullScreen
+        // let offsetFactor1 = screenshotsDistanceBetweenItemsCenter / self.view.frame.size.width
+        if(scrollView == destinationScrollView) {
+            let xOffset = scrollView.contentOffset.x - scrollView.frame.origin.x
+            
+            detailCollectionViwe.bounds.origin = CGPoint(x: xOffset * offsetFactor, y: detailCollectionViwe.bounds.origin.y)
+            //  detailCollectionViwe.contentOffset.x = xOffset * offsetFactor
+            print("-----------SCrollview------------------")
+            print("scrollview",destinationScrollView.contentOffset)
+            print("collectionview",detailCollectionViwe.contentOffset)
+            
         }
     }
 }

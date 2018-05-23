@@ -22,7 +22,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7IX-kv-vWy">
                         <rect key="frame" x="0.0" y="0.0" width="127" height="50"/>
                         <subviews>
-                            <view contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="5BI-S0-xqa">
+                            <view contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="5BI-S0-xqa" customClass="GradientView" customModule="TravelSharing" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="127" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3ma-hg-RXc">
@@ -31,13 +31,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGT-6Y-gXd">
                                                 <rect key="frame" x="0.0" y="0.0" width="44.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlf-h3-LWa">
                                                 <rect key="frame" x="0.0" y="20.5" width="44.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -48,6 +48,14 @@
                                     <constraint firstItem="3ma-hg-RXc" firstAttribute="centerY" secondItem="5BI-S0-xqa" secondAttribute="centerY" id="ja9-lI-gzP"/>
                                     <constraint firstItem="3ma-hg-RXc" firstAttribute="centerX" secondItem="5BI-S0-xqa" secondAttribute="centerX" id="of7-O7-gkU"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                        <color key="value" red="0.69803921568627447" green="0.81176470588235294" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                        <color key="value" red="0.34509803921568627" green="0.58039215686274515" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                     </stackView>

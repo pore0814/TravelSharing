@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class LukeScrollView: UIScrollView {
 
     override var delegate: UIScrollViewDelegate? {
@@ -15,5 +16,4 @@ class LukeScrollView: UIScrollView {
             print("Did set delegate in scroll view.")
         }
     }
-
 }

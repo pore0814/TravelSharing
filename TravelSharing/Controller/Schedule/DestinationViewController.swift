@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import SCLAlertView
 
 class DestinationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -25,7 +26,12 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var locationManager = CLLocationManager()
     var lat :Double?
     var long :Double?
-
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,10 +55,6 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         //開始接收目前位置資訊
         locationManager.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
-        
-        
-        
-        
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -71,7 +73,8 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let  cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell") as? DestinationTableViewCell else {return UITableViewCell()}
-        cell.dateLabel.text = testArray[indexPath.row].category
+        cell.categoryImage.image = UIImage(named: testArray[indexPath.row].category)
+//        cell.dateLabel.text = testArray[indexPath.row].category
         cell.daysLabel.text = testArray[indexPath.row].time
         cell.nameLabel.text = testArray[indexPath.row].name
         cell.mapViewCell(latitude: testArray[indexPath.row].latitude, longitude: testArray[indexPath.row].longitude, destination: testArray[indexPath.row].name)
@@ -83,21 +86,25 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
 @objc    func deleteTapBtn(_ sender: UIButton) {
 // Fetch Item
-        if  let superview = sender.superview,
-            let cell = superview.superview as? DestinationTableViewCell {
-            }
+//        guard let superview = sender.superview,
+//            let cell = superview.superview as? DestinationTableViewCell else {return}
+    
 //刪除Destination
         guard let scheduleId = scheduleUid, let dayth = dayths else {return}
-
+    
         destinationManger.deleteDestinationInfo(scheduleUid: scheduleUid!,
                                                 dayth: dayth ,
                                                 destinationUid: testArray[sender.tag].uid)
-        tableView.beginUpdates()
+  //      tableView.beginUpdates()
+    DispatchQueue.main.async {
+        self.tableView.reloadData()
+    }
         tableView.endUpdates()
+    
+
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("----------")
         tag = indexPath.row
         
 //展開

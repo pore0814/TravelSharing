@@ -26,6 +26,7 @@
 		D14C0FEE209823A800026AF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FED209823A800026AF1 /* Constants.swift */; };
 		D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FEF2098695B00026AF1 /* NotificationName.swift */; };
 		D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FF1209873E100026AF1 /* AlertToUser.swift */; };
+		D151103F20B4B77900527420 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151103E20B4B77900527420 /* GradientView.swift */; };
 		D1658265209AC2A300C37F8D /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658263209AC2A300C37F8D /* DestinationTableViewCell.swift */; };
 		D1658266209AC2A300C37F8D /* DestinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */; };
 		D1658268209AE78800C37F8D /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658267209AE78800C37F8D /* Struct.swift */; };
@@ -87,6 +88,7 @@
 		D14C0FED209823A800026AF1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D14C0FEF2098695B00026AF1 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		D14C0FF1209873E100026AF1 /* AlertToUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertToUser.swift; sourceTree = "<group>"; };
+		D151103E20B4B77900527420 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		D1658263209AC2A300C37F8D /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
 		D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinationTableViewCell.xib; sourceTree = "<group>"; };
 		D1658267209AE78800C37F8D /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				D1658267209AE78800C37F8D /* Struct.swift */,
 				D18B9B6320A0248500EB8D16 /* Date.swift */,
 				D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */,
+				D151103E20B4B77900527420 /* GradientView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */,
 				D1F5422B2099EBAA007EBE96 /* FirBaseConnect.swift in Sources */,
 				D18B9B6720A030E300EB8D16 /* DestinationManager.swift in Sources */,
+				D151103F20B4B77900527420 /* GradientView.swift in Sources */,
 				D127E16D20A52EE300EBB5F7 /* NavigationCotroller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -751,7 +755,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -767,7 +774,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

@@ -33,26 +33,24 @@ class ScheduleManager {
         }
 
 //刪除(同時刪除Schedule下的uid 和User下Schedule的uid)
-    func deleteSchedule(scheduleId: String) {
+    func deleteSchedule(scheduleId: String , arrrayIndexPath:Int) {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
         /* 先刪除Schedule_id */ FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(scheduleId).removeValue { error, _ in
-            /* 再刪除使用者Schedule下的Schedule_id  */
-            if error == nil {
-                FireBaseConnect.databaseRef.child(Constants.FireBaseUsers).child(userid).child(Constants.FireBaseSchedule).child(scheduleId).removeValue { error, _ in
-                    if error != nil {
+                   self.scheduleDataArray.remove(at: arrrayIndexPath)
+                   if error != nil {
                         AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "刪除失敗")
                     }
                 }
             }
-        }
-    }
+    
+    
 
     //修改
     func updateaveScheduleInfo(scheduleUid: String?, scheduleName: String, scheudleDate: String, scheduleDay: String) {
          guard let userid = UserManager.shared.getFireBaseUID(), let scheduleUUid = scheduleUid else {return}
          let  updateScheduleInfo = ["uid": scheduleUid, "name": scheduleName,
                                     "date": scheudleDate, "days": scheduleDay, "host": userid]
-        FireBaseConnect.databaseRef
+         FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)
             .child(scheduleUUid)
             .updateChildValues(updateScheduleInfo)
@@ -91,15 +89,14 @@ class ScheduleManager {
     }
 */
 
-    // 到FireBase  schedules 撈使用者的post的 Scheudle內容
+    // 到FireBase  撈schedules資料
     func getScheduleContent() {
-       
+
         guard let userid = UserManager.shared.getFireBaseUID() else {
-            
+
             return
-            
+
         }
-        
         scheduleDataArray.removeAll()
         
         FireBaseConnect

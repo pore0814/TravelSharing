@@ -19,50 +19,65 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="305.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkY-na-HaN">
-                        <rect key="frame" x="0.0" y="3" width="375" height="75"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkY-na-HaN" customClass="GradientView" customModule="TravelSharing" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 天數" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-t4-cvW">
-                                <rect key="frame" x="317" y="34" width="38" height="18"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="752" text="行程名稱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6D8-a4-elY">
-                                <rect key="frame" x="69" y="23" width="238" height="29"/>
+                                <rect key="frame" x="140" y="23" width="96" height="36"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.69803921570000005" green="0.81176470590000005" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text=" 日期" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLA-0X-LOh">
-                                <rect key="frame" x="20" y="32" width="39" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car" translatesAutoresizingMaskIntoConstraints="NO" id="Ipy-l5-zdh">
+                                <rect key="frame" x="19" y="19" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="kIs-Mc-MWT"/>
+                                    <constraint firstAttribute="height" constant="40" id="pA0-ew-QrO"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-t4-cvW">
+                                <rect key="frame" x="326.5" y="32" width="40" height="23.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.94117647058823528" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="6XZ-t4-cvW" secondAttribute="trailing" constant="20" id="3Vf-S1-1Su"/>
-                            <constraint firstItem="sLA-0X-LOh" firstAttribute="leading" secondItem="hkY-na-HaN" secondAttribute="leading" priority="999" constant="20" id="Ujt-FZ-00Y"/>
-                            <constraint firstItem="6D8-a4-elY" firstAttribute="leading" secondItem="sLA-0X-LOh" secondAttribute="trailing" constant="10" id="Vjf-KO-yLd"/>
+                            <constraint firstItem="6XZ-t4-cvW" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" priority="999" constant="32" id="S15-dL-Mrt"/>
+                            <constraint firstItem="Ipy-l5-zdh" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" constant="19" id="SsI-ZD-R5u"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="centerY" secondItem="hkY-na-HaN" secondAttribute="centerY" id="bsK-Kg-bnY"/>
+                            <constraint firstItem="6D8-a4-elY" firstAttribute="bottom" secondItem="Ipy-l5-zdh" secondAttribute="bottom" id="ddl-JQ-qYQ"/>
+                            <constraint firstItem="6D8-a4-elY" firstAttribute="bottom" secondItem="Ipy-l5-zdh" secondAttribute="bottom" id="j9W-9z-uxI"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" priority="750" constant="23" id="kqr-bg-XXw"/>
-                            <constraint firstItem="6XZ-t4-cvW" firstAttribute="bottom" secondItem="sLA-0X-LOh" secondAttribute="bottom" id="lTT-iz-Y6g"/>
-                            <constraint firstItem="6D8-a4-elY" firstAttribute="bottom" secondItem="sLA-0X-LOh" secondAttribute="bottom" id="miM-32-Nuz"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="centerX" secondItem="hkY-na-HaN" secondAttribute="centerX" id="nA3-ug-O1H"/>
-                            <constraint firstItem="6XZ-t4-cvW" firstAttribute="leading" secondItem="6D8-a4-elY" secondAttribute="trailing" constant="10" id="r13-Ug-UaZ"/>
+                            <constraint firstAttribute="trailing" secondItem="6XZ-t4-cvW" secondAttribute="trailing" constant="8.5" id="tt6-T9-ph3"/>
+                            <constraint firstItem="Ipy-l5-zdh" firstAttribute="leading" secondItem="hkY-na-HaN" secondAttribute="leading" constant="19" id="tvQ-86-WwM"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="FirstColor">
+                                <color key="value" red="0.83292547610000001" green="0.83923910020000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="SecondColor">
+                                <color key="value" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                <color key="value" red="0.65098039215686276" green="0.70588235294117652" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                <color key="value" red="0.50980392156862742" green="0.58039215686274515" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IyD-BT-1Yc" customClass="GMSMapView">
-                        <rect key="frame" x="0.0" y="81" width="375" height="221.5"/>
+                        <rect key="frame" x="0.0" y="82" width="375" height="221"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAE-hN-1pn">
-                                <rect key="frame" x="334" y="189" width="24" height="24"/>
+                                <rect key="frame" x="334" y="188" width="24" height="24"/>
                                 <color key="backgroundColor" red="0.87798293969999996" green="0.47912479330000002" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="delete"/>
                                 <connections>
-                                    <action selector="deleteBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VWA-OI-qxv"/>
+                                    <action selector="deleteBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iE1-Zy-8At"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -74,29 +89,30 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="IyD-BT-1Yc" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="bottom" constant="3" id="7i9-tz-Spv"/>
+                    <constraint firstItem="IyD-BT-1Yc" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="bottom" id="7i9-tz-Spv"/>
                     <constraint firstItem="IyD-BT-1Yc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="L9b-1g-Vve"/>
                     <constraint firstAttribute="bottom" secondItem="IyD-BT-1Yc" secondAttribute="bottom" constant="3" id="Pwk-JZ-rDc"/>
                     <constraint firstItem="IyD-BT-1Yc" firstAttribute="trailing" secondItem="hkY-na-HaN" secondAttribute="trailing" id="RVQ-6J-wYW"/>
                     <constraint firstItem="IyD-BT-1Yc" firstAttribute="leading" secondItem="hkY-na-HaN" secondAttribute="leading" id="SpP-Mu-Yhs"/>
-                    <constraint firstItem="hkY-na-HaN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="hFv-WJ-VDZ"/>
+                    <constraint firstItem="hkY-na-HaN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hFv-WJ-VDZ"/>
                     <constraint firstAttribute="trailing" secondItem="IyD-BT-1Yc" secondAttribute="trailing" id="uQg-AH-lB8"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="dateLabel" destination="sLA-0X-LOh" id="fTi-mp-pGq"/>
+                <outlet property="categoryImage" destination="Ipy-l5-zdh" id="lyA-CD-TZn"/>
                 <outlet property="daysLabel" destination="6XZ-t4-cvW" id="oDT-h8-VgW"/>
                 <outlet property="deleteBtn" destination="fAE-hN-1pn" id="5V7-ML-wux"/>
                 <outlet property="mapView" destination="IyD-BT-1Yc" id="IrJ-tL-ipn"/>
                 <outlet property="nameLabel" destination="6D8-a4-elY" id="IzI-7D-QKa"/>
                 <outlet property="rightUiview" destination="hkY-na-HaN" id="DkM-ro-nNT"/>
             </connections>
-            <point key="canvasLocation" x="497.5" y="-72"/>
+            <point key="canvasLocation" x="556.5" y="-84"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="car" width="64" height="64"/>
         <image name="delete" width="24" height="24"/>
     </resources>
 </document>

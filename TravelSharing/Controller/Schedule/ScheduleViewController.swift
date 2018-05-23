@@ -22,14 +22,28 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 
 // display progress before loading data
     override func viewDidAppear(_ animated: Bool) {
+     
         if indicator  == true {
         SVProgressHUD.show(withStatus: "loading")
         }
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+      
+        print("--------will")
+        print(schedules.count)
+        //撈Schedule資料
+       //
     }
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+ ScheduleManager.shared.getScheduleContent()
+        
         scheduleManager.delegate = self
 
         tableView.dataSource = self
@@ -39,8 +53,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 //註冊tableViewCell
         let leftNibName = UINib(nibName: "ScheduleTableViewCell", bundle: nil)
         tableView.register(leftNibName, forCellReuseIdentifier: "ScheduleTableViewCell")
-//撈Schedule資料
-        ScheduleManager.shared.getScheduleContent()
+
 //收通知
         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
       }
@@ -92,7 +105,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
            editButton.backgroundColor = UIColor.orange
 
         let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (_, _) in
-            ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid)
+            ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid , arrrayIndexPath:indexPath.row)
             self.schedules.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
