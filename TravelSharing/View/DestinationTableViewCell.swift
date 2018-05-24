@@ -30,7 +30,6 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
 
     var locationManager = CLLocationManager()
     var locationSelected = Location.myLocaion
-
     var locationstart     = CLLocation()
     var destinationLocaion = CLLocation()
 
@@ -50,7 +49,19 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
 
     @IBAction func drawRouteBtn(_ sender: Any) {
     drawPath(myLocaion:  locationstart , endLocation: destinationLocaion)
+        
+        if let myLocation = mapView.myLocation {
+            let path = GMSMutablePath()
+            path.add(myLocation.coordinate)
+            path.add(destinationLocaion.coordinate)
+            //add other coordinates
+            //path.addCoordinate(model.coordinate)
+            
+            let bounds = GMSCoordinateBounds(path: path)
+            mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
+        }
     }
+    
     func mapDelegateAndInitiation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -77,11 +88,6 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
             print("68", lat)
             print("69", long)
         destinationLocaion = CLLocation(latitude: lat, longitude: long)
-        
-      
-    
-      
-    
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 16)
         let cellMapview = mapView
         cellMapview?.camera = camera
@@ -91,26 +97,11 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         let marker = GMSMarker(position: position)
         marker.title = name
         marker.map = cellMapview
-         drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
-        NotificationCenter.default.addObserver(self, selector: #selector(drawRoute), name: .myLocation, object: nil)
-    }
-    
-    @objc func drawRoute(notification: Notification) {
-        drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
         
         
-    }
+        
 
-    
-    
-    func catchNotification(notification:Notification){
-        guard let userInfo = notification.userInfo else {return}
-   print ("98", userInfo)
     }
-    
-    
-    
-    
     // MARK: CLLocation Manager Delegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while get location\(error)")
@@ -126,9 +117,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         locationstart = CLLocation(latitude: lat, longitude: long)
         self.locationManager.stopUpdatingHeading()
         
-    //    NotificationCenter.default.post(name: .myLocation,object: nil)
-        
-        
+ 
     }
     
 
@@ -169,6 +158,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         
       let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
       let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
+       
 
       let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
 
@@ -197,7 +187,6 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
                 polyline.strokeWidth = 5
                 polyline.strokeColor = UIColor.blue
                 polyline.map = self.mapView
-              
                 print("----------------------------------------")
 
             }
