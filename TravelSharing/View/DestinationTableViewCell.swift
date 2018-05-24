@@ -19,6 +19,7 @@ enum Location {
 
 class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationManagerDelegate {
 
+    @IBOutlet weak var drawPathBtn: UIButton!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -47,6 +48,9 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         
     }
 
+    @IBAction func drawRouteBtn(_ sender: Any) {
+    drawPath(myLocaion:  locationstart , endLocation: destinationLocaion)
+    }
     func mapDelegateAndInitiation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -87,7 +91,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         let marker = GMSMarker(position: position)
         marker.title = name
         marker.map = cellMapview
-        
+         drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
         NotificationCenter.default.addObserver(self, selector: #selector(drawRoute), name: .myLocation, object: nil)
     }
     
@@ -122,9 +126,9 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         locationstart = CLLocation(latitude: lat, longitude: long)
         self.locationManager.stopUpdatingHeading()
         
-        NotificationCenter.default.post(
-            name: .myLocation,
-            object: nil)
+    //    NotificationCenter.default.post(name: .myLocation,object: nil)
+        
+        
     }
     
 

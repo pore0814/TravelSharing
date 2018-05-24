@@ -63,16 +63,11 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 
         }
 
-//navigation bar ButtonItem
-//        let barButton = UIBarButtonItem(image: UIImage(named: "back"), landscapeImagePhone: nil, style: .done, target: self, action: #selector(addTapped))
-//        self.navigationItem.leftBarButtonItem = barButton
-        
+
        
-        let item = UIBarButtonItem(title: "返回", style: .plain, target: self, action: #selector(backTapped))
-         item.tintColor = UIColor.white
-        self.navigationItem.leftBarButtonItem = item
+     
         
-        let addBarButtonItem = UIBarButtonItem.init(title: "新增", style: .done, target: self,
+        let addBarButtonItem = UIBarButtonItem.init(title: "＋", style: .done, target: self,
                                                     action: #selector(addTapped))
         addBarButtonItem.tintColor = UIColor.white
         navigationItem.rightBarButtonItem = addBarButtonItem
@@ -113,10 +108,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
           self.navigationController?.pushViewController(scheduleDetailToAddLocation, animated: true)
     }
     
-    @objc func backTapped(sender: AnyObject) {
-     navigationController?.popViewController(animated: true)
-    }
-
+  
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return getDateInfo.count
     }

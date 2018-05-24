@@ -84,6 +84,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
                              destination: testArray[indexPath.row].name)
             cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
             cell.mapView.bringSubview(toFront: cell.deleteBtn)
+            cell.mapView.bringSubview(toFront: cell.drawPathBtn)
             cell.selectionStyle =  .none
         
         return cell

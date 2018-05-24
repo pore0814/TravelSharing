@@ -49,6 +49,8 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         for index in dateSelected! {
             print(index.date)
             dateSelectedText.text = index.date
+            
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         }
 // pickView
         guard let dateselect = dateSelected else {return}
