@@ -37,7 +37,8 @@ class AddEditScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
+        let rightBarButtonItem = UIBarButtonItem(title: "儲存", style: .plain, target: self, action: #selector(addTapped))
+        rightBarButtonItem.tintColor = UIColor.white
         navigationItem.rightBarButtonItem =  rightBarButtonItem
         navigationItem.title = scheduleInfoDetail?.name
 

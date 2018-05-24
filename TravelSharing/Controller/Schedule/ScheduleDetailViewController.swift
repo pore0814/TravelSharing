@@ -20,6 +20,11 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     var destinationManger = DestinationManager()
     @IBOutlet weak var destinationScrollView: LukeScrollView!
     @IBOutlet weak var detailCollectionViwe: LukeCollectionView!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,30 +64,36 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         }
 
 //navigation bar ButtonItem
-        let barButton = UIBarButtonItem(image: UIImage(named: "car"), landscapeImagePhone: nil, style: .done, target: self, action: #selector(addTapped))
-        self.navigationItem.rightBarButtonItem = barButton
-       
-        let item = UIBarButtonItem(title: "返回", style: .plain, target: self, action: nil)
-        self.navigationItem.backBarButtonItem = barButton
+//        let barButton = UIBarButtonItem(image: UIImage(named: "back"), landscapeImagePhone: nil, style: .done, target: self, action: #selector(addTapped))
+//        self.navigationItem.leftBarButtonItem = barButton
         
-        //let addBarButtonItem = UIBarButtonItem.init(title: "Add", style: .done, target: self,
-         //                                           action: #selector(addTapped))
-        //navigationItem.rightBarButtonItem = addBarButtonItem
-// CollectionView  
-        detailCollectionViwe.delegate =  self
-        detailCollectionViwe.dataSource =  self
-//註冊CollectionViewCell
-        let nib = UINib(nibName: "DetailCollectionViewCell", bundle: nil)
-        self.detailCollectionViwe.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
-
+       
+        let item = UIBarButtonItem(title: "返回", style: .plain, target: self, action: #selector(backTapped))
+         item.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItem = item
+        
+        let addBarButtonItem = UIBarButtonItem.init(title: "新增", style: .done, target: self,
+                                                    action: #selector(addTapped))
+        addBarButtonItem.tintColor = UIColor.white
+        navigationItem.rightBarButtonItem = addBarButtonItem
+        setCollectionView()
         setCollectionViewLayout()
        
     }
 
+    func setCollectionView(){
+        // CollectionView
+        detailCollectionViwe.delegate =  self
+        detailCollectionViwe.dataSource =  self
+        //註冊CollectionViewCell
+        let nib = UINib(nibName: "DetailCollectionViewCell", bundle: nil)
+        self.detailCollectionViwe.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
+    }
     func setCollectionViewLayout() {
         let screenSize = UIScreen.main.bounds
         guard  let layout = detailCollectionViwe.collectionViewLayout as?
             UICollectionViewFlowLayout else {return}
+        
         layout.itemSize = CGSize(width: screenSize.width / 2.0,
                                 height: detailCollectionViwe.frame.height)
             let insetX = screenSize.width / 4.0
@@ -101,6 +112,10 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 
           self.navigationController?.pushViewController(scheduleDetailToAddLocation, animated: true)
     }
+    
+    @objc func backTapped(sender: AnyObject) {
+     navigationController?.popViewController(animated: true)
+    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return getDateInfo.count
@@ -109,10 +124,14 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
        if let  cell = detailCollectionViwe.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell {
+        
             cell.dateLabel.text = getDateInfo[indexPath.row].date
-            cell.weekLabel.text = String(getWeekDayStr(weekDay: getDateInfo[indexPath.row].weekDay))
+            cell.weekLabel.text = String(getWeekDayStr(weekDay:getDateInfo[indexPath.row].weekDay))
+        
             return cell
+        
          } else {
+        
                 return UICollectionViewCell()
          }
     }

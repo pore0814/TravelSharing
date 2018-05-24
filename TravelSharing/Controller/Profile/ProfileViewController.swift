@@ -17,49 +17,51 @@ class ProfileViewController: UIViewController, FusumaDelegate {
     @IBOutlet weak var userNameText: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
-
+    @IBOutlet weak var logOutBtn: UIButton!
+    @IBOutlet weak var saveBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
          getUserInfoManager.delegate = self
          getUserInfoManager.getScheduleContent()
-
-        let addBarButtonItem = UIBarButtonItem.init(title: "更新·", style: .done, target: self,
-                                                    action: #selector(addTapped))
-        navigationItem.rightBarButtonItem = addBarButtonItem
-        
-        profileImage.setRounded()
-        
-
+         profileImage.setRounded()
+         logOutBtn.setConerRectWithBorder()
+         saveBtn.setConerRectWithBorder()
     }
-
-    @objc func addTapped(sender: AnyObject) {
-
-        let appearance = SCLAlertView.SCLAppearance(
-         showCloseButton: false)
-
-        let alertView = SCLAlertView(appearance: appearance)
-
-        alertView.addButton("確定") {
-            let imageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1)
-            print(imageData)
-            print(self.userNameText.text!)
-
-           self.getUserInfoManager.updateUserInfo(username: self.userNameText.text!, photo: imageData!)
-        }
-
-        alertView.addButton("取消") {
-        }
-
-        alertView.showSuccess("", subTitle: NSLocalizedString("Update personal profile?", comment: ""))
-    }
-
+    
     @IBAction func updateProfileImage(_ sender: Any) {
         let fusuma = FusumaViewController()
         fusuma.delegate = self
         fusuma.cropHeightRatio = 1
         self.present(fusuma, animated: true, completion: nil)
-
     }
+    
+    @IBAction func saveBtn(_ sender: Any) {
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false)
+        
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton("確定") {
+            let imageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1)
+            print(imageData)
+            print(self.userNameText.text!)
+            
+            self.getUserInfoManager.updateUserInfo(username: self.userNameText.text!, photo: imageData!)
+        }
+        
+        alertView.addButton("取消") {
+        }
+        
+        alertView.showSuccess("", subTitle: NSLocalizedString("Update personal profile?", comment: ""))
+    }
+    
+    
+    @IBAction func logOutBtn(_ sender: Any) {
+        guard let switchToLoginPage = AppDelegate.shared?.switchToLoginViewController() else {return}
+        UserManager.shared.logout()
+        switchToLoginPage
+    }
+    
+    
 //Fusuma 選照片
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
         profileImage.image = image
@@ -69,14 +71,7 @@ class ProfileViewController: UIViewController, FusumaDelegate {
     func fusumaVideoCompleted(withFileURL fileURL: URL) {}
     func fusumaCameraRollUnauthorized() {}
 
-//navigation bar ButtonItem
-
-    @IBAction func logOut(_ sender: Any) {
-        guard let switchToLoginPage = AppDelegate.shared?.switchToLoginViewController() else {return}
-            UserManager.shared.logout()
-            switchToLoginPage
-        }
-    }
+}
 
 extension ProfileViewController: GetUserInfoManagerDelegate {
 

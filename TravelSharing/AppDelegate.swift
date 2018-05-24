@@ -25,6 +25,8 @@ var window: UIWindow?
         FirebaseApp.configure()
         GMSServices.provideAPIKey(apiKey)
         GMSPlacesClient.provideAPIKey(apiKey)
+        
+    
 
 //跳轉到MainViewController()
         if UserManager.shared.getFireBaseUID() != nil {

@@ -13,12 +13,14 @@ class TravelSharingNavigationController: UINavigationController {
     override func viewDidLoad() {
        // navigationBar.barTintColor = TravelSharingColor.tabBarTintColor.color()
         var colors = [UIColor]()
-        colors.append(UIColor(red: 179/255, green: 255/255, blue: 224/255, alpha: 1))
-        colors.append(UIColor(red: 77/255, green: 136/255, blue: 255/255, alpha: 1))
+        colors.append(UIColor(red: 143/255, green: 181/255, blue: 172/255, alpha: 1))
+        colors.append(UIColor(red: 82/255, green: 192/255, blue: 166/255, alpha: 1))
         navigationBar.setGradientBackground(colors: colors)
-        arrangeShadowLayer()
+       // arrangeShadowLayer()
+      
     }
-
+    
+//陰影
     private func arrangeShadowLayer() {
         self.navigationBar.layer.shadowColor = UIColor.black.cgColor
         self.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 4 )

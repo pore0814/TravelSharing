@@ -25,7 +25,7 @@ enum TSColor: String {
     //case tabBarTintColor = "7436B9"
     case tabBarColor = "#b3e6ff"
 
-    case tabBarTintColor = "#00ccff"
+    case tabBarTintColor = "#30b999"
 
     case textColor = "1F1F1F"
 

@@ -45,7 +45,6 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.separatorStyle = .none
 
     }
-
     func initMapLocaionManager() {
         locationManager = CLLocationManager()
         //配置 locationManager
@@ -54,7 +53,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         locationManager.requestAlwaysAuthorization()
         //開始接收目前位置資訊
         locationManager.startUpdatingLocation()
-        locationManager.startMonitoringSignificantLocationChanges()
+    locationManager.startMonitoringSignificantLocationChanges()
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,23 +64,28 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
                   return 400
                 }
              }
-              return 70
+              return 75
         }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return testArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("CellForRAowAT---------------")
         guard let  cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell") as? DestinationTableViewCell else {return UITableViewCell()}
+        
             cell.categoryImage.image = UIImage(named: testArray[indexPath.row].category)
+            cell.categoryLabel.text = testArray[indexPath.row].category
             cell.daysLabel.text = testArray[indexPath.row].time
             cell.nameLabel.text = testArray[indexPath.row].name
+            cell.mapView.clear()
             cell.mapViewCell(latitude: testArray[indexPath.row].latitude,
                              longitude: testArray[indexPath.row].longitude,
                              destination: testArray[indexPath.row].name)
             cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
             cell.mapView.bringSubview(toFront: cell.deleteBtn)
             cell.selectionStyle =  .none
+        
         return cell
     }
 
@@ -96,11 +100,11 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         destinationManger.deleteDestinationInfo(scheduleUid: scheduleUid!,
                                                 dayth: dayth ,
                                             destinationUid: testArray[tag!].uid)
+   
 
-        testArray.remove(at: tag!)
+         testArray.remove(at: tag!)
         tableView.deleteRows(at: [indexPathInGlobal!], with: .automatic)
         tableView.reloadData()
-
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

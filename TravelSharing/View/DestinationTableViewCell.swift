@@ -19,6 +19,7 @@ enum Location {
 
 class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationManagerDelegate {
 
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var daysLabel: UILabel!
@@ -40,9 +41,10 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     override func awakeFromNib() {
         super.awakeFromNib()
         //rightUiview.setConerRectWithBorder()
-
+        rightUiview.setShadow()
       //  rightUiview.setGradientBackground(colorOne: UIColor.blue, colorTwo: UIColor.white)
         mapDelegateAndInitiation()
+        
     }
 
     func mapDelegateAndInitiation() {
@@ -67,11 +69,15 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         guard let lat = latitude as? Double,
             let long = longitude as? Double,
             let name = destination as? String else {return}
-            print("---------------endlocation")
+            print("---------------CEll")
             print("68", lat)
             print("69", long)
         destinationLocaion = CLLocation(latitude: lat, longitude: long)
-        drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
+        
+      
+    
+      
+    
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 16)
         let cellMapview = mapView
         cellMapview?.camera = camera
@@ -80,10 +86,27 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         let position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let marker = GMSMarker(position: position)
         marker.title = name
-        marker.map = cellMapview!
-
+        marker.map = cellMapview
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(drawRoute), name: .myLocation, object: nil)
+    }
+    
+    @objc func drawRoute(notification: Notification) {
+        drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
+        
+        
     }
 
+    
+    
+    func catchNotification(notification:Notification){
+        guard let userInfo = notification.userInfo else {return}
+   print ("98", userInfo)
+    }
+    
+    
+    
+    
     // MARK: CLLocation Manager Delegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while get location\(error)")
@@ -98,9 +121,16 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         guard let lat = location?.coordinate.latitude, let long = location?.coordinate.longitude else {return}
         locationstart = CLLocation(latitude: lat, longitude: long)
         self.locationManager.stopUpdatingHeading()
+        
+        NotificationCenter.default.post(
+            name: .myLocation,
+            object: nil)
     }
-// Mark: - GMSMapViewDelegate
+    
 
+    
+    
+// Mark: - GMSMapViewDelegate
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         mapView.isMyLocationEnabled = true
     }
@@ -129,6 +159,10 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
 
     func drawPath(myLocaion: CLLocation, endLocation: CLLocation) {
 
+        print("drawPath--------------------")
+        print("myLocation",myLocaion)
+        print("endLocation",endLocation)
+        
       let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
       let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
 
@@ -146,7 +180,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
 
             let routes = json!["routes"].arrayValue
             print("routes-----------------")
-            print(routes)
+            print(json)
 
             // print route using Polyline
             for route in routes {
@@ -159,6 +193,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
                 polyline.strokeWidth = 5
                 polyline.strokeColor = UIColor.blue
                 polyline.map = self.mapView
+              
                 print("----------------------------------------")
 
             }

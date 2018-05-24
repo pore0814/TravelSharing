@@ -20,14 +20,21 @@ extension UIView {
     }
 
     func setConerRectWithBorder() {
-         self.layer.borderWidth = 1
+     //    self.layer.borderWidth = 1
         self.layer.masksToBounds = true
-        self.layer.borderColor = UIColor.darkGray.cgColor
-        self.layer.cornerRadius = 10
+       // self.layer.borderColor = UIColor.darkGray.cgColor
+        self.layer.cornerRadius = 25
+        
     }
 
+    func setRounded10(){
+         self.layer.masksToBounds = true
+         self.layer.cornerRadius = 10
+         self.layer.borderWidth = 1
+         self.layer.borderColor = UIColor.darkGray.cgColor
+    }
     func setRounded() {
-        self.layer.borderWidth = 1
+       // self.layer.borderWidth = 1
         self.layer.masksToBounds = true
         self.layer.borderColor = UIColor.darkGray.cgColor
         self.layer.cornerRadius = self.frame.width / 2
