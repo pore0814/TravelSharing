@@ -59,9 +59,30 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         dateSelectedText.inputView = pickerView
         dateSelectedText.textAlignment = .center
         dateSelectedText.text = dateselect[0].date
+        
+        
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        
+        
+        self.showAnimate()
 
 }
+    func showAnimate()
+    {
+        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        self.view.alpha = 0.0;
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.alpha = 1.0
+            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            
+        });
+    }
 
+  
+    
+    
+    
+    
 //取得現在時間
     func getTime() {
         let date = Date()
@@ -81,7 +102,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         } else {
         print(dateSelectedText.text)
          print(dateSelectedText.text! + "_" + timeText.text!)
-        print(uid!)
+       // print(uid!)
 
             let saveDate = Destination(name: destinationText.text!, time: timeText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!, uid: "")
           print(saveDate)

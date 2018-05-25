@@ -99,13 +99,30 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
 
     @objc func addTapped(sender: AnyObject) {
-          guard let scheduleDetailToAddLocation = UIStoryboard(name: "Schedule", bundle: nil)
-                            .instantiateViewController(withIdentifier: "AddLocationViewController")
-                                                        as? AddDestinationViewController else {return}
-        scheduleDetailToAddLocation.dateSelected = getDateInfo
-        scheduleDetailToAddLocation.uid = schedulDetail?.uid
-
-          self.navigationController?.pushViewController(scheduleDetailToAddLocation, animated: true)
+//          guard let scheduleDetailToAddLocation = UIStoryboard(name: "Schedule", bundle: nil)
+//                            .instantiateViewController(withIdentifier: "AddLocationViewController")
+//                                                        as? AddDestinationViewController else {return}
+//        scheduleDetailToAddLocation.dateSelected = getDateInfo
+//        scheduleDetailToAddLocation.uid = schedulDetail?.uid
+//
+//          self.navigationController?.pushViewController(scheduleDetailToAddLocation, animated: true)
+//        guard   let popOverVC = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "AddLocationViewController") as? AddDestinationViewController else {return}
+//        popOverVC.dateSelected = getDateInfo
+//        self.addChildViewController(popOverVC)
+//
+//        popOverVC.view.frame = self.view.frame
+//        self.view.addSubview(popOverVC.view)
+//        popOverVC.didMove(toParentViewController: self)
+        let storyboard : UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
+        guard    let popupVC = storyboard.instantiateViewController(withIdentifier: "AddLocationViewController") as? AddDestinationViewController else{return}
+        popupVC.modalPresentationStyle = UIModalPresentationStyle .popover
+        popupVC.preferredContentSize = CGSize(width: 170, height: 130)
+        popupVC.popoverPresentationController?.delegate = self as? UIPopoverPresentationControllerDelegate
+       
+        popupVC.dateSelected = getDateInfo
+        self.present(popupVC, animated: true, completion: nil)
+        
+        
     }
     
   

@@ -18,6 +18,7 @@ class DismenstionViewController: UIViewController, GMSMapViewDelegate {
     @IBOutlet weak var streetView: GMSPanoramaView!
     @IBOutlet weak var mapView: GMSMapView!
 
+    @IBOutlet weak var showBtn: UIButton!
     var locationManager = CLLocationManager()
 
     override func viewDidLoad() {
@@ -28,7 +29,8 @@ class DismenstionViewController: UIViewController, GMSMapViewDelegate {
     let barButton = UIBarButtonItem(image: UIImage(named: "check"), landscapeImagePhone: nil, style: .done, target: self, action: #selector(addTapped))
     self.navigationItem.rightBarButtonItem = barButton
         
-//街景圖
+
+        //街景圖
      GMSPanoramaService().requestPanoramaNearCoordinate(
             CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)) { (pano, error) in
                     if error != nil {
@@ -55,6 +57,16 @@ class DismenstionViewController: UIViewController, GMSMapViewDelegate {
         print("aaaa")
     }
 
+    @IBAction func showBtn(_ sender: Any) {
+        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
+            UIApplication.shared.openURL(URL(string:
+                "comgooglemaps://?center=40.765819,-73.975866&zoom=14&views=traffic")!)
+        } else {
+            print("Can't use comgooglemaps://");
+        }
+    }
+        
+
     func initGooglemap(latitude: Double, longitude: Double, name: String) {
 
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 16)
@@ -66,6 +78,8 @@ class DismenstionViewController: UIViewController, GMSMapViewDelegate {
         marker.title = name
         marker.map = mapView
         mapView.delegate = self
+        
+        
     }
 
 //

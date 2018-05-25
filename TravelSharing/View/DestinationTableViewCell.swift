@@ -19,6 +19,7 @@ enum Location {
 
 class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationManagerDelegate {
 
+    @IBOutlet weak var googleMapBtn: UIButton!
     @IBOutlet weak var drawPathBtn: UIButton!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var categoryImage: UIImageView!
@@ -62,6 +63,20 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         }
     }
     
+    
+   
+    @IBAction func googleMapBtn(_ sender: Any) {
+        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!))
+        {
+            UIApplication.shared.openURL(NSURL(string:
+                "comgooglemaps://?saddr=&daddr=\(Float(destinationLocaion.coordinate.latitude)),\(Float(destinationLocaion.coordinate.longitude))&directionsmode=driving")! as URL)
+        } else
+        {
+            NSLog("Can't use com.google.maps://");
+        }
+    }
+    
+    
     func mapDelegateAndInitiation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -97,10 +112,6 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         let marker = GMSMarker(position: position)
         marker.title = name
         marker.map = cellMapview
-        
-        
-        
-
     }
     // MARK: CLLocation Manager Delegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -116,13 +127,8 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         guard let lat = location?.coordinate.latitude, let long = location?.coordinate.longitude else {return}
         locationstart = CLLocation(latitude: lat, longitude: long)
         self.locationManager.stopUpdatingHeading()
-        
- 
     }
-    
 
-    
-    
 // Mark: - GMSMapViewDelegate
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         mapView.isMyLocationEnabled = true
@@ -173,26 +179,24 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
           let json = try? JSON(data: response.data!)
 
             let routes = json!["routes"].arrayValue
+            print(routes)
             print("routes-----------------")
-            print(json)
 
             // print route using Polyline
             for route in routes {
                 let routeOverviewPolyline = route["overview_polyline"].dictionary
                 let points = routeOverviewPolyline?["points"]?.stringValue
-               let distance = routeOverviewPolyline?["distance"]?.stringValue
-//                let duration = routeOverviewPolyline?["duration"]?.stringValue
+                let distance = routeOverviewPolyline?["distance"]?.stringValue
+               // let duration = routeOverviewPolyline?["duration"]?.stringValue
                 let path = GMSPath.init(fromEncodedPath: points!)
                 let polyline = GMSPolyline.init(path: path)
                 polyline.strokeWidth = 5
                 polyline.strokeColor = UIColor.blue
                 polyline.map = self.mapView
                 print("----------------------------------------")
-
             }
         }
     }
-
     @IBAction func deleteBtn(_ sender: Any) {
     }
 

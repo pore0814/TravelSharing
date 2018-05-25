@@ -104,13 +104,24 @@
                                     <action selector="drawRouteBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xIH-f2-NPd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVK-hC-V95">
+                                <rect key="frame" x="322" y="96" width="32" height="32"/>
+                                <color key="backgroundColor" red="0.87798293969999996" green="0.47912479330000002" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="google-maps"/>
+                                <connections>
+                                    <action selector="drawRouteBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="K5T-ap-KQk"/>
+                                    <action selector="googleMapBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BKy-Qm-vfO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="zVK-hC-V95" firstAttribute="top" secondItem="hrH-lN-VcW" secondAttribute="bottom" constant="15" id="11a-8x-dY3"/>
                             <constraint firstAttribute="trailing" secondItem="hrH-lN-VcW" secondAttribute="trailing" constant="21" id="C4u-ea-mH7"/>
                             <constraint firstAttribute="trailing" secondItem="fAE-hN-1pn" secondAttribute="trailing" constant="25" id="P0F-jw-ZYQ"/>
                             <constraint firstItem="fAE-hN-1pn" firstAttribute="top" secondItem="IyD-BT-1Yc" secondAttribute="top" constant="10" id="XVt-hS-gTV"/>
                             <constraint firstItem="hrH-lN-VcW" firstAttribute="top" secondItem="fAE-hN-1pn" secondAttribute="bottom" constant="15" id="jSv-fR-PVa"/>
+                            <constraint firstAttribute="trailing" secondItem="zVK-hC-V95" secondAttribute="trailing" constant="21" id="q0L-5b-u7L"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -132,6 +143,7 @@
                 <outlet property="daysLabel" destination="6XZ-t4-cvW" id="oDT-h8-VgW"/>
                 <outlet property="deleteBtn" destination="fAE-hN-1pn" id="5V7-ML-wux"/>
                 <outlet property="drawPathBtn" destination="hrH-lN-VcW" id="s29-b0-mhm"/>
+                <outlet property="googleMapBtn" destination="zVK-hC-V95" id="4a2-Se-LMR"/>
                 <outlet property="mapView" destination="IyD-BT-1Yc" id="IrJ-tL-ipn"/>
                 <outlet property="nameLabel" destination="6D8-a4-elY" id="IzI-7D-QKa"/>
                 <outlet property="rightUiview" destination="hkY-na-HaN" id="DkM-ro-nNT"/>
@@ -143,5 +155,6 @@
         <image name="car" width="64" height="64"/>
         <image name="delete" width="24" height="24"/>
         <image name="destination-1" width="32" height="32"/>
+        <image name="google-maps" width="32" height="32"/>
     </resources>
 </document>
