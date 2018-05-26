@@ -12,6 +12,7 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
 
      let getUserInfoManager = GetUserInfoManager()
      var allUserInfo = [UserInfo]()
+    var selectedIndexs = [Int]()
 
     @IBOutlet weak var allUserTableview: UITableView!
 
@@ -23,9 +24,16 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
         getUserInfoManager.delegate = self
         getUserInfoManager.getAllUserInfo()
         
+        allUserTableview.allowsMultipleSelection = true
+        
         setNavigation()
     }
-    
+    @IBAction func backBtn(_ sender: Any) {
+        let detailPage = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "ScheduleDetailViewController") as?
+        ScheduleDetailViewController
+       
+        present(detailPage!, animated: true, completion: nil)
+    }
     func initUITableView() {
         allUserTableview.dataSource = self
         allUserTableview.delegate = self
@@ -47,10 +55,43 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
         
           let allUsers = allUserInfo[indexPath.row]
           cell.getCell(allUsers: allUsers)
+        
+        if selectedIndexs.contains(indexPath.row) {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
 
         return cell
     }
-}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       print("----------------------------")
+        if   tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
+            print("delete",allUserInfo[indexPath.row].uid)
+        }else {
+             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
+             print("add",allUserInfo[indexPath.row].uid)
+        }
+       
+        
+       
+        
+        //判断是否选中（选中单元格尾部打勾）
+        
+        
+        if let index = selectedIndexs.index(of: indexPath.row){
+            selectedIndexs.remove(at: index) //原来选中的取消选中
+        }else{
+            selectedIndexs.append(indexPath.row) //原来没选中的就选中
+        }
+       
+    }
+        
+        
+        
+    }
+
 extension AllUserViewController:GetUserInfoManagerDelegate{
     func manager(_ manager: GetUserInfoManager, didGet userInfo: UserInfo) {}
 

@@ -17,12 +17,7 @@ struct AlertToUser1 {
     static var alert = SCLAlertView()
 }
 
-class AlerToUser2 {
-    static let shared = AlerToUser2()
-           let alert = SCLAlertView()
 
-     func alertToUser(title: String, subTitle: String) {
-           alert.showEdit(title, subTitle: subTitle)
-    }
-
+class AlertToUserShared{
+    static let shared = AlertToUserShared()
 }

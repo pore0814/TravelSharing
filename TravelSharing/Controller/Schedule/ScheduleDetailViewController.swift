@@ -20,10 +20,9 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     var destinationManger = DestinationManager()
     @IBOutlet weak var destinationScrollView: LukeScrollView!
     @IBOutlet weak var detailCollectionViwe: LukeCollectionView!
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
 
     override func viewDidLoad() {
@@ -63,10 +62,6 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 
         }
 
-
-       
-     
-        
         let addBarButtonItem = UIBarButtonItem.init(title: "＋", style: .done, target: self,
                                                     action: #selector(addTapped))
         addBarButtonItem.tintColor = UIColor.white
@@ -77,19 +72,21 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
 
     func setCollectionView(){
-        // CollectionView
+    // CollectionView
         detailCollectionViwe.delegate =  self
         detailCollectionViwe.dataSource =  self
-        //註冊CollectionViewCell
+        
+    //註冊CollectionViewCell
         let nib = UINib(nibName: "DetailCollectionViewCell", bundle: nil)
         self.detailCollectionViwe.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
     }
+
     func setCollectionViewLayout() {
         let screenSize = UIScreen.main.bounds
         guard  let layout = detailCollectionViwe.collectionViewLayout as?
             UICollectionViewFlowLayout else {return}
         
-        layout.itemSize = CGSize(width: screenSize.width / 2.0,
+         layout.itemSize = CGSize(width: screenSize.width / 2.0,
                                 height: detailCollectionViwe.frame.height)
             let insetX = screenSize.width / 4.0
             layout.sectionInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
@@ -99,20 +96,14 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
 
     @objc func addTapped(sender: AnyObject) {
-//          guard let scheduleDetailToAddLocation = UIStoryboard(name: "Schedule", bundle: nil)
-//                            .instantiateViewController(withIdentifier: "AddLocationViewController")
-//                                                        as? AddDestinationViewController else {return}
-//        scheduleDetailToAddLocation.dateSelected = getDateInfo
-//        scheduleDetailToAddLocation.uid = schedulDetail?.uid
-//
-//          self.navigationController?.pushViewController(scheduleDetailToAddLocation, animated: true)
-//        guard   let popOverVC = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "AddLocationViewController") as? AddDestinationViewController else {return}
-//        popOverVC.dateSelected = getDateInfo
-//        self.addChildViewController(popOverVC)
-//
-//        popOverVC.view.frame = self.view.frame
-//        self.view.addSubview(popOverVC.view)
-//        popOverVC.didMove(toParentViewController: self)
+          guard let scheduleDetailToAddLocation = UIStoryboard(name: "Schedule", bundle: nil)
+                            .instantiateViewController(withIdentifier: "AddLocationViewController")
+                                                        as? AddDestinationViewController else {return}
+        scheduleDetailToAddLocation.dateSelected = getDateInfo
+        scheduleDetailToAddLocation.uid = schedulDetail?.uid
+
+          self.navigationController?.pushViewController(scheduleDetailToAddLocation, animated: true)
+/*
         let storyboard : UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
         guard    let popupVC = storyboard.instantiateViewController(withIdentifier: "AddLocationViewController") as? AddDestinationViewController else{return}
         popupVC.modalPresentationStyle = UIModalPresentationStyle .popover
@@ -121,7 +112,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
        
         popupVC.dateSelected = getDateInfo
         self.present(popupVC, animated: true, completion: nil)
-        
+  */
         
     }
     
@@ -146,10 +137,13 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         destinationScrollView.setContentOffset(
                 CGPoint(x: self.view.frame.width * CGFloat(indexPath.row),
                         y: 0), animated: true)
+        detailCollectionViwe.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
+    
 }
 
 extension ScheduleDetailViewController: UIScrollViewDelegate {

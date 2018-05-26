@@ -13,7 +13,7 @@
         <!--All User View Controller-->
         <scene sceneID="OGM-r2-nMD">
             <objects>
-                <viewController id="Ff4-Xw-SGd" customClass="AllUserViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AllUserViewController" id="Ff4-Xw-SGd" customClass="AllUserViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uHt-H1-Ugg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,7 +36,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VQx-FK-JL5"/>
                     </view>
-                    <navigationItem key="navigationItem" id="dW2-EA-BpG"/>
+                    <navigationItem key="navigationItem" id="dW2-EA-BpG">
+                        <barButtonItem key="leftBarButtonItem" title="&lt;" id="3uG-Jc-uKv">
+                            <connections>
+                                <action selector="backBtn:" destination="Ff4-Xw-SGd" id="97x-e9-UIo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="allUserTableview" destination="rFF-iA-hPL" id="18d-sW-h9Y"/>
                     </connections>

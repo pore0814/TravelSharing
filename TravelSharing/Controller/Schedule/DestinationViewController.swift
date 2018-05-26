@@ -43,7 +43,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         let nib = UINib(nibName: "DestinationTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "DestinationTableViewCell")
         tableView.separatorStyle = .none
-
+ 
     }
     func initMapLocaionManager() {
         locationManager = CLLocationManager()
@@ -87,7 +87,6 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
             cell.mapView.bringSubview(toFront: cell.drawPathBtn)
             cell.mapView.bringSubview(toFront: cell.googleMapBtn)
             cell.selectionStyle =  .none
-        
         return cell
     }
 
@@ -102,8 +101,6 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         destinationManger.deleteDestinationInfo(scheduleUid: scheduleUid!,
                                                 dayth: dayth ,
                                             destinationUid: testArray[tag!].uid)
-   
-
          testArray.remove(at: tag!)
         tableView.deleteRows(at: [indexPathInGlobal!], with: .automatic)
         tableView.reloadData()
@@ -129,6 +126,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         let allUsersPage = UIStoryboard.allUsersStoryboard().instantiateInitialViewController()
 
         present(allUsersPage!, animated: true, completion: nil)
+
     }
 }
 
@@ -137,5 +135,7 @@ extension DestinationViewController: DestinationManagerDelegate, CLLocationManag
     func manager(_ manager: DestinationManager, didGet schedule: [Destination]) {
         testArray = schedule
         tableView.reloadData()
+    
+        
     }
 }

@@ -179,7 +179,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
           let json = try? JSON(data: response.data!)
 
             let routes = json!["routes"].arrayValue
-            print(routes)
+            print(json)
             print("routes-----------------")
 
             // print route using Polyline

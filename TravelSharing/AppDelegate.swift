@@ -16,8 +16,10 @@ import IQKeyboardManagerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 var window: UIWindow?
-    let apiKey = "AIzaSyApfLr_yp72naCXwEQyuwwNc6JwiE8Cj1I"
-
+    //AIzaSyDjiV4Ap_EmcXalFQbzT9qW8jx02m8lLVE
+   // let apiKey = "AIzaSyApfLr_yp72naCXwEQyuwwNc6JwiE8Cj1I"
+   let apiKey = "AIzaSyDua-py10XKCDJC8rp4vNRAeDWk_gJLIDk"
+    
      static let shared = UIApplication.shared.delegate as? AppDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

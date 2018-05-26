@@ -34,55 +34,40 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 //中心點設在畫面寛度中心點再+200 , animate設時間帶, 將stackview中心點帶到畫面寬度的中心點
        stackView.center.x = self.view.frame.width + 200
 
-        UIView.animate(withDuration: 2.0, delay: 1.0, usingSpringWithDamping: 0.3,
+        UIView.animate(withDuration: 2.0, delay:0.5, usingSpringWithDamping: 0.3,
                        initialSpringVelocity: 30,
                        options: [] ,
                        animations: {
                   self.stackView.center.x = self.view.frame.width / 2
         }, completion: nil)
-//一開始Time顯示現在時間
-        getTime()
+
 //一開始Catagory預設類別為"景點"
         categoryText.text = "景點"
-        createDatePicker()
+        
 
-        for index in dateSelected! {
-            print(index.date)
-            dateSelectedText.text = index.date
-            
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.white
-        }
-// pickView
+//        for index in dateSelected! {
+//            print(index.date)
+//           dateSelectedText.text = index.date
+//
+//        }
+
+        
+        // self.view.backgroundColor = UIColor.t
+//一開始Time顯示現在時間
+      getTime()
+      createDatePicker()
+      setPickerView()
+}
+    
+    func setPickerView(){
         guard let dateselect = dateSelected else {return}
         pickerView.delegate = self
         pickerView.dataSource = self
         dateSelectedText.inputView = pickerView
         dateSelectedText.textAlignment = .center
         dateSelectedText.text = dateselect[0].date
-        
-        
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-        
-        
-        self.showAnimate()
-
-}
-    func showAnimate()
-    {
-        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        self.view.alpha = 0.0;
-        UIView.animate(withDuration: 0.25, animations: {
-            self.view.alpha = 1.0
-            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            
-        });
     }
-
-  
-    
-    
-    
-    
+   
 //取得現在時間
     func getTime() {
         let date = Date()
@@ -95,27 +80,29 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         timeText.text = "\(timeString)"
         //timeText.text = "\(hour):\(minutes)"
     }
-
+    @IBAction func googleStreetView(_ sender: Any) {
+    }
+    
     @IBAction func saveBtn(_ sender: Any) {
         if destinationText.text! == "" {
-            AlertToUser().alert.showError(Constants.WrongMessage, subTitle: "請選擇目的地")
-        } else {
-        print(dateSelectedText.text)
-         print(dateSelectedText.text! + "_" + timeText.text!)
-       // print(uid!)
-
-            let saveDate = Destination(name: destinationText.text!, time: timeText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!, uid: "")
-          print(saveDate)
-          destinationManager.saveDestinationInfo(uid: uid!, dayth: daythRow, destination: saveDate)
-          destinationText.text = ""
-          navigationController?.popViewController(animated: true)
-        }
+                        AlertToUser().alert.showError(Constants.WrongMessage, subTitle: "請選擇目的地")
+                    } else {
+                    print(dateSelectedText.text)
+                     print(dateSelectedText.text! + "_" + timeText.text!)
+                   // print(uid!)
+            
+                        let saveDate = Destination(name: destinationText.text!, time: timeText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!, uid: "")
+                      print(saveDate)
+                      destinationManager.saveDestinationInfo(uid: uid!, dayth: daythRow, destination: saveDate)
+                      destinationText.text = ""
+                navigationController?.popViewController(animated: true)
+                    }
     }
 //Time Picker
     func createDatePicker() {
         let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-//Done button for toolbar
+            toolbar.sizeToFit()
+        //Done button for toolbar
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
             toolbar.setItems([done], animated: false)
 
@@ -125,7 +112,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
 
     @objc func donePressed() {
-// format date
+// formatdate
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         let timeString = formatter.string(from: picker.date)
@@ -181,16 +168,16 @@ extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate {
 
         lat = place.coordinate.latitude
         long = place.coordinate.longitude
+        
+        
 
             if lat != nil && long != nil {
                 guard let dismenstionViewController = UIStoryboard(name: "Schedule", bundle: nil)
-                                .instantiateViewController(withIdentifier: "DismenstionViewController")as? DismenstionViewController else {return}
+                                .instantiateViewController(withIdentifier: "DismenstionViewController")as? GoogleStreeViewController else {return}
                 dismenstionViewController.lat = place.coordinate.latitude
                 dismenstionViewController.long  = place.coordinate.longitude
                 self.navigationController?.pushViewController(dismenstionViewController, animated: true)
-              } else {
-                AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "需要正確位置哦")
-            }
+              } 
 //placeText 顯示 Locaion Name
         destinationText.text = place.name
         self.dismiss(animated: true, completion: nil) // dismiss after select place

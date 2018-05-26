@@ -19,7 +19,7 @@ extension UIView {
        // self.layer.cornerRadius = 10
     }
 
-    func setConerRectWithBorder() {
+    func setConerRect() {
      //    self.layer.borderWidth = 1
         self.layer.masksToBounds = true
        // self.layer.borderColor = UIColor.darkGray.cgColor

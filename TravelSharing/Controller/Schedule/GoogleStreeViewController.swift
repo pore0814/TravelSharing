@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class DismenstionViewController: UIViewController, GMSMapViewDelegate {
+class GoogleStreeViewController: UIViewController, GMSMapViewDelegate {
     var lat: Double?
     var long: Double?
     var name: String?
@@ -26,9 +26,7 @@ class DismenstionViewController: UIViewController, GMSMapViewDelegate {
 
     guard let latitude = lat, let longtitude = long else {return}
         
-    let barButton = UIBarButtonItem(image: UIImage(named: "check"), landscapeImagePhone: nil, style: .done, target: self, action: #selector(addTapped))
-    self.navigationItem.rightBarButtonItem = barButton
-        
+   
 
         //街景圖
      GMSPanoramaService().requestPanoramaNearCoordinate(
@@ -53,9 +51,6 @@ class DismenstionViewController: UIViewController, GMSMapViewDelegate {
         initGooglemap(latitude: latitude, longitude: longtitude, name: "Annie")
     }
     
- @objc   func addTapped(sender: AnyObject) {
-        print("aaaa")
-    }
 
     @IBAction func showBtn(_ sender: Any) {
         if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {

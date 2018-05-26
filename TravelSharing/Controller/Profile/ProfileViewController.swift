@@ -24,17 +24,17 @@ class ProfileViewController: UIViewController, FusumaDelegate {
          getUserInfoManager.delegate = self
          getUserInfoManager.getScheduleContent()
          profileImage.setRounded()
-         logOutBtn.setConerRectWithBorder()
-         saveBtn.setConerRectWithBorder()
+         logOutBtn.setConerRect()
+         saveBtn.setConerRect()
     }
-    
+
     @IBAction func updateProfileImage(_ sender: Any) {
         let fusuma = FusumaViewController()
         fusuma.delegate = self
         fusuma.cropHeightRatio = 1
         self.present(fusuma, animated: true, completion: nil)
     }
-    
+
     @IBAction func saveBtn(_ sender: Any) {
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false)
@@ -44,17 +44,16 @@ class ProfileViewController: UIViewController, FusumaDelegate {
             let imageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1)
             print(imageData)
             print(self.userNameText.text!)
-            
+
             self.getUserInfoManager.updateUserInfo(username: self.userNameText.text!, photo: imageData!)
         }
-        
+
         alertView.addButton("取消") {
         }
         
-        alertView.showSuccess("", subTitle: NSLocalizedString("Update personal profile?", comment: ""))
+        alertView.showSuccess("", subTitle: NSLocalizedString("更新個人資料?", comment: ""))
     }
-    
-    
+
     @IBAction func logOutBtn(_ sender: Any) {
         guard let switchToLoginPage = AppDelegate.shared?.switchToLoginViewController() else {return}
         UserManager.shared.logout()
