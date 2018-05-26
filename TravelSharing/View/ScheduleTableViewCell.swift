@@ -19,8 +19,7 @@ class ScheduleTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-     leftCellView.setShadow()
-     //   leftImageView.setConerRectWithBorder()
+        leftCellView.setShadow()
     }
 
     func updateCell(with schedule: ScheduleInfo) {

@@ -96,14 +96,22 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
       //     let cell = superview.superview as? DestinationTableViewCell else {return}
 
 //刪除Destination
-        guard let scheduleId = scheduleUid, let dayth = dayths else {return}
+    let appearance = SCLAlertView.SCLAppearance(
+        showCloseButton: false
+    )
+    let alertView = SCLAlertView(appearance: appearance)
+    
+    alertView.addButton("確定") {
+            guard let scheduleId = self.scheduleUid, let dayth = self.dayths else {return}
 
-        destinationManger.deleteDestinationInfo(scheduleUid: scheduleUid!,
-                                                dayth: dayth ,
-                                            destinationUid: testArray[tag!].uid)
-         testArray.remove(at: tag!)
-        tableView.deleteRows(at: [indexPathInGlobal!], with: .automatic)
-        tableView.reloadData()
+            self.destinationManger.deleteDestinationInfo(scheduleUid: self.scheduleUid!,dayth: dayth ,
+                                                destinationUid: self.testArray[self.tag!].uid)
+             self.testArray.remove(at: self.tag!)
+            self.tableView.deleteRows(at: [self.indexPathInGlobal!], with: .automatic)
+            self.tableView.reloadData()
+    }
+    alertView.addButton("取消"){}
+    alertView.showSuccess("", subTitle: NSLocalizedString("確定刪除?", comment: ""))
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

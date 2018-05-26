@@ -120,21 +120,33 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 //Edit and Delete
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//Edit
         let editButton = UITableViewRowAction(style: .normal, title: "Edit") { (_, _) in
             let mainstoryboard: UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
-  //換頁＋傳資
+//換頁＋傳資
             guard let editViewController = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as? AddEditScheduleViewController else {return}
             self.navigationController?.pushViewController(editViewController, animated: true)
             editViewController.scheduleInfoDetail = self.schedules[indexPath.row]
             self.indexNumber = indexPath.row
         }
            editButton.backgroundColor = UIColor.orange
-
+//Delete
+        
+        
         let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (_, _) in
-            ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid, arrrayIndexPath: indexPath.row)
-            self.schedules.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.reloadData()
+//Alert
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false)
+            
+                    let alertView = SCLAlertView(appearance: appearance)
+                    alertView.addButton("確定") {
+                    ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid, arrrayIndexPath: indexPath.row)
+                    self.schedules.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.reloadData()
+            }
+                    alertView.addButton("取消") {}
+                    alertView.showSuccess("", subTitle: NSLocalizedString("是否刪除", comment: ""))
         }
             deleteButton.backgroundColor = UIColor.red
             return[editButton, deleteButton]

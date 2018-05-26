@@ -50,15 +50,12 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 //           dateSelectedText.text = index.date
 //
 //        }
-
-        
         // self.view.backgroundColor = UIColor.t
 //一開始Time顯示現在時間
       getTime()
       createDatePicker()
       setPickerView()
 }
-    
     func setPickerView(){
         guard let dateselect = dateSelected else {return}
         pickerView.delegate = self

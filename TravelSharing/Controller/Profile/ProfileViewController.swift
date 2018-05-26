@@ -37,10 +37,11 @@ class ProfileViewController: UIViewController, FusumaDelegate {
 
     @IBAction func saveBtn(_ sender: Any) {
         let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: false)
+            showCloseButton: false
+        )
         
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("確定") {
+            alertView.addButton("確定") {
             let imageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1)
             print(imageData)
             print(self.userNameText.text!)
@@ -51,14 +52,27 @@ class ProfileViewController: UIViewController, FusumaDelegate {
         alertView.addButton("取消") {
         }
         
-        alertView.showSuccess("", subTitle: NSLocalizedString("更新個人資料?", comment: ""))
+        alertView.showSuccess("", subTitle: "更新個人資料?")
     }
 
     @IBAction func logOutBtn(_ sender: Any) {
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton("確定") {
+        
         guard let switchToLoginPage = AppDelegate.shared?.switchToLoginViewController() else {return}
         UserManager.shared.logout()
         switchToLoginPage
+        }
+        
+        alertView.addButton("取消") {}
+        
+        alertView.showWait("", subTitle: "是否登出")
     }
+   
     
     
 //Fusuma 選照片
