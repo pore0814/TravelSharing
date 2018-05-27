@@ -57,8 +57,11 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//         guard   let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return 0}
+        
         if indexPath.row == tag {
             if cellExpanded {
+                
                return 400
                 } else if indexPath.row != previous {
                   return 400
@@ -122,7 +125,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
            if cellExpanded {
                 cellExpanded = false
               selectedCell.direction.image = UIImage(named: "down-arrow")
-            } else{
+            } else {
                 cellExpanded = true
                 selectedCell.direction.image = UIImage(named: "up")
             }
