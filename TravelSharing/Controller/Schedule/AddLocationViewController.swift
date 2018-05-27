@@ -32,8 +32,17 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         super.viewDidLoad()
 
 //一開始Catagory預設類別為"景點"
-        categoryText.text = "景點"
-  
+     
+        stackView.center.x = self.view.frame.width + 200
+        
+        UIView.animate(withDuration: 2.0, delay:0.5, usingSpringWithDamping: 0.3,
+                       initialSpringVelocity: 30,
+                       options: [] ,
+                       animations: {
+                        self.stackView.center.x = self.view.frame.width / 2
+                        self.categoryText.text = "景點"
+        }, completion: nil)
+        
 //一開始Time顯示現在時間
       getCurrentTime()
         
@@ -138,13 +147,23 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 //MARK： category 類別設定，要換圖
     @IBAction func spotBtn(_ sender: Any) {
         categoryText.text = "景點"
+        categoryText.textColor =  TSColor.gradientBlue.color()
     }
     @IBAction func restaurantBtn(_ sender: Any) {
          categoryText.text = "餐廳"
+         categoryText.textColor = TSColor.gradientPurple.color()
+        
     }
     @IBAction func hotelBtn(_ sender: Any) {
      categoryText.text = "住宿"
+     categoryText.textColor = TSColor.gradientBlue.color()
     }
+    
+    @IBAction func otherBtn(_ sender: Any) {
+        categoryText.text = "其它"
+        categoryText.textColor = TSColor.gradientPurple.color()
+    }
+    
 
 //Search Location
     @IBAction func streetViewBtn(_ sender: Any) {

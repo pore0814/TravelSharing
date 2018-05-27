@@ -27,8 +27,8 @@ class RoundedUIImageView: UIImageView {
         self.clipsToBounds = true
 
         if round {
-           // self.layer.cornerRadius = self.frame.width / 2
-            self.layer.cornerRadius = 10
+            self.layer.cornerRadius = self.frame.width / 2
+           // self.layer.cornerRadius = 10
         } else {
             self.layer.cornerRadius = 0
         }

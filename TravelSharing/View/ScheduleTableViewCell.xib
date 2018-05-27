@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7t-rm-DtJ">
                         <rect key="frame" x="6" y="5.5" width="418" height="123"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="travel" translatesAutoresizingMaskIntoConstraints="NO" id="gxf-ku-K8D">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="view" translatesAutoresizingMaskIntoConstraints="NO" id="gxf-ku-K8D" customClass="RoundedUIImageView" customModule="TravelSharing" customModuleProvider="target">
                                 <rect key="frame" x="20" y="10" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="94d-xj-OV2"/>
@@ -34,7 +34,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="行程名稱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Mhr-CK-yAE">
                                         <rect key="frame" x="0.0" y="0.0" width="258" height="25.5"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -100,7 +100,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="travel" width="64" height="64"/>
         <image name="users" width="24" height="24"/>
+        <image name="view" width="1920" height="1200"/>
     </resources>
 </document>
