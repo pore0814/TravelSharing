@@ -73,7 +73,6 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("CellForRAowAT---------------")
         guard let  cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell") as? DestinationTableViewCell else {return UITableViewCell()}
-        
             cell.categoryImage.image = UIImage(named: testArray[indexPath.row].category)
             cell.categoryLabel.text = testArray[indexPath.row].category
             cell.daysLabel.text = testArray[indexPath.row].time
@@ -119,12 +118,15 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         indexPathInGlobal = indexPath
 //展開
         guard   let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
+
            if cellExpanded {
                 cellExpanded = false
-            } else {
+              selectedCell.direction.image = UIImage(named: "down-arrow")
+            } else{
                 cellExpanded = true
+                selectedCell.direction.image = UIImage(named: "up")
             }
-
+ 
         tableView.beginUpdates()
         tableView.endUpdates()
         previous = tag
@@ -143,7 +145,5 @@ extension DestinationViewController: DestinationManagerDelegate, CLLocationManag
     func manager(_ manager: DestinationManager, didGet schedule: [Destination]) {
         testArray = schedule
         tableView.reloadData()
-    
-        
     }
 }

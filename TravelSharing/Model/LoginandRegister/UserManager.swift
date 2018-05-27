@@ -70,6 +70,11 @@ class UserManager {
                              FireBaseConnect.databaseRef.child("users").child(uid).setValue(userData)
                         self.userDefaults.set(uid, forKey: "FireBaseUID")
                         self.userDefaults.synchronize()
+//第一筆範例
+                        ScheduleManager.shared.saveScheduleInfo(scheduleName: "範例",
+                                                                scheudleDate: "2019 01 01",
+                                                                scheduleDay: "2")
+                     
                        NotificationCenter.default.post(name: .switchtoMainPage, object: nil)
                     }
                 })

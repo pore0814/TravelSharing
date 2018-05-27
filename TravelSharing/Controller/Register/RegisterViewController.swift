@@ -75,6 +75,7 @@ class RegisterViewController: UIViewController, FusumaDelegate {
             } else {
               UserManager.shared.singUp(email: emailText.text!, password: passwordText.text!, username: userNameText.text!, userphoto: data) { (message) in
                          AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: message!)
+              
                 }
             }
         } else {

@@ -65,7 +65,6 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
             timer.invalidate()
             SVProgressHUD.dismiss()
             indicator =  false
-            alert.showEdit("尚未儲存任何行程", subTitle: "按右上＋開始規劃你的旅程吧")
         }
         
     }

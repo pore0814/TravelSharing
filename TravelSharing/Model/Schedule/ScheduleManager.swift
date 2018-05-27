@@ -20,7 +20,7 @@ class ScheduleManager {
     var scheduleDataArray = [ScheduleInfo]()
 
     //新增Schedule資料
-    func saveScheduleInfo(uid: String?, scheduleName: String, scheudleDate: String, scheduleDay: String) {
+    func saveScheduleInfo(scheduleName: String, scheudleDate: String, scheduleDay: String) {
         //User Id
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
               let  scheduleUid = FireBaseConnect.databaseRef.childByAutoId().key

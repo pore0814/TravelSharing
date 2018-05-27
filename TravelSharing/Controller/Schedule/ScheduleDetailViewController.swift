@@ -127,11 +127,8 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         
             cell.dateLabel.text = getDateInfo[indexPath.row].date
             cell.weekLabel.text = String(getWeekDayStr(weekDay:getDateInfo[indexPath.row].weekDay))
-        
             return cell
-        
          } else {
-        
                 return UICollectionViewCell()
          }
     }

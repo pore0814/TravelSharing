@@ -28,7 +28,8 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     @IBOutlet weak var rightUiview: UIView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var deleteBtn: UIButton!
-
+    @IBOutlet weak var direction: UIImageView!
+    
     var locationManager = CLLocationManager()
     var locationSelected = Location.myLocaion
     var locationstart     = CLLocation()

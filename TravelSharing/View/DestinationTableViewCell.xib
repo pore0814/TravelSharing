@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-t4-cvW">
-                                <rect key="frame" x="327" y="23" width="40" height="29"/>
+                                <rect key="frame" x="320" y="23" width="40" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.94117647058823528" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -58,16 +58,26 @@
                                     <constraint firstAttribute="bottom" secondItem="TeO-3v-2jf" secondAttribute="bottom" id="t0O-OD-sDN"/>
                                 </constraints>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="web-SR-fwl">
+                                <rect key="frame" x="229" y="27" width="16" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="7Fj-jk-zqa"/>
+                                    <constraint firstAttribute="width" constant="16" id="cce-zA-hxE"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="web-SR-fwl" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" constant="27" id="0Ve-ds-XcV"/>
                             <constraint firstItem="Pyb-JA-Fc3" firstAttribute="leading" secondItem="hkY-na-HaN" secondAttribute="leading" constant="10" id="C1F-J0-tnT"/>
+                            <constraint firstAttribute="bottom" secondItem="web-SR-fwl" secondAttribute="bottom" constant="27" id="OAC-Lu-pm3"/>
                             <constraint firstItem="6XZ-t4-cvW" firstAttribute="bottom" secondItem="6D8-a4-elY" secondAttribute="bottom" id="Re5-TZ-ox1"/>
                             <constraint firstItem="6XZ-t4-cvW" firstAttribute="height" secondItem="6D8-a4-elY" secondAttribute="height" id="Tk9-NE-vOK"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="centerY" secondItem="hkY-na-HaN" secondAttribute="centerY" id="bsK-Kg-bnY"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" priority="750" constant="23" id="kqr-bg-XXw"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="centerX" secondItem="hkY-na-HaN" secondAttribute="centerX" id="nA3-ug-O1H"/>
-                            <constraint firstAttribute="trailing" secondItem="6XZ-t4-cvW" secondAttribute="trailing" constant="8.5" id="tt6-T9-ph3"/>
+                            <constraint firstItem="web-SR-fwl" firstAttribute="leading" secondItem="6D8-a4-elY" secondAttribute="trailing" constant="1" id="s6Y-9X-lPt"/>
+                            <constraint firstAttribute="trailing" secondItem="6XZ-t4-cvW" secondAttribute="trailing" constant="15" id="tt6-T9-ph3"/>
                             <constraint firstItem="Pyb-JA-Fc3" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" constant="11" id="xEi-ti-tcK"/>
                             <constraint firstItem="Pyb-JA-Fc3" firstAttribute="centerY" secondItem="hkY-na-HaN" secondAttribute="centerY" id="zzH-Bg-2z4"/>
                         </constraints>
@@ -143,6 +153,7 @@
                 <outlet property="categoryLabel" destination="TeO-3v-2jf" id="1sF-AN-Vka"/>
                 <outlet property="daysLabel" destination="6XZ-t4-cvW" id="oDT-h8-VgW"/>
                 <outlet property="deleteBtn" destination="fAE-hN-1pn" id="5V7-ML-wux"/>
+                <outlet property="direction" destination="web-SR-fwl" id="jnX-rp-3PN"/>
                 <outlet property="drawPathBtn" destination="hrH-lN-VcW" id="s29-b0-mhm"/>
                 <outlet property="googleMapBtn" destination="zVK-hC-V95" id="4a2-Se-LMR"/>
                 <outlet property="mapView" destination="IyD-BT-1Yc" id="IrJ-tL-ipn"/>
@@ -155,6 +166,7 @@
     <resources>
         <image name="car" width="64" height="64"/>
         <image name="destination-1" width="32" height="32"/>
+        <image name="down-arrow" width="24" height="24"/>
         <image name="google-maps" width="32" height="32"/>
         <image name="x-button" width="24" height="24"/>
     </resources>
