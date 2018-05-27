@@ -31,31 +31,51 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//中心點設在畫面寛度中心點再+200 , animate設時間帶, 將stackview中心點帶到畫面寬度的中心點
-       stackView.center.x = self.view.frame.width + 200
+//一開始Catagory預設類別為"景點"
+        categoryText.text = "景點"
+  
+//一開始Time顯示現在時間
+      getCurrentTime()
+        
+      createDatePicker()
 
+      setPickerView()
+
+      searchPlaceTextGesture()
+        
+      categoryTextGesture()
+}
+    func searchPlaceTextGesture(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(searchPlaceTapGesture(_:)))
+        
+            destinationText.superview?.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private dynamic func searchPlaceTapGesture(_ gesture: UITapGestureRecognizer) {
+        let autocompleteController = GMSAutocompleteViewController()
+            autocompleteController.secondaryTextColor = UIColor.black
+            autocompleteController.delegate = self
+        self.present(autocompleteController, animated: true, completion: nil)
+
+    }
+    
+    
+    
+    func categoryTextGesture(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(categoryTapGesture(_:)))
+        
+        categoryText.superview?.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private dynamic func categoryTapGesture(_ gesture: UITapGestureRecognizer) {
         UIView.animate(withDuration: 2.0, delay:0.5, usingSpringWithDamping: 0.3,
                        initialSpringVelocity: 30,
                        options: [] ,
                        animations: {
-                  self.stackView.center.x = self.view.frame.width / 2
+                        self.stackView.center.x = self.view.frame.width / 2
         }, completion: nil)
-
-//一開始Catagory預設類別為"景點"
-        categoryText.text = "景點"
-        
-
-//        for index in dateSelected! {
-//            print(index.date)
-//           dateSelectedText.text = index.date
-//
-//        }
-        // self.view.backgroundColor = UIColor.t
-//一開始Time顯示現在時間
-      getTime()
-      createDatePicker()
-      setPickerView()
-}
+    }
+  
     func setPickerView(){
         guard let dateselect = dateSelected else {return}
         pickerView.delegate = self
@@ -66,7 +86,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
    
 //取得現在時間
-    func getTime() {
+    func getCurrentTime() {
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
@@ -75,9 +95,6 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         formatter.dateFormat = "HH:mm"
         let timeString = formatter.string(from: date)
         timeText.text = "\(timeString)"
-        //timeText.text = "\(hour):\(minutes)"
-    }
-    @IBAction func googleStreetView(_ sender: Any) {
     }
     
     @IBAction func saveBtn(_ sender: Any) {
@@ -130,11 +147,16 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
 
 //Search Location
-    @IBAction func searchLocation(_ sender: Any) {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.secondaryTextColor = UIColor.black
-        autocompleteController.delegate = self
-        self.present(autocompleteController, animated: true, completion: nil)
+    @IBAction func streetViewBtn(_ sender: Any) {
+                    if lat != 0.0 && long != 0.0 {
+                        guard let dismenstionViewController = UIStoryboard(name: "Schedule", bundle: nil)
+                                        .instantiateViewController(withIdentifier: "DismenstionViewController")as? GoogleStreeViewController else {return}
+                        dismenstionViewController.lat = lat
+                        dismenstionViewController.long  = long
+                        self.navigationController?.pushViewController(dismenstionViewController, animated: true)
+                    }else{
+                    AlertToUser().alert.showEdit("新增目的地", subTitle: "才能觀看街景圖哦")
+        }
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -154,7 +176,6 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         guard let selected = dateSelected else {return}
         dateSelectedText.text = selected[row].date
     }
-
 }
 
 //Search Location  (Auto complete)
@@ -163,20 +184,11 @@ extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 15.0)
 
-        lat = place.coordinate.latitude
-        long = place.coordinate.longitude
+            lat = place.coordinate.latitude
+            long = place.coordinate.longitude
         
-        
-
-            if lat != nil && long != nil {
-                guard let dismenstionViewController = UIStoryboard(name: "Schedule", bundle: nil)
-                                .instantiateViewController(withIdentifier: "DismenstionViewController")as? GoogleStreeViewController else {return}
-                dismenstionViewController.lat = place.coordinate.latitude
-                dismenstionViewController.long  = place.coordinate.longitude
-                self.navigationController?.pushViewController(dismenstionViewController, animated: true)
-              } 
 //placeText 顯示 Locaion Name
-        destinationText.text = place.name
+            destinationText.text = place.name
         self.dismiss(animated: true, completion: nil) // dismiss after select place
     }
 

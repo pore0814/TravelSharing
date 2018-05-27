@@ -191,7 +191,7 @@
                                                         </constraints>
                                                         <state key="normal" image="autoComplete"/>
                                                         <connections>
-                                                            <action selector="searchLocation:" destination="cwR-LZ-DtX" eventType="touchUpInside" id="rEB-Af-x0l"/>
+                                                            <action selector="streetViewBtn:" destination="cwR-LZ-DtX" eventType="touchUpInside" id="rEB-Af-x0l"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -203,7 +203,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5YH-Yu-rMX">
                                                 <rect key="frame" x="0.0" y="50.5" width="323" height="50"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vtG-dw-7YF">
+                                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vtG-dw-7YF">
                                                         <rect key="frame" x="0.0" y="0.0" width="161.5" height="50"/>
                                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="textColor" red="0.64313725490196083" green="0.45882352941176469" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -223,7 +223,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="bEc-RB-nwu"/>
                                                 </constraints>
                                             </stackView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7PC-pf-gpf">
+                                            <textField opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7PC-pf-gpf">
                                                 <rect key="frame" x="0.0" y="101" width="323" height="50"/>
                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -295,13 +295,10 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uQx-pv-eZb">
-                                <rect key="frame" x="30" y="44" width="315" height="120"/>
+                                <rect key="frame" x="375" y="44" width="300" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9d-fh-AjA" customClass="ButtonIBIn" customModule="TravelSharing" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="120"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="RbU-GP-ap7"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="96.5" height="100"/>
                                         <state key="normal" title="Button" image="spot"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="conerRadius">
@@ -313,7 +310,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kak-WW-EZd" customClass="ButtonIBIn" customModule="TravelSharing" customModuleProvider="target">
-                                        <rect key="frame" x="106.5" y="0.0" width="102" height="120"/>
+                                        <rect key="frame" x="101.5" y="0.0" width="97" height="100"/>
                                         <state key="normal" title="Button" image="restaurant"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="conerRadius">
@@ -325,7 +322,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlS-fk-dXW" customClass="ButtonIBIn" customModule="TravelSharing" customModuleProvider="target">
-                                        <rect key="frame" x="213.5" y="0.0" width="101.5" height="120"/>
+                                        <rect key="frame" x="203.5" y="0.0" width="96.5" height="100"/>
                                         <state key="normal" title="Button" image="hotel"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="conerRadius">
@@ -338,21 +335,19 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="h9d-fh-AjA" firstAttribute="centerY" secondItem="uQx-pv-eZb" secondAttribute="centerY" id="GAG-Dx-I6A"/>
+                                    <constraint firstAttribute="width" constant="300" id="Pea-4h-edh"/>
+                                    <constraint firstAttribute="height" constant="100" id="V5y-RR-aoO"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="h1v-a5-Gpi" firstAttribute="trailing" secondItem="uQx-pv-eZb" secondAttribute="trailing" constant="30" id="FeI-fN-Kwl"/>
-                            <constraint firstAttribute="trailing" secondItem="uQx-pv-eZb" secondAttribute="trailing" priority="999" constant="20" id="Jrt-ZA-lT4"/>
+                            <constraint firstItem="h1v-a5-Gpi" firstAttribute="trailing" secondItem="uQx-pv-eZb" secondAttribute="trailing" constant="-300" id="79E-Ml-Hvy"/>
+                            <constraint firstItem="uQx-pv-eZb" firstAttribute="top" secondItem="Pba-cb-pHA" secondAttribute="topMargin" constant="24" id="Lrs-Si-LQN"/>
                             <constraint firstItem="dsa-Ew-Ei3" firstAttribute="centerY" secondItem="Pba-cb-pHA" secondAttribute="centerY" id="gnk-4c-amW"/>
+                            <constraint firstItem="dsa-Ew-Ei3" firstAttribute="top" secondItem="h1v-a5-Gpi" secondAttribute="top" constant="81" id="hOd-50-P4e"/>
                             <constraint firstItem="dsa-Ew-Ei3" firstAttribute="centerX" secondItem="Pba-cb-pHA" secondAttribute="centerX" id="hpy-Ny-ITg"/>
-                            <constraint firstItem="dsa-Ew-Ei3" firstAttribute="top" secondItem="uQx-pv-eZb" secondAttribute="bottom" constant="-63" id="lee-Ku-Yoe"/>
-                            <constraint firstItem="uQx-pv-eZb" firstAttribute="leading" secondItem="h1v-a5-Gpi" secondAttribute="leading" priority="999" constant="20" id="usp-VJ-DdQ"/>
                             <constraint firstItem="dsa-Ew-Ei3" firstAttribute="leading" secondItem="Pba-cb-pHA" secondAttribute="leadingMargin" id="vfu-6h-xur"/>
-                            <constraint firstItem="uQx-pv-eZb" firstAttribute="top" secondItem="h1v-a5-Gpi" secondAttribute="top" constant="24" id="vic-Ub-Bsn"/>
-                            <constraint firstItem="uQx-pv-eZb" firstAttribute="leading" secondItem="h1v-a5-Gpi" secondAttribute="leading" constant="30" id="wmT-Ey-zey"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h1v-a5-Gpi"/>
                     </view>
@@ -365,6 +360,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDK-yK-0Hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="7it-g9-hph">
+                    <connections>
+                        <action selector="searchPlace:" destination="cwR-LZ-DtX" id="Vjx-UW-fni"/>
+                        <outlet property="delegate" destination="xRx-z9-0sU" id="g0b-gr-aWG"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2432.8000000000002" y="886.50674662668678"/>
         </scene>
