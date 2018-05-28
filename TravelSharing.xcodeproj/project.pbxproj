@@ -27,6 +27,9 @@
 		D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FEF2098695B00026AF1 /* NotificationName.swift */; };
 		D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FF1209873E100026AF1 /* AlertToUser.swift */; };
 		D151103F20B4B77900527420 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151103E20B4B77900527420 /* GradientView.swift */; };
+		D155BF3820BBC488001EC4DD /* PrivacyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D155BF3620BBC488001EC4DD /* PrivacyTableViewCell.swift */; };
+		D155BF3920BBC488001EC4DD /* PrivacyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D155BF3720BBC488001EC4DD /* PrivacyTableViewCell.xib */; };
+		D155BF3C20BBC5C3001EC4DD /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D155BF3B20BBC5C3001EC4DD /* PrivacyViewController.swift */; };
 		D157B69D20B7D37D00C759DA /* ButtonIBIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D157B69C20B7D37D00C759DA /* ButtonIBIn.swift */; };
 		D1658265209AC2A300C37F8D /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658263209AC2A300C37F8D /* DestinationTableViewCell.swift */; };
 		D1658266209AC2A300C37F8D /* DestinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */; };
@@ -93,6 +96,9 @@
 		D14C0FEF2098695B00026AF1 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		D14C0FF1209873E100026AF1 /* AlertToUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertToUser.swift; sourceTree = "<group>"; };
 		D151103E20B4B77900527420 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		D155BF3620BBC488001EC4DD /* PrivacyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTableViewCell.swift; sourceTree = "<group>"; };
+		D155BF3720BBC488001EC4DD /* PrivacyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivacyTableViewCell.xib; sourceTree = "<group>"; };
+		D155BF3B20BBC5C3001EC4DD /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		D157B69C20B7D37D00C759DA /* ButtonIBIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonIBIn.swift; sourceTree = "<group>"; };
 		D1658263209AC2A300C37F8D /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
 		D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinationTableViewCell.xib; sourceTree = "<group>"; };
@@ -185,6 +191,8 @@
 				D11FBBDD20B40EB4000B8284 /* LukeScrollView.swift */,
 				D180477B20B5A964000DC705 /* AllUsersTableViewCell.swift */,
 				D180477C20B5A964000DC705 /* AllUsersTableViewCell.xib */,
+				D155BF3620BBC488001EC4DD /* PrivacyTableViewCell.swift */,
+				D155BF3720BBC488001EC4DD /* PrivacyTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -221,6 +229,14 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		D155BF3A20BBC581001EC4DD /* Privacy */ = {
+			isa = PBXGroup;
+			children = (
+				D155BF3B20BBC5C3001EC4DD /* PrivacyViewController.swift */,
+			);
+			path = Privacy;
+			sourceTree = "<group>";
+		};
 		D180477820B5A8EA000DC705 /* AllUsers */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +248,7 @@
 		D1BBA31920957222005E5AAE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D155BF3A20BBC581001EC4DD /* Privacy */,
 				D180477820B5A8EA000DC705 /* AllUsers */,
 				D127E17020A53F7800EBB5F7 /* Track */,
 				D127E16B20A52ECA00EBB5F7 /* Navigation */,
@@ -481,6 +498,7 @@
 				D1DA0A2920A654D4002D8CF6 /* LocationView.xib in Resources */,
 				D1BBA32620958FF8005E5AAE /* GoogleService-Info.plist in Resources */,
 				D1F542322099FF42007EBE96 /* ScheduleTableViewCell.xib in Resources */,
+				D155BF3920BBC488001EC4DD /* PrivacyTableViewCell.xib in Resources */,
 				D1400B3320961E8700B0040B /* Register.storyboard in Resources */,
 				D127E16F20A5360300EBB5F7 /* TrackLocation.storyboard in Resources */,
 			);
@@ -621,6 +639,8 @@
 				D127E17420A541AD00EBB5F7 /* TSColor.swift in Sources */,
 				D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */,
 				D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */,
+				D155BF3820BBC488001EC4DD /* PrivacyTableViewCell.swift in Sources */,
+				D155BF3C20BBC5C3001EC4DD /* PrivacyViewController.swift in Sources */,
 				D11FBBDC20B3FB5A000B8284 /* AllUserViewController.swift in Sources */,
 				D1F5422D2099F09D007EBE96 /* ScheduleManager.swift in Sources */,
 				D1B1608020A332A900B69222 /* UIView.swift in Sources */,
@@ -786,7 +806,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -805,7 +825,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

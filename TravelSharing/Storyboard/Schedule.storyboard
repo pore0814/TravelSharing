@@ -164,7 +164,7 @@
                                 <rect key="frame" x="16" y="101" width="343" height="465"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="anC-j5-2fp" userLabel="categoryStackView">
-                                        <rect key="frame" x="10" y="95" width="323" height="151"/>
+                                        <rect key="frame" x="10" y="70" width="323" height="151"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OI1-9s-nim">
                                                 <rect key="frame" x="0.0" y="0.0" width="323" height="50"/>
@@ -203,7 +203,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5YH-Yu-rMX">
                                                 <rect key="frame" x="0.0" y="50.5" width="323" height="50"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vtG-dw-7YF">
+                                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="選擇上方類別" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vtG-dw-7YF">
                                                         <rect key="frame" x="0.0" y="0.0" width="161.5" height="50"/>
                                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="textColor" red="0.64313725490196083" green="0.45882352941176469" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -223,7 +223,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="bEc-RB-nwu"/>
                                                 </constraints>
                                             </stackView>
-                                            <textField opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7PC-pf-gpf">
+                                            <textField opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="選擇日期" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7PC-pf-gpf">
                                                 <rect key="frame" x="0.0" y="101" width="323" height="50"/>
                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -239,7 +239,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2g-l5-C4P" customClass="ButtonIBIn" customModule="TravelSharing" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="266" width="323" height="50"/>
+                                        <rect key="frame" x="10" y="241" width="323" height="50"/>
                                         <color key="backgroundColor" red="0.51226327049999998" green="0.77030299680000003" blue="0.7101946884" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="nwV-rp-S3E"/>
@@ -265,7 +265,7 @@
                                     <constraint firstItem="anC-j5-2fp" firstAttribute="leading" secondItem="dsa-Ew-Ei3" secondAttribute="leading" constant="10" id="Xa0-ZW-Qy9"/>
                                     <constraint firstAttribute="trailing" secondItem="R2g-l5-C4P" secondAttribute="trailing" constant="10" id="cvE-AJ-Wsy"/>
                                     <constraint firstItem="R2g-l5-C4P" firstAttribute="top" secondItem="anC-j5-2fp" secondAttribute="bottom" constant="20" id="eQW-TF-8cf"/>
-                                    <constraint firstItem="anC-j5-2fp" firstAttribute="top" secondItem="dsa-Ew-Ei3" secondAttribute="top" constant="95" id="lyn-zU-5oC"/>
+                                    <constraint firstItem="anC-j5-2fp" firstAttribute="top" secondItem="dsa-Ew-Ei3" secondAttribute="top" constant="70" id="lyn-zU-5oC"/>
                                     <constraint firstAttribute="trailing" secondItem="R2g-l5-C4P" secondAttribute="trailing" constant="10" id="poG-w3-cIJ"/>
                                 </constraints>
                             </view>

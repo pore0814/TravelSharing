@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import SCLAlertView
 
 class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -27,6 +28,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     var uid: String?
     var pickerView = UIPickerView()
     var daythRow = "Day1"
+    var alert = SCLAlertView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +75,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     
     @objc private dynamic func categoryTapGesture(_ gesture: UITapGestureRecognizer) {
-       AlertToUser().alert.showEdit("請選擇類別", subTitle: "")
+       //AlertToUser().alert.showEdit("請選擇類別", subTitle: "")
     }
   
     func setPickerView(){
@@ -82,7 +84,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         pickerView.dataSource = self
         dateSelectedText.inputView = pickerView
         dateSelectedText.textAlignment = .center
-        dateSelectedText.text = dateselect[0].date
+      //  dateSelectedText.text = dateselect[0].date
     }
    
 //取得現在時間
@@ -98,19 +100,18 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     
     @IBAction func saveBtn(_ sender: Any) {
-        if destinationText.text! == "" {
-                        AlertToUser().alert.showError(Constants.WrongMessage, subTitle: "請選擇目的地")
-                    } else {
-                    print(dateSelectedText.text)
-                     print(dateSelectedText.text! + "_" + timeText.text!)
-                   // print(uid!)
+        if destinationText.text != "" && dateSelectedText.text != "" && categoryText.text != "" {
             
                         let saveDate = Destination(name: destinationText.text!, time: timeText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!, uid: "")
                       print(saveDate)
                       destinationManager.saveDestinationInfo(uid: uid!, dayth: daythRow, destination: saveDate)
                       destinationText.text = ""
                 navigationController?.popViewController(animated: true)
-                    }
+        }else {
+            AlertToUser().alert.showError(Constants.WrongMessage, subTitle: "表格不可為空白")
+
+        }
+        
     }
 //Time Picker
     func createDatePicker() {

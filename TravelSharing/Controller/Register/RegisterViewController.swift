@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import Fusuma
+import SVProgressHUD
 
 class RegisterViewController: UIViewController, FusumaDelegate {
 
@@ -18,8 +19,8 @@ class RegisterViewController: UIViewController, FusumaDelegate {
     @IBOutlet weak var userNameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
-
     @IBOutlet weak var reEnterPasswordText: UITextField!
+    var indicator = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,9 @@ class RegisterViewController: UIViewController, FusumaDelegate {
               UserManager.shared.singUp(email: emailText.text!, password: passwordText.text!, username: userNameText.text!, userphoto: data) { (message) in
                          AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: message!)
               
+                }
+                if indicator  == true {
+                    SVProgressHUD.show(withStatus: "loading")
                 }
             }
         } else {
