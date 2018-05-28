@@ -27,6 +27,7 @@ class UserManager {
     private init () {}
 
     let userDefaults = UserDefaults.standard
+    var destinationManager = DestinationManager()
 
     var  storeageProfileRef: StorageReference {
         return Storage.storage().reference(forURL: "gs://travelshare-d17da.appspot.com").child(Constants.ProfileImage)
@@ -71,9 +72,12 @@ class UserManager {
                         self.userDefaults.set(uid, forKey: "FireBaseUID")
                         self.userDefaults.synchronize()
 //第一筆範例
-                        ScheduleManager.shared.saveScheduleInfo(scheduleName: "範例",
-                                                                scheudleDate: "2019 01 01",
-                                                                scheduleDay: "2")
+//                        ScheduleManager.shared.saveScheduleInfo(scheduleName: "範例",
+//                                                                scheudleDate: "2019 01 01",
+//                                                                scheduleDay: "2")
+                        let  scheduleUid = FireBaseConnect.databaseRef.childByAutoId().key
+                          ScheduleManager.shared.firstScheduleExample(firstScheduleId: scheduleUid, userId: uid)
+                        self.destinationManager.savefisrtDestinationInfo(uid: scheduleUid)
                      
                        NotificationCenter.default.post(name: .switchtoMainPage, object: nil)
                     }

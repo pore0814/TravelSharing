@@ -40,7 +40,6 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
                        options: [] ,
                        animations: {
                         self.stackView.center.x = self.view.frame.width / 2
-                        self.categoryText.text = "景點"
         }, completion: nil)
         
 //一開始Time顯示現在時間
@@ -65,10 +64,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
             autocompleteController.secondaryTextColor = UIColor.black
             autocompleteController.delegate = self
         self.present(autocompleteController, animated: true, completion: nil)
-
     }
-    
-    
     
     func categoryTextGesture(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(categoryTapGesture(_:)))
@@ -77,12 +73,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     
     @objc private dynamic func categoryTapGesture(_ gesture: UITapGestureRecognizer) {
-        UIView.animate(withDuration: 2.0, delay:0.5, usingSpringWithDamping: 0.3,
-                       initialSpringVelocity: 30,
-                       options: [] ,
-                       animations: {
-                        self.stackView.center.x = self.view.frame.width / 2
-        }, completion: nil)
+       AlertToUser().alert.showEdit("請選擇類別", subTitle: "")
     }
   
     func setPickerView(){

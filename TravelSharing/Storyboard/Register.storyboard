@@ -30,7 +30,7 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xbt-aw-UL5">
                                 <rect key="frame" x="112" y="49" width="150" height="150"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.77710410276073616" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
@@ -53,7 +53,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="註冊">
-                                    <color key="titleColor" red="0.51226327049999998" green="0.77030299680000003" blue="0.7101946884" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="registerBtn:" destination="3Ve-GT-LCX" eventType="touchUpInside" id="9Fw-dT-51Z"/>
@@ -70,7 +70,7 @@
                                     <action selector="cancelBtn:" destination="3Ve-GT-LCX" eventType="touchUpInside" id="qZR-Xh-wty"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZO-Yc-LmM" customClass="RoundedUIImageView" customModule="TravelSharing" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZO-Yc-LmM">
                                 <rect key="frame" x="19" y="352" width="336" height="248"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GjO-tK-dwJ">
@@ -107,7 +107,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.54869631901840488" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.78936205904907975" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="GjO-tK-dwJ" secondAttribute="bottom" constant="10" id="BUF-l2-rRy"/>
                                     <constraint firstAttribute="trailing" secondItem="GjO-tK-dwJ" secondAttribute="trailing" constant="10" id="CTN-ys-9lT"/>
@@ -143,6 +143,7 @@
                         <viewLayoutGuide key="safeArea" id="3hi-dC-fEg"/>
                     </view>
                     <connections>
+                        <outlet property="conerView" destination="kZO-Yc-LmM" id="LHP-qV-m8P"/>
                         <outlet property="emailText" destination="Zsk-4T-JQs" id="k0g-m3-RV9"/>
                         <outlet property="passwordText" destination="Qgt-Yu-2bj" id="2rh-3D-J3I"/>
                         <outlet property="photoBtn" destination="AcO-Kd-Fmi" id="EXX-0V-0Xe"/>

@@ -11,6 +11,7 @@ import FirebaseAuth
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var holdButtonView: UIView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     var activeTextfield: UITextField!
@@ -21,7 +22,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      holdButtonView.setConerRect()
         logInImageView.setConerRect()
 
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)

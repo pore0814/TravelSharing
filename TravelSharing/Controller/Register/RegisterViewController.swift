@@ -12,6 +12,7 @@ import Fusuma
 
 class RegisterViewController: UIViewController, FusumaDelegate {
 
+    @IBOutlet weak var conerView: UIView!
     @IBOutlet weak var photoBtn: UIButton!
     @IBOutlet weak var registImageView: UIImageView!
     @IBOutlet weak var userNameText: UITextField!
@@ -23,6 +24,7 @@ class RegisterViewController: UIViewController, FusumaDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       conerView.setConerRect()
         registImageView.setRounded()
         photoBtn.isUserInteractionEnabled = true
 

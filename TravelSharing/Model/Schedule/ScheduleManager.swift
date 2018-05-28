@@ -18,8 +18,22 @@ class ScheduleManager {
     weak var delegate: ScheduleManagerDelegate?
     var scheduleDataInfo: ScheduleInfo?
     var scheduleDataArray = [ScheduleInfo]()
+    var destinagionManager = DestinationManager()
+    
+    func firstScheduleExample(firstScheduleId:String,userId:String){
+       
 
-    //新增Schedule資料
+        let  scheduleUid = FireBaseConnect.databaseRef.childByAutoId().key
+        let  scheduleInfo = ["uid": firstScheduleId, "name": "範例",
+                             "date": "2019 01 01", "days": "2", "host": userId]
+        FireBaseConnect.databaseRef
+            .child(Constants.FireBaseSchedules)
+            .child(scheduleUid)
+            .setValue(scheduleInfo)
+        
+    }
+
+//新增Schedule資料
     func saveScheduleInfo(scheduleName: String, scheudleDate: String, scheduleDay: String) {
         //User Id
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
