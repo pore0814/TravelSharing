@@ -431,6 +431,7 @@
 				D1E6CD5C20914CA900310121 /* Resources */,
 				42F57943A86CA2A056C3DF05 /* [CP] Embed Pods Frameworks */,
 				660D4588FCD2C2822906068D /* [CP] Copy Pods Resources */,
+				D155BF3D20BC0765001EC4DD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -584,6 +585,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D155BF3D20BC0765001EC4DD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" e346b0a5e09b92e031e7390c417d59e9b0173121 7110c1f9a5429a1c9749d6506ac54aa22b1ced5f794e86354781032b54337351";
 		};
 		D199608420AC113C004C7D8E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

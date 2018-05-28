@@ -17,7 +17,6 @@ struct AlertToUser1 {
     static var alert = SCLAlertView()
 }
 
-
-class AlertToUserShared{
+class AlertToUserShared {
     static let shared = AlertToUserShared()
 }

@@ -19,9 +19,8 @@ class ScheduleManager {
     var scheduleDataInfo: ScheduleInfo?
     var scheduleDataArray = [ScheduleInfo]()
     var destinagionManager = DestinationManager()
-    
-    func firstScheduleExample(firstScheduleId:String,userId:String){
-       
+
+    func firstScheduleExample(firstScheduleId: String, userId: String) {
 
         let  scheduleUid = FireBaseConnect.databaseRef.childByAutoId().key
         let  scheduleInfo = ["uid": firstScheduleId, "name": "範例",
@@ -30,7 +29,7 @@ class ScheduleManager {
             .child(Constants.FireBaseSchedules)
             .child(scheduleUid)
             .setValue(scheduleInfo)
-        
+
     }
 
 //新增Schedule資料

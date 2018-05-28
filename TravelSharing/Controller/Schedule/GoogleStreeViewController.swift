@@ -25,8 +25,6 @@ class GoogleStreeViewController: UIViewController, GMSMapViewDelegate {
         super.viewDidLoad()
 
     guard let latitude = lat, let longtitude = long else {return}
-        
-   
 
         //街景圖
      GMSPanoramaService().requestPanoramaNearCoordinate(
@@ -37,10 +35,7 @@ class GoogleStreeViewController: UIViewController, GMSMapViewDelegate {
             }
             self.streetView.panorama = pano
         }
-        
-        
-       
-        
+
 //手勢放大
 //       let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapBlurButton(recignizer:)))
 //        tapGesture.numberOfTouchesRequired = 1
@@ -50,17 +45,15 @@ class GoogleStreeViewController: UIViewController, GMSMapViewDelegate {
 // 在location 上顯示 Marker
         initGooglemap(latitude: latitude, longitude: longtitude, name: "Annie")
     }
-    
 
     @IBAction func showBtn(_ sender: Any) {
-        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
+        if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)) {
             UIApplication.shared.openURL(URL(string:
                 "comgooglemaps://?center=40.765819,-73.975866&zoom=14&views=traffic")!)
         } else {
-            print("Can't use comgooglemaps://");
+            print("Can't use comgooglemaps://")
         }
     }
-        
 
     func initGooglemap(latitude: Double, longitude: Double, name: String) {
 
@@ -73,8 +66,7 @@ class GoogleStreeViewController: UIViewController, GMSMapViewDelegate {
         marker.title = name
         marker.map = mapView
         mapView.delegate = self
-        
-        
+
     }
 
 //

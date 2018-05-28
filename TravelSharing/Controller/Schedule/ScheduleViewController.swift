@@ -11,9 +11,9 @@ import SVProgressHUD
 import SCLAlertView
 
 class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+
      var schedules = [ScheduleInfo]()
-     var userProfile:UserInfo?
+     var userProfile: UserInfo?
      var indexNumber =  0
      var timeCount = 0
      var timer = Timer()
@@ -24,7 +24,6 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
      var alert = SCLAlertView()
      var indicator = true
      @IBOutlet weak var tableView: UITableView!
-    
 
 // display progress before loading data
     override func viewDidAppear(_ animated: Bool) {
@@ -57,19 +56,18 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ScheduleViewController.stoplodingIcon), userInfo: nil, repeats: true)
     }
 
-    @objc func stoplodingIcon(){
+    @objc func stoplodingIcon() {
         timeCount += 1
-        
-        
+
         if  (indicator == true) && (timeCount > 5) {
             timer.invalidate()
             SVProgressHUD.dismiss()
             indicator =  false
         }
-        
+
     }
 
-    func setTableView(){
+    func setTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -77,7 +75,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
 //註冊tableViewCell
-    func setTableViewCell(){
+    func setTableViewCell() {
         let leftNibName = UINib(nibName: "ScheduleTableViewCell", bundle: nil)
         tableView.register(leftNibName, forCellReuseIdentifier: "ScheduleTableViewCell")
     }
@@ -130,13 +128,12 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         }
            editButton.backgroundColor = UIColor.orange
 //Delete
-        
-        
+
         let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (_, _) in
 //Alert
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false)
-            
+
                     let alertView = SCLAlertView(appearance: appearance)
                     alertView.addButton("確定") {
                     ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid, arrrayIndexPath: indexPath.row)

@@ -24,10 +24,10 @@ extension UIView {
         self.layer.masksToBounds = true
        // self.layer.borderColor = UIColor.darkGray.cgColor
         self.layer.cornerRadius = 25
-        
+
     }
 
-    func setRounded10(){
+    func setRounded10() {
          self.layer.masksToBounds = true
          self.layer.cornerRadius = 10
          self.layer.borderWidth = 1

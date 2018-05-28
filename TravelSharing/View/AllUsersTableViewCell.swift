@@ -24,7 +24,7 @@ class AllUsersTableViewCell: UITableViewCell {
         let url = URL(string: allUsers.photoUrl)
         allUsersImage.sd_setImage(with: url) { (_, _, _, _) in
             print("yes")
-       
+
         }
     }
 

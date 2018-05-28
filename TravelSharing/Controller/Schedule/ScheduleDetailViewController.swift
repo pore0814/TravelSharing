@@ -68,14 +68,14 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         navigationItem.rightBarButtonItem = addBarButtonItem
         setCollectionView()
         setCollectionViewLayout()
-       
+
     }
 
-    func setCollectionView(){
+    func setCollectionView() {
     // CollectionView
         detailCollectionViwe.delegate =  self
         detailCollectionViwe.dataSource =  self
-        
+
     //註冊CollectionViewCell
         let nib = UINib(nibName: "DetailCollectionViewCell", bundle: nil)
         self.detailCollectionViwe.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
@@ -85,7 +85,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         let screenSize = UIScreen.main.bounds
         guard  let layout = detailCollectionViwe.collectionViewLayout as?
             UICollectionViewFlowLayout else {return}
-        
+
          layout.itemSize = CGSize(width: screenSize.width / 2.0,
                                 height: detailCollectionViwe.frame.height)
             let insetX = screenSize.width / 4.0
@@ -113,10 +113,9 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         popupVC.dateSelected = getDateInfo
         self.present(popupVC, animated: true, completion: nil)
   */
-        
+
     }
-    
-  
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return getDateInfo.count
     }
@@ -124,9 +123,9 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
        if let  cell = detailCollectionViwe.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell {
-        
+
             cell.dateLabel.text = getDateInfo[indexPath.row].date
-            cell.weekLabel.text = String(getWeekDayStr(weekDay:getDateInfo[indexPath.row].weekDay))
+            cell.weekLabel.text = String(getWeekDayStr(weekDay: getDateInfo[indexPath.row].weekDay))
             return cell
          } else {
                 return UICollectionViewCell()
@@ -134,13 +133,13 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+
         destinationScrollView.setContentOffset(
                 CGPoint(x: self.view.frame.width * CGFloat(indexPath.row),
                         y: 0), animated: true)
         detailCollectionViwe.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
-    
+
 }
 
 extension ScheduleDetailViewController: UIScrollViewDelegate {
