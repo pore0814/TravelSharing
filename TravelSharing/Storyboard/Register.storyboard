@@ -138,6 +138,10 @@
                                 <state key="normal" title="隱私權保護政策">
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="privacyBtn:" destination="3Ve-GT-LCX" eventType="touchUpInside" id="K3n-uU-f95"/>
+                                    <segue destination="vFP-Sj-2fr" kind="presentation" id="cUE-VJ-kqJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -180,12 +184,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwf-UO-JuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-47.200000000000003" y="106.59670164917542"/>
+            <point key="canvasLocation" x="-294" y="107"/>
         </scene>
         <!--Privacy View Controller-->
         <scene sceneID="XDy-sX-9J6">
             <objects>
-                <viewController id="vFP-Sj-2fr" customClass="PrivacyViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivacyViewController" id="vFP-Sj-2fr" customClass="PrivacyViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZFy-CA-CwP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -193,38 +197,125 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yIT-fE-Lrj">
                                 <rect key="frame" x="0.0" y="20" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="313" id="z0V-VS-jKM">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="313"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z0V-VS-jKM" id="eT4-pQ-2DU">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="312.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DT-HH-QIZ">
+                                                    <rect key="frame" x="0.0" y="44" width="375" height="263"/>
+                                                    <mutableString key="text">非常歡迎您光臨「TravelSharng」App，為了讓您能夠安心的使用本App的各項服務與資訊，特此向您說明本App的隱私權保護政策，以保障您的權益，請您詳閱下列內容：
+
+一、隱私權保護政策的適用範圍
+
+隱私權保護政策內容，包括本App如何處理在您使用App服務時收集到的個人識別資料。隱私權保護政策不適用於本App以外的相關連結App，也不適用於非本App所委託或參與管理的人員。
+
+二、個人資料的蒐集、處理及利用方式
+
+當您造訪本App或使用本App所提供之功能服務時，我們將視該服務功能性質，請您提供必要的個人資料，並在該特定目的範圍內處理及利用您的個人資料；非經您書面同意，本App不會將個人資料用於其他用途。
+本App在您使用服務信箱、問卷調查等互動性功能時，會保留您所提供的姓名、電子郵件地址、聯絡方式及使用時間等。
+於一般瀏覽時，伺服器會自行記錄相關行徑，包括您使用連線設備的IP位址、使用時間、使用的瀏覽器、瀏覽及點選資料記錄等，做為我們增進App服務的參考依據，此記錄為內部應用，決不對外公佈。
+為提供精確的服務，我們會將收集的問卷調查內容進行統計與分析，分析結果之統計數據或說明文字呈現，除供內部研究外，我們會視需要公佈統計數據及說明文字，但不涉及特定個人之資料。
+
+三、資料之保護
+
+本App主機均設有防火牆、防毒系統等相關的各項資訊安全設備及必要的安全防護措施，加以保護App及您的個人資料採用嚴格的保護措施，只由經過授權的人員才能接觸您的個人資料，相關處理人員皆簽有保密合約，如有違反保密義務者，將會受到相關的法律處分。
+如因業務需要有必要委託其他單位提供服務時，本App亦會嚴格要求其遵守保密義務，並且採取必要檢查程序以確定其將確實遵守。
+
+四、App對外的相關連結
+
+本App的網頁提供其他App的網路連結，您也可經由本App所提供的連結，點選進入其他App。但該連結App不適用本App的隱私權保護政策，您必須參考該連結App中的隱私權保護政策。
+
+五、與第三人共用個人資料之政策
+
+本App絕不會提供、交換、出租或出售任何您的個人資料給其他個人、團體、私人企業或公務機關，但有法律依據或合約義務者，不在此限。
+
+前項但書之情形包括不限於：
+
+經由您書面同意。
+法律明文規定。
+為免除您生命、身體、自由或財產上之危險。
+與公務機關或學術研究機構合作，基於公共利益為統計或學術研究而有必要，且資料經過提供者處理或蒐集者依其揭露方式無從識別特定之當事人。
+當您在App的行為，違反服務條款或可能損害或妨礙App與其他使用者權益或導致任何人遭受損害時，經App管理單位研析揭露您的個人資料是為了辨識、聯絡或採取法律行動所必要者。
+有利於您的權益。
+本App委託廠商協助蒐集、處理或利用您的個人資料時，將對委外廠商或個人善盡監督管理之責。
+六、Cookie之使用
+
+為了提供您最佳的服務，本App會在您的電腦中放置並取用我們的Cookie，若您不願接受Cookie的寫入，您可在您使用的瀏覽器功能項中設定隱私權等級為高，即可拒絕Cookie的寫入，但可能會導至App某些功能無法正常執行 。
+
+七、隱私權保護政策之修正
+
+本App隱私權保護政策將因應需求隨時進行修正，修正後的條款將刊登於App上。</mutableString>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="隱私權保護政策" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8O-uE-0PT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="nMN-Xo-g7f"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Y8O-uE-0PT" secondAttribute="trailing" id="NPI-8j-hIS"/>
+                                                <constraint firstItem="3DT-HH-QIZ" firstAttribute="top" secondItem="Y8O-uE-0PT" secondAttribute="bottom" constant="14" id="Vxy-r0-JpR"/>
+                                                <constraint firstItem="Y8O-uE-0PT" firstAttribute="top" secondItem="eT4-pQ-2DU" secondAttribute="top" id="W1N-rR-fXo"/>
+                                                <constraint firstAttribute="trailing" secondItem="Y8O-uE-0PT" secondAttribute="trailing" id="ehc-4I-Uuv"/>
+                                                <constraint firstItem="3DT-HH-QIZ" firstAttribute="leading" secondItem="eT4-pQ-2DU" secondAttribute="leading" id="iSk-bb-b8o"/>
+                                                <constraint firstItem="Y8O-uE-0PT" firstAttribute="leading" secondItem="eT4-pQ-2DU" secondAttribute="leading" id="lIc-2B-8vi"/>
+                                                <constraint firstAttribute="trailing" secondItem="3DT-HH-QIZ" secondAttribute="trailing" id="rFv-Ox-qcH"/>
+                                                <constraint firstAttribute="bottom" secondItem="3DT-HH-QIZ" secondAttribute="bottom" constant="5" id="vCy-NM-6Cn"/>
+                                                <constraint firstItem="Y8O-uE-0PT" firstAttribute="leading" secondItem="eT4-pQ-2DU" secondAttribute="leading" id="yca-SM-SXy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="vFP-Sj-2fr" id="zKz-oq-2dd"/>
                                     <outlet property="delegate" destination="vFP-Sj-2fr" id="LSs-gI-s0B"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbB-cB-3d5">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOI-KQ-3mc">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.87450980392156863" green="0.33333333333333331" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Nqr-FK-ycr"/>
+                                    <constraint firstAttribute="height" constant="40" id="1Sn-ac-9kc"/>
                                 </constraints>
-                                <state key="normal" title="確定"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="確定">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtn:" destination="vFP-Sj-2fr" eventType="touchUpInside" id="oMl-uf-80W"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="yIT-fE-Lrj" secondAttribute="trailing" id="24b-p1-Zz1"/>
-                            <constraint firstItem="2yE-3f-WiX" firstAttribute="trailing" secondItem="VbB-cB-3d5" secondAttribute="trailing" id="6B8-Ke-fF6"/>
-                            <constraint firstItem="VbB-cB-3d5" firstAttribute="top" secondItem="yIT-fE-Lrj" secondAttribute="bottom" id="KWn-Ap-hIh"/>
-                            <constraint firstItem="yIT-fE-Lrj" firstAttribute="top" secondItem="2yE-3f-WiX" secondAttribute="top" id="Olr-cv-fhE"/>
-                            <constraint firstItem="yIT-fE-Lrj" firstAttribute="leading" secondItem="ZFy-CA-CwP" secondAttribute="leading" id="fxK-Hh-uGt"/>
-                            <constraint firstItem="VbB-cB-3d5" firstAttribute="leading" secondItem="2yE-3f-WiX" secondAttribute="leading" id="tME-yM-nxV"/>
-                            <constraint firstItem="VbB-cB-3d5" firstAttribute="bottom" secondItem="2yE-3f-WiX" secondAttribute="bottom" id="wbF-jq-pVr"/>
+                            <constraint firstItem="GOI-KQ-3mc" firstAttribute="trailing" secondItem="2yE-3f-WiX" secondAttribute="trailing" id="14T-4n-wFX"/>
+                            <constraint firstItem="yIT-fE-Lrj" firstAttribute="trailing" secondItem="GOI-KQ-3mc" secondAttribute="trailing" id="28g-Dd-zGa"/>
+                            <constraint firstItem="yIT-fE-Lrj" firstAttribute="leading" secondItem="GOI-KQ-3mc" secondAttribute="leading" id="3yv-e2-GO8"/>
+                            <constraint firstItem="GOI-KQ-3mc" firstAttribute="leading" secondItem="2yE-3f-WiX" secondAttribute="leading" id="EyD-lj-wwX"/>
+                            <constraint firstItem="GOI-KQ-3mc" firstAttribute="top" secondItem="yIT-fE-Lrj" secondAttribute="bottom" constant="10" id="eok-7G-3xf"/>
+                            <constraint firstItem="yIT-fE-Lrj" firstAttribute="top" secondItem="2yE-3f-WiX" secondAttribute="top" id="k2d-Jj-g0z"/>
+                            <constraint firstItem="GOI-KQ-3mc" firstAttribute="bottom" secondItem="2yE-3f-WiX" secondAttribute="bottom" id="thX-sn-Gnh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2yE-3f-WiX"/>
                     </view>
                     <connections>
-                        <outlet property="privacyTableview" destination="yIT-fE-Lrj" id="Kh5-NM-QIR"/>
+                        <outlet property="privacyTableview" destination="yIT-fE-Lrj" id="Vqe-MU-oSB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPz-Qb-ebn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="637.60000000000002" y="106.59670164917542"/>
+            <point key="canvasLocation" x="613.60000000000002" y="106.59670164917542"/>
         </scene>
     </scenes>
     <resources>

@@ -9,28 +9,23 @@
 import UIKit
 
 class PrivacyViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = privacyTableview.dequeueReusableCell(withIdentifier: "PrivacyTableViewCell") as? PrivacyTableViewCell
-        return cell!
-    }
-    
 
     @IBOutlet weak var privacyTableview: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let nib = UINib(nibName: "PrivacyTableViewCell", bundle: nil)
-        privacyTableview.register(nib, forCellReuseIdentifier: "PrivacyTableViewCell")
-        
-        privacyTableview.delegate = self;
-        privacyTableview.dataSource = self
-        privacyTableview.separatorStyle = .none
-        
+      
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = privacyTableview.dequeueReusableCell(withIdentifier: "Cell")
+        return cell!
+    }
     
+    @IBAction func backBtn(_ sender: Any) {
+  dismiss(animated: true, completion: nil)
+    }
 }

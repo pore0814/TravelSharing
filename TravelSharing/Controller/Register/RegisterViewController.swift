@@ -54,6 +54,14 @@ class RegisterViewController: UIViewController, FusumaDelegate {
         self.present(fusuma, animated: true, completion: nil)
     }
 
+    @IBAction func privacyBtn(_ sender: Any) {
+       
+        let storyboard = PrivacyViewController()
+        
+      
+        present(storyboard , animated: true, completion: nil)
+        
+    }
     //Register
     @IBAction func registerBtn(_ sender: Any) {
 
@@ -67,7 +75,7 @@ class RegisterViewController: UIViewController, FusumaDelegate {
         if userNameText.text != "", emailText.text != "", passwordText.text != "", reEnterPasswordText.text != "" {
          //密碼需大於六碼
             if (passwordText.text?.count)! < 6 {
-                  AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: ">6")
+                  AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "密碼需大於6碼")
         //密碼與再次確認密碼
             } else if passwordText.text != reEnterPasswordText.text {
                 AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "二個密碼不同")
