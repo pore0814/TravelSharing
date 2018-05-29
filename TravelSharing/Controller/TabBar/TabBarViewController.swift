@@ -76,7 +76,6 @@ class TabBarViewController: UITabBarController {
        //tabBar.barTintColor = UIColor(displayP3Red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
 
          tabBar.tintColor = TSColor.tabBarTintColor.color()
-        
 
         var controllers: [UIViewController] = []
 

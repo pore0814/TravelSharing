@@ -8,12 +8,10 @@
 
 import UIKit
 
-class ButtonIBIn:UIButton{
-    
-    @IBInspectable var conerRadius:CGFloat = 0.0
-    {
-        didSet
-        {
+class ButtonIBIn: UIButton {
+
+    @IBInspectable var conerRadius: CGFloat = 0.0 {
+        didSet {
             layer.cornerRadius = conerRadius
             layer.masksToBounds = conerRadius > 0
         }

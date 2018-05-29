@@ -16,7 +16,7 @@ class ScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var leftCellView: UIView!
 
     @IBOutlet weak var leftImageView: UIImageView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         leftCellView.setShadow()

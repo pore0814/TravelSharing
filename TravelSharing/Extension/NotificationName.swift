@@ -16,6 +16,6 @@ extension Notification.Name {
     static let scheduleInfo = Notification.Name("scheduleInfo")
 
     static let finishDelete = Notification.Name("finishDelete")
-    
+
     static let myLocation = Notification.Name("myLocation")
 }

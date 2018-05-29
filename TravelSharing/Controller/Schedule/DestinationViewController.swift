@@ -43,7 +43,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         let nib = UINib(nibName: "DestinationTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "DestinationTableViewCell")
         tableView.separatorStyle = .none
- 
+
     }
     func initMapLocaionManager() {
         locationManager = CLLocationManager()
@@ -58,10 +58,10 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //         guard   let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return 0}
-        
+
         if indexPath.row == tag {
             if cellExpanded {
-                
+
                return 400
                 } else if indexPath.row != previous {
                   return 400
@@ -102,17 +102,17 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         showCloseButton: false
     )
     let alertView = SCLAlertView(appearance: appearance)
-    
+
     alertView.addButton("確定") {
             guard let scheduleId = self.scheduleUid, let dayth = self.dayths else {return}
 
-            self.destinationManger.deleteDestinationInfo(scheduleUid: self.scheduleUid!,dayth: dayth ,
+            self.destinationManger.deleteDestinationInfo(scheduleUid: self.scheduleUid!, dayth: dayth ,
                                                 destinationUid: self.testArray[self.tag!].uid)
              self.testArray.remove(at: self.tag!)
             self.tableView.deleteRows(at: [self.indexPathInGlobal!], with: .automatic)
             self.tableView.reloadData()
     }
-    alertView.addButton("取消"){}
+    alertView.addButton("取消") {}
     alertView.showSuccess("", subTitle: NSLocalizedString("確定刪除?", comment: ""))
     }
 
@@ -129,7 +129,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
                 cellExpanded = true
                 selectedCell.direction.image = UIImage(named: "up")
             }
- 
+
         tableView.beginUpdates()
         tableView.endUpdates()
         previous = tag

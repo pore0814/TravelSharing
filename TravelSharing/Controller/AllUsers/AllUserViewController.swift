@@ -20,18 +20,18 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
 
         initUITableView()
-        
+
         getUserInfoManager.delegate = self
         getUserInfoManager.getAllUserInfo()
-        
+
         allUserTableview.allowsMultipleSelection = true
-        
+
         setNavigation()
     }
     @IBAction func backBtn(_ sender: Any) {
         let detailPage = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "ScheduleDetailViewController") as?
         ScheduleDetailViewController
-       
+
         present(detailPage!, animated: true, completion: nil)
     }
     func initUITableView() {
@@ -41,7 +41,7 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
         allUserTableview.register(nib, forCellReuseIdentifier: "AllUsersTableViewCell")
     }
 
-    func setNavigation(){
+    func setNavigation() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
@@ -52,10 +52,10 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard  let cell = allUserTableview.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell") as? AllUsersTableViewCell else {return UITableViewCell()}
-        
+
           let allUsers = allUserInfo[indexPath.row]
           cell.getCell(allUsers: allUsers)
-        
+
         if selectedIndexs.contains(indexPath.row) {
             cell.accessoryType = .checkmark
         } else {
@@ -68,31 +68,25 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
        print("----------------------------")
         if   tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
-            print("delete",allUserInfo[indexPath.row].uid)
-        }else {
+            print("delete", allUserInfo[indexPath.row].uid)
+        } else {
              tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
-             print("add",allUserInfo[indexPath.row].uid)
+             print("add", allUserInfo[indexPath.row].uid)
         }
-       
-        
-       
-        
+
         //判断是否选中（选中单元格尾部打勾）
-        
-        
-        if let index = selectedIndexs.index(of: indexPath.row){
+
+        if let index = selectedIndexs.index(of: indexPath.row) {
             selectedIndexs.remove(at: index) //原来选中的取消选中
-        }else{
+        } else {
             selectedIndexs.append(indexPath.row) //原来没选中的就选中
         }
-       
-    }
-        
-        
-        
+
     }
 
-extension AllUserViewController:GetUserInfoManagerDelegate{
+    }
+
+extension AllUserViewController: GetUserInfoManagerDelegate {
     func manager(_ manager: GetUserInfoManager, didGet userInfo: UserInfo) {}
 
     func managerArray(_ manager: GetUserInfoManager, didGet userInfo: [UserInfo]) {

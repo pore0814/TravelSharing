@@ -8,12 +8,12 @@
 
 import UIKit
 
-class PrivacyViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class PrivacyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var privacyTableview: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -24,7 +24,7 @@ class PrivacyViewController: UIViewController,UITableViewDataSource,UITableViewD
         let cell = privacyTableview.dequeueReusableCell(withIdentifier: "Cell")
         return cell!
     }
-    
+
     @IBAction func backBtn(_ sender: Any) {
   dismiss(animated: true, completion: nil)
     }

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dqp-ww-XzT">
-                                <rect key="frame" x="20" y="325" width="335" height="50"/>
+                                <rect key="frame" x="20" y="326" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hEI-37-JVn"/>
                                 </constraints>
@@ -29,7 +30,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DbP-7J-f4K">
-                                <rect key="frame" x="20" y="405" width="335" height="50"/>
+                                <rect key="frame" x="20" y="396" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="xj9-51-5fc"/>
                                 </constraints>
@@ -38,7 +39,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IYf-2l-KGh">
-                                <rect key="frame" x="20" y="484" width="335" height="50"/>
+                                <rect key="frame" x="20" y="466" width="335" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVK-y8-rdh">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
@@ -88,10 +89,13 @@
                                 </constraints>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPage1" translatesAutoresizingMaskIntoConstraints="NO" id="o7x-Pp-Ivb" customClass="RoundedUIImageView" customModule="TravelSharing" customModuleProvider="target">
-                                <rect key="frame" x="94" y="60" width="187.5" height="187"/>
+                                <rect key="frame" x="94" y="60" width="188" height="188"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="o7x-Pp-Ivb" secondAttribute="height" multiplier="1:1" id="7ye-VO-r3S"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's Travel Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3p-sx-hYA">
-                                <rect key="frame" x="50" y="267" width="275" height="38"/>
+                                <rect key="frame" x="50" y="268" width="275" height="38"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
                                 <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -99,26 +103,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="o7x-Pp-Ivb" firstAttribute="height" secondItem="zuz-rP-hBg" secondAttribute="height" multiplier="0.28" id="5rN-dk-GS6"/>
-                            <constraint firstItem="o7x-Pp-Ivb" firstAttribute="width" secondItem="zuz-rP-hBg" secondAttribute="width" multiplier="0.5" id="6Th-Ta-rxA"/>
+                            <constraint firstItem="W3p-sx-hYA" firstAttribute="top" secondItem="o7x-Pp-Ivb" secondAttribute="bottom" constant="20" id="2A9-6i-LkI"/>
                             <constraint firstItem="VWr-cM-K3E" firstAttribute="trailing" secondItem="DbP-7J-f4K" secondAttribute="trailing" constant="20" id="7H6-Pu-jvd"/>
                             <constraint firstItem="W3p-sx-hYA" firstAttribute="leading" secondItem="VWr-cM-K3E" secondAttribute="leading" constant="50" id="7MD-1O-fvq"/>
                             <constraint firstItem="IYf-2l-KGh" firstAttribute="height" secondItem="dqp-ww-XzT" secondAttribute="height" id="8wp-ax-XFH"/>
                             <constraint firstItem="VWr-cM-K3E" firstAttribute="trailing" secondItem="W3p-sx-hYA" secondAttribute="trailing" constant="50" id="9cp-e6-HtP"/>
                             <constraint firstItem="Ohx-Pi-ljU" firstAttribute="leading" secondItem="VWr-cM-K3E" secondAttribute="leading" constant="20" id="Bg6-mh-po1"/>
                             <constraint firstItem="VWr-cM-K3E" firstAttribute="trailing" secondItem="IYf-2l-KGh" secondAttribute="trailing" constant="20" id="G96-kZ-iUT"/>
-                            <constraint firstItem="W3p-sx-hYA" firstAttribute="top" secondItem="o7x-Pp-Ivb" secondAttribute="bottom" constant="20" id="K8b-a0-LtC"/>
+                            <constraint firstItem="o7x-Pp-Ivb" firstAttribute="top" secondItem="VWr-cM-K3E" secondAttribute="top" constant="40" id="RG7-5a-JRo"/>
                             <constraint firstItem="dqp-ww-XzT" firstAttribute="top" secondItem="W3p-sx-hYA" secondAttribute="bottom" constant="20" id="ZOc-kP-OhM"/>
-                            <constraint firstItem="DbP-7J-f4K" firstAttribute="top" secondItem="dqp-ww-XzT" secondAttribute="bottom" constant="30" id="bb2-Ex-q4G"/>
-                            <constraint firstItem="IYf-2l-KGh" firstAttribute="top" secondItem="DbP-7J-f4K" secondAttribute="bottom" constant="29" id="ftr-GQ-6Gu"/>
+                            <constraint firstItem="DbP-7J-f4K" firstAttribute="top" secondItem="dqp-ww-XzT" secondAttribute="bottom" constant="20" id="bb2-Ex-q4G"/>
+                            <constraint firstItem="IYf-2l-KGh" firstAttribute="top" secondItem="DbP-7J-f4K" secondAttribute="bottom" constant="20" id="ftr-GQ-6Gu"/>
                             <constraint firstItem="dqp-ww-XzT" firstAttribute="leading" secondItem="VWr-cM-K3E" secondAttribute="leading" constant="20" id="oJw-5x-nHh"/>
                             <constraint firstItem="VWr-cM-K3E" firstAttribute="trailing" secondItem="dqp-ww-XzT" secondAttribute="trailing" constant="20" id="pSO-zb-CX1"/>
-                            <constraint firstItem="o7x-Pp-Ivb" firstAttribute="top" secondItem="VWr-cM-K3E" secondAttribute="top" constant="40" id="qF8-0T-Cq3"/>
-                            <constraint firstItem="o7x-Pp-Ivb" firstAttribute="centerX" secondItem="zuz-rP-hBg" secondAttribute="centerX" id="sp8-gC-X0L"/>
                             <constraint firstItem="VWr-cM-K3E" firstAttribute="trailing" secondItem="K4E-fL-IC3" secondAttribute="trailing" constant="20" id="tzW-u9-pFe"/>
                             <constraint firstItem="W3p-sx-hYA" firstAttribute="centerX" secondItem="zuz-rP-hBg" secondAttribute="centerX" id="uKU-B9-mrO"/>
                             <constraint firstItem="DbP-7J-f4K" firstAttribute="leading" secondItem="VWr-cM-K3E" secondAttribute="leading" constant="20" id="uP3-sf-z3Q"/>
                             <constraint firstItem="DbP-7J-f4K" firstAttribute="height" secondItem="dqp-ww-XzT" secondAttribute="height" id="ugL-lv-9KI"/>
+                            <constraint firstItem="o7x-Pp-Ivb" firstAttribute="centerX" secondItem="zuz-rP-hBg" secondAttribute="centerX" id="v72-tf-QRg"/>
+                            <constraint firstItem="o7x-Pp-Ivb" firstAttribute="width" secondItem="zuz-rP-hBg" secondAttribute="width" multiplier="0.5" id="zLK-tf-qWc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VWr-cM-K3E"/>
                     </view>

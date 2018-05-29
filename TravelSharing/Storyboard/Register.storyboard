@@ -28,7 +28,7 @@
                                     <action selector="uploadProfile:" destination="3Ve-GT-LCX" eventType="touchUpInside" id="YZt-an-VOg"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xbt-aw-UL5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageProfile" translatesAutoresizingMaskIntoConstraints="NO" id="xbt-aw-UL5">
                                 <rect key="frame" x="112" y="49" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -207,7 +207,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DT-HH-QIZ">
                                                     <rect key="frame" x="0.0" y="44" width="375" height="263"/>
-                                                    <mutableString key="text">非常歡迎您光臨「TravelSharng」App，為了讓您能夠安心的使用本App的各項服務與資訊，特此向您說明本App的隱私權保護政策，以保障您的權益，請您詳閱下列內容：
+                                                    <string key="text">非常歡迎您光臨「TravelSharng」App，為了讓您能夠安心的使用本App的各項服務與資訊，特此向您說明本App的隱私權保護政策，以保障您的權益，請您詳閱下列內容：
 
 一、隱私權保護政策的適用範圍
 
@@ -248,7 +248,7 @@
 
 七、隱私權保護政策之修正
 
-本App隱私權保護政策將因應需求隨時進行修正，修正後的條款將刊登於App上。</mutableString>
+本App隱私權保護政策將因應需求隨時進行修正，修正後的條款將刊登於App上。</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -320,6 +320,7 @@
     </scenes>
     <resources>
         <image name="image2" width="64" height="64"/>
+        <image name="imageProfile" width="512" height="512"/>
         <image name="logoPage1" width="626" height="626"/>
     </resources>
 </document>

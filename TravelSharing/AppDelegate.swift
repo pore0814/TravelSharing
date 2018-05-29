@@ -11,6 +11,8 @@ import Firebase
 import GoogleMaps
 import GooglePlaces
 import IQKeyboardManagerSwift
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,17 +21,15 @@ var window: UIWindow?
     //AIzaSyDjiV4Ap_EmcXalFQbzT9qW8jx02m8lLVE
    // let apiKey = "AIzaSyApfLr_yp72naCXwEQyuwwNc6JwiE8Cj1I"
    let apiKey = "AIzaSyDua-py10XKCDJC8rp4vNRAeDWk_gJLIDk"
-    
+
      static let shared = UIApplication.shared.delegate as? AppDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        Fabric.with([Crashlytics.self])
         IQKeyboardManager.shared.enable = true
         FirebaseApp.configure()
         GMSServices.provideAPIKey(apiKey)
         GMSPlacesClient.provideAPIKey(apiKey)
-        
-    
-
 //跳轉到MainViewController()
         if UserManager.shared.getFireBaseUID() != nil {
             switchMainViewController()

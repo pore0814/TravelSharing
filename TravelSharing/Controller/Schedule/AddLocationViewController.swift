@@ -34,51 +34,51 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         super.viewDidLoad()
 
 //一開始Catagory預設類別為"景點"
-     
+
         stackView.center.x = self.view.frame.width + 200
-        
-        UIView.animate(withDuration: 2.0, delay:0.5, usingSpringWithDamping: 0.3,
+
+        UIView.animate(withDuration: 2.0, delay: 0.5, usingSpringWithDamping: 0.3,
                        initialSpringVelocity: 30,
                        options: [] ,
                        animations: {
                         self.stackView.center.x = self.view.frame.width / 2
         }, completion: nil)
-        
+
 //一開始Time顯示現在時間
       getCurrentTime()
-        
+
       createDatePicker()
 
       setPickerView()
 
       searchPlaceTextGesture()
-        
+
       categoryTextGesture()
 }
-    func searchPlaceTextGesture(){
+    func searchPlaceTextGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(searchPlaceTapGesture(_:)))
-        
+
             destinationText.superview?.addGestureRecognizer(tapGesture)
     }
-    
+
     @objc private dynamic func searchPlaceTapGesture(_ gesture: UITapGestureRecognizer) {
         let autocompleteController = GMSAutocompleteViewController()
             autocompleteController.secondaryTextColor = UIColor.black
             autocompleteController.delegate = self
         self.present(autocompleteController, animated: true, completion: nil)
     }
-    
-    func categoryTextGesture(){
+
+    func categoryTextGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(categoryTapGesture(_:)))
-        
+
         categoryText.superview?.addGestureRecognizer(tapGesture)
     }
-    
+
     @objc private dynamic func categoryTapGesture(_ gesture: UITapGestureRecognizer) {
        //AlertToUser().alert.showEdit("請選擇類別", subTitle: "")
     }
-  
-    func setPickerView(){
+
+    func setPickerView() {
         guard let dateselect = dateSelected else {return}
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -86,7 +86,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         dateSelectedText.textAlignment = .center
       //  dateSelectedText.text = dateselect[0].date
     }
-   
+
 //取得現在時間
     func getCurrentTime() {
         let date = Date()
@@ -98,20 +98,20 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         let timeString = formatter.string(from: date)
         timeText.text = "\(timeString)"
     }
-    
+
     @IBAction func saveBtn(_ sender: Any) {
         if destinationText.text != "" && dateSelectedText.text != "" && categoryText.text != "" {
-            
+
                         let saveDate = Destination(name: destinationText.text!, time: timeText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!, uid: "")
                       print(saveDate)
                       destinationManager.saveDestinationInfo(uid: uid!, dayth: daythRow, destination: saveDate)
                       destinationText.text = ""
                 navigationController?.popViewController(animated: true)
-        }else {
+        } else {
             AlertToUser().alert.showError(Constants.WrongMessage, subTitle: "表格不可為空白")
 
         }
-        
+
     }
 //Time Picker
     func createDatePicker() {
@@ -144,18 +144,17 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBAction func restaurantBtn(_ sender: Any) {
          categoryText.text = "餐廳"
          categoryText.textColor = TSColor.gradientPurple.color()
-        
+
     }
     @IBAction func hotelBtn(_ sender: Any) {
      categoryText.text = "住宿"
      categoryText.textColor = TSColor.gradientBlue.color()
     }
-    
+
     @IBAction func otherBtn(_ sender: Any) {
         categoryText.text = "其它"
         categoryText.textColor = TSColor.gradientPurple.color()
     }
-    
 
 //Search Location
     @IBAction func streetViewBtn(_ sender: Any) {
@@ -165,7 +164,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
                         dismenstionViewController.lat = lat
                         dismenstionViewController.long  = long
                         self.navigationController?.pushViewController(dismenstionViewController, animated: true)
-                    }else{
+                    } else {
                     AlertToUser().alert.showEdit("新增目的地", subTitle: "才能觀看街景圖哦")
         }
     }
@@ -197,7 +196,7 @@ extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate {
 
             lat = place.coordinate.latitude
             long = place.coordinate.longitude
-        
+
 //placeText 顯示 Locaion Name
             destinationText.text = place.name
         self.dismiss(animated: true, completion: nil) // dismiss after select place

@@ -11,6 +11,7 @@ import GoogleMaps
 import GooglePlaces
 import Alamofire
 import SwiftyJSON
+import Firebase
 
 enum Location {
     case myLocaion
@@ -29,7 +30,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var direction: UIImageView!
-    
+
     var locationManager = CLLocationManager()
     var locationSelected = Location.myLocaion
     var locationstart     = CLLocation()
@@ -46,38 +47,33 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         rightUiview.setShadow()
       //  rightUiview.setGradientBackground(colorOne: UIColor.blue, colorTwo: UIColor.white)
         mapDelegateAndInitiation()
-        
+
     }
 
     @IBAction func drawRouteBtn(_ sender: Any) {
-    drawPath(myLocaion:  locationstart , endLocation: destinationLocaion)
-        
+    drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
+
         if let myLocation = mapView.myLocation {
             let path = GMSMutablePath()
             path.add(myLocation.coordinate)
             path.add(destinationLocaion.coordinate)
             //add other coordinates
             //path.addCoordinate(model.coordinate)
-            
+
             let bounds = GMSCoordinateBounds(path: path)
             mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
         }
     }
-    
-    
-   
+
     @IBAction func googleMapBtn(_ sender: Any) {
-        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!))
-        {
+        if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)) {
             UIApplication.shared.openURL(NSURL(string:
                 "comgooglemaps://?saddr=&daddr=\(Float(destinationLocaion.coordinate.latitude)),\(Float(destinationLocaion.coordinate.longitude))&directionsmode=driving")! as URL)
-        } else
-        {
-            NSLog("Can't use com.google.maps://");
+        } else {
+            NSLog("Can't use com.google.maps://")
         }
     }
-    
-    
+
     func mapDelegateAndInitiation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -158,14 +154,14 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     }
 
     func drawPath(myLocaion: CLLocation, endLocation: CLLocation) {
+        Analytics.logEvent("drawPath", parameters: nil)
 
         print("drawPath--------------------")
-        print("myLocation",myLocaion)
-        print("endLocation",endLocation)
-        
+        print("myLocation", myLocaion)
+        print("endLocation", endLocation)
+
       let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
       let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
-       
 
       let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
 

@@ -55,12 +55,11 @@ class RegisterViewController: UIViewController, FusumaDelegate {
     }
 
     @IBAction func privacyBtn(_ sender: Any) {
-       
+
         let storyboard = PrivacyViewController()
-        
-      
-        present(storyboard , animated: true, completion: nil)
-        
+
+        present(storyboard, animated: true, completion: nil)
+
     }
     //Register
     @IBAction func registerBtn(_ sender: Any) {
@@ -86,7 +85,7 @@ class RegisterViewController: UIViewController, FusumaDelegate {
             } else {
               UserManager.shared.singUp(email: emailText.text!, password: passwordText.text!, username: userNameText.text!, userphoto: data) { (message) in
                          AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: message!)
-              
+
                 }
                 if indicator  == true {
                     SVProgressHUD.show(withStatus: "loading")

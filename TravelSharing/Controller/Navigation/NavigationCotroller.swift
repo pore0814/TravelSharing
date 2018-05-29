@@ -11,7 +11,7 @@ import UIKit
 class TravelSharingNavigationController: UINavigationController {
 
     override func viewDidLoad() {
-     
+
         navigationBar.barStyle = UIBarStyle.black
         navigationBar.tintColor = UIColor.white
         var colors = [UIColor]()
@@ -20,7 +20,7 @@ class TravelSharingNavigationController: UINavigationController {
         navigationBar.setGradientBackground(colors: colors)
        // arrangeShadowLayer()
     }
-    
+
 //陰影
     private func arrangeShadowLayer() {
         self.navigationBar.layer.shadowColor = UIColor.black.cgColor
