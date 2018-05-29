@@ -10,6 +10,7 @@
 		4B14BAF96DE255397327C523 /* Pods_TravelSharing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F353853584E1967591DC1429 /* Pods_TravelSharing.framework */; };
 		D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */; };
 		D10418F0209982770084952E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EF209982770084952E /* CustomCell.swift */; };
+		D116C34320BD33C30034C84C /* DistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D116C34220BD33C30034C84C /* DistanceManager.swift */; };
 		D11E007220B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */; };
 		D11FBBDC20B3FB5A000B8284 /* AllUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11FBBDB20B3FB5A000B8284 /* AllUserViewController.swift */; };
 		D11FBBDE20B40EB4000B8284 /* LukeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11FBBDD20B40EB4000B8284 /* LukeScrollView.swift */; };
@@ -79,6 +80,7 @@
 		69BAEA4434D7C88796C98B4C /* Pods-TravelSharing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.debug.xcconfig"; sourceTree = "<group>"; };
 		D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditScheduleViewController.swift; sourceTree = "<group>"; };
 		D10418EF209982770084952E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		D116C34220BD33C30034C84C /* DistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DistanceManager.swift; path = /Users/Annie/Desktop/TravelSharing/TravelSharing/Model/Destination/DistanceManager.swift; sourceTree = "<absolute>"; };
 		D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POMCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		D11FBBDB20B3FB5A000B8284 /* AllUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserViewController.swift; sourceTree = "<group>"; };
 		D11FBBDD20B40EB4000B8284 /* LukeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LukeScrollView.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		D1D45E9820B0611600E3E7BE /* Destination */ = {
 			isa = PBXGroup;
 			children = (
+				D116C34220BD33C30034C84C /* DistanceManager.swift */,
 				D18B9B6620A030E300EB8D16 /* DestinationManager.swift */,
 			);
 			path = Destination;
@@ -625,6 +628,7 @@
 				D1658265209AC2A300C37F8D /* DestinationTableViewCell.swift in Sources */,
 				D1DA0A3720A6FFF4002D8CF6 /* GoogleStreeViewController.swift in Sources */,
 				D126D05920AD2F6400F46AE3 /* TrackViewController.swift in Sources */,
+				D116C34320BD33C30034C84C /* DistanceManager.swift in Sources */,
 				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,
 				D14C0FEE209823A800026AF1 /* Constants.swift in Sources */,
 				D127E17220A53F9B00EBB5F7 /* TrackLocationViewController.swift in Sources */,

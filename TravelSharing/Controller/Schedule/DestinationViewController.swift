@@ -88,6 +88,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
             cell.mapView.bringSubview(toFront: cell.deleteBtn)
             cell.mapView.bringSubview(toFront: cell.drawPathBtn)
             cell.mapView.bringSubview(toFront: cell.googleMapBtn)
+            cell.mapView.bringSubview(toFront: cell.distanceBtn)
             cell.selectionStyle =  .none
         return cell
     }

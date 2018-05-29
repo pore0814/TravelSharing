@@ -90,7 +90,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
                                 height: detailCollectionViwe.frame.height)
             let insetX = screenSize.width / 4.0
             layout.sectionInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
-            layout.minimumLineSpacing = 10
+            layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
       //      detailCollectionViwe.setCollectionViewLayout(layout, animated: false)
     }
@@ -134,9 +134,9 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        destinationScrollView.setContentOffset(
-                CGPoint(x: self.view.frame.width * CGFloat(indexPath.row),
-                        y: 0), animated: true)
+//        destinationScrollView.setContentOffset(
+//                CGPoint(x: self.view.frame.width * CGFloat(indexPath.row),
+//                        y: 0), animated: true)
         detailCollectionViwe.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 
@@ -177,6 +177,8 @@ extension ScheduleDetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard  let screenshotsCollectionViewFlowLayout = self.detailCollectionViwe.collectionViewLayout as? UICollectionViewFlowLayout else {return}
         let screenshotsDistanceBetweenItemsCenter = screenshotsCollectionViewFlowLayout.minimumLineSpacing + screenshotsCollectionViewFlowLayout.itemSize.width
+
+        print(screenshotsDistanceBetweenItemsCenter)
         let fullScreen =  UIScreen.main.bounds.width
         let offsetFactor = screenshotsDistanceBetweenItemsCenter / fullScreen
         // let offsetFactor1 = screenshotsDistanceBetweenItemsCenter / self.view.frame.size.width
@@ -188,6 +190,12 @@ extension ScheduleDetailViewController: UIScrollViewDelegate {
             print("-----------SCrollview------------------")
             print("scrollview", destinationScrollView.contentOffset)
             print("collectionview", detailCollectionViwe.contentOffset)
+
+        }
+
+        if(scrollView == detailCollectionViwe) {
+            let xOffset = scrollView.contentOffset.x - scrollView.frame.origin.x
+            destinationScrollView.bounds.origin = CGPoint(x: xOffset / offsetFactor, y: destinationScrollView.bounds.origin.y)
 
         }
     }

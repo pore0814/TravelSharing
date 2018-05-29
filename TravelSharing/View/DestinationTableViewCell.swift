@@ -20,6 +20,7 @@ enum Location {
 
 class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationManagerDelegate {
 
+    @IBOutlet weak var distanceBtn: UIButton!
     @IBOutlet weak var googleMapBtn: UIButton!
     @IBOutlet weak var drawPathBtn: UIButton!
     @IBOutlet weak var categoryLabel: UILabel!
@@ -35,6 +36,8 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     var locationSelected = Location.myLocaion
     var locationstart     = CLLocation()
     var destinationLocaion = CLLocation()
+    var distanceManager = DistanceManager()
+    var destinationManager = DestinationManager()
 
     var totalDistanceInMeters: UInt = 0
     var totalDistance: String!
@@ -47,6 +50,18 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         rightUiview.setShadow()
       //  rightUiview.setGradientBackground(colorOne: UIColor.blue, colorTwo: UIColor.white)
         mapDelegateAndInitiation()
+        destinationManager.getDestinationDateAndTime { (aaa:String) in
+          print("======")
+            print(aaa)
+        }
+
+    }
+
+    @IBAction func distanceInfo(_ sender: Any) {
+        distanceManager.getDestinationDateAndTime(myLocaion: locationstart, endLocation: destinationLocaion) { (bbb:String) in
+            print("-------class")
+            print(bbb)
+        }
 
     }
 
@@ -193,8 +208,6 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
                 print("----------------------------------------")
             }
         }
-    }
-    @IBAction func deleteBtn(_ sender: Any) {
     }
 
     }
