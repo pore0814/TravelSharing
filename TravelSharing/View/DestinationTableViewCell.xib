@@ -119,7 +119,6 @@
                                 <color key="backgroundColor" red="0.87798293969999996" green="0.47912479330000002" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="google-maps"/>
                                 <connections>
-                                    <action selector="drawRouteBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="K5T-ap-KQk"/>
                                     <action selector="googleMapBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BKy-Qm-vfO"/>
                                 </connections>
                             </button>

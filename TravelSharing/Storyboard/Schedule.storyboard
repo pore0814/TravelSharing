@@ -149,7 +149,58 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIY-HN-NCG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1896.8" y="1582.7586206896553"/>
+            <point key="canvasLocation" x="1052" y="887"/>
+        </scene>
+        <!--Distance View Controller-->
+        <scene sceneID="dBo-pO-TBP">
+            <objects>
+                <viewController storyboardIdentifier="DistanceViewController" id="IUX-UY-tda" customClass="DistanceViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WhF-NG-fEC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="83e-Tb-QAq">
+                                <rect key="frame" x="39" y="54" width="297" height="245"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2x4-0e-HyX">
+                                        <rect key="frame" x="17" y="50" width="272" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EF0-a0-HL0">
+                                        <rect key="frame" x="17" y="93" width="266" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoB-oW-y0R">
+                                        <rect key="frame" x="169" y="152" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="reMoveBtn:" destination="IUX-UY-tda" eventType="touchUpInside" id="Uvs-Ww-J6s"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.51226327049999998" green="0.77030299680000003" blue="0.7101946884" alpha="0.70058473926380371" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.44158598542944788" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rsA-RG-ybB"/>
+                    </view>
+                    <connections>
+                        <outlet property="distanceKmLabel" destination="EF0-a0-HL0" id="jVV-1K-iTv"/>
+                        <outlet property="removeBtn" destination="NoB-oW-y0R" id="fgI-x0-zn8"/>
+                        <outlet property="timeMinsLabel" destination="2x4-0e-HyX" id="5XR-c1-1lw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yTv-6X-agm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1216.8" y="1739.2803598200901"/>
         </scene>
         <!--Add Destination View Controller-->
         <scene sceneID="NIY-eX-RVK">

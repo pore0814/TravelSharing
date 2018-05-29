@@ -58,13 +58,26 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     }
 
     @IBAction func distanceInfo(_ sender: Any) {
-        distanceManager.getDestinationDateAndTime(myLocaion: locationstart, endLocation: destinationLocaion) { (bbb:DistanceAndTime) in
-            print("-------button")
-            print(bbb)
+        let   storyboard = UIStoryboard(name: "Schedule", bundle: nil)
+      
+        guard  let   distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
+          distanceViewController.view.frame = mapView.bounds
+       
+      
+      
+        if mapView.myLocation != nil {
+            distanceManager.getDestinationDateAndTime(myLocaion: mapView.myLocation!,endLocation: destinationLocaion) { (bbb:DistanceAndTime) in
+          distanceViewController.distanceKmLabel.text = bbb.distance
+          distanceViewController.timeMinsLabel.text = bbb.time
         }
-
+        }
+          mapView.addSubview(distanceViewController.view)
+       
     }
-
+    
+  
+    
+    
     @IBAction func drawRouteBtn(_ sender: Any) {
     drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
 
@@ -183,10 +196,6 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
      // let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=22.9998999,120.2268758&mode=driving"
 
         Alamofire.request(url).responseJSON { response in
-//            print(response.request as Any)  // original URL request
-//            print(response.response as Any) // HTTP URL response
-//            print(response.data as Any)     // server data
-//            print(response.result as Any)   // result of response serialization
 
           let json = try? JSON(data: response.data!)
 
@@ -210,4 +219,4 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         }
     }
 
-    }
+}

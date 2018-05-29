@@ -22,7 +22,7 @@ class DistanceManager {
         let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
         let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
      let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
-        // let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.042837,121.564879&destination=25.058232,121.520560&mode=driving"
+   //      let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.042837,121.564879&destination=25.058232,121.520560&mode=driving"
 
         Alamofire.request(url, method: .get).responseJSON { response in
             //print(response.value)
