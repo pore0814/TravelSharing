@@ -50,7 +50,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         rightUiview.setShadow()
       //  rightUiview.setGradientBackground(colorOne: UIColor.blue, colorTwo: UIColor.white)
         mapDelegateAndInitiation()
-        destinationManager.getDestinationDateAndTime { (aaa:String) in
+        destinationManager.getDestinationDateAndTime { (aaa:DistanceAndTime) in
           print("======")
             print(aaa)
         }
@@ -58,8 +58,8 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     }
 
     @IBAction func distanceInfo(_ sender: Any) {
-        distanceManager.getDestinationDateAndTime(myLocaion: locationstart, endLocation: destinationLocaion) { (bbb:String) in
-            print("-------class")
+        distanceManager.getDestinationDateAndTime(myLocaion: locationstart, endLocation: destinationLocaion) { (bbb:DistanceAndTime) in
+            print("-------button")
             print(bbb)
         }
 

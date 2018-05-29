@@ -102,7 +102,7 @@ struct DestinationManager {
                                     }
         }
 // get DistanceAndTime
-    func getDestinationDateAndTime(completion:@escaping(String) -> Void) {
+    func getDestinationDateAndTime(completion:@escaping(DistanceAndTime) -> Void) {
         let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.042837,121.564879&destination=25.058232,121.520560&mode=driving"
 
         Alamofire.request(url).responseJSON { response in
@@ -115,12 +115,12 @@ struct DestinationManager {
             let leg = legs.first,
             let distances = leg["distance"] as? [String: Any],
             let durations = leg["duration"] as? [String: Any],
-                let distance = distances["text"] as? String else {return}
-             //   let distanceValue = distances["value"] as? String,
-             //   let duration = durations["text"] as? Int,
-             //   let durationValue = durations["value"] as? Int
-
-             completion(distance)
+            let distance = distances["text"] as? String ,
+            let duration = durations["text"] as? String else {return}
+           
+            let distanceInfo = DistanceAndTime(distance: distance, time: duration)
+          
+             completion(distanceInfo)
         
     }
    }
