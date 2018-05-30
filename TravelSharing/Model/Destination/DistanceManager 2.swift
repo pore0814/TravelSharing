@@ -13,11 +13,12 @@ import GooglePlaces
 class DistanceManager {
 
     var locationManager = CLLocationManager()
-    //var locationSelected = Location.myLocaion
+    var locationSelected = Location.myLocaion
  
    func getDestinationDateAndTime(myLocaion: CLLocation, endLocation: CLLocation,completion:@escaping(DistanceAndTime
     ) -> Void){
-
+//    func getDestinationDateAndTime(myLocaion: CLLocation, endLocation: CLLocation) {
+//    func getDestinationDateAndTime(){
         let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
         let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
      let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"

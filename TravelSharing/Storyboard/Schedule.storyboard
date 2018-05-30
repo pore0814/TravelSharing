@@ -182,7 +182,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="reMoveBtn:" destination="IUX-UY-tda" eventType="touchUpInside" id="Uvs-Ww-J6s"/>
+                                            <action selector="reMoveBtn:" destination="IUX-UY-tda" eventType="touchUpInside" id="jDV-EF-ynT"/>
                                         </connections>
                                     </button>
                                 </subviews>
