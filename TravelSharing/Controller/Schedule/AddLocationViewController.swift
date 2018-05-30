@@ -18,7 +18,8 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBOutlet weak var timeText: UITextField!
     @IBOutlet weak var destinationText: UITextField!
     @IBOutlet weak var stackView: UIStackView!
-
+    @IBOutlet weak var saveBtn: UIButton!
+    
     let picker =  UIDatePicker()
     let destinationManager = DestinationManager()
 
@@ -43,6 +44,8 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
                        animations: {
                         self.stackView.center.x = self.view.frame.width / 2
         }, completion: nil)
+        
+        saveBtn.setConerRect()
 
 //一開始Time顯示現在時間
       getCurrentTime()
@@ -84,7 +87,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         pickerView.dataSource = self
         dateSelectedText.inputView = pickerView
         dateSelectedText.textAlignment = .center
-      //  dateSelectedText.text = dateselect[0].date
+        dateSelectedText.text = dateselect[0].date
     }
 
 //取得現在時間
@@ -98,6 +101,11 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         let timeString = formatter.string(from: date)
         timeText.text = "\(timeString)"
     }
+    
+    @IBAction func testBtn(_ sender: Any) {
+        AlertToUser().alert.showEdit("funck", subTitle: "funck")
+    }
+    
 
     @IBAction func saveBtn(_ sender: Any) {
         if destinationText.text != "" && dateSelectedText.text != "" && categoryText.text != "" {
@@ -181,6 +189,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         guard let selected = dateSelected else {return ""}
         daythRow = selected[row].dayth
         return selected[row].date + "   " + selected[row].dayth
+        
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let selected = dateSelected else {return}
