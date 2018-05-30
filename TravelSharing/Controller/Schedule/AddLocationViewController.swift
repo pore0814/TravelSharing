@@ -20,6 +20,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var saveBtn: UIButton!
     
+    
     let picker =  UIDatePicker()
     let destinationManager = DestinationManager()
 
@@ -30,7 +31,8 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     var pickerView = UIPickerView()
     var daythRow = "Day1"
     var alert = SCLAlertView()
-    var backPage = 0
+    var previousPage = 0
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,13 +117,26 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
                       print(saveDate)
                       destinationManager.saveDestinationInfo(uid: uid!, dayth: daythRow, destination: saveDate)
                       destinationText.text = ""
-                navigationController?.popViewController(animated: true)
+             navigationController?.popViewController(animated: true)
+            
+           
+            
+            
+        //    self.navigationController?.dismiss(animated: true, completion: {
+//                guard let detail = self.storyboard?.instantiateViewController(withIdentifier: "ScheduleDetailViewController ") as? ScheduleDetailViewController else {return}
+//                self.detailVC?.backPage = self.previousPage
+                
+  //         })
+            
         } else {
             AlertToUser().alert.showError(Constants.WrongMessage, subTitle: "表格不可為空白")
 
         }
 
     }
+    
+    
+    
 //Time Picker
     func createDatePicker() {
         let toolbar = UIToolbar()
@@ -195,6 +210,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let selected = dateSelected else {return}
         dateSelectedText.text = selected[row].date
+        previousPage  = row
     }
 }
 

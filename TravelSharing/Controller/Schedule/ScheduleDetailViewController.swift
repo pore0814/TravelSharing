@@ -10,6 +10,8 @@ import UIKit
 
 class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    var detailVC: AddDestinationViewController?
+    
     var getDateInfo = [DateInfo]() {
         didSet {
             print("set data in ScheduleDetailViewController")
@@ -18,13 +20,22 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     var schedulDetail: ScheduleInfo?
     let dateFormatter1 = TSDateFormatter1()
     var destinationManger = DestinationManager()
+    var backPage = 0
     @IBOutlet weak var destinationScrollView: LukeScrollView!
     @IBOutlet weak var detailCollectionViwe: LukeCollectionView!
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       self.destinationScrollView.contentOffset = CGPoint(x: self.view.frame.width * CGFloat(2), y: 0)
+//        self.destinationScrollView.contentOffset = CGPoint(x: self.view.frame.width * CGFloat((detailVC?.previousPage)!), y: 0)
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+//
+//        if let sdetailVC = segue.destination as? AddDestinationViewController {
+//            self.detailVC = sdetailVC
+//        }
+//
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
