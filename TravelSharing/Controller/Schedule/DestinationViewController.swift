@@ -151,32 +151,4 @@ extension DestinationViewController: DestinationManagerDelegate, CLLocationManag
         testArray = schedule
         tableView.reloadData()
     }
-    
-    func sizeClass() -> (UIUserInterfaceSizeClass, UIUserInterfaceSizeClass) {
-        return (self.traitCollection.horizontalSizeClass, self.traitCollection.verticalSizeClass)
-        
-        switch self.sizeClass() {
-        case (UIUserInterfaceSizeClass.unspecified, UIUserInterfaceSizeClass.unspecified):
-            print("Unknown")
-        case (UIUserInterfaceSizeClass.unspecified, UIUserInterfaceSizeClass.compact):
-            print("Unknown width, compact height")
-        case (UIUserInterfaceSizeClass.unspecified, UIUserInterfaceSizeClass.regular):
-            print("Unknown width, regular height")
-        case (UIUserInterfaceSizeClass.compact, UIUserInterfaceSizeClass.unspecified):
-            print("Compact width, unknown height")
-        case (UIUserInterfaceSizeClass.regular, UIUserInterfaceSizeClass.unspecified):
-            print("Regular width, unknown height")
-        case (UIUserInterfaceSizeClass.regular, UIUserInterfaceSizeClass.compact):
-            print("Regular width, compact height")
-        case (UIUserInterfaceSizeClass.compact, UIUserInterfaceSizeClass.compact):
-            print("Compact width, compact height")
-        case (UIUserInterfaceSizeClass.regular, UIUserInterfaceSizeClass.regular):
-            print("Regualr width, regular height")
-        case (UIUserInterfaceSizeClass.compact, UIUserInterfaceSizeClass.regular):
-            print("Compact width, regular height")
-        }
-    }
-    
-   
-    
 }

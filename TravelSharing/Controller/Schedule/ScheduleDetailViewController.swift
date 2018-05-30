@@ -23,10 +23,14 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     var backPage = 0
     @IBOutlet weak var destinationScrollView: LukeScrollView!
     @IBOutlet weak var detailCollectionViwe: LukeCollectionView!
+    
+    var ggg: DestinationViewController?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        self.destinationScrollView.contentOffset = CGPoint(x: self.view.frame.width * CGFloat((detailVC?.previousPage)!), y: 0)
+      //  self.destinationScrollView.contentOffset = CGPoint(x: self.view.frame.width * CGFloat((detailVC?.previousPage)!), y: 0)
+        self.destinationScrollView.contentOffset = CGPoint(x: self.view.frame.width * CGFloat(backPage), y: 0)
+        
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
@@ -63,6 +67,8 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         for index in 0..<(getDateInfo.count) {
             guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as? DestinationViewController else {return}
 
+            ggg = obj1
+            
             obj1.scheduleUid = schedulDetail?.uid
 
             obj1.dayths = getDateInfo[index].dayth

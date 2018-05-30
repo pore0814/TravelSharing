@@ -11,6 +11,8 @@ import GoogleMaps
 import GooglePlaces
 import SCLAlertView
 
+
+
 class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var dateSelectedText: UITextField!
@@ -20,6 +22,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var saveBtn: UIButton!
     
+   
     
     let picker =  UIDatePicker()
     let destinationManager = DestinationManager()
@@ -117,9 +120,15 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
                       print(saveDate)
                       destinationManager.saveDestinationInfo(uid: uid!, dayth: daythRow, destination: saveDate)
                       destinationText.text = ""
-             navigationController?.popViewController(animated: true)
-            
+          //   navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
+            guard    let previousViewController = self.navigationController?.viewControllers.last as? ScheduleDetailViewController else {return}
+            previousViewController.backPage = previousPage
+            previousViewController.ggg?.tableView.reloadData()
            
+         
+            
+            
             
             
         //    self.navigationController?.dismiss(animated: true, completion: {
