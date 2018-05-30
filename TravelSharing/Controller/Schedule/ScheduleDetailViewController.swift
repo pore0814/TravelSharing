@@ -23,7 +23,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       self.destinationScrollView.contentOffset = CGPoint(x: 0, y: 0)
+       self.destinationScrollView.contentOffset = CGPoint(x: self.view.frame.width * CGFloat(2), y: 0)
     }
 
     override func viewDidLoad() {

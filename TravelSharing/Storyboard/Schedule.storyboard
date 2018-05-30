@@ -159,10 +159,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uQx-pv-eZb">
-                                <rect key="frame" x="10" y="148" width="355" height="100"/>
+                                <rect key="frame" x="10" y="158" width="355" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9d-fh-AjA">
-                                        <rect key="frame" x="0.0" y="0.0" width="85" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="90"/>
                                         <state key="normal" title="Button" image="spot"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="conerRadius">
@@ -174,7 +174,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kak-WW-EZd">
-                                        <rect key="frame" x="90" y="0.0" width="85" height="100"/>
+                                        <rect key="frame" x="90" y="0.0" width="85" height="90"/>
                                         <state key="normal" title="Button" image="restaurant"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="conerRadius">
@@ -186,7 +186,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdp-le-NR3">
-                                        <rect key="frame" x="180" y="0.0" width="85" height="100"/>
+                                        <rect key="frame" x="180" y="0.0" width="85" height="90"/>
                                         <state key="normal" title="Button" image="hotel"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="conerRadius">
@@ -198,7 +198,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlS-fk-dXW">
-                                        <rect key="frame" x="270" y="0.0" width="85" height="100"/>
+                                        <rect key="frame" x="270" y="0.0" width="85" height="90"/>
                                         <state key="normal" title="Button" image="other"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="conerRadius">
@@ -212,7 +212,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="w1t-Tg-wfK"/>
+                                    <constraint firstAttribute="height" constant="90" id="w1t-Tg-wfK"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="anC-j5-2fp" userLabel="categoryStackView">

@@ -24,6 +24,9 @@ class ProfileViewController: UIViewController, FusumaDelegate {
          getUserInfoManager.delegate = self
          getUserInfoManager.getScheduleContent()
          profileImage.setRounded()
+//        profileImage.clipsToBounds = true
+//        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+        
          logOutBtn.setConerRect()
          saveBtn.setConerRect()
     }

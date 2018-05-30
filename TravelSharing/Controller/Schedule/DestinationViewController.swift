@@ -43,6 +43,8 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         let nib = UINib(nibName: "DestinationTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "DestinationTableViewCell")
         tableView.separatorStyle = .none
+        print("Destination---------")
+        print (UIScreen.main.traitCollection)
 
     }
     func initMapLocaionManager() {
@@ -58,12 +60,13 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //         guard   let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return 0}
-
+     let fullscreen = UIScreen.main.bounds
         if indexPath.row == tag {
             if cellExpanded {
-               return 400
+                
+               return fullscreen.height * 0.6
                 } else if indexPath.row != previous {
-                  return 400
+                  return fullscreen.height * 0.6
                 }
              }
               return 75
@@ -148,4 +151,32 @@ extension DestinationViewController: DestinationManagerDelegate, CLLocationManag
         testArray = schedule
         tableView.reloadData()
     }
+    
+    func sizeClass() -> (UIUserInterfaceSizeClass, UIUserInterfaceSizeClass) {
+        return (self.traitCollection.horizontalSizeClass, self.traitCollection.verticalSizeClass)
+        
+        switch self.sizeClass() {
+        case (UIUserInterfaceSizeClass.unspecified, UIUserInterfaceSizeClass.unspecified):
+            print("Unknown")
+        case (UIUserInterfaceSizeClass.unspecified, UIUserInterfaceSizeClass.compact):
+            print("Unknown width, compact height")
+        case (UIUserInterfaceSizeClass.unspecified, UIUserInterfaceSizeClass.regular):
+            print("Unknown width, regular height")
+        case (UIUserInterfaceSizeClass.compact, UIUserInterfaceSizeClass.unspecified):
+            print("Compact width, unknown height")
+        case (UIUserInterfaceSizeClass.regular, UIUserInterfaceSizeClass.unspecified):
+            print("Regular width, unknown height")
+        case (UIUserInterfaceSizeClass.regular, UIUserInterfaceSizeClass.compact):
+            print("Regular width, compact height")
+        case (UIUserInterfaceSizeClass.compact, UIUserInterfaceSizeClass.compact):
+            print("Compact width, compact height")
+        case (UIUserInterfaceSizeClass.regular, UIUserInterfaceSizeClass.regular):
+            print("Regualr width, regular height")
+        case (UIUserInterfaceSizeClass.compact, UIUserInterfaceSizeClass.regular):
+            print("Compact width, regular height")
+        }
+    }
+    
+   
+    
 }

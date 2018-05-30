@@ -30,6 +30,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     var pickerView = UIPickerView()
     var daythRow = "Day1"
     var alert = SCLAlertView()
+    var backPage = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
