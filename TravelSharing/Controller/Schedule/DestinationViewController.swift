@@ -61,7 +61,6 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
         if indexPath.row == tag {
             if cellExpanded {
-
                return 400
                 } else if indexPath.row != previous {
                   return 400

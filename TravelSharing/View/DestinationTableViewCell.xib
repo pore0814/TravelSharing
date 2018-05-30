@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,13 +22,13 @@
                         <rect key="frame" x="-2" y="2" width="375" height="75"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="752" text="行程名稱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6D8-a4-elY">
-                                <rect key="frame" x="148" y="23" width="80" height="29"/>
+                                <rect key="frame" x="70" y="23" width="236" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.50196078430000002" green="0.63529411759999999" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-t4-cvW">
-                                <rect key="frame" x="320" y="23" width="40" height="29"/>
+                                <rect key="frame" x="333" y="23" width="27" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.94117647058823528" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -59,7 +58,7 @@
                                 </constraints>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="web-SR-fwl">
-                                <rect key="frame" x="229" y="27" width="16" height="21"/>
+                                <rect key="frame" x="307" y="27" width="16" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="7Fj-jk-zqa"/>
                                     <constraint firstAttribute="width" constant="16" id="cce-zA-hxE"/>
@@ -69,15 +68,17 @@
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="web-SR-fwl" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" constant="27" id="0Ve-ds-XcV"/>
+                            <constraint firstItem="6XZ-t4-cvW" firstAttribute="leading" secondItem="web-SR-fwl" secondAttribute="trailing" priority="999" constant="10" id="5oG-Yc-3Zc"/>
                             <constraint firstItem="Pyb-JA-Fc3" firstAttribute="leading" secondItem="hkY-na-HaN" secondAttribute="leading" constant="10" id="C1F-J0-tnT"/>
                             <constraint firstAttribute="bottom" secondItem="web-SR-fwl" secondAttribute="bottom" priority="999" constant="27" id="OAC-Lu-pm3"/>
                             <constraint firstItem="6XZ-t4-cvW" firstAttribute="bottom" secondItem="6D8-a4-elY" secondAttribute="bottom" id="Re5-TZ-ox1"/>
                             <constraint firstItem="6XZ-t4-cvW" firstAttribute="height" secondItem="6D8-a4-elY" secondAttribute="height" id="Tk9-NE-vOK"/>
+                            <constraint firstItem="6D8-a4-elY" firstAttribute="leading" secondItem="Pyb-JA-Fc3" secondAttribute="trailing" priority="999" constant="20" id="WrT-g6-SFX"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="centerY" secondItem="hkY-na-HaN" secondAttribute="centerY" id="bsK-Kg-bnY"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" priority="750" constant="23" id="kqr-bg-XXw"/>
                             <constraint firstItem="6D8-a4-elY" firstAttribute="centerX" secondItem="hkY-na-HaN" secondAttribute="centerX" id="nA3-ug-O1H"/>
                             <constraint firstItem="web-SR-fwl" firstAttribute="leading" secondItem="6D8-a4-elY" secondAttribute="trailing" constant="1" id="s6Y-9X-lPt"/>
-                            <constraint firstAttribute="trailing" secondItem="6XZ-t4-cvW" secondAttribute="trailing" constant="15" id="tt6-T9-ph3"/>
+                            <constraint firstAttribute="trailing" secondItem="6XZ-t4-cvW" secondAttribute="trailing" priority="999" constant="15" id="tt6-T9-ph3"/>
                             <constraint firstItem="Pyb-JA-Fc3" firstAttribute="top" secondItem="hkY-na-HaN" secondAttribute="top" priority="999" constant="11" id="xEi-ti-tcK"/>
                             <constraint firstItem="Pyb-JA-Fc3" firstAttribute="centerY" secondItem="hkY-na-HaN" secondAttribute="centerY" id="zzH-Bg-2z4"/>
                         </constraints>

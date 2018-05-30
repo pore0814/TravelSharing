@@ -159,10 +159,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uQx-pv-eZb">
-                                <rect key="frame" x="19" y="148" width="338" height="100"/>
+                                <rect key="frame" x="10" y="148" width="355" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9d-fh-AjA">
-                                        <rect key="frame" x="0.0" y="0.0" width="81" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="100"/>
                                         <state key="normal" title="Button" image="spot"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="conerRadius">
@@ -174,7 +174,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kak-WW-EZd">
-                                        <rect key="frame" x="86" y="0.0" width="80.5" height="100"/>
+                                        <rect key="frame" x="90" y="0.0" width="85" height="100"/>
                                         <state key="normal" title="Button" image="restaurant"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="conerRadius">
@@ -186,7 +186,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdp-le-NR3">
-                                        <rect key="frame" x="171.5" y="0.0" width="81" height="100"/>
+                                        <rect key="frame" x="180" y="0.0" width="85" height="100"/>
                                         <state key="normal" title="Button" image="hotel"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="conerRadius">
@@ -198,7 +198,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlS-fk-dXW">
-                                        <rect key="frame" x="257.5" y="0.0" width="80.5" height="100"/>
+                                        <rect key="frame" x="270" y="0.0" width="85" height="100"/>
                                         <state key="normal" title="Button" image="other"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="conerRadius">
@@ -216,7 +216,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="anC-j5-2fp" userLabel="categoryStackView">
-                                <rect key="frame" x="36" y="258" width="304" height="151"/>
+                                <rect key="frame" x="35.5" y="258" width="304" height="151"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OI1-9s-nim">
                                         <rect key="frame" x="0.0" y="0.0" width="304" height="50"/>
@@ -291,7 +291,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNk-JK-52K">
-                                <rect key="frame" x="35" y="439" width="304" height="50"/>
+                                <rect key="frame" x="35.5" y="439" width="304" height="50"/>
                                 <color key="backgroundColor" red="0.51226327049999998" green="0.77030299680000003" blue="0.7101946884" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="xAY-uV-VaS"/>
@@ -307,13 +307,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="h1v-a5-Gpi" firstAttribute="trailing" secondItem="ug5-2i-37O" secondAttribute="trailing" constant="35.5" id="1sW-1H-3d5"/>
                             <constraint firstItem="anC-j5-2fp" firstAttribute="top" secondItem="uQx-pv-eZb" secondAttribute="bottom" constant="10" id="3Oi-HL-x46"/>
-                            <constraint firstItem="uQx-pv-eZb" firstAttribute="width" secondItem="Pba-cb-pHA" secondAttribute="width" multiplier="0.9" id="72e-8O-USP"/>
+                            <constraint firstItem="vtG-dw-7YF" firstAttribute="leading" secondItem="h1v-a5-Gpi" secondAttribute="leading" constant="35.5" id="4Tz-fD-bKh"/>
                             <constraint firstItem="iNk-JK-52K" firstAttribute="centerX" secondItem="Pba-cb-pHA" secondAttribute="centerX" id="7Sh-7J-C4r"/>
                             <constraint firstItem="anC-j5-2fp" firstAttribute="centerY" secondItem="Pba-cb-pHA" secondAttribute="centerY" id="BwR-ZA-Z2D"/>
+                            <constraint firstItem="uQx-pv-eZb" firstAttribute="leading" secondItem="h1v-a5-Gpi" secondAttribute="leading" constant="10" id="CXj-Ab-6bI"/>
                             <constraint firstItem="iNk-JK-52K" firstAttribute="width" secondItem="5YH-Yu-rMX" secondAttribute="width" id="SeC-1z-pXb"/>
                             <constraint firstItem="anC-j5-2fp" firstAttribute="centerX" secondItem="Pba-cb-pHA" secondAttribute="centerX" id="Sz3-Of-sKP"/>
                             <constraint firstItem="iNk-JK-52K" firstAttribute="top" secondItem="anC-j5-2fp" secondAttribute="bottom" priority="999" constant="30" id="lOh-60-G48"/>
+                            <constraint firstItem="h1v-a5-Gpi" firstAttribute="trailing" secondItem="uQx-pv-eZb" secondAttribute="trailing" constant="10" id="tmn-Wo-Tm1"/>
                             <constraint firstItem="uQx-pv-eZb" firstAttribute="centerX" secondItem="Pba-cb-pHA" secondAttribute="centerX" id="vUJ-hg-0LE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h1v-a5-Gpi"/>
@@ -392,7 +395,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NZD-dI-fnL">
-                                <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="bOQ-YF-xb3">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -490,7 +493,8 @@
                                         </constraints>
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iwK-G9-cFW" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                        <rect key="frame" x="0.0" y="60" width="375" height="273.5"/>
+                                        <rect key="frame" x="0.0" y="60" width="375" height="240"/>
+                                        <viewLayoutGuide key="safeArea" id="uk4-WR-f3B"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="77x-Us-6NO">
                                             <size key="itemSize" width="78" height="82"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -563,7 +567,7 @@
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="天數" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h0p-vD-S9n">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="天數(數字)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h0p-vD-S9n">
                                         <rect key="frame" x="0.0" y="100" width="295" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="TFa-K3-UkA"/>
@@ -613,7 +617,7 @@
                             <constraint firstItem="4lt-6V-uy3" firstAttribute="leading" secondItem="trw-am-fPz" secondAttribute="trailing" priority="999" constant="20" id="EZc-FX-NaB"/>
                             <constraint firstItem="1I4-lY-tJY" firstAttribute="bottom" secondItem="NZD-dI-fnL" secondAttribute="bottom" id="Hbd-tJ-hkJ"/>
                             <constraint firstItem="4lt-6V-uy3" firstAttribute="top" secondItem="1I4-lY-tJY" secondAttribute="top" constant="10" id="QWJ-zp-Gg3"/>
-                            <constraint firstItem="NZD-dI-fnL" firstAttribute="height" secondItem="jdB-vc-o7c" secondAttribute="height" multiplier="0.5" id="SiE-s5-B3g"/>
+                            <constraint firstItem="NZD-dI-fnL" firstAttribute="height" secondItem="jdB-vc-o7c" secondAttribute="height" multiplier="0.45" id="SiE-s5-B3g"/>
                             <constraint firstItem="NZD-dI-fnL" firstAttribute="leading" secondItem="1I4-lY-tJY" secondAttribute="leading" id="WxN-VN-fXg"/>
                             <constraint firstItem="1I4-lY-tJY" firstAttribute="trailing" secondItem="4lt-6V-uy3" secondAttribute="trailing" constant="10" id="pUI-6j-coX"/>
                             <constraint firstItem="trw-am-fPz" firstAttribute="top" secondItem="1I4-lY-tJY" secondAttribute="top" constant="15" id="zsR-3Z-dF5"/>
