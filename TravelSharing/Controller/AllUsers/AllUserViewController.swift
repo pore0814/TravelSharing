@@ -29,10 +29,11 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
         setNavigation()
     }
     @IBAction func backBtn(_ sender: Any) {
-        let detailPage = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "ScheduleDetailViewController") as?
-        ScheduleDetailViewController
-
-        present(detailPage!, animated: true, completion: nil)
+//        let detailPage = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "ScheduleDetailViewController") as?
+//        ScheduleDetailViewController
+//
+//        present(detailPage!, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     func initUITableView() {
         allUserTableview.dataSource = self

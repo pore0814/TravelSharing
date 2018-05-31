@@ -10,7 +10,12 @@ import UIKit
 import SVProgressHUD
 import SCLAlertView
 
-class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,PlayVideoCellProtocol{
+    func playVideoButtonDidSelect() {
+        guard  let allUsersPage = UIStoryboard.allUsersStoryboard().instantiateInitialViewController() else {return}
+        present(allUsersPage, animated: true, completion: nil)
+    }
+    
 
      var schedules = [ScheduleInfo]()
      var userProfile: UserInfo?
@@ -100,6 +105,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
                     cell.backgroundColor  = UIColor.clear
                     cell.updateCell(with: data)
                     cell.selectionStyle = .none
+                    cell.delegate = self
                   return cell
              } else {
                     return UITableViewCell()
