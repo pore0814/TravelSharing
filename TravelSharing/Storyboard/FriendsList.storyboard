@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nh4-gF-4pR">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--All User View Controller-->
+        <scene sceneID="ZRd-eo-Drt">
+            <objects>
+                <viewController storyboardIdentifier="AllUserViewController" id="rYQ-Zp-mly" customClass="AllUserViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3rY-bs-8yv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xNU-0u-zPr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="rYQ-Zp-mly" id="NuI-I4-E5r"/>
+                                    <outlet property="delegate" destination="rYQ-Zp-mly" id="V1R-o4-Z1A"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xNU-0u-zPr" firstAttribute="trailing" secondItem="CAR-LD-Bcd" secondAttribute="trailing" id="Rda-55-SKP"/>
+                            <constraint firstItem="xNU-0u-zPr" firstAttribute="leading" secondItem="CAR-LD-Bcd" secondAttribute="leading" id="Zxi-Cl-Srn"/>
+                            <constraint firstItem="xNU-0u-zPr" firstAttribute="bottom" secondItem="CAR-LD-Bcd" secondAttribute="bottom" id="erT-mi-oPr"/>
+                            <constraint firstItem="xNU-0u-zPr" firstAttribute="top" secondItem="3rY-bs-8yv" secondAttribute="top" id="ymp-rx-Dv7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CAR-LD-Bcd"/>
+                    </view>
+                    <connections>
+                        <outlet property="allUserTableview" destination="xNU-0u-zPr" id="D0w-rc-JGM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WBM-hT-8DG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2882" y="198"/>
+        </scene>
+        <!--Friend List View Controller-->
+        <scene sceneID="OsF-Ae-wsR">
+            <objects>
+                <viewController id="CrF-0d-v4r" customClass="FriendListViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DEG-xV-uxb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3iU-g9-VWH"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AM0-jP-qoz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zzu-sr-VLF">
+                            <connections>
+                                <action selector="addFriends:" destination="CrF-0d-v4r" id="VM4-40-RLt"/>
+                                <segue destination="rYQ-Zp-mly" kind="show" id="dds-s6-1YE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="20o-bG-GBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2063" y="199"/>
+        </scene>
+        <!--Travel Sharing Navigation Controller-->
+        <scene sceneID="r02-vw-D7L">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nh4-gF-4pR" customClass="TravelSharingNavigationController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="EzY-qE-U1W">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CrF-0d-v4r" kind="relationship" relationship="rootViewController" id="bbn-GO-Rdf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IsW-8s-hoG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1240.8" y="199.25037481259372"/>
+        </scene>
+    </scenes>
+</document>
