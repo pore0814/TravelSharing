@@ -12,6 +12,8 @@
 		D1010DF220BFAC03007F4959 /* FriendsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1010DF120BFAC03007F4959 /* FriendsList.storyboard */; };
 		D1010DF520BFD73E007F4959 /* InvitatedFriendManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */; };
 		D1010DF720C00084007F4959 /* SearchFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */; };
+		D1010DFA20C02601007F4959 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF820C02601007F4959 /* FriendsTableViewCell.swift */; };
+		D1010DFB20C02601007F4959 /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1010DF920C02601007F4959 /* FriendsTableViewCell.xib */; };
 		D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */; };
 		D10418F0209982770084952E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EF209982770084952E /* CustomCell.swift */; };
 		D11E007220B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */; };
@@ -83,6 +85,8 @@
 		D1010DF120BFAC03007F4959 /* FriendsList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendsList.storyboard; sourceTree = "<group>"; };
 		D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitatedFriendManager.swift; sourceTree = "<group>"; };
 		D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsViewController.swift; sourceTree = "<group>"; };
+		D1010DF820C02601007F4959 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		D1010DF920C02601007F4959 /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
 		D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditScheduleViewController.swift; sourceTree = "<group>"; };
 		D10418EF209982770084952E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POMCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 				D180477C20B5A964000DC705 /* AllUsersTableViewCell.xib */,
 				D155BF3620BBC488001EC4DD /* PrivacyTableViewCell.swift */,
 				D155BF3720BBC488001EC4DD /* PrivacyTableViewCell.xib */,
+				D1010DF820C02601007F4959 /* FriendsTableViewCell.swift */,
+				D1010DF920C02601007F4959 /* FriendsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -508,6 +514,7 @@
 				D155BF3920BBC488001EC4DD /* PrivacyTableViewCell.xib in Resources */,
 				D1400B3320961E8700B0040B /* Register.storyboard in Resources */,
 				D127E16F20A5360300EBB5F7 /* TrackLocation.storyboard in Resources */,
+				D1010DFB20C02601007F4959 /* FriendsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +655,7 @@
 				D1E6CD7E20914EB700310121 /* UIStoryboard.swift in Sources */,
 				D11E007220B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift in Sources */,
 				D18B9B6420A0248500EB8D16 /* Date.swift in Sources */,
+				D1010DFA20C02601007F4959 /* FriendsTableViewCell.swift in Sources */,
 				D1010DF720C00084007F4959 /* SearchFriendsViewController.swift in Sources */,
 				D1658268209AE78800C37F8D /* Struct.swift in Sources */,
 				D1400B31209619F700B0040B /* UserManager.swift in Sources */,

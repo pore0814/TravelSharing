@@ -50,7 +50,28 @@
                     <view key="view" contentMode="scaleToFill" id="DEG-xV-uxb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1dm-Oi-YHH">
+                                <rect key="frame" x="0.0" y="82" width="375" height="521"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6AZ-G9-iUe">
+                                <rect key="frame" x="127" y="27" width="121" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="1dm-Oi-YHH" secondAttribute="trailing" id="EGp-22-VBc"/>
+                            <constraint firstItem="1dm-Oi-YHH" firstAttribute="bottom" secondItem="3iU-g9-VWH" secondAttribute="bottom" id="VCL-tc-OwS"/>
+                            <constraint firstItem="1dm-Oi-YHH" firstAttribute="centerX" secondItem="6AZ-G9-iUe" secondAttribute="centerX" id="bx5-he-tuh"/>
+                            <constraint firstItem="1dm-Oi-YHH" firstAttribute="leading" secondItem="DEG-xV-uxb" secondAttribute="leading" id="eol-zK-7ga"/>
+                            <constraint firstItem="1dm-Oi-YHH" firstAttribute="top" secondItem="6AZ-G9-iUe" secondAttribute="bottom" constant="27" id="f4f-eA-oyy"/>
+                            <constraint firstItem="6AZ-G9-iUe" firstAttribute="top" secondItem="3iU-g9-VWH" secondAttribute="top" constant="27" id="sYP-Rv-XEo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3iU-g9-VWH"/>
                     </view>
                     <navigationItem key="navigationItem" id="AM0-jP-qoz">
@@ -64,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20o-bG-GBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2063" y="199"/>
+            <point key="canvasLocation" x="2061.5999999999999" y="198.35082458770617"/>
         </scene>
         <!--Search Friends View Controller-->
         <scene sceneID="6je-uZ-0pu">
@@ -83,6 +104,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1p-HC-naZ">
+                                <rect key="frame" x="313" y="103" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="addFriends:" destination="D84-Gd-Qp0" eventType="touchUpInside" id="bOh-VV-Wab"/>
+                                </connections>
+                            </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="OLc-7o-hAE">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -99,6 +128,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nBC-Vj-q8t"/>
                     </view>
+                    <connections>
+                        <outlet property="addFriendLabel" destination="mOu-hm-wxf" id="Aur-eU-mjr"/>
+                        <outlet property="friendSearchBar" destination="OLc-7o-hAE" id="kI3-Lu-gg0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoL-Sb-8o3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
