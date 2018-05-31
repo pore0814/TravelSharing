@@ -11,11 +11,15 @@ import UIKit
 class DistanceViewController: UIViewController {
     
     
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var removeBtn: UIButton!
     @IBOutlet weak var timeMinsLabel: UILabel!
     @IBOutlet weak var distanceKmLabel: UILabel!
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        backgroundView.setRounded10()
+        timeMinsLabel.setRounded10()
+        distanceKmLabel.setRounded10()
     }
 
 
