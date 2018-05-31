@@ -71,7 +71,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ikQ-C6-gzf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" red="0.48672703912466841" green="0.48672703912466841" blue="0.48672703912466841" alpha="0.75698571699999995" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -82,7 +82,7 @@
                                     <constraint firstAttribute="height" constant="40" id="iUP-Rq-yJ2"/>
                                 </constraints>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="file3" translatesAutoresizingMaskIntoConstraints="NO" id="t0L-tN-OwI">
