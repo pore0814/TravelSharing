@@ -11,20 +11,20 @@ import FirebaseDatabase
 import FirebaseStorage
 
 protocol GetUserInfoManagerDelegate: class {
-    func manager(_ manager: GetUserInfoManager, didGet userInfo: UserInfo)
+    func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo)
 
-    func managerArray(_ manager: GetUserInfoManager, didGet userInfo: [UserInfo])
+    func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo])
 }
 
 protocol GetAllUserInfoManagerDelegate: class {
-     func manager(_ manager: GetUserInfoManager, didGet userInfo: [UserInfo])
+     func manager(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo])
 }
 
-class GetUserInfoManager {
+class GetUserProfileManager {
     var delegate: GetUserInfoManagerDelegate?
 
 // 到FireBase  schedules 撈使用者的post的 Scheudle內容
-    func getScheduleContent() {
+    func getMyInfo() {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
         FireBaseConnect
             .databaseRef
@@ -70,6 +70,7 @@ class GetUserInfoManager {
 
     func getAllUserInfo() {
         var allUsersInfoArray = [UserInfo]()
+        guard let userid = UserManager.shared.getFireBaseUID() else {return}
         FireBaseConnect.databaseRef.child("users").observe(.value) { (snapshot) in
             if let allUserInfos = snapshot.value as?  [String: Any] {
                 print(allUserInfos)
@@ -84,8 +85,10 @@ class GetUserInfoManager {
                         let username = allUsers["username"] as? String
 
                         let userProfile = UserInfo(email: email!, photoUrl: photoUrl!, uid: uid!, userName: username!)
+                        
+                        if userProfile.uid != userid {
                         allUsersInfoArray.append(userProfile)
-
+                        }
                        }
                     DispatchQueue.main.async {
                         self.delegate?.managerArray(self, didGet: allUsersInfoArray)

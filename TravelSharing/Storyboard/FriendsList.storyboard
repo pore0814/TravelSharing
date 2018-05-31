@@ -14,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="AllUserViewController" id="rYQ-Zp-mly" customClass="AllUserViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3rY-bs-8yv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xNU-0u-zPr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="rYQ-Zp-mly" id="NuI-I4-E5r"/>
@@ -57,7 +57,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zzu-sr-VLF">
                             <connections>
                                 <action selector="addFriends:" destination="CrF-0d-v4r" id="VM4-40-RLt"/>
-                                <segue destination="rYQ-Zp-mly" kind="show" id="dds-s6-1YE"/>
+                                <segue destination="D84-Gd-Qp0" kind="show" id="HGt-Gf-lqP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -65,6 +65,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20o-bG-GBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2063" y="199"/>
+        </scene>
+        <!--Search Friends View Controller-->
+        <scene sceneID="6je-uZ-0pu">
+            <objects>
+                <viewController id="D84-Gd-Qp0" customClass="SearchFriendsViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V72-sb-nAY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOu-hm-wxf">
+                                <rect key="frame" x="0.0" y="56" width="375" height="124"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="124" id="Yad-CS-iLV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="OLc-7o-hAE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mOu-hm-wxf" firstAttribute="leading" secondItem="OLc-7o-hAE" secondAttribute="leading" id="eoH-cj-DHu"/>
+                            <constraint firstItem="OLc-7o-hAE" firstAttribute="top" secondItem="nBC-Vj-q8t" secondAttribute="top" id="oAb-Wa-zgQ"/>
+                            <constraint firstItem="mOu-hm-wxf" firstAttribute="top" secondItem="OLc-7o-hAE" secondAttribute="bottom" id="sth-7c-7f5"/>
+                            <constraint firstItem="OLc-7o-hAE" firstAttribute="leading" secondItem="nBC-Vj-q8t" secondAttribute="leading" id="suV-wd-BHj"/>
+                            <constraint firstItem="mOu-hm-wxf" firstAttribute="trailing" secondItem="OLc-7o-hAE" secondAttribute="trailing" id="vqG-iu-9hk"/>
+                            <constraint firstItem="OLc-7o-hAE" firstAttribute="trailing" secondItem="nBC-Vj-q8t" secondAttribute="trailing" id="xQ8-v3-qJU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nBC-Vj-q8t"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WoL-Sb-8o3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2061.5999999999999" y="882.90854572713647"/>
         </scene>
         <!--Travel Sharing Navigation Controller-->
         <scene sceneID="r02-vw-D7L">

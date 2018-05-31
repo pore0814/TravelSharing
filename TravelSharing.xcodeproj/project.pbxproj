@@ -10,6 +10,8 @@
 		4B14BAF96DE255397327C523 /* Pods_TravelSharing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F353853584E1967591DC1429 /* Pods_TravelSharing.framework */; };
 		D1010DF020BFABCF007F4959 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DEF20BFABCF007F4959 /* FriendListViewController.swift */; };
 		D1010DF220BFAC03007F4959 /* FriendsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1010DF120BFAC03007F4959 /* FriendsList.storyboard */; };
+		D1010DF520BFD73E007F4959 /* InvitatedFriendManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */; };
+		D1010DF720C00084007F4959 /* SearchFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */; };
 		D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */; };
 		D10418F0209982770084952E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EF209982770084952E /* CustomCell.swift */; };
 		D11E007220B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */; };
@@ -79,6 +81,8 @@
 		69BAEA4434D7C88796C98B4C /* Pods-TravelSharing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.debug.xcconfig"; sourceTree = "<group>"; };
 		D1010DEF20BFABCF007F4959 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		D1010DF120BFAC03007F4959 /* FriendsList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendsList.storyboard; sourceTree = "<group>"; };
+		D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitatedFriendManager.swift; sourceTree = "<group>"; };
+		D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsViewController.swift; sourceTree = "<group>"; };
 		D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditScheduleViewController.swift; sourceTree = "<group>"; };
 		D10418EF209982770084952E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POMCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 			children = (
 				D11FBBDB20B3FB5A000B8284 /* AllUserViewController.swift */,
 				D1010DEF20BFABCF007F4959 /* FriendListViewController.swift */,
+				D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */,
 			);
 			path = FriendList;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D45E9A20B0617700E3E7BE /* UserInfoManager.swift */,
+				D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */,
 			);
 			path = getUserData;
 			sourceTree = "<group>";
@@ -637,10 +643,12 @@
 				D19B2C2A20A4EACD0076E4ED /* DetailCollectionViewCell.swift in Sources */,
 				D1010DF020BFABCF007F4959 /* FriendListViewController.swift in Sources */,
 				D1F542312099FF42007EBE96 /* ScheduleTableViewCell.swift in Sources */,
+				D1010DF520BFD73E007F4959 /* InvitatedFriendManager.swift in Sources */,
 				D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */,
 				D1E6CD7E20914EB700310121 /* UIStoryboard.swift in Sources */,
 				D11E007220B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift in Sources */,
 				D18B9B6420A0248500EB8D16 /* Date.swift in Sources */,
+				D1010DF720C00084007F4959 /* SearchFriendsViewController.swift in Sources */,
 				D1658268209AE78800C37F8D /* Struct.swift in Sources */,
 				D1400B31209619F700B0040B /* UserManager.swift in Sources */,
 				D1BBA31C2095727C005E5AAE /* ScheduleViewController.swift in Sources */,

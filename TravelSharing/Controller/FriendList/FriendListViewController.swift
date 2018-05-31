@@ -9,30 +9,35 @@
 import UIKit
 
 class FriendListViewController: UIViewController {
+    
+    var invitedFriendsManager = InvitedFriendsManager()
+   
+    var myInfo:UserInfo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+       
+    
+       
     }
 
     @IBAction func addFriends(_ sender: Any) {
         print("Aaaaaaaaaddfriends")
         
-            guard let allUserVC = UIStoryboard(name: "FriendsList", bundle: nil).instantiateInitialViewController as? AllUserViewController else {return}
+            guard let allUserVC = UIStoryboard(name: "FriendsList", bundle: nil).instantiateInitialViewController as? SearchFriendsViewController else {return}
             self.navigationController?.pushViewController(allUserVC, animated: true)
-        
-        
-//        if let scheduleDetailViewController = UIStoryboard(name: "Schedule", bundle: nil)
-//            .instantiateViewController(withIdentifier: "ScheduleDetailViewController")
-//            as? ScheduleDetailViewController {
-//            let data = self.schedules[indexPath.row]
-//            scheduleDetailViewController.schedulDetail = data
-//            self.navigationController?.pushViewController(scheduleDetailViewController, animated: true)
-        
-        
-     
     }
-    
-
 }
+
+
+extension FriendListViewController: GetUserInfoManagerDelegate{
+    func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {}
+    
+    func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
+       myInfo = userInfo
+        }
+    }
+
+
+
+

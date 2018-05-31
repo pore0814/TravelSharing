@@ -13,7 +13,7 @@ import SCLAlertView
 
 class ProfileViewController: UIViewController, FusumaDelegate {
 
-    var getUserInfoManager = GetUserInfoManager()
+    var getUserInfoManager = GetUserProfileManager()
     @IBOutlet weak var userNameText: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController, FusumaDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
          getUserInfoManager.delegate = self
-         getUserInfoManager.getScheduleContent()
+         getUserInfoManager.getMyInfo()
          profileImage.setRounded()
 //        profileImage.clipsToBounds = true
 //        profileImage.layer.cornerRadius = profileImage.frame.width / 2
@@ -89,9 +89,9 @@ class ProfileViewController: UIViewController, FusumaDelegate {
 
 extension ProfileViewController: GetUserInfoManagerDelegate {
 
-    func managerArray(_ manager: GetUserInfoManager, didGet userInfo: [UserInfo]) {}
+    func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {}
 
-    func manager(_ manager: GetUserInfoManager, didGet userInfo: UserInfo) {
+    func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
         userNameText.text = userInfo.userName
         emailLabel.text = userInfo.email
         let url = URL(string: userInfo.photoUrl)
