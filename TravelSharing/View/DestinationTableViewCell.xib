@@ -105,7 +105,7 @@
                                 <color key="backgroundColor" red="0.87798293969999996" green="0.47912479330000002" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="x-button"/>
                                 <connections>
-                                    <action selector="deleteBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iE1-Zy-8At"/>
+                                    <action selector="deleteBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rHl-2O-egF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrH-lN-VcW">

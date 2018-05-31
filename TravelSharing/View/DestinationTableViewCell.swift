@@ -56,6 +56,8 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         mapDelegateAndInitiation()
     }
 
+    @IBAction func deleteBtn(_ sender: Any) {
+    }
     @IBAction func distanceInfo(_ sender: Any) {
          let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
                 guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
@@ -64,10 +66,18 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         
                 if mapView.myLocation != nil {
                  distanceManager.getDestinationDateAndTime(myLocaion: mapView.myLocation!,endLocation: destinationLocaion) { (bbb:DistanceAndTime) in
+                    if bbb != nil {
+                       
               distanceViewController.distanceKmLabel.text = bbb.distance
               distanceViewController.timeMinsLabel.text = bbb.time
-        }
-        }
+                        }else{
+                                AlertToUser().alert.showEdit("需要使用者位置才能判斷", subTitle: "到設定開啓定位")
+                        }
+                    }
+                }else{
+                        AlertToUser().alert.showEdit("需要您的位置", subTitle: "到設定開啓定位或漂陽過海無法計算")
+                    }
+      
               mapView.addSubview(distanceViewController.view)
               distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }

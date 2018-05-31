@@ -163,7 +163,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoB-oW-y0R">
-                                        <rect key="frame" x="15" y="10" width="274" height="227"/>
+                                        <rect key="frame" x="-39" y="-50" width="374" height="340"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="reMoveBtn:" destination="IUX-UY-tda" eventType="touchUpInside" id="jDV-EF-ynT"/>
