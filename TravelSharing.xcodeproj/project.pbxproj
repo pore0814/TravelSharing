@@ -43,6 +43,7 @@
 		D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */; };
 		D18B9B6420A0248500EB8D16 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6320A0248500EB8D16 /* Date.swift */; };
 		D18B9B6720A030E300EB8D16 /* DestinationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6620A030E300EB8D16 /* DestinationManager.swift */; };
+		D195C9ED20C084D000942354 /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195C9EC20C084D000942354 /* RegisterTableViewController.swift */; };
 		D19B2C2A20A4EACD0076E4ED /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */; };
 		D19B2C2B20A4EACD0076E4ED /* DetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */; };
 		D1A01CA520AAC5FE00E00988 /* TSdateFormatter1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A01CA420AAC5FE00E00988 /* TSdateFormatter1.swift */; };
@@ -112,6 +113,7 @@
 		D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		D18B9B6320A0248500EB8D16 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		D18B9B6620A030E300EB8D16 /* DestinationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationManager.swift; sourceTree = "<group>"; };
+		D195C9EC20C084D000942354 /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
 		D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		D1A01CA420AAC5FE00E00988 /* TSdateFormatter1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSdateFormatter1.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				D1448FDC2096CAB000D699DB /* RegisterViewController.swift */,
+				D195C9EC20C084D000942354 /* RegisterTableViewController.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 				D1F5422D2099F09D007EBE96 /* ScheduleManager.swift in Sources */,
 				D1B1608020A332A900B69222 /* UIView.swift in Sources */,
 				D180477D20B5A964000DC705 /* AllUsersTableViewCell.swift in Sources */,
+				D195C9ED20C084D000942354 /* RegisterTableViewController.swift in Sources */,
 				D1A01CA720AB047600E00988 /* WeekDayEnum.swift in Sources */,
 				D1DA0A2D20A656CB002D8CF6 /* LocationView.swift in Sources */,
 				D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */,
