@@ -13,13 +13,14 @@ import Alamofire
 import SwiftyJSON
 import Firebase
 
-enum Location {
-    case myLocaion
-    case destinationLocation
-}
+//enum Location {
+//    case myLocaion
+//    case destinationLocation
+//}
 
 class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationManagerDelegate {
 
+    @IBOutlet weak var distanceBtn: UIButton!
     @IBOutlet weak var googleMapBtn: UIButton!
     @IBOutlet weak var drawPathBtn: UIButton!
     @IBOutlet weak var categoryLabel: UILabel!
@@ -32,9 +33,13 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     @IBOutlet weak var direction: UIImageView!
 
     var locationManager = CLLocationManager()
-    var locationSelected = Location.myLocaion
+   // var locationSelected = Location.myLocaion
     var locationstart     = CLLocation()
     var destinationLocaion = CLLocation()
+    var distanceManager = DistanceManager()
+    var destinationManager = DestinationManager()
+    var showInfo =  false
+    var distanceVC: DistanceViewController?
 
     var totalDistanceInMeters: UInt = 0
     var totalDistance: String!
@@ -44,12 +49,32 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     override func awakeFromNib() {
         super.awakeFromNib()
         //rightUiview.setConerRectWithBorder()
-        rightUiview.setShadow()
+          rightUiview.setShadow()
       //  rightUiview.setGradientBackground(colorOne: UIColor.blue, colorTwo: UIColor.white)
+       
+       
         mapDelegateAndInitiation()
-
     }
 
+    @IBAction func distanceInfo(_ sender: Any) {
+         let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
+                guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
+                distanceViewController.view.frame = mapView.bounds
+                distanceVC = distanceViewController
+        
+                if mapView.myLocation != nil {
+                 distanceManager.getDestinationDateAndTime(myLocaion: mapView.myLocation!,endLocation: destinationLocaion) { (bbb:DistanceAndTime) in
+              distanceViewController.distanceKmLabel.text = bbb.distance
+              distanceViewController.timeMinsLabel.text = bbb.time
+        }
+        }
+              mapView.addSubview(distanceViewController.view)
+              distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+    }
+    @objc func buttonClicked(sender:UIButton)
+    {
+        distanceVC?.view.removeFromSuperview()
+    }
     @IBAction func drawRouteBtn(_ sender: Any) {
     drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
 
@@ -64,7 +89,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
             mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
         }
     }
-
+//Google導航
     @IBAction func googleMapBtn(_ sender: Any) {
         if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)) {
             UIApplication.shared.openURL(NSURL(string:
@@ -168,10 +193,6 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
      // let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=22.9998999,120.2268758&mode=driving"
 
         Alamofire.request(url).responseJSON { response in
-//            print(response.request as Any)  // original URL request
-//            print(response.response as Any) // HTTP URL response
-//            print(response.data as Any)     // server data
-//            print(response.result as Any)   // result of response serialization
 
           let json = try? JSON(data: response.data!)
 
@@ -194,7 +215,5 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
             }
         }
     }
-    @IBAction func deleteBtn(_ sender: Any) {
-    }
 
-    }
+}

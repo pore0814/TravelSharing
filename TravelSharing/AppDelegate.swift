@@ -18,9 +18,8 @@ import Crashlytics
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 var window: UIWindow?
-    //AIzaSyDjiV4Ap_EmcXalFQbzT9qW8jx02m8lLVE
-   // let apiKey = "AIzaSyApfLr_yp72naCXwEQyuwwNc6JwiE8Cj1I"
-   let apiKey = "AIzaSyDua-py10XKCDJC8rp4vNRAeDWk_gJLIDk"
+    let apiKey = "AIzaSyDjiV4Ap_EmcXalFQbzT9qW8jx02m8lLVE"
+   //let apiKey = "AIzaSyDua-py10XKCDJC8rp4vNRAeDWk_gJLIDk"
 
      static let shared = UIApplication.shared.delegate as? AppDelegate
 
