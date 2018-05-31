@@ -95,8 +95,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOu-hm-wxf">
-                                <rect key="frame" x="0.0" y="56" width="375" height="124"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOu-hm-wxf">
+                                <rect key="frame" x="0.0" y="70" width="375" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="124" id="Yad-CS-iLV"/>
                                 </constraints>
@@ -104,10 +104,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1p-HC-naZ">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1p-HC-naZ">
                                 <rect key="frame" x="313" y="103" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="加朋友"/>
                                 <connections>
                                     <action selector="addFriends:" destination="D84-Gd-Qp0" eventType="touchUpInside" id="bOh-VV-Wab"/>
                                 </connections>
@@ -116,6 +116,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sLZ-3E-iHv">
+                                <rect key="frame" x="0.0" y="177" width="375" height="426"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -130,7 +135,9 @@
                     </view>
                     <connections>
                         <outlet property="addFriendLabel" destination="mOu-hm-wxf" id="Aur-eU-mjr"/>
+                        <outlet property="addFriendsBtn" destination="m1p-HC-naZ" id="yC8-cq-5dj"/>
                         <outlet property="friendSearchBar" destination="OLc-7o-hAE" id="kI3-Lu-gg0"/>
+                        <outlet property="waitingtableView" destination="sLZ-3E-iHv" id="AXi-Ib-tll"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoL-Sb-8o3" userLabel="First Responder" sceneMemberID="firstResponder"/>

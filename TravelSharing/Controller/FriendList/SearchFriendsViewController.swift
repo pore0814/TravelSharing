@@ -8,7 +8,16 @@
 
 import UIKit
 
-class SearchFriendsViewController: UIViewController,UISearchBarDelegate{
+class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell") as? AllUsersTableViewCell else {return UITableViewCell()}
+        return cell
+    }
+    
     
     @IBOutlet weak var friendSearchBar: UISearchBar!
     var allUserInfo = [UserInfo]()
@@ -19,6 +28,9 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate{
     var friendInfo:UserInfo?
     var myInfo: UserInfo?
     
+    @IBOutlet weak var addFriendsBtn: UIButton!
+  
+    @IBOutlet weak var waitingtableView: UITableView!
     
   
     @IBOutlet weak var addFriendLabel: UILabel!
@@ -32,7 +44,11 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate{
         friendSearchBar.delegate = self
         friendSearchBar.returnKeyType  = UIReturnKeyType.done
         
-      
+        
+      waitingtableView.dataSource = self
+      waitingtableView.delegate = self
+      let nib  = UINib(nibName: "AllUsersTableViewCell", bundle: nil)
+        waitingtableView.register(nib, forCellReuseIdentifier: "AllUsersTableViewCell")
         
        
     }
@@ -40,7 +56,7 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate{
     
     @IBAction func addFriends(_ sender: Any) {
         guard let friendinfo = friendInfo else {
-            AlertToUser().alert.showEdit("aaaa", subTitle: "新先輸入")
+            AlertToUser().alert.showEdit("", subTitle: "新先輸入")
             return
         }
         guard let myinfo = myInfo else {return}
@@ -56,6 +72,7 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate{
                         print(allUserInfo[index].email )
                         addFriendLabel.text = allUserInfo[index].email
                         friendInfo =  allUserInfo[index]
+                         addFriendsBtn.isHidden = false
                         return
                     }else {
                         addFriendLabel.text = "無資料"
