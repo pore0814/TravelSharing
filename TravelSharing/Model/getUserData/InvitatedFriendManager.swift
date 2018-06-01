@@ -30,7 +30,7 @@ class InvitedFriendsManager{
             .observeSingleEvent(of: .value, with: { (snapshot) in
                 print(snapshot)
                 
-                let updates = ["id":from.uid,"email":from.email,"photo":from.photoUrl,"username":from.userName]
+                let updates = ["id":from.uid,"email":from.email,"photo":from.photoUrl,"username":from.userName,"status": false] as [String : Any]
                 if snapshot.childrenCount != 0 {
                     FireBaseConnect.databaseRef.child("requests").child(to.uid).child(self.autoKey).updateChildValues(updates)
 
@@ -48,8 +48,16 @@ class InvitedFriendsManager{
             print(snapshot.value)
             print("wating list-----------------")
             guard let lists = snapshot.value as? [String: [String: [String: String]]]  else {return}
-            print(lists.values)
-            var friendList: [UserInfo] = []
+            
+            
+            for list in lists.values {
+                print(list)
+                
+            }
+            
+           
+            /*
+            var waitingListArray: [UserInfo] = []
             for iii in lists.values {
                 print("@@@@@@@@@@@@@@@@@@")
                 print(iii)
@@ -68,6 +76,7 @@ class InvitedFriendsManager{
                     DispatchQueue.main.async {
                       self.delegate?.manager(self, didGet: friendList)
                     }
+ */
                   
                 }
                 

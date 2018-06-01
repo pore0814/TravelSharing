@@ -96,7 +96,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOu-hm-wxf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOu-hm-wxf">
                                 <rect key="frame" x="0.0" y="93.5" width="375" height="93"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="93" id="7p9-Bq-hQV"/>
@@ -105,15 +105,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1p-HC-naZ">
-                                <rect key="frame" x="313" y="103.5" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="加朋友"/>
-                                <connections>
-                                    <action selector="addFriends:" destination="D84-Gd-Qp0" eventType="touchUpInside" id="bOh-VV-Wab"/>
-                                </connections>
-                            </button>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="OLc-7o-hAE">
+                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="OLc-7o-hAE">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -135,6 +127,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1p-HC-naZ">
+                                <rect key="frame" x="313" y="125" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="加朋友"/>
+                                <connections>
+                                    <action selector="addFriends:" destination="D84-Gd-Qp0" eventType="touchUpInside" id="bOh-VV-Wab"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -142,12 +142,12 @@
                             <constraint firstItem="sLZ-3E-iHv" firstAttribute="trailing" secondItem="nBC-Vj-q8t" secondAttribute="trailing" id="2Lu-xi-L5r"/>
                             <constraint firstItem="mOu-hm-wxf" firstAttribute="leading" secondItem="TvB-Tw-pjp" secondAttribute="leading" id="4Eb-Gv-ebc"/>
                             <constraint firstItem="9hD-D1-9XU" firstAttribute="top" secondItem="mOu-hm-wxf" secondAttribute="bottom" id="5nt-SE-QH7"/>
-                            <constraint firstItem="9hD-D1-9XU" firstAttribute="top" secondItem="m1p-HC-naZ" secondAttribute="bottom" constant="53" id="6Y9-pG-dr6"/>
                             <constraint firstItem="9hD-D1-9XU" firstAttribute="leading" secondItem="nBC-Vj-q8t" secondAttribute="leading" id="EAg-1D-f7x"/>
                             <constraint firstItem="TvB-Tw-pjp" firstAttribute="leading" secondItem="OLc-7o-hAE" secondAttribute="leading" id="EK1-As-Ubz"/>
                             <constraint firstItem="sLZ-3E-iHv" firstAttribute="leading" secondItem="nBC-Vj-q8t" secondAttribute="leading" id="IU8-Il-eZj"/>
                             <constraint firstItem="TvB-Tw-pjp" firstAttribute="trailing" secondItem="sLZ-3E-iHv" secondAttribute="trailing" id="KOi-r8-b3I"/>
                             <constraint firstItem="TvB-Tw-pjp" firstAttribute="top" secondItem="OLc-7o-hAE" secondAttribute="bottom" id="Ksk-35-HUb"/>
+                            <constraint firstItem="nBC-Vj-q8t" firstAttribute="trailing" secondItem="m1p-HC-naZ" secondAttribute="trailing" constant="16" id="MGW-Xz-k3b"/>
                             <constraint firstItem="TvB-Tw-pjp" firstAttribute="trailing" secondItem="OLc-7o-hAE" secondAttribute="trailing" id="NQf-MP-t3L"/>
                             <constraint firstItem="TvB-Tw-pjp" firstAttribute="leading" secondItem="9hD-D1-9XU" secondAttribute="leading" id="OuC-wH-rhV"/>
                             <constraint firstItem="sLZ-3E-iHv" firstAttribute="bottom" secondItem="nBC-Vj-q8t" secondAttribute="bottom" id="PVu-eX-t09"/>
@@ -155,6 +155,7 @@
                             <constraint firstItem="sLZ-3E-iHv" firstAttribute="top" secondItem="9hD-D1-9XU" secondAttribute="bottom" id="WHK-sb-Dzh"/>
                             <constraint firstItem="9hD-D1-9XU" firstAttribute="trailing" secondItem="nBC-Vj-q8t" secondAttribute="trailing" id="Zg1-GB-hNL"/>
                             <constraint firstItem="9hD-D1-9XU" firstAttribute="leading" secondItem="nBC-Vj-q8t" secondAttribute="leading" id="bEW-HR-hC9"/>
+                            <constraint firstItem="9hD-D1-9XU" firstAttribute="top" secondItem="m1p-HC-naZ" secondAttribute="bottom" constant="31.5" id="ff5-FW-fXZ"/>
                             <constraint firstItem="9hD-D1-9XU" firstAttribute="trailing" secondItem="nBC-Vj-q8t" secondAttribute="trailing" id="gKy-1H-VrJ"/>
                             <constraint firstItem="TvB-Tw-pjp" firstAttribute="leading" secondItem="sLZ-3E-iHv" secondAttribute="leading" id="ipb-Fs-LVc"/>
                             <constraint firstItem="9hD-D1-9XU" firstAttribute="top" secondItem="mOu-hm-wxf" secondAttribute="bottom" id="jJM-9E-WyV"/>
