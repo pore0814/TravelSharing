@@ -22,6 +22,8 @@ class RegisterTableViewController: UITableViewController,FusumaDelegate {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var reEnterPasswordText: UITextField!
     var indicator = true
+    @IBOutlet weak var viewforBtns: UIView!
+    @IBOutlet weak var protectedBtn: UIButton!
     
     
     
@@ -29,6 +31,9 @@ class RegisterTableViewController: UITableViewController,FusumaDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
+        viewforBtns.setConerRect()
+        
+        
 
      
     }
