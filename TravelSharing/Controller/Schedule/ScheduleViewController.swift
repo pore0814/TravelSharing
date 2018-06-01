@@ -72,7 +72,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-        tableView.backgroundView =  UIImageView(image: UIImage(named: "schedulePage-1"))
+        //tableView.backgroundView =  UIImageView(image: UIImage(named: "schedulePage-1"))
     }
 
 //註冊tableViewCell

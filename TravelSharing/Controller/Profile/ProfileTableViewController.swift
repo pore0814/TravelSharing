@@ -32,6 +32,7 @@ class ProfileTableViewController: UITableViewController, FusumaDelegate  {
         
         logOutBtn.setConerRect()
         saveBtn.setConerRect()
+        tableView.separatorStyle = .none
         
     }
     
