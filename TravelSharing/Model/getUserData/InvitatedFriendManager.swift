@@ -39,10 +39,28 @@ class InvitedFriendsManager{
         FireBaseConnect.databaseRef.child("requests").queryOrderedByKey().queryEqual(toValue: userid).observe(.value) { (snapshot) in
             print(snapshot.value)
             print("wating list-----------------")
-            guard let lists = snapshot.value as? [String:Any]  else {return}
-            print(lists)
-            let wiatingList = lists.values as? [[String:Any]]
-           print(wiatingList)
+            guard let lists = snapshot.value as? [String: [String: [String: String]]]  else {return}
+            print(lists.values)
+            var friendList: [UserInfo] = []
+            for iii in lists.values {
+                print("@@@@@@@@@@@@@@@@@@")
+                print(iii)
+                for jjj in iii {
+                    print("__________ @@@ __________")
+                    print(jjj.value)
+                    let email = jjj.value["email"]
+                    let id = jjj.value["id"]
+                    let photo = jjj.value["photo"]
+                    let username = jjj.value["username"]
+                    let info = UserInfo(email: email!, photoUrl: photo!, uid: id!, userName: username!)
+                    print("88888888888888")
+                    friendList.append(info)
+                    print(friendList)
+                }
+                
+            }
+//            let wiatingList = lists.values as? [[String:Any]]
+//           print(wiatingList)
             
 //            for  list in lists.values {
 //                
