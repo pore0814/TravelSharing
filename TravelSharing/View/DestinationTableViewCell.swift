@@ -70,12 +70,10 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
                        
               distanceViewController.distanceKmLabel.text = bbb.distance
               distanceViewController.timeMinsLabel.text = bbb.time
-                        }else{
-                                AlertToUser().alert.showEdit("需要使用者位置才能判斷", subTitle: "到設定開啓定位")
-                        }
+                    }
                     }
                 }else{
-                        AlertToUser().alert.showEdit("需要您的位置", subTitle: "到設定開啓定位或漂陽過海無法計算")
+                        AlertToUser().alert.showEdit("點選您所在位置", subTitle: "或到設定開啓定位功能")
                     }
       
               mapView.addSubview(distanceViewController.view)
