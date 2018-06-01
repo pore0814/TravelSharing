@@ -10,8 +10,16 @@ import Foundation
 import FirebaseDatabase
 import Firebase
 
+protocol InvitedFriendsManagerDelegate:class {
+    func manager (_ manager: InvitedFriendsManager , didGet invitedList:[UserInfo])
+
+}
+
+
 
 class InvitedFriendsManager{
+    
+     var delegate: InvitedFriendsManagerDelegate?
     let autoKey = FireBaseConnect.databaseRef.childByAutoId().key
     
     func addFriend(_ from: UserInfo, sendRtoF to: UserInfo){
@@ -56,6 +64,11 @@ class InvitedFriendsManager{
                     print("88888888888888")
                     friendList.append(info)
                     print(friendList)
+                    
+                    DispatchQueue.main.async {
+                      self.delegate?.manager(self, didGet: friendList)
+                    }
+                  
                 }
                 
             }

@@ -7,16 +7,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell") as? AllUsersTableViewCell else {return UITableViewCell()}
-        return cell
-    }
+   
     
     
     @IBOutlet weak var friendSearchBar: UISearchBar!
@@ -27,6 +22,7 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
     var searchController = UISearchController()
     var friendInfo:UserInfo?
     var myInfo: UserInfo?
+    var invitate = [UserInfo]()
     
     @IBOutlet weak var addFriendsBtn: UIButton!
   
@@ -40,6 +36,9 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
         getUserInfoManager.delegate = self
         getUserInfoManager.getAllUserInfo()
         getUserInfoManager.getMyInfo()
+        
+        invitedFriendManager.delegate = self
+        invitedFriendManager.waitingList()
         
         friendSearchBar.delegate = self
         friendSearchBar.returnKeyType  = UIReturnKeyType.done
@@ -82,12 +81,30 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
     
 
 }
-extension SearchFriendsViewController: GetUserInfoManagerDelegate {
+extension SearchFriendsViewController: GetUserInfoManagerDelegate , InvitedFriendsManagerDelegate{
+    func manager(_ manager: InvitedFriendsManager, didGet invitedList: [UserInfo]) {
+        invitate = invitedList
+        waitingtableView.reloadData()
+    }
+    
+   
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
         myInfo = userInfo
     }
     
     func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {
         allUserInfo = userInfo
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return invitate.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell") as? AllUsersTableViewCell else {return UITableViewCell()}
+        cell.allUserEmailLabel.text = invitate[indexPath.row].email
+        cell.allUserNamerLabel.text = invitate[indexPath.row].userName
+        cell.allUsersImage.sd_setImage(with:URL(string: invitate[indexPath.row].photoUrl), completed: nil)
+        return cell
     }
 }
