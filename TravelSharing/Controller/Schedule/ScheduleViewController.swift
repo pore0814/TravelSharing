@@ -23,6 +23,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
      let destination = DestinationManager()
      var alert = SCLAlertView()
      var indicator = true
+     var backgroundArray = ["view","logoPage1","schedulePage-1","schedulePage-2","schedulePage-1"]
      @IBOutlet weak var tableView: UITableView!
 
 // display progress before loading data
@@ -95,10 +96,12 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let  index = indexPath.row % 5
         if  let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as? ScheduleTableViewCell {
                     let data = self.schedules[indexPath.row]
                     cell.backgroundColor  = UIColor.clear
                     cell.updateCell(with: data)
+                    cell.leftImageView.image = UIImage(named: backgroundArray[index])
                     cell.selectionStyle = .none
                   return cell
              } else {
