@@ -90,6 +90,7 @@ class RegisterTableViewController: UITableViewController,FusumaDelegate {
                 if indicator  == true {
                     SVProgressHUD.show(withStatus: "loading")
                 }
+                AppDelegate.shared?.switchMainViewController()
             }
         } else {
             AlertToUser().alert.showEdit("請填寫完整", subTitle: "所有空格都需填寫")
