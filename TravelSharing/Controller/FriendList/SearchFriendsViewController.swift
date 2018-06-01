@@ -22,7 +22,7 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
     var searchController = UISearchController()
     var friendInfo:UserInfo?
     var myInfo: UserInfo?
-    var invitate = [UserInfo]()
+    var invitate = [WaitingList]()
     
     @IBOutlet weak var addFriendsBtn: UIButton!
   
@@ -82,7 +82,7 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
 
 }
 extension SearchFriendsViewController: GetUserInfoManagerDelegate , InvitedFriendsManagerDelegate{
-    func manager(_ manager: InvitedFriendsManager, didGet invitedList: [UserInfo]) {
+    func manager(_ manager: InvitedFriendsManager, didGet invitedList: [WaitingList]) {
         invitate = invitedList
         waitingtableView.reloadData()
     }
@@ -105,6 +105,7 @@ extension SearchFriendsViewController: GetUserInfoManagerDelegate , InvitedFrien
         cell.allUserEmailLabel.text = invitate[indexPath.row].email
         cell.allUserNamerLabel.text = invitate[indexPath.row].userName
         cell.allUsersImage.sd_setImage(with:URL(string: invitate[indexPath.row].photoUrl), completed: nil)
+        
         return cell
     }
 }
