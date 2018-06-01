@@ -34,7 +34,7 @@ var window: UIWindow?
         if UserManager.shared.getFireBaseUID() != nil {
             switchMainViewController()
             } else {
-                window?.rootViewController = UIStoryboard.registerStoryboard().instantiateInitialViewController()
+                window?.rootViewController = UIStoryboard.logInStoryboard().instantiateInitialViewController()
             }
             return true
         }
