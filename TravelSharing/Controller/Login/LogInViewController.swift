@@ -71,7 +71,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func register(_ sender: Any) {
-         let registerPage = UIStoryboard.registerStoryboard().instantiateInitialViewController()
+         let registerPage = UIStoryboard.registerStoryboard().instantiateInitialViewController()  
        present(registerPage!, animated: true, completion: nil)
     }
 
