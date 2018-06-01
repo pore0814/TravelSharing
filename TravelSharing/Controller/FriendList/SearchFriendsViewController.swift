@@ -49,7 +49,7 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
       waitingtableView.delegate = self
       let nib  = UINib(nibName: "AllUsersTableViewCell", bundle: nil)
         waitingtableView.register(nib, forCellReuseIdentifier: "AllUsersTableViewCell")
-        
+        invitedFriendManager.waitingList()
        
     }
  

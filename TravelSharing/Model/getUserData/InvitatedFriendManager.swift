@@ -33,6 +33,23 @@ class InvitedFriendsManager{
     }
     
     
+    func waitingList(){
+        guard let userid = UserManager.shared.getFireBaseUID() else { return}
+        
+        FireBaseConnect.databaseRef.child("requests").queryOrderedByKey().queryEqual(toValue: userid).observe(.value) { (snapshot) in
+            print(snapshot.value)
+            print("wating list-----------------")
+            guard let lists = snapshot.value as? [String:Any]  else {return}
+            print(lists)
+            let wiatingList = lists.values as? [[String:Any]]
+           print(wiatingList)
+            
+//            for  list in lists.values {
+//                
+//                //let email = 
+//            }
+        }
+    }
     
     
    
