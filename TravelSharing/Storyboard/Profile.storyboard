@@ -115,7 +115,7 @@
             </objects>
             <point key="canvasLocation" x="1983.2" y="-320.68965517241384"/>
         </scene>
-        <!--Profile Table View Controller-->
+        <!--個人檔案-->
         <scene sceneID="sLF-4c-Tqs">
             <objects>
                 <tableViewController id="RP0-rQ-dtw" customClass="ProfileTableViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
@@ -134,7 +134,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPage1" translatesAutoresizingMaskIntoConstraints="NO" id="Tbl-0u-LUO">
-                                                    <rect key="frame" x="94" y="44.5" width="187.5" height="187.5"/>
+                                                    <rect key="frame" x="103.5" y="54" width="169" height="169"/>
                                                     <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.77710410279999997" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
@@ -147,7 +147,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQN-v4-VzX">
-                                                    <rect key="frame" x="241.5" y="192" width="32" height="32"/>
+                                                    <rect key="frame" x="232.5" y="183" width="32" height="32"/>
                                                     <state key="normal" image="image-1"/>
                                                     <connections>
                                                         <action selector="updateProfileImage:" destination="RP0-rQ-dtw" eventType="touchUpInside" id="n3w-Rq-SXs"/>
@@ -155,7 +155,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Tbl-0u-LUO" firstAttribute="width" secondItem="M1p-EG-CRO" secondAttribute="width" multiplier="0.5" id="HZT-Ru-DOQ"/>
+                                                <constraint firstItem="Tbl-0u-LUO" firstAttribute="width" secondItem="M1p-EG-CRO" secondAttribute="width" multiplier="0.45" id="HZT-Ru-DOQ"/>
                                                 <constraint firstItem="Tbl-0u-LUO" firstAttribute="centerY" secondItem="M1p-EG-CRO" secondAttribute="centerY" id="Lzx-qB-jxq"/>
                                                 <constraint firstItem="FQN-v4-VzX" firstAttribute="top" secondItem="Tbl-0u-LUO" secondAttribute="bottom" constant="-40" id="RCP-UV-ayG"/>
                                                 <constraint firstItem="Tbl-0u-LUO" firstAttribute="width" secondItem="Tbl-0u-LUO" secondAttribute="height" multiplier="1:1" id="axf-CL-t0O"/>
@@ -268,7 +268,7 @@
                             <outlet property="delegate" destination="RP0-rQ-dtw" id="3LL-KF-lZM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="To7-k6-GRR"/>
+                    <navigationItem key="navigationItem" title="個人檔案" id="To7-k6-GRR"/>
                     <connections>
                         <outlet property="emailLabel" destination="jhs-4I-aOU" id="Utw-Ix-3jR"/>
                         <outlet property="logOutBtn" destination="4Bp-me-7S2" id="Pam-eN-rKx"/>
