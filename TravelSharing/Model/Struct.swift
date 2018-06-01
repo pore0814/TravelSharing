@@ -55,3 +55,11 @@ enum Locaion {
     case myLocation
     case destinationLocation
 }
+
+struct WaitingList {
+    var email: String
+    var photoUrl: String
+    var uid: String
+    var userName: String
+    var status:Bool
+}
