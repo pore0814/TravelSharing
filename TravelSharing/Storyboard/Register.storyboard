@@ -43,11 +43,24 @@
                                                             <real key="value" value="2"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="V12-nr-lRb" appends="YES" id="zXA-Dv-5w1"/>
+                                                        <outletCollection property="gestureRecognizers" destination="V12-nr-lRb" appends="YES" id="4jb-H6-Moh"/>
+                                                    </connections>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vek-aq-DHl">
+                                                    <rect key="frame" x="234" y="144" width="32" height="32"/>
+                                                    <state key="normal" image="image-1"/>
+                                                    <connections>
+                                                        <action selector="uploadProfile:" destination="Gjd-IN-Cqb" eventType="touchUpInside" id="Enu-3S-q5M"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Vek-aq-DHl" firstAttribute="top" secondItem="xbt-aw-UL5" secondAttribute="bottom" constant="-40" id="3fa-bJ-E17"/>
                                                 <constraint firstItem="xbt-aw-UL5" firstAttribute="centerY" secondItem="Kwn-Tl-gMl" secondAttribute="centerY" id="85B-RM-gBs"/>
                                                 <constraint firstItem="xbt-aw-UL5" firstAttribute="centerX" secondItem="Kwn-Tl-gMl" secondAttribute="centerX" id="8TY-qR-cDX"/>
+                                                <constraint firstItem="Vek-aq-DHl" firstAttribute="leading" secondItem="xbt-aw-UL5" secondAttribute="trailing" constant="-40" id="X62-U4-1ar"/>
                                                 <constraint firstItem="xbt-aw-UL5" firstAttribute="width" secondItem="Kwn-Tl-gMl" secondAttribute="width" multiplier="0.5" id="oSp-a5-37W"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -233,6 +246,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCo-Uu-ny6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="V12-nr-lRb"/>
             </objects>
             <point key="canvasLocation" x="-444" y="106.59670164917542"/>
         </scene>
@@ -369,6 +383,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="image-1" width="32" height="32"/>
         <image name="logoPage1" width="626" height="626"/>
     </resources>
 </document>

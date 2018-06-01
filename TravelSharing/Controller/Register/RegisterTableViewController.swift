@@ -32,7 +32,7 @@ class RegisterTableViewController: UITableViewController,FusumaDelegate {
         super.viewDidLoad()
         tableView.separatorStyle = .none
         viewforBtns.setConerRect()
-        
+        //protectedBtn.setConerRect()
         
 
      
