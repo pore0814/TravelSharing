@@ -61,19 +61,21 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
                 invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendinfomation)
                 invitedFriendManager.waitingPermission(myinfo, sendRtoF: friendinfomation)
                 addFriendsBtn.isHidden = true
+                addFriendLabel.text = ""
         
             }
   
     
      func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let friendEmail = friendSearchBar.text
-        print(friendEmail)
+        var friendEmail = friendSearchBar.text
                 for index in 0...allUserInfo.count - 1{
                     if friendEmail! == allUserInfo[index].email {
                         addFriendLabel.text = allUserInfo[index].email
                         friendInfo =  allUserInfo[index]
                          addFriendsBtn.isHidden = false
-                        return
+                        searchBar.text = ""
+                       return
+                       
                     }else {
                         addFriendLabel.text = "無資料"
                     }
@@ -91,6 +93,7 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell") as? AllUsersTableViewCell else {return UITableViewCell()}
+       
         cell.allUserEmailLabel.text = invitate[indexPath.row].email
         cell.allUserNamerLabel.text = invitate[indexPath.row].userName
         cell.allUsersImage.sd_setImage(with:URL(string: invitate[indexPath.row].photoUrl), completed: nil)
@@ -115,6 +118,7 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
 }
 extension SearchFriendsViewController: GetUserInfoManagerDelegate , InvitedFriendsManagerDelegate{
     func manager(_ manager: InvitedFriendsManager, didGet invitedList: [WaitingList]) {
+        invitate.removeAll()
         invitate = invitedList
         waitingtableView.reloadData()
     }
@@ -128,6 +132,9 @@ extension SearchFriendsViewController: GetUserInfoManagerDelegate , InvitedFrien
         allUserInfo = userInfo
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
   
     
     

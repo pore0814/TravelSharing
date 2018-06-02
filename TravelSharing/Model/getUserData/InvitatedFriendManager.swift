@@ -54,8 +54,7 @@ class InvitedFriendsManager{
 //等待朋友Premissiom
     func waitingPermission(_ from: UserInfo, sendRtoF to: UserInfo){
 
-       let myData =
-        ["id":from.uid,"email":from.email,"photo":from.photoUrl,"username":from.userName,"status": false] as [String : Any]
+       let myData =  ["id":from.uid,"email":from.email,"photo":from.photoUrl,"username":from.userName,"status": false] as [String : Any]
         
         
                         FireBaseConnect.databaseRef
@@ -69,16 +68,14 @@ class InvitedFriendsManager{
         guard let userid = UserManager.shared.getFireBaseUID() else { return}
       
        var  waitingListArray: [WaitingList] = []
-             waitingListArray.removeAll()
+          
                 FireBaseConnect.databaseRef
                                 .child("requestsFromMe")
                                 .queryOrderedByKey()
                                 .queryEqual(toValue: userid)
                     .observe(.value, with: { (snapshot) in
-                
-                //    .observeSingleEvent(of: .value, with: { (snapshot) in
-                        
-                  
+                // waitingListArray.removeAll()
+                    waitingListArray.removeAll()
             guard let lists = snapshot.value as? [String: [String: [String: Any]]]  else {return}
                     for list in lists.values {
                         print(list.values)
