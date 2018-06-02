@@ -38,7 +38,7 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
         getUserInfoManager.getMyInfo()
         
         invitedFriendManager.delegate = self
-        invitedFriendManager.waitingList()
+        invitedFriendManager.requestsList()
         
         friendSearchBar.delegate = self
         friendSearchBar.returnKeyType  = UIReturnKeyType.done
@@ -48,27 +48,26 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
       waitingtableView.delegate = self
       let nib  = UINib(nibName: "AllUsersTableViewCell", bundle: nil)
         waitingtableView.register(nib, forCellReuseIdentifier: "AllUsersTableViewCell")
-        invitedFriendManager.waitingList()
+        invitedFriendManager.requestsList()
        
     }
  
     
     @IBAction func addFriends(_ sender: Any) {
-        guard let friendinfo = friendInfo else {
-            AlertToUser().alert.showEdit("", subTitle: "新先輸入")
-            return
-        }
-        guard let myinfo = myInfo else {return}
-        invitedFriendManager.addFriend(myinfo, sendRtoF: friendinfo)
-        
-    }
+        guard let friendinfomation = friendInfo else {return}
+
+                guard let myinfo = myInfo else {return}
+                invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendinfomation)
+                invitedFriendManager.sendWaitingRequestToFriend(myinfo, sendRtoF: friendinfomation)
+                addFriendsBtn.isHidden = true
+            }
+  
     
      func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let friendEmail = friendSearchBar.text
         print(friendEmail)
                 for index in 0...allUserInfo.count - 1{
                     if friendEmail! == allUserInfo[index].email {
-                        print(allUserInfo[index].email )
                         addFriendLabel.text = allUserInfo[index].email
                         friendInfo =  allUserInfo[index]
                          addFriendsBtn.isHidden = false
@@ -77,6 +76,30 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
                         addFriendLabel.text = "無資料"
                     }
                 }
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return invitate.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell") as? AllUsersTableViewCell else {return UITableViewCell()}
+        cell.allUserEmailLabel.text = invitate[indexPath.row].email
+        cell.allUserNamerLabel.text = invitate[indexPath.row].userName
+        cell.allUsersImage.sd_setImage(with:URL(string: invitate[indexPath.row].photoUrl), completed: nil)
+        cell.addFriendBtn.setTitle("取消", for: .normal)
+//        cell.addFriendBtn.isHidden = false
+        cell.cancelFriendInvitedBtn.isHidden = false
+        
+        cell.cancelFriendInvitedBtn.addTarget(self, action:#selector(cancel(sender:)), for: .touchUpInside)
+        return cell
+    }
+    
+    
+    @objc func cancel(sender:UIButton){
+        print("abc")
     }
     
 
@@ -96,16 +119,7 @@ extension SearchFriendsViewController: GetUserInfoManagerDelegate , InvitedFrien
         allUserInfo = userInfo
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return invitate.count
-    }
+  
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell") as? AllUsersTableViewCell else {return UITableViewCell()}
-        cell.allUserEmailLabel.text = invitate[indexPath.row].email
-        cell.allUserNamerLabel.text = invitate[indexPath.row].userName
-        cell.allUsersImage.sd_setImage(with:URL(string: invitate[indexPath.row].photoUrl), completed: nil)
-        
-        return cell
-    }
+    
 }

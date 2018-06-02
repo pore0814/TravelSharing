@@ -11,11 +11,11 @@ import SDWebImage
 
 class AllUsersTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var deleteFriendInvitedBtn: UIButton!
+    @IBOutlet weak var cancelFriendInvitedBtn: UIButton!
     @IBOutlet weak var allUserNamerLabel: UILabel!
     @IBOutlet weak var allUserEmailLabel: UILabel!
     @IBOutlet weak var allUsersImage: UIImageView!
-    @IBOutlet weak var addFriend: UIButton!
+    @IBOutlet weak var addFriendBtn: UIButton!
     var getUserInfoManager = GetUserProfileManager()
     var getFriendManager = InvitedFriendsManager()
     var userInfo:UserInfo?
@@ -50,21 +50,26 @@ class AllUsersTableViewCell: UITableViewCell {
      if  !isSelected {
         print("addFriend")
         isSelected = true
-        addFriend.isHidden = true
-        deleteFriendInvitedBtn.isHidden = false
+        addFriendBtn.isHidden = true
+        cancelFriendInvitedBtn.isHidden = false
         print(userInfo?.userName)
         
-        invitedFriendManager.addFriend(myinfo, sendRtoF: friendInfo)
+        invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendInfo)
         
      }else{
         print("deleteFriend")
         isSelected = false
-        addFriend.isHidden = false
-        deleteFriendInvitedBtn.isHidden = true
+        addFriendBtn.isHidden = false
+        cancelFriendInvitedBtn.isHidden = true
            print(userInfo?.userName)
 
         }
     }
+    
+    @IBAction func cancelBtn(_ sender: Any) {
+        
+    }
+    
 }
 
 extension AllUsersTableViewCell:GetUserInfoManagerDelegate{

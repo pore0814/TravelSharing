@@ -38,36 +38,37 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdk-d8-G0r">
-                        <rect key="frame" x="268" y="21" width="46" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdk-d8-G0r">
+                        <rect key="frame" x="299" y="0.0" width="31" height="30"/>
                         <color key="backgroundColor" red="0.51226327049999998" green="0.77030299680000003" blue="0.7101946884" alpha="0.70058473929999998" colorSpace="custom" customColorSpace="sRGB"/>
-                        <state key="normal" title="加朋友"/>
+                        <state key="normal" title="確認"/>
                         <connections>
                             <action selector="addFriendBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Eje-ai-4pk"/>
                         </connections>
                     </button>
-                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZ6-a4-DFk">
-                        <rect key="frame" x="268.5" y="21" width="46" height="30"/>
-                        <color key="backgroundColor" red="0.73725490199999999" green="0.41176470590000003" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJI-NO-VYb">
+                        <rect key="frame" x="299" y="52" width="31" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.51226327049999998" green="0.77030299680000003" blue="0.7101946884" alpha="0.70058473929999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" title="取消"/>
                         <connections>
-                            <action selector="addFriendBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l2f-Si-aId"/>
+                            <action selector="addFriendBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="41G-pG-g45"/>
+                            <action selector="cancelBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="riN-rT-Vuo"/>
                         </connections>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="pZ6-a4-DFk" firstAttribute="baseline" secondItem="vdk-d8-G0r" secondAttribute="baseline" id="4bY-Dg-j3S"/>
+                    <constraint firstAttribute="trailing" secondItem="vdk-d8-G0r" secondAttribute="trailing" id="6Mc-ID-4eh"/>
                     <constraint firstItem="vdk-d8-G0r" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="Ckm-7n-1jh"/>
                     <constraint firstItem="8nc-vr-GRn" firstAttribute="leading" secondItem="16h-WO-7eg" secondAttribute="leading" id="GuM-63-G72"/>
                     <constraint firstItem="8nc-vr-GRn" firstAttribute="top" secondItem="7Vg-Mk-OsX" secondAttribute="top" id="LnT-3L-kuD"/>
                     <constraint firstItem="16h-WO-7eg" firstAttribute="top" secondItem="8nc-vr-GRn" secondAttribute="bottom" constant="8" symbolic="YES" id="PFu-na-IXu"/>
+                    <constraint firstItem="vdk-d8-G0r" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Q3e-qC-n06"/>
                     <constraint firstItem="7Vg-Mk-OsX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Qrn-w0-Lap"/>
                     <constraint firstItem="vdk-d8-G0r" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="S2Z-nm-z3L"/>
                     <constraint firstAttribute="trailingMargin" secondItem="8nc-vr-GRn" secondAttribute="trailing" constant="66" id="Su4-bl-iEX"/>
-                    <constraint firstItem="pZ6-a4-DFk" firstAttribute="centerX" secondItem="vdk-d8-G0r" secondAttribute="centerX" id="WUo-LO-aoa"/>
                     <constraint firstItem="7Vg-Mk-OsX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="fEz-UR-hyX"/>
                     <constraint firstAttribute="bottomMargin" secondItem="vdk-d8-G0r" secondAttribute="bottom" constant="21" id="fHm-fp-O2e"/>
-                    <constraint firstItem="pZ6-a4-DFk" firstAttribute="width" secondItem="vdk-d8-G0r" secondAttribute="width" id="fdn-78-MFP"/>
                     <constraint firstItem="8nc-vr-GRn" firstAttribute="leading" secondItem="7Vg-Mk-OsX" secondAttribute="trailing" constant="18" id="i0h-aA-fQI"/>
                     <constraint firstAttribute="bottomMargin" secondItem="7Vg-Mk-OsX" secondAttribute="bottom" constant="11" id="p98-yb-jRq"/>
                     <constraint firstItem="8nc-vr-GRn" firstAttribute="trailing" secondItem="16h-WO-7eg" secondAttribute="trailing" id="uMK-ET-82d"/>
@@ -75,11 +76,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="addFriend" destination="vdk-d8-G0r" id="dnh-on-Vtx"/>
+                <outlet property="addFriendBtn" destination="vdk-d8-G0r" id="dnh-on-Vtx"/>
                 <outlet property="allUserEmailLabel" destination="8nc-vr-GRn" id="5xa-g8-JQE"/>
                 <outlet property="allUserNamerLabel" destination="16h-WO-7eg" id="E2f-SL-8gT"/>
                 <outlet property="allUsersImage" destination="7Vg-Mk-OsX" id="1Z4-M9-u8u"/>
-                <outlet property="deleteFriendInvitedBtn" destination="pZ6-a4-DFk" id="8o7-5a-wah"/>
+                <outlet property="cancelFriendInvitedBtn" destination="CJI-NO-VYb" id="dYE-lU-kqb"/>
             </connections>
             <point key="canvasLocation" x="31" y="58.5"/>
         </tableViewCell>
