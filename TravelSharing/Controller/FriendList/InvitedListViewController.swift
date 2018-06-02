@@ -12,7 +12,7 @@ class InvitedListViewController: UIViewController,UITableViewDelegate,UITableVie
     
     
     var invitedFriendsManager = InvitedFriendsManager()
-    var invitedListArray = [WaitingList]()
+    var invitedListArray = [UserInfo]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -60,11 +60,12 @@ class InvitedListViewController: UIViewController,UITableViewDelegate,UITableVie
 }
 
 extension InvitedListViewController:InvitedFriendsManagerDelegate{
-    func manager(_ manager: InvitedFriendsManager, didGet invitedList: [WaitingList]) {
+    func manager(_ manager: InvitedFriendsManager, didGet invitedList: [UserInfo]) {
         
     }
     
-    func manager(_ manager: InvitedFriendsManager, getPermission permissionList: [WaitingList]) {
+    
+    func manager(_ manager: InvitedFriendsManager, getPermission permissionList: [UserInfo]) {
         invitedListArray = permissionList
         tableView.reloadData()
     }

@@ -11,8 +11,8 @@ import FirebaseDatabase
 import Firebase
 
 protocol InvitedFriendsManagerDelegate:class {
-    func manager (_ manager: InvitedFriendsManager , didGet invitedList:[WaitingList])
-    func manager (_ manager :InvitedFriendsManager, getPermission permissionList:[WaitingList])
+    func manager (_ manager: InvitedFriendsManager , didGet invitedList:[UserInfo])
+    func manager (_ manager :InvitedFriendsManager, getPermission permissionList:[UserInfo])
 }
 
 
@@ -43,7 +43,7 @@ class InvitedFriendsManager{
 //我送出交友邀請
     func sendRequestToFriend(_ from: UserInfo, sendRtoF to: UserInfo){
 
-            let frinedData = ["id":to.uid,"email":to.email,"photo":to.photoUrl,"username":to.userName,"status": false] as [String : Any]
+            let frinedData = ["id":to.uid,"email":to.email,"photo":to.photoUrl,"username":to.userName] as [String : Any]
     
                      FireBaseConnect.databaseRef
                         .child("requestsFromMe")
@@ -55,7 +55,7 @@ class InvitedFriendsManager{
 //等待朋友Premissiom
     func waitingPermission(_ from: UserInfo, sendRtoF to: UserInfo){
 
-       let myData =  ["id":from.uid,"email":from.email,"photo":from.photoUrl,"username":from.userName,"status": false] as [String : Any]
+       let myData =  ["id":from.uid,"email":from.email,"photo":from.photoUrl,"username":from.userName] as [String : Any]
         
         
                         FireBaseConnect.databaseRef
@@ -68,14 +68,14 @@ class InvitedFriendsManager{
     func requestsFromMeList(){
         guard let userid = UserManager.shared.getFireBaseUID() else { return}
       
-       var  waitingListArray: [WaitingList] = []
+       var  waitingListArray: [UserInfo] = []
         
                 FireBaseConnect.databaseRef
                                 .child("requestsFromMe")
                                 .queryOrderedByKey()
                                 .queryEqual(toValue: userid)
                     .observe(.value, with: { (snapshot) in
-                // waitingListArray.removeAll()
+
                     waitingListArray.removeAll()
             guard let lists = snapshot.value as? [String: [String: [String: Any]]]  else {return}
                     for list in lists.values {
@@ -84,9 +84,8 @@ class InvitedFriendsManager{
                            guard let email = llll["email"] as? String,
                             let id    = llll["id"] as? String,
                             let username = llll["username"] as? String,
-                            let photo    = llll["photo"] as? String,
-                            let status   = llll["status"] as? Bool else {return}
-                            let watingList = WaitingList(email: email, photoUrl: photo, uid: id, userName: username, status: status)
+                            let photo    = llll["photo"] as? String else {return}
+                            let watingList = UserInfo(email: email, photoUrl: photo, uid: id, userName: username)
                             waitingListArray.append(watingList)
                         }
                self.delegate?.manager(self, didGet: waitingListArray)
@@ -97,7 +96,7 @@ class InvitedFriendsManager{
     func requestsWaitForPermission(){
                 guard let userid = UserManager.shared.getFireBaseUID() else { return}
         
-                var  waitingListArray: [WaitingList] = []
+                var  waitingListArray: [UserInfo] = []
                      waitingListArray.removeAll()
                 FireBaseConnect.databaseRef
                     .child("requestsWaitForPermission")
@@ -111,9 +110,8 @@ class InvitedFriendsManager{
                                 guard let email = llll["email"] as? String,
                                     let id    = llll["id"] as? String,
                                     let username = llll["username"] as? String,
-                                    let photo    = llll["photo"] as? String,
-                                    let status   = llll["status"] as? Bool else {return}
-                                let watingList = WaitingList(email: email, photoUrl: photo, uid: id, userName: username, status: status)
+                                    let photo    = llll["photo"] as? String else {return}
+                                let watingList = UserInfo(email: email, photoUrl: photo, uid: id, userName: username)
                                 waitingListArray.append(watingList)
                             }
                         self.delegate?.manager(self, getPermission: waitingListArray)

@@ -80,7 +80,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zzu-sr-VLF">
                             <connections>
                                 <action selector="addFriends:" destination="CrF-0d-v4r" id="VM4-40-RLt"/>
-                                <segue destination="CDC-fx-ayG" kind="show" id="WEL-HQ-w7m"/>
+                                <segue destination="CDC-fx-ayG" kind="show" id="qrQ-Xb-EzJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

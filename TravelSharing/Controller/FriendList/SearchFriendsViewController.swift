@@ -22,7 +22,7 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
     var searchController = UISearchController()
     var friendInfo:UserInfo?
     var myInfo: UserInfo?
-    var invitate = [WaitingList]()
+    var invitate = [UserInfo]()
     
     @IBOutlet weak var addFriendsBtn: UIButton!
   
@@ -117,13 +117,14 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
 
 }
 extension SearchFriendsViewController: GetUserInfoManagerDelegate , InvitedFriendsManagerDelegate{
-    func manager(_ manager: InvitedFriendsManager, didGet invitedList: [WaitingList]) {
-    }
-    
-    func manager(_ manager: InvitedFriendsManager, getPermission invitedList: [WaitingList]) {
+    func manager(_ manager: InvitedFriendsManager, didGet invitedList: [UserInfo]) {
         invitate.removeAll()
         invitate = invitedList
         waitingtableView.reloadData()
+    }
+    
+    func manager(_ manager: InvitedFriendsManager, getPermission invitedList: [UserInfo]) {
+       
     }
     
    

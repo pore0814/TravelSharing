@@ -23,11 +23,11 @@ class FriendListViewController: UIViewController {
 
     @IBAction func addFriends(_ sender: Any) {
         print("Aaaaaaaaaddfriends")
-        
+//        
 //            guard let allUserVC = UIStoryboard(name: "FriendsList", bundle: nil).instantiateInitialViewController as? SearchFriendsViewController else {return}
 //            self.navigationController?.pushViewController(allUserVC, animated: true)
-        guard let allUserVC = UIStoryboard(name: "FriendsList", bundle: nil).instantiateInitialViewController as? InvitedListViewController else {return}
-                self.navigationController?.pushViewController(allUserVC, animated: true)
+//        guard let allUserVC = UIStoryboard(name: "FriendsList", bundle: nil).instantiateInitialViewController as? InvitedListViewController else {return}
+//                self.navigationController?.pushViewController(allUserVC, animated: true)
     }
 }
 
