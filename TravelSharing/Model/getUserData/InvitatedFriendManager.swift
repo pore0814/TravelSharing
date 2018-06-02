@@ -12,6 +12,7 @@ import Firebase
 
 protocol InvitedFriendsManagerDelegate:class {
     func manager (_ manager: InvitedFriendsManager , didGet invitedList:[WaitingList])
+    func manager (_ manager :InvitedFriendsManager, getPermission permissionList:[WaitingList])
 }
 
 
@@ -63,12 +64,12 @@ class InvitedFriendsManager{
                             .child(from.uid)
                             .updateChildValues(myData)
     }
-//撈已傳送邀請名單
+//已傳送邀請名單
     func requestsFromMeList(){
         guard let userid = UserManager.shared.getFireBaseUID() else { return}
       
        var  waitingListArray: [WaitingList] = []
-          
+        
                 FireBaseConnect.databaseRef
                                 .child("requestsFromMe")
                                 .queryOrderedByKey()
@@ -92,7 +93,7 @@ class InvitedFriendsManager{
             }
 })
 }
-
+//交友邀請
     func requestsWaitForPermission(){
                 guard let userid = UserManager.shared.getFireBaseUID() else { return}
         
@@ -102,7 +103,7 @@ class InvitedFriendsManager{
                     .child("requestsWaitForPermission")
                     .queryOrderedByKey()
                     .queryEqual(toValue: userid)
-                    .observe(.childAdded, with: { (snapshot) in
+                    .observe(.value, with: { (snapshot) in
                         guard let lists = snapshot.value as? [String: [String: [String: Any]]]  else {return}
                         for list in lists.values {
                             print(list.values)
@@ -115,7 +116,7 @@ class InvitedFriendsManager{
                                 let watingList = WaitingList(email: email, photoUrl: photo, uid: id, userName: username, status: status)
                                 waitingListArray.append(watingList)
                             }
-                            self.delegate?.manager(self, didGet: waitingListArray)
+                        self.delegate?.manager(self, getPermission: waitingListArray)
                         }
                })
      }
@@ -139,6 +140,11 @@ class InvitedFriendsManager{
             .child(friendID)
             .child(userid)
             .removeValue()
+    }
+    
+    func  friends(friendID:String){
+//      let myFriendList = ["id":to.uid,"email":to.email,"photo":to.photoUrl,"username":to.userName,"status": false] as [String : Any]
+//        
     }
    
         

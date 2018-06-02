@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -42,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WBM-hT-8DG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2882" y="198"/>
+            <point key="canvasLocation" x="2831" y="199"/>
         </scene>
         <!--Friend List View Controller-->
         <scene sceneID="OsF-Ae-wsR">
@@ -57,10 +58,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6AZ-G9-iUe">
-                                <rect key="frame" x="127" y="27" width="121" height="29"/>
+                                <rect key="frame" x="119" y="27" width="137" height="29"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="朋友列表"/>
+                                    <segment title="交友邀請"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
@@ -79,7 +80,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zzu-sr-VLF">
                             <connections>
                                 <action selector="addFriends:" destination="CrF-0d-v4r" id="VM4-40-RLt"/>
-                                <segue destination="D84-Gd-Qp0" kind="show" id="HGt-Gf-lqP"/>
+                                <segue destination="CDC-fx-ayG" kind="show" id="WEL-HQ-w7m"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -93,11 +94,11 @@
             <objects>
                 <viewController id="D84-Gd-Qp0" customClass="SearchFriendsViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V72-sb-nAY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOu-hm-wxf">
-                                <rect key="frame" x="0.0" y="93.5" width="375" height="93"/>
+                                <rect key="frame" x="0.0" y="157.5" width="375" height="93"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="93" id="7p9-Bq-hQV"/>
                                 </constraints>
@@ -106,29 +107,29 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="OLc-7o-hAE">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sLZ-3E-iHv">
-                                <rect key="frame" x="0.0" y="207" width="375" height="396"/>
+                                <rect key="frame" x="0.0" y="271" width="375" height="396"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜詢結果" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvB-Tw-pjp">
-                                <rect key="frame" x="0.0" y="56" width="375" height="21"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="21"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已傳送𨘋請" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hD-D1-9XU">
-                                <rect key="frame" x="0.0" y="186.5" width="375" height="20.5"/>
+                                <rect key="frame" x="0.0" y="250.5" width="375" height="20.5"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1p-HC-naZ">
-                                <rect key="frame" x="313" y="125" width="46" height="30"/>
+                                <rect key="frame" x="313" y="189" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="加朋友"/>
                                 <connections>
@@ -177,6 +178,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoL-Sb-8o3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2061.5999999999999" y="882.90854572713647"/>
+        </scene>
+        <!--Invited List View Controller-->
+        <scene sceneID="iHu-sq-RVL">
+            <objects>
+                <viewController id="CDC-fx-ayG" customClass="InvitedListViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Ip-xe-LAz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BIO-ZY-Fo9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="IJG-2G-8fa"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="BIO-ZY-Fo9" id="Fhq-LC-9Tu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yk9-X3-C8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2830" y="883"/>
         </scene>
         <!--Travel Sharing Navigation Controller-->
         <scene sceneID="r02-vw-D7L">

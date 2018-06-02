@@ -118,6 +118,9 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
 }
 extension SearchFriendsViewController: GetUserInfoManagerDelegate , InvitedFriendsManagerDelegate{
     func manager(_ manager: InvitedFriendsManager, didGet invitedList: [WaitingList]) {
+    }
+    
+    func manager(_ manager: InvitedFriendsManager, getPermission invitedList: [WaitingList]) {
         invitate.removeAll()
         invitate = invitedList
         waitingtableView.reloadData()

@@ -53,6 +53,7 @@
 		D1A01CA520AAC5FE00E00988 /* TSdateFormatter1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A01CA420AAC5FE00E00988 /* TSdateFormatter1.swift */; };
 		D1A01CA720AB047600E00988 /* WeekDayEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A01CA620AB047600E00988 /* WeekDayEnum.swift */; };
 		D1B1608020A332A900B69222 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1607F20A332A900B69222 /* UIView.swift */; };
+		D1B280C920C2FE79005ABBCE /* InvitedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B280C820C2FE79005ABBCE /* InvitedListViewController.swift */; };
 		D1BBA31C2095727C005E5AAE /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */; };
 		D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */; };
 		D1BBA32220958157005E5AAE /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA32120958157005E5AAE /* LogInViewController.swift */; };
@@ -126,6 +127,7 @@
 		D1A01CA420AAC5FE00E00988 /* TSdateFormatter1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSdateFormatter1.swift; sourceTree = "<group>"; };
 		D1A01CA620AB047600E00988 /* WeekDayEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayEnum.swift; sourceTree = "<group>"; };
 		D1B1607F20A332A900B69222 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		D1B280C820C2FE79005ABBCE /* InvitedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedListViewController.swift; sourceTree = "<group>"; };
 		D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1BBA32120958157005E5AAE /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				D11FBBDB20B3FB5A000B8284 /* AllUserViewController.swift */,
 				D1010DEF20BFABCF007F4959 /* FriendListViewController.swift */,
 				D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */,
+				D1B280C820C2FE79005ABBCE /* InvitedListViewController.swift */,
 			);
 			path = FriendList;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1B280C920C2FE79005ABBCE /* InvitedListViewController.swift in Sources */,
 				D179F86020A93A7500D7DC25 /* DestinationViewController.swift in Sources */,
 				D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */,
 				D1D45E9B20B0617700E3E7BE /* UserInfoManager.swift in Sources */,
