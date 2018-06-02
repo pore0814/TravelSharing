@@ -74,7 +74,9 @@ class InvitedFriendsManager{
                                 .child("requestsFromMe")
                                 .queryOrderedByKey()
                                 .queryEqual(toValue: userid)
-                    .observeSingleEvent(of: .value, with: { (snapshot) in
+                    .observe(.value, with: { (snapshot) in
+                
+                //    .observeSingleEvent(of: .value, with: { (snapshot) in
                         
                   
             guard let lists = snapshot.value as? [String: [String: [String: Any]]]  else {return}
