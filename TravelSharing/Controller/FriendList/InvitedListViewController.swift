@@ -48,6 +48,7 @@ class InvitedListViewController: UIViewController,UITableViewDelegate,UITableVie
     @objc func canceled(sender:UIButton){
         invitedFriendsManager.cancelPermission(friendID: invitedListArray[sender.tag].uid)
         invitedFriendsManager.cancelRequestFromMe(friendID: invitedListArray[sender.tag].uid)
+        invitedListArray.remove(at: sender.tag)
         print("cancel")
     }
     
