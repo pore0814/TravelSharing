@@ -46,24 +46,24 @@ class AllUsersTableViewCell: UITableViewCell {
     }
 
     @IBAction func addFriendBtn(_ sender:Any) {
-        guard let myinfo = myInfo , let friendInfo = userInfo else {return}
-     if  !isSelected {
-        print("addFriend")
-        isSelected = true
-        addFriendBtn.isHidden = true
-        cancelFriendInvitedBtn.isHidden = false
-        print(userInfo?.userName)
+//        guard let myinfo = myInfo , let friendInfo = userInfo else {return}
+//     if  !isSelected {
+//        print("addFriend")
+//        isSelected = true
+//        addFriendBtn.isHidden = true
+//        cancelFriendInvitedBtn.isHidden = false
+//        print(userInfo?.userName)
+//
+//        invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendInfo)
         
-        invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendInfo)
-        
-     }else{
-        print("deleteFriend")
-        isSelected = false
-        addFriendBtn.isHidden = false
-        cancelFriendInvitedBtn.isHidden = true
-           print(userInfo?.userName)
-
-        }
+//     }else{
+////        print("deleteFriend")
+////        isSelected = false
+////        addFriendBtn.isHidden = false
+////        cancelFriendInvitedBtn.isHidden = true
+////           print(userInfo?.userName)
+////
+////        }
     }
     
     @IBAction func cancelBtn(_ sender: Any) {

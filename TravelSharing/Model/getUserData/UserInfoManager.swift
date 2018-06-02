@@ -14,6 +14,7 @@ protocol GetUserInfoManagerDelegate: class {
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo)
 
     func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo])
+    
 }
 
 protocol GetAllUserInfoManagerDelegate: class {

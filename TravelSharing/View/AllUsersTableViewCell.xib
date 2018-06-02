@@ -38,7 +38,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdk-d8-G0r">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdk-d8-G0r">
                         <rect key="frame" x="299" y="0.0" width="31" height="30"/>
                         <color key="backgroundColor" red="0.51226327049999998" green="0.77030299680000003" blue="0.7101946884" alpha="0.70058473929999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" title="確認"/>

@@ -38,7 +38,8 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
         getUserInfoManager.getMyInfo()
         
         invitedFriendManager.delegate = self
-        invitedFriendManager.requestsList()
+        invitedFriendManager.requestsFromMeList()
+       
         
         friendSearchBar.delegate = self
         friendSearchBar.returnKeyType  = UIReturnKeyType.done
@@ -48,18 +49,19 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
       waitingtableView.delegate = self
       let nib  = UINib(nibName: "AllUsersTableViewCell", bundle: nil)
         waitingtableView.register(nib, forCellReuseIdentifier: "AllUsersTableViewCell")
-        invitedFriendManager.requestsList()
+    
        
     }
  
-    
+//加朋友
     @IBAction func addFriends(_ sender: Any) {
         guard let friendinfomation = friendInfo else {return}
 
                 guard let myinfo = myInfo else {return}
                 invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendinfomation)
-                invitedFriendManager.sendWaitingRequestToFriend(myinfo, sendRtoF: friendinfomation)
+                invitedFriendManager.waitingPermission(myinfo, sendRtoF: friendinfomation)
                 addFriendsBtn.isHidden = true
+        
             }
   
     
@@ -81,7 +83,10 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("invitate.count-----------")
+        print(invitate.count)
         return invitate.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,8 +102,12 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
         return cell
     }
     
-    
+//取消
     @objc func cancel(sender:UIButton){
+        invitedFriendManager.cancelPermission(friendID: invitate[sender.tag].uid)
+        invitedFriendManager.cancelRequestFromMe(friendID: invitate[sender.tag].uid)
+        invitate.remove(at: sender.tag)
+        waitingtableView.reloadData()
         print("abc")
     }
     
