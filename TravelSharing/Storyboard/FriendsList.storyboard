@@ -234,6 +234,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="XMt-VY-VSW"/>
                     </view>
+                    <connections>
+                        <outlet property="lisTableView" destination="W7h-hO-jZA" id="Sih-f1-kK2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYx-TF-Fa5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

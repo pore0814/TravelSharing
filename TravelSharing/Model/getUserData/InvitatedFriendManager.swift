@@ -13,6 +13,7 @@ import Firebase
 protocol InvitedFriendsManagerDelegate:class {
     func manager (_ manager: InvitedFriendsManager , didGet invitedList:[UserInfo])
     func manager (_ manager :InvitedFriendsManager, getPermission permissionList:[UserInfo])
+    func managerFriendList  (_ manager :InvitedFriendsManager, getPermission friendList:[UserInfo])
 }
 
 
@@ -190,27 +191,30 @@ class InvitedFriendsManager{
                 print(frinedList.values)
                 for aaa in frinedList.values {
                      print("------------")
+                    print(aaa)
                     guard   let bbb = aaa as? [String:Any] else {return}
+                    print("bbbb----")
+                    print(bbb)
+                    print("ccc------")
                     print(bbb.keys)
-                }
+                    let ccc = bbb.keys
+                    self.getMyFriendsList(Id: ccc)
+                    
+                   
+                  
                 
-               
-              
-//                for aaa in aaas {
-//                    print("------====")
-//                print(aaa.key)
-//                }
+                }
                 
             })
     }
  
-    func getMyFriendsList(Id:String,completion:@escaping()->Void){
+    func getMyFriendsList(Id:Dictionary<String, Any>.Keys){
          var  friendsListArray: [UserInfo] = []
-        
+        for id in Id {
         FireBaseConnect.databaseRef
             .child("users")
             .queryOrderedByKey()
-            .queryEqual(toValue: Id)
+            .queryEqual(toValue:id)
             .observeSingleEvent(of: .value, with: { (snapshot) in
                print(snapshot.childrenCount)
                 guard  let friendInfos = snapshot.value as? [String:Any] else {return}
@@ -223,10 +227,13 @@ class InvitedFriendsManager{
                     let username = json["username"] as? String else {return}
                 let friendsInstance = UserInfo(email: email, photoUrl: photo, uid: uid, userName: username)
                     friendsListArray.append(friendsInstance)
+                   
                 }
-                //  completion(friendsListArray)
-                
+              
+                print(friendsListArray)
+                self.delegate?.managerFriendList(self, getPermission: friendsListArray)
             })
+        }
        
 //            .observe(.childAdded, with: { (snapshot) in
 //                print("========")

@@ -73,10 +73,11 @@ class InvitedListViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     @objc func canceled(sender:UIButton){
+        if  invitedListArray.count > 0  {
         invitedFriendsManager.cancelPermission(friendID: invitedListArray[sender.tag].uid)
         invitedFriendsManager.cancelRequestFromMe(friendID: invitedListArray[sender.tag].uid)
         invitedListArray.remove(at: sender.tag)
-        
+        }
         print("cancel")
     }
     
@@ -89,23 +90,17 @@ class InvitedListViewController: UIViewController,UITableViewDelegate,UITableVie
 }
 
 extension InvitedListViewController:InvitedFriendsManagerDelegate, GetUserInfoManagerDelegate{
+    func managerFriendList(_ manager: InvitedFriendsManager, getPermission friendList: [UserInfo]) {}
+
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
         myInfo = userInfo
     }
-    
-    func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {
-        
-    }
-    
-    func manager(_ manager: InvitedFriendsManager, didGet invitedList: [UserInfo]) {
-        
-    }
-    
-    
+    func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {}
+
+    func manager(_ manager: InvitedFriendsManager, didGet invitedList: [UserInfo]) {}
+
     func manager(_ manager: InvitedFriendsManager, getPermission permissionList: [UserInfo]) {
         invitedListArray = permissionList
         tableView.reloadData()
     }
-    
-   
 }

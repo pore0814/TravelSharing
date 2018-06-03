@@ -117,6 +117,8 @@ class SearchFriendsViewController: UIViewController,UISearchBarDelegate,UITableV
 
 }
 extension SearchFriendsViewController: GetUserInfoManagerDelegate , InvitedFriendsManagerDelegate{
+    func managerFriendList(_ manager: InvitedFriendsManager, getPermission friendList: [UserInfo]) {}
+
     func manager(_ manager: InvitedFriendsManager, didGet invitedList: [UserInfo]) {
         invitate.removeAll()
         invitate = invitedList
