@@ -56,13 +56,16 @@
                                     <constraint firstAttribute="trailing" secondItem="BGq-Uz-vw7" secondAttribute="trailing" id="cF0-YQ-M7x"/>
                                 </constraints>
                             </stackView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UoE-lS-zNt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UoE-lS-zNt">
                                 <rect key="frame" x="368" y="10" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="9yN-HK-KpG"/>
                                     <constraint firstAttribute="height" constant="30" id="Agp-pa-8Ro"/>
                                 </constraints>
                                 <state key="normal" image="users"/>
+                                <connections>
+                                    <action selector="coEditedBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Eep-Do-Nj7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -89,6 +92,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="coEditedBtn" destination="UoE-lS-zNt" id="k1q-1o-Adf"/>
                 <outlet property="dateLabel" destination="BGq-Uz-vw7" id="kJa-tm-YV6"/>
                 <outlet property="daysLabel" destination="h1c-Xl-myo" id="W7j-Q5-b5E"/>
                 <outlet property="leftCellView" destination="n7t-rm-DtJ" id="mPY-3P-oS9"/>

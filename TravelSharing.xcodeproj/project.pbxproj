@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4B14BAF96DE255397327C523 /* Pods_TravelSharing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F353853584E1967591DC1429 /* Pods_TravelSharing.framework */; };
+		D1010DF020BFABCF007F4959 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DEF20BFABCF007F4959 /* FriendListViewController.swift */; };
+		D1010DF220BFAC03007F4959 /* FriendsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1010DF120BFAC03007F4959 /* FriendsList.storyboard */; };
+		D1010DF520BFD73E007F4959 /* InvitatedFriendManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */; };
+		D1010DF720C00084007F4959 /* SearchFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */; };
+		D1010DFA20C02601007F4959 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF820C02601007F4959 /* FriendsTableViewCell.swift */; };
+		D1010DFB20C02601007F4959 /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1010DF920C02601007F4959 /* FriendsTableViewCell.xib */; };
 		D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */; };
 		D10418F0209982770084952E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EF209982770084952E /* CustomCell.swift */; };
 		D116C34320BD33C30034C84C /* DistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D116C34220BD33C30034C84C /* DistanceManager.swift */; };
@@ -38,9 +44,9 @@
 		D1658266209AC2A300C37F8D /* DestinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */; };
 		D1658268209AE78800C37F8D /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658267209AE78800C37F8D /* Struct.swift */; };
 		D179F86020A93A7500D7DC25 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D179F85F20A93A7500D7DC25 /* DestinationViewController.swift */; };
+		D17BA83420C39A1100164707 /* MyFriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17BA83320C39A1100164707 /* MyFriendListViewController.swift */; };
 		D180477D20B5A964000DC705 /* AllUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D180477B20B5A964000DC705 /* AllUsersTableViewCell.swift */; };
 		D180477E20B5A964000DC705 /* AllUsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D180477C20B5A964000DC705 /* AllUsersTableViewCell.xib */; };
-		D180478020B5B28E000DC705 /* AllUsers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D180477F20B5B28E000DC705 /* AllUsers.storyboard */; };
 		D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B75FC209729C400D27B86 /* RoundImage.swift */; };
 		D18B9B5E209DEE0A00EB8D16 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */; };
 		D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */; };
@@ -52,6 +58,7 @@
 		D1A01CA520AAC5FE00E00988 /* TSdateFormatter1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A01CA420AAC5FE00E00988 /* TSdateFormatter1.swift */; };
 		D1A01CA720AB047600E00988 /* WeekDayEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A01CA620AB047600E00988 /* WeekDayEnum.swift */; };
 		D1B1608020A332A900B69222 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1607F20A332A900B69222 /* UIView.swift */; };
+		D1B280C920C2FE79005ABBCE /* InvitedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B280C820C2FE79005ABBCE /* InvitedListViewController.swift */; };
 		D1BBA31C2095727C005E5AAE /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */; };
 		D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */; };
 		D1BBA32220958157005E5AAE /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA32120958157005E5AAE /* LogInViewController.swift */; };
@@ -63,7 +70,6 @@
 		D1DA0A2D20A656CB002D8CF6 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */; };
 		D1DA0A3720A6FFF4002D8CF6 /* GoogleStreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A3620A6FFF4002D8CF6 /* GoogleStreeViewController.swift */; };
 		D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD6120914CA900310121 /* AppDelegate.swift */; };
-		D1E6CD6420914CA900310121 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD6320914CA900310121 /* ViewController.swift */; };
 		D1E6CD6720914CA900310121 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6520914CA900310121 /* Main.storyboard */; };
 		D1E6CD6920914CAA00310121 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6820914CAA00310121 /* Assets.xcassets */; };
 		D1E6CD6C20914CAA00310121 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6A20914CAA00310121 /* LaunchScreen.storyboard */; };
@@ -81,6 +87,12 @@
 /* Begin PBXFileReference section */
 		2899322EBE8B1C2AA88ED1D9 /* Pods-TravelSharing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.release.xcconfig"; sourceTree = "<group>"; };
 		69BAEA4434D7C88796C98B4C /* Pods-TravelSharing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.debug.xcconfig"; sourceTree = "<group>"; };
+		D1010DEF20BFABCF007F4959 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		D1010DF120BFAC03007F4959 /* FriendsList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendsList.storyboard; sourceTree = "<group>"; };
+		D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitatedFriendManager.swift; sourceTree = "<group>"; };
+		D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsViewController.swift; sourceTree = "<group>"; };
+		D1010DF820C02601007F4959 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		D1010DF920C02601007F4959 /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
 		D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditScheduleViewController.swift; sourceTree = "<group>"; };
 		D10418EF209982770084952E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		D116C34220BD33C30034C84C /* DistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DistanceManager.swift; path = /Users/Annie/Desktop/TravelSharing/TravelSharing/Model/Destination/DistanceManager.swift; sourceTree = "<absolute>"; };
@@ -111,9 +123,9 @@
 		D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinationTableViewCell.xib; sourceTree = "<group>"; };
 		D1658267209AE78800C37F8D /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		D179F85F20A93A7500D7DC25 /* DestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
+		D17BA83320C39A1100164707 /* MyFriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendListViewController.swift; sourceTree = "<group>"; };
 		D180477B20B5A964000DC705 /* AllUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewCell.swift; sourceTree = "<group>"; };
 		D180477C20B5A964000DC705 /* AllUsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllUsersTableViewCell.xib; sourceTree = "<group>"; };
-		D180477F20B5B28E000DC705 /* AllUsers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllUsers.storyboard; sourceTree = "<group>"; };
 		D18B75FC209729C400D27B86 /* RoundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
 		D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +137,7 @@
 		D1A01CA420AAC5FE00E00988 /* TSdateFormatter1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSdateFormatter1.swift; sourceTree = "<group>"; };
 		D1A01CA620AB047600E00988 /* WeekDayEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayEnum.swift; sourceTree = "<group>"; };
 		D1B1607F20A332A900B69222 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		D1B280C820C2FE79005ABBCE /* InvitedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedListViewController.swift; sourceTree = "<group>"; };
 		D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1BBA32120958157005E5AAE /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +150,6 @@
 		D1DA0A3620A6FFF4002D8CF6 /* GoogleStreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStreeViewController.swift; sourceTree = "<group>"; };
 		D1E6CD5E20914CA900310121 /* TravelSharing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelSharing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E6CD6120914CA900310121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D1E6CD6320914CA900310121 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D1E6CD6620914CA900310121 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1E6CD6820914CAA00310121 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1E6CD6B20914CAA00310121 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -183,6 +195,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D1010DEE20BFABA5007F4959 /* FriendList */ = {
+			isa = PBXGroup;
+			children = (
+				D11FBBDB20B3FB5A000B8284 /* AllUserViewController.swift */,
+				D1010DEF20BFABCF007F4959 /* FriendListViewController.swift */,
+				D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */,
+				D1B280C820C2FE79005ABBCE /* InvitedListViewController.swift */,
+				D17BA83320C39A1100164707 /* MyFriendListViewController.swift */,
+			);
+			path = FriendList;
+			sourceTree = "<group>";
+		};
 		D10418EE209982000084952E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +225,8 @@
 				D180477C20B5A964000DC705 /* AllUsersTableViewCell.xib */,
 				D155BF3620BBC488001EC4DD /* PrivacyTableViewCell.swift */,
 				D155BF3720BBC488001EC4DD /* PrivacyTableViewCell.xib */,
+				D1010DF820C02601007F4959 /* FriendsTableViewCell.swift */,
+				D1010DF920C02601007F4959 /* FriendsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,19 +272,11 @@
 			path = Privacy;
 			sourceTree = "<group>";
 		};
-		D180477820B5A8EA000DC705 /* AllUsers */ = {
-			isa = PBXGroup;
-			children = (
-				D11FBBDB20B3FB5A000B8284 /* AllUserViewController.swift */,
-			);
-			path = AllUsers;
-			sourceTree = "<group>";
-		};
 		D1BBA31920957222005E5AAE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D1010DEE20BFABA5007F4959 /* FriendList */,
 				D155BF3A20BBC581001EC4DD /* Privacy */,
-				D180477820B5A8EA000DC705 /* AllUsers */,
 				D127E17020A53F7800EBB5F7 /* Track */,
 				D127E16B20A52ECA00EBB5F7 /* Navigation */,
 				D1BBA32020958144005E5AAE /* Login */,
@@ -314,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D45E9A20B0617700E3E7BE /* UserInfoManager.swift */,
+				D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */,
 			);
 			path = getUserData;
 			sourceTree = "<group>";
@@ -345,7 +364,6 @@
 				D1E6CD7C20914E9800310121 /* Extension */,
 				D1E6CD7520914D8C00310121 /* Storyboard */,
 				D1E6CD6120914CA900310121 /* AppDelegate.swift */,
-				D1E6CD6320914CA900310121 /* ViewController.swift */,
 				D1E6CD6820914CAA00310121 /* Assets.xcassets */,
 				D1F5C83920A3BDD30066C636 /* logoPage.jpg */,
 				D1E6CD6A20914CAA00310121 /* LaunchScreen.storyboard */,
@@ -365,7 +383,7 @@
 				D1E6CD7820914E0E00310121 /* Profile.storyboard */,
 				D1E6CD7A20914E2700310121 /* Schedule.storyboard */,
 				D1400B3220961E8700B0040B /* Register.storyboard */,
-				D180477F20B5B28E000DC705 /* AllUsers.storyboard */,
+				D1010DF120BFAC03007F4959 /* FriendsList.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -502,7 +520,6 @@
 				D1E6CD6920914CAA00310121 /* Assets.xcassets in Resources */,
 				D19B2C2B20A4EACD0076E4ED /* DetailCollectionViewCell.xib in Resources */,
 				D1BBA324209581D6005E5AAE /* Login.storyboard in Resources */,
-				D180478020B5B28E000DC705 /* AllUsers.storyboard in Resources */,
 				D1E6CD7920914E0E00310121 /* Profile.storyboard in Resources */,
 				D1F5C83A20A3BDD30066C636 /* logoPage.jpg in Resources */,
 				D1E6CD6720914CA900310121 /* Main.storyboard in Resources */,
@@ -511,9 +528,11 @@
 				D1DA0A2920A654D4002D8CF6 /* LocationView.xib in Resources */,
 				D1BBA32620958FF8005E5AAE /* GoogleService-Info.plist in Resources */,
 				D1F542322099FF42007EBE96 /* ScheduleTableViewCell.xib in Resources */,
+				D1010DF220BFAC03007F4959 /* FriendsList.storyboard in Resources */,
 				D155BF3920BBC488001EC4DD /* PrivacyTableViewCell.xib in Resources */,
 				D1400B3320961E8700B0040B /* Register.storyboard in Resources */,
 				D127E16F20A5360300EBB5F7 /* TrackLocation.storyboard in Resources */,
+				D1010DFB20C02601007F4959 /* FriendsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +650,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1B280C920C2FE79005ABBCE /* InvitedListViewController.swift in Sources */,
 				D179F86020A93A7500D7DC25 /* DestinationViewController.swift in Sources */,
 				D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */,
 				D1D45E9B20B0617700E3E7BE /* UserInfoManager.swift in Sources */,
@@ -644,22 +664,26 @@
 				D127E17220A53F9B00EBB5F7 /* TrackLocationViewController.swift in Sources */,
 				D157B69D20B7D37D00C759DA /* ButtonIBIn.swift in Sources */,
 				D11FBBDE20B40EB4000B8284 /* LukeScrollView.swift in Sources */,
+				D17BA83420C39A1100164707 /* MyFriendListViewController.swift in Sources */,
 				D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */,
 				D14C0FEA209801CF00026AF1 /* String.swift in Sources */,
 				D10418F0209982770084952E /* CustomCell.swift in Sources */,
 				D18B9B5E209DEE0A00EB8D16 /* ScheduleDetailViewController.swift in Sources */,
 				D19B2C2A20A4EACD0076E4ED /* DetailCollectionViewCell.swift in Sources */,
+				D1010DF020BFABCF007F4959 /* FriendListViewController.swift in Sources */,
 				D1F542312099FF42007EBE96 /* ScheduleTableViewCell.swift in Sources */,
+				D1010DF520BFD73E007F4959 /* InvitatedFriendManager.swift in Sources */,
 				D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */,
 				D1E6CD7E20914EB700310121 /* UIStoryboard.swift in Sources */,
 				D11E007220B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift in Sources */,
 				D18B9B6420A0248500EB8D16 /* Date.swift in Sources */,
+				D1010DFA20C02601007F4959 /* FriendsTableViewCell.swift in Sources */,
+				D1010DF720C00084007F4959 /* SearchFriendsViewController.swift in Sources */,
 				D1658268209AE78800C37F8D /* Struct.swift in Sources */,
 				D15B3DF320C11083003A68E2 /* ProfileTableViewController.swift in Sources */,
 				D1400B31209619F700B0040B /* UserManager.swift in Sources */,
 				D1BBA31C2095727C005E5AAE /* ScheduleViewController.swift in Sources */,
 				D1BBA32220958157005E5AAE /* LogInViewController.swift in Sources */,
-				D1E6CD6420914CA900310121 /* ViewController.swift in Sources */,
 				D1E6CD7420914D0B00310121 /* TabBarViewController.swift in Sources */,
 				D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */,
 				D1A01CA520AAC5FE00E00988 /* TSdateFormatter1.swift in Sources */,
@@ -829,7 +853,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -849,7 +873,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

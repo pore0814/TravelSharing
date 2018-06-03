@@ -10,7 +10,12 @@ import UIKit
 import SVProgressHUD
 import SCLAlertView
 
-class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,PlayVideoCellProtocol{
+    func playVideoButtonDidSelect() {
+        guard  let allUsersPage = UIStoryboard.friendsStoryboard().instantiateInitialViewController() else {return}
+        present(allUsersPage, animated: true, completion: nil)
+    }
+    
 
      var schedules = [ScheduleInfo]()
      var userProfile: UserInfo?
@@ -72,7 +77,11 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
+<<<<<<< HEAD
         //tableView.backgroundView =  UIImageView(image: UIImage(named: "schedulePage-1"))
+=======
+      //  tableView.backgroundView =  UIImageView(image: UIImage(named: "schedulePage"))
+>>>>>>> co_editing
     }
 
 //註冊tableViewCell
@@ -103,6 +112,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
                     cell.updateCell(with: data)
                     cell.leftImageView.image = UIImage(named: backgroundArray[index])
                     cell.selectionStyle = .none
+                    cell.delegate = self
                   return cell
              } else {
                     return UITableViewCell()
