@@ -184,30 +184,15 @@ class InvitedFriendsManager{
             .queryOrderedByKey()
             .queryEqual(toValue: userid)
             .observe(.value, with: { (snapshot) in
-                print("-------------")
-                print(snapshot.value)
                 guard let frinedList = snapshot.value as? [String:Any] else {return}
-               print("------------")
                 print(frinedList.values)
                 for aaa in frinedList.values {
-                     print("------------")
-                    print(aaa)
                     guard   let bbb = aaa as? [String:Any] else {return}
-                    print("bbbb----")
-                    print(bbb)
-                    print("ccc------")
-                    print(bbb.keys)
                     let ccc = bbb.keys
                     self.getMyFriendsList(Id: ccc)
-                    
-                   
-                  
-                
                 }
-                
             })
     }
- 
     func getMyFriendsList(Id:Dictionary<String, Any>.Keys){
          var  friendsListArray: [UserInfo] = []
         for id in Id {
@@ -218,7 +203,6 @@ class InvitedFriendsManager{
             .observeSingleEvent(of: .value, with: { (snapshot) in
                print(snapshot.childrenCount)
                 guard  let friendInfos = snapshot.value as? [String:Any] else {return}
-                print("========")
                 for frinedInfo in friendInfos{
                    guard let json = frinedInfo.value as? [String:String],
                     let email = json["email"] as? String,
@@ -234,14 +218,7 @@ class InvitedFriendsManager{
                 self.delegate?.managerFriendList(self, getPermission: friendsListArray)
             })
         }
-       
-//            .observe(.childAdded, with: { (snapshot) in
-//                print("========")
-//                print(snapshot.value)
-//            })
-
     }
-    
 }
     
         
@@ -272,20 +249,6 @@ class InvitedFriendsManager{
 
             }
                 }
-                
-            }
-  */
-//            let wiatingList = lists.values as? [[String:Any]]
-//           print(wiatingList)
-            
-//            for  list in lists.values {
-//                
-//                //let email = 
-//            }
-
-
-    
-    
    
 //    func addFriend(_ from: UserInfo, sendRtoF to: UserInfo){
 //        
@@ -299,7 +262,7 @@ class InvitedFriendsManager{
 //        
 //        FireBaseConnect.databaseRef.child("requests").child(autoKey).updateChildValues(childUpdates)
 //    }
-//    
+*/
     
 
 

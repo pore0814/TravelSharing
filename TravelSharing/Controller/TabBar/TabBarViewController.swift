@@ -50,7 +50,7 @@ enum TabBar {
             
         case .friend:
             
-                return #imageLiteral(resourceName: "foot")
+                return #imageLiteral(resourceName: "add-friend-1")
         }
     }
 
@@ -72,7 +72,7 @@ enum TabBar {
             
         case .friend:
             
-            return #imageLiteral(resourceName: "human-foot-prints").withRenderingMode(.alwaysTemplate)
+            return #imageLiteral(resourceName: "add-friend1").withRenderingMode(.alwaysTemplate)
         }
     }
 }

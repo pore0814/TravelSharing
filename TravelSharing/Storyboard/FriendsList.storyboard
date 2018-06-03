@@ -11,43 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--All User View Controller-->
-        <scene sceneID="ZRd-eo-Drt">
-            <objects>
-                <viewController storyboardIdentifier="AllUserViewController" id="rYQ-Zp-mly" customClass="AllUserViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3rY-bs-8yv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xNU-0u-zPr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="rYQ-Zp-mly" id="NuI-I4-E5r"/>
-                                    <outlet property="delegate" destination="rYQ-Zp-mly" id="V1R-o4-Z1A"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="xNU-0u-zPr" firstAttribute="trailing" secondItem="CAR-LD-Bcd" secondAttribute="trailing" id="Rda-55-SKP"/>
-                            <constraint firstItem="xNU-0u-zPr" firstAttribute="leading" secondItem="CAR-LD-Bcd" secondAttribute="leading" id="Zxi-Cl-Srn"/>
-                            <constraint firstItem="xNU-0u-zPr" firstAttribute="bottom" secondItem="CAR-LD-Bcd" secondAttribute="bottom" id="erT-mi-oPr"/>
-                            <constraint firstItem="xNU-0u-zPr" firstAttribute="top" secondItem="3rY-bs-8yv" secondAttribute="top" id="ymp-rx-Dv7"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="CAR-LD-Bcd"/>
-                    </view>
-                    <connections>
-                        <outlet property="allUserTableview" destination="xNU-0u-zPr" id="D0w-rc-JGM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WBM-hT-8DG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4609" y="216"/>
-        </scene>
         <!--Friend List View Controller-->
         <scene sceneID="OsF-Ae-wsR">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="20o-bG-GBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="FriendListViewController" id="CrF-0d-v4r" customClass="FriendListViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DEG-xV-uxb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -111,7 +78,6 @@
                         <outlet property="thirdView" destination="GtR-Cu-bXE" id="cQK-SK-hCr"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="20o-bG-GBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2244" y="-2.2488755622188905"/>
         </scene>
@@ -203,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WoL-Sb-8o3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2176.8000000000002" y="1439.7301349325339"/>
+            <point key="canvasLocation" x="2244" y="751"/>
         </scene>
         <!--Invited List View Controller-->
         <scene sceneID="iHu-sq-RVL">
@@ -233,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yk9-X3-C8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3276" y="108.39580209895054"/>
+            <point key="canvasLocation" x="3186" y="-252"/>
         </scene>
         <!--My Friend List View Controller-->
         <scene sceneID="i7u-Uk-2OJ">
@@ -263,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYx-TF-Fa5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3352.8000000000002" y="922.48875562218893"/>
+            <point key="canvasLocation" x="3286" y="400"/>
         </scene>
         <!--Travel Sharing Navigation Controller-->
         <scene sceneID="r02-vw-D7L">
@@ -281,22 +247,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsW-8s-hoG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="838"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="kUZ-M2-T6Z">
-            <objects>
-                <viewController id="UFp-bb-b8a" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cUh-ox-cV1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="efs-gH-cXG"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ytj-zp-Kpp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3022" y="-568"/>
+            <point key="canvasLocation" x="1247" y="-2"/>
         </scene>
     </scenes>
 </document>
