@@ -21,55 +21,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTj-UZ-iCI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="46" width="375" height="557"/>
                                 <connections>
                                     <segue destination="kdE-Ad-bA7" kind="embed" id="9fj-qK-9LN"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Itc-Lk-zcJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <connections>
-                                    <segue destination="CDC-fx-ayG" kind="embed" id="lp4-V2-dut"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GtR-Cu-bXE">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="46" width="375" height="557"/>
                                 <connections>
                                     <segue destination="D84-Gd-Qp0" kind="embed" id="LIY-GT-5dR"/>
+                                </connections>
+                            </containerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6AZ-G9-iUe">
+                                <rect key="frame" x="10" y="10" width="355" height="29"/>
+                                <segments>
+                                    <segment title="朋友列表"/>
+                                    <segment title="交友邀請"/>
+                                    <segment title="搜尋好友"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChange:" destination="CrF-0d-v4r" eventType="valueChanged" id="Y4u-Pu-h9M"/>
+                                </connections>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Itc-Lk-zcJ">
+                                <rect key="frame" x="0.0" y="46" width="375" height="557"/>
+                                <connections>
+                                    <segue destination="CDC-fx-ayG" kind="embed" id="lp4-V2-dut"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="GtR-Cu-bXE" firstAttribute="bottom" secondItem="3iU-g9-VWH" secondAttribute="bottom" id="2go-r4-CRx"/>
                             <constraint firstItem="Itc-Lk-zcJ" firstAttribute="bottom" secondItem="3iU-g9-VWH" secondAttribute="bottom" id="3ep-da-q1d"/>
                             <constraint firstItem="vTj-UZ-iCI" firstAttribute="bottom" secondItem="3iU-g9-VWH" secondAttribute="bottom" id="6Qy-YA-hjm"/>
-                            <constraint firstItem="GtR-Cu-bXE" firstAttribute="leading" secondItem="3iU-g9-VWH" secondAttribute="leading" id="9K5-ou-Th2"/>
-                            <constraint firstItem="vTj-UZ-iCI" firstAttribute="top" secondItem="3iU-g9-VWH" secondAttribute="top" id="CaJ-7v-PRN"/>
+                            <constraint firstItem="GtR-Cu-bXE" firstAttribute="leading" secondItem="Itc-Lk-zcJ" secondAttribute="leading" id="D3b-Zi-o0q"/>
+                            <constraint firstItem="6AZ-G9-iUe" firstAttribute="top" secondItem="3iU-g9-VWH" secondAttribute="top" constant="10" id="DW6-Z4-j9A"/>
+                            <constraint firstItem="6AZ-G9-iUe" firstAttribute="leading" secondItem="3iU-g9-VWH" secondAttribute="leading" constant="10" id="Fxn-tm-Uqo"/>
+                            <constraint firstItem="vTj-UZ-iCI" firstAttribute="top" secondItem="6AZ-G9-iUe" secondAttribute="bottom" constant="8" id="OcE-gp-APz"/>
                             <constraint firstItem="Itc-Lk-zcJ" firstAttribute="leading" secondItem="3iU-g9-VWH" secondAttribute="leading" id="OqH-ql-AXc"/>
-                            <constraint firstItem="Itc-Lk-zcJ" firstAttribute="top" secondItem="3iU-g9-VWH" secondAttribute="top" id="Skv-17-8Zy"/>
+                            <constraint firstItem="3iU-g9-VWH" firstAttribute="trailing" secondItem="6AZ-G9-iUe" secondAttribute="trailing" constant="10" id="SXA-pz-YDI"/>
+                            <constraint firstItem="GtR-Cu-bXE" firstAttribute="trailing" secondItem="vTj-UZ-iCI" secondAttribute="trailing" id="dHW-Pz-QJW"/>
                             <constraint firstItem="Itc-Lk-zcJ" firstAttribute="trailing" secondItem="3iU-g9-VWH" secondAttribute="trailing" id="ea2-Oh-lnI"/>
                             <constraint firstItem="vTj-UZ-iCI" firstAttribute="leading" secondItem="3iU-g9-VWH" secondAttribute="leading" id="isH-3y-fdK"/>
-                            <constraint firstItem="GtR-Cu-bXE" firstAttribute="bottom" secondItem="3iU-g9-VWH" secondAttribute="bottom" id="sbP-XW-nee"/>
+                            <constraint firstItem="6AZ-G9-iUe" firstAttribute="bottom" secondItem="Itc-Lk-zcJ" secondAttribute="top" constant="-8" id="vMI-nj-En7"/>
+                            <constraint firstItem="6AZ-G9-iUe" firstAttribute="bottom" secondItem="GtR-Cu-bXE" secondAttribute="top" constant="-8" id="w3e-2M-5cs"/>
                             <constraint firstItem="vTj-UZ-iCI" firstAttribute="trailing" secondItem="3iU-g9-VWH" secondAttribute="trailing" id="wHY-I1-Dk6"/>
-                            <constraint firstItem="GtR-Cu-bXE" firstAttribute="trailing" secondItem="3iU-g9-VWH" secondAttribute="trailing" id="wHy-WD-Pyg"/>
-                            <constraint firstItem="GtR-Cu-bXE" firstAttribute="top" secondItem="3iU-g9-VWH" secondAttribute="top" id="yS7-wY-h5E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3iU-g9-VWH"/>
                     </view>
                     <navigationItem key="navigationItem" id="AM0-jP-qoz">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="6AZ-G9-iUe">
-                            <rect key="frame" x="14" y="7" width="347" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="朋友列表"/>
-                                <segment title="交友邀請"/>
-                                <segment title="搜尋好友"/>
-                            </segments>
-                            <connections>
-                                <action selector="indexChange:" destination="CrF-0d-v4r" eventType="valueChanged" id="Y4u-Pu-h9M"/>
-                            </connections>
-                        </segmentedControl>
                     </navigationItem>
                     <connections>
                         <outlet property="firstView" destination="vTj-UZ-iCI" id="P53-tj-fPe"/>
@@ -86,11 +88,11 @@
             <objects>
                 <viewController id="D84-Gd-Qp0" customClass="SearchFriendsViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V72-sb-nAY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOu-hm-wxf">
-                                <rect key="frame" x="0.0" y="93.5" width="375" height="93"/>
+                                <rect key="frame" x="0.0" y="47.5" width="375" height="93"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="93" id="7p9-Bq-hQV"/>
                                 </constraints>
@@ -103,7 +105,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sLZ-3E-iHv">
-                                <rect key="frame" x="0.0" y="207" width="375" height="396"/>
+                                <rect key="frame" x="0.0" y="161" width="375" height="396"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜詢結果" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvB-Tw-pjp">
@@ -114,14 +116,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已傳送𨘋請" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hD-D1-9XU">
-                                <rect key="frame" x="0.0" y="186.5" width="375" height="20.5"/>
+                                <rect key="frame" x="0.0" y="140.5" width="375" height="20.5"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1p-HC-naZ">
-                                <rect key="frame" x="313" y="125" width="46" height="30"/>
+                                <rect key="frame" x="313" y="79" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="加朋友"/>
                                 <connections>
@@ -176,11 +178,11 @@
             <objects>
                 <viewController storyboardIdentifier="InvitedListViewController" id="CDC-fx-ayG" customClass="InvitedListViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ip-xe-LAz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BIO-ZY-Fo9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -206,11 +208,11 @@
             <objects>
                 <viewController storyboardIdentifier="MyFriendListViewController" id="kdE-Ad-bA7" customClass="MyFriendListViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cdv-K1-mtF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W7h-hO-jZA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>

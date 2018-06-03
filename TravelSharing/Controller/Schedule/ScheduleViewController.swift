@@ -12,8 +12,13 @@ import SCLAlertView
 
 class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,PlayVideoCellProtocol{
     func playVideoButtonDidSelect() {
-        guard  let allUsersPage = UIStoryboard.friendsStoryboard().instantiateInitialViewController() else {return}
-        present(allUsersPage, animated: true, completion: nil)
+        
+      
+        guard let friendListVc = UIStoryboard(name: "FriendsList", bundle: nil).instantiateViewController(withIdentifier: "FriendListViewController") as? FriendListViewController else {return}
+        navigationController?.pushViewController(friendListVc, animated: true)
+        
+//        guard  let allUsersPage = UIStoryboard.friendsStoryboard().instantiateInitialViewController() else {return}
+//        present(allUsersPage, animated: true, completion: nil)
     }
     
 
