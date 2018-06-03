@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -43,7 +44,7 @@
                         <color key="backgroundColor" red="0.51226327049999998" green="0.77030299680000003" blue="0.7101946884" alpha="0.70058473929999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" title="確認"/>
                         <connections>
-                            <action selector="addFriendBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Eje-ai-4pk"/>
+                            <action selector="addFriendBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="F2c-DM-l5n"/>
                         </connections>
                     </button>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJI-NO-VYb">
@@ -52,8 +53,7 @@
                         <color key="backgroundColor" red="0.51226327049999998" green="0.77030299680000003" blue="0.7101946884" alpha="0.70058473929999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" title="取消"/>
                         <connections>
-                            <action selector="addFriendBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="41G-pG-g45"/>
-                            <action selector="cancelBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="riN-rT-Vuo"/>
+                            <action selector="cancelBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nyI-oi-hxX"/>
                         </connections>
                     </button>
                 </subviews>
@@ -76,11 +76,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="addFriendBtn" destination="vdk-d8-G0r" id="dnh-on-Vtx"/>
+                <outlet property="addFriendBtn" destination="vdk-d8-G0r" id="Wev-5p-vHf"/>
                 <outlet property="allUserEmailLabel" destination="8nc-vr-GRn" id="5xa-g8-JQE"/>
                 <outlet property="allUserNamerLabel" destination="16h-WO-7eg" id="E2f-SL-8gT"/>
                 <outlet property="allUsersImage" destination="7Vg-Mk-OsX" id="1Z4-M9-u8u"/>
-                <outlet property="cancelFriendInvitedBtn" destination="CJI-NO-VYb" id="dYE-lU-kqb"/>
+                <outlet property="cancelFriendInvitedBtn" destination="CJI-NO-VYb" id="wtl-tb-WWf"/>
             </connections>
             <point key="canvasLocation" x="31" y="58.5"/>
         </tableViewCell>

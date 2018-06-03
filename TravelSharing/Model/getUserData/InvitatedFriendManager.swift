@@ -139,16 +139,108 @@ class InvitedFriendsManager{
             .child(userid)
             .removeValue()
     }
-    
-    func  friends(friendID:String){
-//      let myFriendList = ["id":to.uid,"email":to.email,"photo":to.photoUrl,"username":to.userName,"status": false] as [String : Any]
-//        
+//確認好友
+    func  beFriend(myInfo:UserInfo,friendInfo:UserInfo){
+     
+//      let myData = ["id":myInfo.uid,"email":myInfo.email,"photo":myInfo.photoUrl,"username":myInfo.userName]
+//      let friendData = ["id":friendInfo.uid,"email":friendInfo.email,"photo":friendInfo.photoUrl,"username":friendInfo.userName]
+//
+//        let data = [myInfo.uid:friendData,friendInfo.uid:myData]
+        FireBaseConnect.databaseRef.child("friends").child(myInfo.uid).child(friendInfo.uid).setValue(["email":friendInfo.email])
+
+        FireBaseConnect.databaseRef.child("friends").child(friendInfo.uid).child(myInfo.uid).setValue(["email":myInfo.email])
     }
    
+ //確認好友後要從Request名單中移出
+    func deletRequetFromMe(friendID:String) {
+        guard let userid = UserManager.shared.getFireBaseUID() else {return}
+        /* 先刪除Schedule_id */
+        FireBaseConnect.databaseRef
+            .child("requestsFromMe")
+            .child(friendID)
+            .child(userid)
+            .removeValue()
+    }
+//確認好友後要從Permission名單中移出
+    func deletePermission(friendID:String) {
+        guard let userid = UserManager.shared.getFireBaseUID() else {return}
+        /* 先刪除Schedule_id */
+        FireBaseConnect.databaseRef
+            .child("requestsWaitForPermission")
+            .child(userid)
+            .child(friendID)
+            .removeValue()
+    }
+    
+//撈好友名單
+    func myFriendList(){
+        guard let userid = UserManager.shared.getFireBaseUID() else { return}
+        
+       
+     
+        FireBaseConnect.databaseRef
+            .child("friends")
+            .queryOrderedByKey()
+            .queryEqual(toValue: userid)
+            .observe(.value, with: { (snapshot) in
+                print("-------------")
+                print(snapshot.value)
+                guard let frinedList = snapshot.value as? [String:Any] else {return}
+               print("------------")
+                print(frinedList.values)
+                for aaa in frinedList.values {
+                     print("------------")
+                    guard   let bbb = aaa as? [String:Any] else {return}
+                    print(bbb.keys)
+                }
+                
+               
+              
+//                for aaa in aaas {
+//                    print("------====")
+//                print(aaa.key)
+//                }
+                
+            })
+    }
+ 
+    func getMyFriendsList(Id:String,completion:@escaping()->Void){
+         var  friendsListArray: [UserInfo] = []
+        
+        FireBaseConnect.databaseRef
+            .child("users")
+            .queryOrderedByKey()
+            .queryEqual(toValue: Id)
+            .observeSingleEvent(of: .value, with: { (snapshot) in
+               print(snapshot.childrenCount)
+                guard  let friendInfos = snapshot.value as? [String:Any] else {return}
+                print("========")
+                for frinedInfo in friendInfos{
+                   guard let json = frinedInfo.value as? [String:String],
+                    let email = json["email"] as? String,
+                    let uid = json["uid"] as? String,
+                    let photo = json["photoUrl"] as? String,
+                    let username = json["username"] as? String else {return}
+                let friendsInstance = UserInfo(email: email, photoUrl: photo, uid: uid, userName: username)
+                    friendsListArray.append(friendsInstance)
+                }
+                //  completion(friendsListArray)
+                
+            })
+       
+//            .observe(.childAdded, with: { (snapshot) in
+//                print("========")
+//                print(snapshot.value)
+//            })
+
+    }
+    
+}
+    
         
 
     
-}
+
  
             /*
             var waitingListArray: [UserInfo] = []

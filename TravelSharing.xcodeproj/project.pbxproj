@@ -41,6 +41,7 @@
 		D1658266209AC2A300C37F8D /* DestinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */; };
 		D1658268209AE78800C37F8D /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658267209AE78800C37F8D /* Struct.swift */; };
 		D179F86020A93A7500D7DC25 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D179F85F20A93A7500D7DC25 /* DestinationViewController.swift */; };
+		D17BA83420C39A1100164707 /* MyFriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17BA83320C39A1100164707 /* MyFriendListViewController.swift */; };
 		D180477D20B5A964000DC705 /* AllUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D180477B20B5A964000DC705 /* AllUsersTableViewCell.swift */; };
 		D180477E20B5A964000DC705 /* AllUsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D180477C20B5A964000DC705 /* AllUsersTableViewCell.xib */; };
 		D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B75FC209729C400D27B86 /* RoundImage.swift */; };
@@ -115,6 +116,7 @@
 		D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinationTableViewCell.xib; sourceTree = "<group>"; };
 		D1658267209AE78800C37F8D /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		D179F85F20A93A7500D7DC25 /* DestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
+		D17BA83320C39A1100164707 /* MyFriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendListViewController.swift; sourceTree = "<group>"; };
 		D180477B20B5A964000DC705 /* AllUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewCell.swift; sourceTree = "<group>"; };
 		D180477C20B5A964000DC705 /* AllUsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllUsersTableViewCell.xib; sourceTree = "<group>"; };
 		D18B75FC209729C400D27B86 /* RoundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				D1010DEF20BFABCF007F4959 /* FriendListViewController.swift */,
 				D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */,
 				D1B280C820C2FE79005ABBCE /* InvitedListViewController.swift */,
+				D17BA83320C39A1100164707 /* MyFriendListViewController.swift */,
 			);
 			path = FriendList;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				D127E17220A53F9B00EBB5F7 /* TrackLocationViewController.swift in Sources */,
 				D157B69D20B7D37D00C759DA /* ButtonIBIn.swift in Sources */,
 				D11FBBDE20B40EB4000B8284 /* LukeScrollView.swift in Sources */,
+				D17BA83420C39A1100164707 /* MyFriendListViewController.swift in Sources */,
 				D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */,
 				D14C0FEA209801CF00026AF1 /* String.swift in Sources */,
 				D10418F0209982770084952E /* CustomCell.swift in Sources */,

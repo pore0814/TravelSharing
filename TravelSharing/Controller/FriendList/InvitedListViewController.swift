@@ -12,15 +12,21 @@ class InvitedListViewController: UIViewController,UITableViewDelegate,UITableVie
     
     
     var invitedFriendsManager = InvitedFriendsManager()
+    var getUserInfoManager = GetUserProfileManager()
     var invitedListArray = [UserInfo]()
+    var myInfo:UserInfo?
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        invitedFriendsManager.delegate =  self
-        invitedFriendsManager.requestsWaitForPermission()
+        
+      
+        setDelegateAndCallFunction()
+        
+        
+        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -28,6 +34,20 @@ class InvitedListViewController: UIViewController,UITableViewDelegate,UITableVie
         tableView.register(nib, forCellReuseIdentifier: "AllUsersTableViewCell")
         
     }
+    
+    
+    func setDelegateAndCallFunction(){
+        invitedFriendsManager.delegate =  self
+        invitedFriendsManager.requestsWaitForPermission()
+        
+        getUserInfoManager.delegate = self
+        getUserInfoManager.getMyInfo()
+        
+    }
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell") as? AllUsersTableViewCell else {return UITableViewCell()}
         cell.allUserEmailLabel.text = invitedListArray[indexPath.row].email
@@ -41,7 +61,14 @@ class InvitedListViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
    @objc func  permitted(sender:UIButton){
+    guard let myinfo = myInfo else{return}
+      invitedFriendsManager.beFriend(myInfo: myinfo, friendInfo: invitedListArray[sender.tag])
+      invitedFriendsManager.deletePermission(friendID: invitedListArray[sender.tag].uid)
+      invitedFriendsManager.deletRequetFromMe(friendID: invitedListArray[sender.tag].uid)
+      invitedListArray.remove(at: sender.tag)
+    
     print("permitted")
+    
         
     }
     
@@ -49,6 +76,7 @@ class InvitedListViewController: UIViewController,UITableViewDelegate,UITableVie
         invitedFriendsManager.cancelPermission(friendID: invitedListArray[sender.tag].uid)
         invitedFriendsManager.cancelRequestFromMe(friendID: invitedListArray[sender.tag].uid)
         invitedListArray.remove(at: sender.tag)
+        
         print("cancel")
     }
     
@@ -60,7 +88,15 @@ class InvitedListViewController: UIViewController,UITableViewDelegate,UITableVie
 
 }
 
-extension InvitedListViewController:InvitedFriendsManagerDelegate{
+extension InvitedListViewController:InvitedFriendsManagerDelegate, GetUserInfoManagerDelegate{
+    func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
+        myInfo = userInfo
+    }
+    
+    func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {
+        
+    }
+    
     func manager(_ manager: InvitedFriendsManager, didGet invitedList: [UserInfo]) {
         
     }
