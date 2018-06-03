@@ -44,40 +44,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WBM-hT-8DG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2831" y="199"/>
+            <point key="canvasLocation" x="4609" y="216"/>
         </scene>
         <!--Friend List View Controller-->
         <scene sceneID="OsF-Ae-wsR">
             <objects>
-                <viewController id="CrF-0d-v4r" customClass="FriendListViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FriendListViewController" id="CrF-0d-v4r" customClass="FriendListViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DEG-xV-uxb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1dm-Oi-YHH">
-                                <rect key="frame" x="0.0" y="82" width="375" height="521"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6AZ-G9-iUe">
-                                <rect key="frame" x="119" y="27" width="137" height="29"/>
-                                <segments>
-                                    <segment title="朋友列表"/>
-                                    <segment title="交友邀請"/>
-                                </segments>
-                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cbb-4s-M2Z">
+                                <rect key="frame" x="0.0" y="72" width="375" height="531"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="jaV-yl-3iu" kind="embed" identifier="container" id="uhv-ir-FvN"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="1dm-Oi-YHH" secondAttribute="trailing" id="EGp-22-VBc"/>
-                            <constraint firstItem="1dm-Oi-YHH" firstAttribute="bottom" secondItem="3iU-g9-VWH" secondAttribute="bottom" id="VCL-tc-OwS"/>
-                            <constraint firstItem="1dm-Oi-YHH" firstAttribute="centerX" secondItem="6AZ-G9-iUe" secondAttribute="centerX" id="bx5-he-tuh"/>
-                            <constraint firstItem="1dm-Oi-YHH" firstAttribute="leading" secondItem="DEG-xV-uxb" secondAttribute="leading" id="eol-zK-7ga"/>
-                            <constraint firstItem="1dm-Oi-YHH" firstAttribute="top" secondItem="6AZ-G9-iUe" secondAttribute="bottom" constant="27" id="f4f-eA-oyy"/>
-                            <constraint firstItem="6AZ-G9-iUe" firstAttribute="top" secondItem="3iU-g9-VWH" secondAttribute="top" constant="27" id="sYP-Rv-XEo"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3iU-g9-VWH"/>
                     </view>
                     <navigationItem key="navigationItem" id="AM0-jP-qoz">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="6AZ-G9-iUe">
+                            <rect key="frame" x="78" y="7.5" width="137" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="朋友列表"/>
+                                <segment title="交友邀請"/>
+                            </segments>
+                        </segmentedControl>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="Zzu-sr-VLF">
                                 <connections>
@@ -85,22 +82,17 @@
                                     <segue destination="D84-Gd-Qp0" kind="show" id="Vzr-zf-pUm"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" id="BKg-1o-tsG">
-                                <connections>
-                                    <segue destination="CDC-fx-ayG" kind="show" id="BSu-6S-l05"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="friends" id="YSz-HP-eN1">
-                                <connections>
-                                    <segue destination="kdE-Ad-bA7" kind="show" id="luz-J6-dlT"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem title="Item" id="BKg-1o-tsG"/>
+                            <barButtonItem title="friends" id="YSz-HP-eN1"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="segmentedControl" destination="6AZ-G9-iUe" id="xvR-0E-mCN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20o-bG-GBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2061.5999999999999" y="198.35082458770617"/>
+            <point key="canvasLocation" x="1993" y="134"/>
         </scene>
         <!--Search Friends View Controller-->
         <scene sceneID="6je-uZ-0pu">
@@ -195,9 +187,9 @@
         <!--Invited List View Controller-->
         <scene sceneID="iHu-sq-RVL">
             <objects>
-                <viewController id="CDC-fx-ayG" customClass="InvitedListViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InvitedListViewController" id="CDC-fx-ayG" customClass="InvitedListViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ip-xe-LAz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BIO-ZY-Fo9">
@@ -215,14 +207,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yk9-X3-C8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2830" y="883"/>
+            <point key="canvasLocation" x="3322" y="215"/>
         </scene>
         <!--My Friend List View Controller-->
         <scene sceneID="i7u-Uk-2OJ">
             <objects>
-                <viewController id="kdE-Ad-bA7" customClass="MyFriendListViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyFriendListViewController" id="kdE-Ad-bA7" customClass="MyFriendListViewController" customModule="TravelSharing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cdv-K1-mtF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W7h-hO-jZA">
@@ -240,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYx-TF-Fa5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3737" y="941"/>
+            <point key="canvasLocation" x="3354" y="923"/>
         </scene>
         <!--Travel Sharing Navigation Controller-->
         <scene sceneID="r02-vw-D7L">
@@ -259,6 +251,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsW-8s-hoG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1240.8" y="199.25037481259372"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="G3k-Ik-wBw">
+            <objects>
+                <viewController id="jaV-yl-3iu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2RK-p6-wvy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="vEh-tZ-FeF"/>
+                    </view>
+                    <connections>
+                        <segue destination="CDC-fx-ayG" kind="custom" identifier="invited" id="RuQ-Ht-PkZ"/>
+                        <segue destination="kdE-Ad-bA7" kind="custom" identifier="myfriends" id="2ht-TP-U7T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kzJ-gE-9bg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>
