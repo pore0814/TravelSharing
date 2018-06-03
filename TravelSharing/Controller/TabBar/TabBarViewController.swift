@@ -83,7 +83,7 @@ func changeColor() {
 class TabBarViewController: UITabBarController {
 
    // let tabs: [TabBar] = [.trackLocation, .schedule, .profile]
-    let tabs: [TabBar] = [.schedule, .profile ,.friend]
+    let tabs: [TabBar] = [.schedule ,.friend, .profile]
     override func viewDidLoad() {
         super.viewDidLoad()
 

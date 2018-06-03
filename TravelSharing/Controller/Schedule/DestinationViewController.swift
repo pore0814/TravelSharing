@@ -143,12 +143,9 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     @IBAction func inviteFrineds(_ sender: Any) {
-<<<<<<< HEAD
-        let allUsersPage = UIStoryboard.allUsersStoryboard().instantiateInitialViewController()
-        present(allUsersPage!, animated: true, completion: nil)
-=======
-       
->>>>>>> co_editing
+
+//        let allUsersPage = UIStoryboard.allUsersStoryboard().instantiateInitialViewController()
+//        present(allUsersPage!, animated: true, completion: nil)
 
     }
 }

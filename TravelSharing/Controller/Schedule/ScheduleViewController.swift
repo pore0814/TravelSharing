@@ -77,11 +77,11 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-<<<<<<< HEAD
+
         //tableView.backgroundView =  UIImageView(image: UIImage(named: "schedulePage-1"))
-=======
+
       //  tableView.backgroundView =  UIImageView(image: UIImage(named: "schedulePage"))
->>>>>>> co_editing
+
     }
 
 //註冊tableViewCell

@@ -56,11 +56,9 @@ enum Locaion {
     case destinationLocation
 }
 
-<<<<<<< HEAD
+
 struct DistanceAndTime {
     var distance: String
     var time: String
 }
-=======
 
->>>>>>> co_editing
