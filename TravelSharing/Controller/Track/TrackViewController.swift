@@ -24,10 +24,11 @@ class  TrackViewController: UIViewController, CLLocationManagerDelegate {
     }
     var destinationManager = DestinationManager()
     var locationManager = CLLocationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
     //創建 locationManager
-        locationManager = CLLocationManager()
+      //  locationManager = CLLocationManager()
     //配置 locationManager
         locationManager.delegate = self
     //詢問使用者權限
@@ -51,7 +52,7 @@ class  TrackViewController: UIViewController, CLLocationManagerDelegate {
             withLatitude: (location?.coordinate.latitude)!,
             longitude: (location?.coordinate.longitude)!, zoom: 17.0)
 
-        self.googleMapsView.animate(to: camera)
+        //self.googleMapsView.animate(to: camera)
         self.locationManager.stopUpdatingHeading()
 
     }

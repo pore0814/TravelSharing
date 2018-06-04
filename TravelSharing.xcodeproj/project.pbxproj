@@ -8,9 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		4B14BAF96DE255397327C523 /* Pods_TravelSharing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F353853584E1967591DC1429 /* Pods_TravelSharing.framework */; };
+		D1010DF020BFABCF007F4959 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DEF20BFABCF007F4959 /* FriendListViewController.swift */; };
+		D1010DF220BFAC03007F4959 /* FriendsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1010DF120BFAC03007F4959 /* FriendsList.storyboard */; };
+		D1010DF520BFD73E007F4959 /* InvitatedFriendManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */; };
+		D1010DF720C00084007F4959 /* SearchFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */; };
 		D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */; };
 		D10418F0209982770084952E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EF209982770084952E /* CustomCell.swift */; };
+		D116C34320BD33C30034C84C /* DistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D116C34220BD33C30034C84C /* DistanceManager.swift */; };
+		D116C34520BD689B0034C84C /* DistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D116C34420BD689B0034C84C /* DistanceViewController.swift */; };
 		D11E007220B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */; };
+		D11FBBDC20B3FB5A000B8284 /* AllUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11FBBDB20B3FB5A000B8284 /* AllUserViewController.swift */; };
+		D11FBBDE20B40EB4000B8284 /* LukeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11FBBDD20B40EB4000B8284 /* LukeScrollView.swift */; };
+		D11FBBE020B40ECF000B8284 /* LukeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11FBBDF20B40ECF000B8284 /* LukeCollectionView.swift */; };
 		D126D05920AD2F6400F46AE3 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126D05820AD2F6400F46AE3 /* TrackViewController.swift */; };
 		D127E16D20A52EE300EBB5F7 /* NavigationCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */; };
 		D127E16F20A5360300EBB5F7 /* TrackLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */; };
@@ -23,32 +32,44 @@
 		D14C0FEE209823A800026AF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FED209823A800026AF1 /* Constants.swift */; };
 		D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FEF2098695B00026AF1 /* NotificationName.swift */; };
 		D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FF1209873E100026AF1 /* AlertToUser.swift */; };
+		D151103F20B4B77900527420 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151103E20B4B77900527420 /* GradientView.swift */; };
+		D155BF3820BBC488001EC4DD /* PrivacyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D155BF3620BBC488001EC4DD /* PrivacyTableViewCell.swift */; };
+		D155BF3920BBC488001EC4DD /* PrivacyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D155BF3720BBC488001EC4DD /* PrivacyTableViewCell.xib */; };
+		D155BF3C20BBC5C3001EC4DD /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D155BF3B20BBC5C3001EC4DD /* PrivacyViewController.swift */; };
+		D157B69D20B7D37D00C759DA /* ButtonIBIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D157B69C20B7D37D00C759DA /* ButtonIBIn.swift */; };
+		D15B3DF320C11083003A68E2 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15B3DF220C11083003A68E2 /* ProfileTableViewController.swift */; };
 		D1658265209AC2A300C37F8D /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658263209AC2A300C37F8D /* DestinationTableViewCell.swift */; };
 		D1658266209AC2A300C37F8D /* DestinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */; };
 		D1658268209AE78800C37F8D /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1658267209AE78800C37F8D /* Struct.swift */; };
 		D179F86020A93A7500D7DC25 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D179F85F20A93A7500D7DC25 /* DestinationViewController.swift */; };
+		D17BA83420C39A1100164707 /* MyFriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17BA83320C39A1100164707 /* MyFriendListViewController.swift */; };
+		D180477D20B5A964000DC705 /* AllUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D180477B20B5A964000DC705 /* AllUsersTableViewCell.swift */; };
+		D180477E20B5A964000DC705 /* AllUsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D180477C20B5A964000DC705 /* AllUsersTableViewCell.xib */; };
 		D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B75FC209729C400D27B86 /* RoundImage.swift */; };
 		D18B9B5E209DEE0A00EB8D16 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */; };
 		D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */; };
 		D18B9B6420A0248500EB8D16 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6320A0248500EB8D16 /* Date.swift */; };
 		D18B9B6720A030E300EB8D16 /* DestinationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6620A030E300EB8D16 /* DestinationManager.swift */; };
+		D195C9ED20C084D000942354 /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195C9EC20C084D000942354 /* RegisterTableViewController.swift */; };
 		D19B2C2A20A4EACD0076E4ED /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */; };
 		D19B2C2B20A4EACD0076E4ED /* DetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */; };
 		D1A01CA520AAC5FE00E00988 /* TSdateFormatter1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A01CA420AAC5FE00E00988 /* TSdateFormatter1.swift */; };
 		D1A01CA720AB047600E00988 /* WeekDayEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A01CA620AB047600E00988 /* WeekDayEnum.swift */; };
 		D1B1608020A332A900B69222 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B1607F20A332A900B69222 /* UIView.swift */; };
+		D1B280C920C2FE79005ABBCE /* InvitedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B280C820C2FE79005ABBCE /* InvitedListViewController.swift */; };
 		D1BBA31C2095727C005E5AAE /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */; };
 		D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */; };
 		D1BBA32220958157005E5AAE /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BBA32120958157005E5AAE /* LogInViewController.swift */; };
 		D1BBA324209581D6005E5AAE /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA323209581D5005E5AAE /* Login.storyboard */; };
 		D1BBA32620958FF8005E5AAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1BBA32520958FF8005E5AAE /* GoogleService-Info.plist */; };
-		D1D45E9B20B0617700E3E7BE /* userInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D45E9A20B0617700E3E7BE /* userInfoManager.swift */; };
+		D1D45E9B20B0617700E3E7BE /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D45E9A20B0617700E3E7BE /* UserInfoManager.swift */; };
 		D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A2620A5D6F6002D8CF6 /* TSDateFormatter.swift */; };
 		D1DA0A2920A654D4002D8CF6 /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1DA0A2820A654D4002D8CF6 /* LocationView.xib */; };
 		D1DA0A2D20A656CB002D8CF6 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */; };
-		D1DA0A3720A6FFF4002D8CF6 /* DismenstionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A3620A6FFF4002D8CF6 /* DismenstionViewController.swift */; };
+		D1DA0A3720A6FFF4002D8CF6 /* GoogleStreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A3620A6FFF4002D8CF6 /* GoogleStreeViewController.swift */; };
+		D1DE2FBA20C580A400A6AB2A /* GuildLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1DE2FB920C580A400A6AB2A /* GuildLine.storyboard */; };
+		D1DE2FBD20C581ED00A6AB2A /* GuildLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DE2FBC20C581ED00A6AB2A /* GuildLineViewController.swift */; };
 		D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD6120914CA900310121 /* AppDelegate.swift */; };
-		D1E6CD6420914CA900310121 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD6320914CA900310121 /* ViewController.swift */; };
 		D1E6CD6720914CA900310121 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6520914CA900310121 /* Main.storyboard */; };
 		D1E6CD6920914CAA00310121 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6820914CAA00310121 /* Assets.xcassets */; };
 		D1E6CD6C20914CAA00310121 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6A20914CAA00310121 /* LaunchScreen.storyboard */; };
@@ -61,14 +82,24 @@
 		D1F542312099FF42007EBE96 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5422F2099FF42007EBE96 /* ScheduleTableViewCell.swift */; };
 		D1F542322099FF42007EBE96 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F542302099FF42007EBE96 /* ScheduleTableViewCell.xib */; };
 		D1F5C83A20A3BDD30066C636 /* logoPage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D1F5C83920A3BDD30066C636 /* logoPage.jpg */; };
+		D1F70A1620C4A66400576606 /* shareScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F70A1520C4A66400576606 /* shareScheduleManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2899322EBE8B1C2AA88ED1D9 /* Pods-TravelSharing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.release.xcconfig"; sourceTree = "<group>"; };
 		69BAEA4434D7C88796C98B4C /* Pods-TravelSharing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelSharing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing.debug.xcconfig"; sourceTree = "<group>"; };
+		D1010DEF20BFABCF007F4959 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		D1010DF120BFAC03007F4959 /* FriendsList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendsList.storyboard; sourceTree = "<group>"; };
+		D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitatedFriendManager.swift; sourceTree = "<group>"; };
+		D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsViewController.swift; sourceTree = "<group>"; };
 		D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditScheduleViewController.swift; sourceTree = "<group>"; };
 		D10418EF209982770084952E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		D116C34220BD33C30034C84C /* DistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DistanceManager.swift; path = /Users/Annie/Desktop/TravelSharing/TravelSharing/Model/Destination/DistanceManager.swift; sourceTree = "<absolute>"; };
+		D116C34420BD689B0034C84C /* DistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceViewController.swift; sourceTree = "<group>"; };
 		D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POMCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		D11FBBDB20B3FB5A000B8284 /* AllUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserViewController.swift; sourceTree = "<group>"; };
+		D11FBBDD20B40EB4000B8284 /* LukeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LukeScrollView.swift; sourceTree = "<group>"; };
+		D11FBBDF20B40ECF000B8284 /* LukeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LukeCollectionView.swift; sourceTree = "<group>"; };
 		D126D05820AD2F6400F46AE3 /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCotroller.swift; sourceTree = "<group>"; };
 		D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackLocation.storyboard; sourceTree = "<group>"; };
@@ -81,33 +112,45 @@
 		D14C0FED209823A800026AF1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D14C0FEF2098695B00026AF1 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		D14C0FF1209873E100026AF1 /* AlertToUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertToUser.swift; sourceTree = "<group>"; };
+		D151103E20B4B77900527420 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		D155BF3620BBC488001EC4DD /* PrivacyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyTableViewCell.swift; sourceTree = "<group>"; };
+		D155BF3720BBC488001EC4DD /* PrivacyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivacyTableViewCell.xib; sourceTree = "<group>"; };
+		D155BF3B20BBC5C3001EC4DD /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		D157B69C20B7D37D00C759DA /* ButtonIBIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonIBIn.swift; sourceTree = "<group>"; };
+		D15B3DF220C11083003A68E2 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		D1658263209AC2A300C37F8D /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
 		D1658264209AC2A300C37F8D /* DestinationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DestinationTableViewCell.xib; sourceTree = "<group>"; };
 		D1658267209AE78800C37F8D /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		D179F85F20A93A7500D7DC25 /* DestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
+		D17BA83320C39A1100164707 /* MyFriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendListViewController.swift; sourceTree = "<group>"; };
+		D180477B20B5A964000DC705 /* AllUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewCell.swift; sourceTree = "<group>"; };
+		D180477C20B5A964000DC705 /* AllUsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllUsersTableViewCell.xib; sourceTree = "<group>"; };
 		D18B75FC209729C400D27B86 /* RoundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
 		D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		D18B9B6320A0248500EB8D16 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		D18B9B6620A030E300EB8D16 /* DestinationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationManager.swift; sourceTree = "<group>"; };
+		D195C9EC20C084D000942354 /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
 		D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		D1A01CA420AAC5FE00E00988 /* TSdateFormatter1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSdateFormatter1.swift; sourceTree = "<group>"; };
 		D1A01CA620AB047600E00988 /* WeekDayEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayEnum.swift; sourceTree = "<group>"; };
 		D1B1607F20A332A900B69222 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		D1B280C820C2FE79005ABBCE /* InvitedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedListViewController.swift; sourceTree = "<group>"; };
 		D1BBA31B2095727C005E5AAE /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1BBA32120958157005E5AAE /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		D1BBA323209581D5005E5AAE /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D1BBA32520958FF8005E5AAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D1D45E9A20B0617700E3E7BE /* userInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfoManager.swift; sourceTree = "<group>"; };
+		D1D45E9A20B0617700E3E7BE /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
 		D1DA0A2620A5D6F6002D8CF6 /* TSDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSDateFormatter.swift; sourceTree = "<group>"; };
 		D1DA0A2820A654D4002D8CF6 /* LocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
 		D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
-		D1DA0A3620A6FFF4002D8CF6 /* DismenstionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismenstionViewController.swift; sourceTree = "<group>"; };
+		D1DA0A3620A6FFF4002D8CF6 /* GoogleStreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStreeViewController.swift; sourceTree = "<group>"; };
+		D1DE2FB920C580A400A6AB2A /* GuildLine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GuildLine.storyboard; sourceTree = "<group>"; };
+		D1DE2FBC20C581ED00A6AB2A /* GuildLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildLineViewController.swift; sourceTree = "<group>"; };
 		D1E6CD5E20914CA900310121 /* TravelSharing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelSharing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E6CD6120914CA900310121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D1E6CD6320914CA900310121 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D1E6CD6620914CA900310121 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1E6CD6820914CAA00310121 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1E6CD6B20914CAA00310121 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -121,6 +164,7 @@
 		D1F5422F2099FF42007EBE96 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		D1F542302099FF42007EBE96 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		D1F5C83920A3BDD30066C636 /* logoPage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logoPage.jpg; sourceTree = "<group>"; };
+		D1F70A1520C4A66400576606 /* shareScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shareScheduleManager.swift; sourceTree = "<group>"; };
 		F353853584E1967591DC1429 /* Pods_TravelSharing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravelSharing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -153,6 +197,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D1010DEE20BFABA5007F4959 /* FriendList */ = {
+			isa = PBXGroup;
+			children = (
+				D11FBBDB20B3FB5A000B8284 /* AllUserViewController.swift */,
+				D1010DEF20BFABCF007F4959 /* FriendListViewController.swift */,
+				D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */,
+				D1B280C820C2FE79005ABBCE /* InvitedListViewController.swift */,
+				D17BA83320C39A1100164707 /* MyFriendListViewController.swift */,
+			);
+			path = FriendList;
+			sourceTree = "<group>";
+		};
 		D10418EE209982000084952E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +221,12 @@
 				D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */,
 				D1DA0A2820A654D4002D8CF6 /* LocationView.xib */,
 				D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */,
+				D11FBBDF20B40ECF000B8284 /* LukeCollectionView.swift */,
+				D11FBBDD20B40EB4000B8284 /* LukeScrollView.swift */,
+				D180477B20B5A964000DC705 /* AllUsersTableViewCell.swift */,
+				D180477C20B5A964000DC705 /* AllUsersTableViewCell.xib */,
+				D155BF3620BBC488001EC4DD /* PrivacyTableViewCell.swift */,
+				D155BF3720BBC488001EC4DD /* PrivacyTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,13 +259,25 @@
 			isa = PBXGroup;
 			children = (
 				D1448FDC2096CAB000D699DB /* RegisterViewController.swift */,
+				D195C9EC20C084D000942354 /* RegisterTableViewController.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		D155BF3A20BBC581001EC4DD /* Privacy */ = {
+			isa = PBXGroup;
+			children = (
+				D155BF3B20BBC5C3001EC4DD /* PrivacyViewController.swift */,
+			);
+			path = Privacy;
 			sourceTree = "<group>";
 		};
 		D1BBA31920957222005E5AAE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D1DE2FBB20C581D200A6AB2A /* GuildLine */,
+				D1010DEE20BFABA5007F4959 /* FriendList */,
+				D155BF3A20BBC581001EC4DD /* Privacy */,
 				D127E17020A53F7800EBB5F7 /* Track */,
 				D127E16B20A52ECA00EBB5F7 /* Navigation */,
 				D1BBA32020958144005E5AAE /* Login */,
@@ -222,7 +296,8 @@
 				D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */,
 				D18B9B5D209DEE0A00EB8D16 /* ScheduleDetailViewController.swift */,
 				D18B9B5F209DFA6300EB8D16 /* AddLocationViewController.swift */,
-				D1DA0A3620A6FFF4002D8CF6 /* DismenstionViewController.swift */,
+				D1DA0A3620A6FFF4002D8CF6 /* GoogleStreeViewController.swift */,
+				D116C34420BD689B0034C84C /* DistanceViewController.swift */,
 				D179F85F20A93A7500D7DC25 /* DestinationViewController.swift */,
 			);
 			path = Schedule;
@@ -231,6 +306,7 @@
 		D1BBA31D2095739C005E5AAE /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				D15B3DF220C11083003A68E2 /* ProfileTableViewController.swift */,
 				D1BBA31E209573BF005E5AAE /* ProfileViewController.swift */,
 			);
 			path = Profile;
@@ -247,6 +323,7 @@
 		D1D45E9820B0611600E3E7BE /* Destination */ = {
 			isa = PBXGroup;
 			children = (
+				D116C34220BD33C30034C84C /* DistanceManager.swift */,
 				D18B9B6620A030E300EB8D16 /* DestinationManager.swift */,
 			);
 			path = Destination;
@@ -255,9 +332,18 @@
 		D1D45E9920B0613C00E3E7BE /* getUserData */ = {
 			isa = PBXGroup;
 			children = (
-				D1D45E9A20B0617700E3E7BE /* userInfoManager.swift */,
+				D1D45E9A20B0617700E3E7BE /* UserInfoManager.swift */,
+				D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */,
 			);
 			path = getUserData;
+			sourceTree = "<group>";
+		};
+		D1DE2FBB20C581D200A6AB2A /* GuildLine */ = {
+			isa = PBXGroup;
+			children = (
+				D1DE2FBC20C581ED00A6AB2A /* GuildLineViewController.swift */,
+			);
+			path = GuildLine;
 			sourceTree = "<group>";
 		};
 		D1E6CD5520914CA900310121 = {
@@ -287,7 +373,6 @@
 				D1E6CD7C20914E9800310121 /* Extension */,
 				D1E6CD7520914D8C00310121 /* Storyboard */,
 				D1E6CD6120914CA900310121 /* AppDelegate.swift */,
-				D1E6CD6320914CA900310121 /* ViewController.swift */,
 				D1E6CD6820914CAA00310121 /* Assets.xcassets */,
 				D1F5C83920A3BDD30066C636 /* logoPage.jpg */,
 				D1E6CD6A20914CAA00310121 /* LaunchScreen.storyboard */,
@@ -307,6 +392,8 @@
 				D1E6CD7820914E0E00310121 /* Profile.storyboard */,
 				D1E6CD7A20914E2700310121 /* Schedule.storyboard */,
 				D1400B3220961E8700B0040B /* Register.storyboard */,
+				D1010DF120BFAC03007F4959 /* FriendsList.storyboard */,
+				D1DE2FB920C580A400A6AB2A /* GuildLine.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -322,6 +409,7 @@
 		D1E6CD7720914DAC00310121 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1F70A1420C4A63D00576606 /* New Group */,
 				D1D45E9920B0613C00E3E7BE /* getUserData */,
 				D1D45E9820B0611600E3E7BE /* Destination */,
 				D1F5422E2099FE37007EBE96 /* Schedule */,
@@ -337,6 +425,8 @@
 				D1658267209AE78800C37F8D /* Struct.swift */,
 				D18B9B6320A0248500EB8D16 /* Date.swift */,
 				D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */,
+				D151103E20B4B77900527420 /* GradientView.swift */,
+				D157B69C20B7D37D00C759DA /* ButtonIBIn.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -368,6 +458,14 @@
 			path = Schedule;
 			sourceTree = "<group>";
 		};
+		D1F70A1420C4A63D00576606 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				D1F70A1520C4A66400576606 /* shareScheduleManager.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -382,6 +480,7 @@
 				D1E6CD5C20914CA900310121 /* Resources */,
 				42F57943A86CA2A056C3DF05 /* [CP] Embed Pods Frameworks */,
 				660D4588FCD2C2822906068D /* [CP] Copy Pods Resources */,
+				D155BF3D20BC0765001EC4DD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -443,10 +542,14 @@
 				D1E6CD7920914E0E00310121 /* Profile.storyboard in Resources */,
 				D1F5C83A20A3BDD30066C636 /* logoPage.jpg in Resources */,
 				D1E6CD6720914CA900310121 /* Main.storyboard in Resources */,
+				D180477E20B5A964000DC705 /* AllUsersTableViewCell.xib in Resources */,
 				D1E6CD7B20914E2700310121 /* Schedule.storyboard in Resources */,
 				D1DA0A2920A654D4002D8CF6 /* LocationView.xib in Resources */,
+				D1DE2FBA20C580A400A6AB2A /* GuildLine.storyboard in Resources */,
 				D1BBA32620958FF8005E5AAE /* GoogleService-Info.plist in Resources */,
 				D1F542322099FF42007EBE96 /* ScheduleTableViewCell.xib in Resources */,
+				D1010DF220BFAC03007F4959 /* FriendsList.storyboard in Resources */,
+				D155BF3920BBC488001EC4DD /* PrivacyTableViewCell.xib in Resources */,
 				D1400B3320961E8700B0040B /* Register.storyboard in Resources */,
 				D127E16F20A5360300EBB5F7 /* TrackLocation.storyboard in Resources */,
 			);
@@ -480,6 +583,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -488,11 +592,13 @@
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -501,6 +607,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -529,6 +636,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelSharing/Pods-TravelSharing-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D155BF3D20BC0765001EC4DD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" e346b0a5e09b92e031e7390c417d59e9b0173121 7110c1f9a5429a1c9749d6506ac54aa22b1ced5f794e86354781032b54337351";
+		};
 		D199608420AC113C004C7D8E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -549,44 +669,62 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1B280C920C2FE79005ABBCE /* InvitedListViewController.swift in Sources */,
 				D179F86020A93A7500D7DC25 /* DestinationViewController.swift in Sources */,
 				D1DA0A2720A5D6F6002D8CF6 /* TSDateFormatter.swift in Sources */,
-				D1D45E9B20B0617700E3E7BE /* userInfoManager.swift in Sources */,
+				D1D45E9B20B0617700E3E7BE /* UserInfoManager.swift in Sources */,
 				D1658265209AC2A300C37F8D /* DestinationTableViewCell.swift in Sources */,
-				D1DA0A3720A6FFF4002D8CF6 /* DismenstionViewController.swift in Sources */,
+				D116C34520BD689B0034C84C /* DistanceViewController.swift in Sources */,
+				D1DA0A3720A6FFF4002D8CF6 /* GoogleStreeViewController.swift in Sources */,
 				D126D05920AD2F6400F46AE3 /* TrackViewController.swift in Sources */,
+				D1F70A1620C4A66400576606 /* shareScheduleManager.swift in Sources */,
+				D116C34320BD33C30034C84C /* DistanceManager.swift in Sources */,
 				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,
 				D14C0FEE209823A800026AF1 /* Constants.swift in Sources */,
 				D127E17220A53F9B00EBB5F7 /* TrackLocationViewController.swift in Sources */,
+				D157B69D20B7D37D00C759DA /* ButtonIBIn.swift in Sources */,
+				D11FBBDE20B40EB4000B8284 /* LukeScrollView.swift in Sources */,
+				D17BA83420C39A1100164707 /* MyFriendListViewController.swift in Sources */,
 				D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */,
 				D14C0FEA209801CF00026AF1 /* String.swift in Sources */,
 				D10418F0209982770084952E /* CustomCell.swift in Sources */,
 				D18B9B5E209DEE0A00EB8D16 /* ScheduleDetailViewController.swift in Sources */,
 				D19B2C2A20A4EACD0076E4ED /* DetailCollectionViewCell.swift in Sources */,
+				D1010DF020BFABCF007F4959 /* FriendListViewController.swift in Sources */,
 				D1F542312099FF42007EBE96 /* ScheduleTableViewCell.swift in Sources */,
+				D1010DF520BFD73E007F4959 /* InvitatedFriendManager.swift in Sources */,
 				D1BBA31F209573BF005E5AAE /* ProfileViewController.swift in Sources */,
 				D1E6CD7E20914EB700310121 /* UIStoryboard.swift in Sources */,
 				D11E007220B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift in Sources */,
 				D18B9B6420A0248500EB8D16 /* Date.swift in Sources */,
+				D1010DF720C00084007F4959 /* SearchFriendsViewController.swift in Sources */,
 				D1658268209AE78800C37F8D /* Struct.swift in Sources */,
+				D15B3DF320C11083003A68E2 /* ProfileTableViewController.swift in Sources */,
 				D1400B31209619F700B0040B /* UserManager.swift in Sources */,
 				D1BBA31C2095727C005E5AAE /* ScheduleViewController.swift in Sources */,
 				D1BBA32220958157005E5AAE /* LogInViewController.swift in Sources */,
-				D1E6CD6420914CA900310121 /* ViewController.swift in Sources */,
 				D1E6CD7420914D0B00310121 /* TabBarViewController.swift in Sources */,
 				D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */,
 				D1A01CA520AAC5FE00E00988 /* TSdateFormatter1.swift in Sources */,
 				D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */,
+				D1DE2FBD20C581ED00A6AB2A /* GuildLineViewController.swift in Sources */,
+				D11FBBE020B40ECF000B8284 /* LukeCollectionView.swift in Sources */,
 				D127E17420A541AD00EBB5F7 /* TSColor.swift in Sources */,
 				D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */,
 				D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */,
+				D155BF3820BBC488001EC4DD /* PrivacyTableViewCell.swift in Sources */,
+				D155BF3C20BBC5C3001EC4DD /* PrivacyViewController.swift in Sources */,
+				D11FBBDC20B3FB5A000B8284 /* AllUserViewController.swift in Sources */,
 				D1F5422D2099F09D007EBE96 /* ScheduleManager.swift in Sources */,
 				D1B1608020A332A900B69222 /* UIView.swift in Sources */,
+				D180477D20B5A964000DC705 /* AllUsersTableViewCell.swift in Sources */,
+				D195C9ED20C084D000942354 /* RegisterTableViewController.swift in Sources */,
 				D1A01CA720AB047600E00988 /* WeekDayEnum.swift in Sources */,
 				D1DA0A2D20A656CB002D8CF6 /* LocationView.swift in Sources */,
 				D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */,
 				D1F5422B2099EBAA007EBE96 /* FirBaseConnect.swift in Sources */,
 				D18B9B6720A030E300EB8D16 /* DestinationManager.swift in Sources */,
+				D151103F20B4B77900527420 /* GradientView.swift in Sources */,
 				D127E16D20A52EE300EBB5F7 /* NavigationCotroller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -735,6 +873,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -742,7 +881,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -754,6 +893,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -761,7 +901,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.annie.TravelSharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

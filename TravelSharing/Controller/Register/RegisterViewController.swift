@@ -9,21 +9,24 @@
 import UIKit
 import FirebaseAuth
 import Fusuma
+import SVProgressHUD
 
 class RegisterViewController: UIViewController, FusumaDelegate {
 
+    @IBOutlet weak var conerView: UIView!
     @IBOutlet weak var photoBtn: UIButton!
     @IBOutlet weak var registImageView: UIImageView!
     @IBOutlet weak var userNameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
-
     @IBOutlet weak var reEnterPasswordText: UITextField!
+    var indicator = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        registImageView.setCircle()
+     //  conerView.setConerRect()
+        registImageView.setRounded()
         photoBtn.isUserInteractionEnabled = true
 
       //換頁notification
@@ -51,6 +54,13 @@ class RegisterViewController: UIViewController, FusumaDelegate {
         self.present(fusuma, animated: true, completion: nil)
     }
 
+    @IBAction func privacyBtn(_ sender: Any) {
+
+        let storyboard = PrivacyViewController()
+
+        present(storyboard, animated: true, completion: nil)
+
+    }
     //Register
     @IBAction func registerBtn(_ sender: Any) {
 
@@ -64,7 +74,7 @@ class RegisterViewController: UIViewController, FusumaDelegate {
         if userNameText.text != "", emailText.text != "", passwordText.text != "", reEnterPasswordText.text != "" {
          //密碼需大於六碼
             if (passwordText.text?.count)! < 6 {
-                  AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: ">6")
+                  AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "密碼需大於6碼")
         //密碼與再次確認密碼
             } else if passwordText.text != reEnterPasswordText.text {
                 AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "二個密碼不同")
@@ -75,6 +85,10 @@ class RegisterViewController: UIViewController, FusumaDelegate {
             } else {
               UserManager.shared.singUp(email: emailText.text!, password: passwordText.text!, username: userNameText.text!, userphoto: data) { (message) in
                          AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: message!)
+
+                }
+                if indicator  == true {
+                    SVProgressHUD.show(withStatus: "loading")
                 }
             }
         } else {

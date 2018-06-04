@@ -37,7 +37,8 @@ class AddEditScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
+        let rightBarButtonItem = UIBarButtonItem(title: "儲存", style: .plain, target: self, action: #selector(addTapped))
+        rightBarButtonItem.tintColor = UIColor.white
         navigationItem.rightBarButtonItem =  rightBarButtonItem
         navigationItem.title = scheduleInfoDetail?.name
 
@@ -65,9 +66,8 @@ class AddEditScheduleViewController: UIViewController {
 
         if scheduleInfoDetail == nil {
             if scheduleDateText.text != "", scheduleDaysText.text != "", scheduleNameText.text != "" {
-    //儲存資料  pop 回上頁
-                     ScheduleManager.shared.saveScheduleInfo(uid: scheduleInfoDetail?.uid,
-                                                             scheduleName: scheduleNameText.text!,
+    //新增資料  pop 回上頁
+                     ScheduleManager.shared.saveScheduleInfo(scheduleName: scheduleNameText.text!,
                                                              scheudleDate: scheduleDateText.text!,
                                                              scheduleDay: scheduleDaysText.text!)
                      self.navigationController?.popViewController(animated: true)

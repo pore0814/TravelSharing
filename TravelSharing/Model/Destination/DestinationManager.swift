@@ -8,44 +8,34 @@
 
 import Foundation
 import FirebaseDatabase
+import Alamofire
 
 protocol DestinationManagerDelegate: class {
     func manager(_ manager: DestinationManager, didGet schedule: [Destination])
 }
 
 struct DestinationManager {
-
     var delegate: DestinationManagerDelegate?
-
-//    func getDestinationData() {
-//        var destinationArray = [Destination]()
-//        guard let userid = UserManager.shared.getFireBaseUID() else {return}
-//        FireBaseConnect
-//            .databaseRef
+    var totalDistanceInMeters: UInt = 0
+    var totalDistance: String!
+    var totalDurationInSeconds: UInt = 0
+    var totalDuration: String!
+////第一次登入會產生的範例
+//    func savefisrtDestinationInfo(uid: String) {
+//
+//        let destinationUid = FireBaseConnect.databaseRef.childByAutoId().key
+//        let destinationInfo = ["category": "景點",
+//                               "lat": 23.003012, "long": 120.211601,
+//                               "name": "台南公園", "query": "2019 01 01_11:00",
+//            "time": "11:00", "uid": destinationUid ] as [String: Any]
+//
+//        FireBaseConnect.databaseRef
 //            .child(Constants.FireBaseSchedules)
-//            .child("-LCBuqrtebBfGAT8iis_")
+//            .child(uid)
 //            .child("destination")
-//            .queryOrdered(byChild: "date")
-//            .queryEqual(toValue: "2018 05 11")
-//            .observe(.childAdded, with: { (snapshot) in
-//
-//                guard  let destinationInfo =  snapshot.value as? [String: Any] else {return}
-//                guard  let category = destinationInfo["category"] as? String else {return}
-//                guard  let time  = destinationInfo["time"] as? String else {return}
-//                guard  let name  = destinationInfo["name"] as? String else {return}
-//                guard  let latitude  = destinationInfo["lat"] as? Double else {return}
-//                guard  let longitude = destinationInfo["long"] as? Double else {return}
-//                guard  let date = destinationInfo["date"] as? String else {return}
-//                guard  let query = destinationInfo["query"] as? String else {return}
-//
-//                let destination =  Destination(name: name, time: time, date: date, category: category, latitude: latitude, longitude: longitude, query: query)
-//                destinationArray.append(destination)
-//                destinationArray.sort(by: {$0.time < $1.time})
-//
-//                DispatchQueue.main.async {
-//                    self.delegate?.manager(self, didGet: destinationArray)
-//                }
-//            })
+//            .child("Day1")
+//            .child(destinationUid)
+//            .setValue(destinationInfo)
 //    }
 
 //SaveDate
@@ -54,10 +44,9 @@ struct DestinationManager {
         print("101-------")
         let destinationUid = FireBaseConnect.databaseRef.childByAutoId().key
         let destinationInfo = ["category": destination.category,
-                                "date": destination.date, "lat": destination.latitude,
-                                "long": destination.longitude, "name": destination.name,
-                                "query": destination.query, "time": destination.time,
-                                "uid": destinationUid] as [String: Any]
+                               "lat": destination.latitude, "long": destination.longitude,
+                               "name": destination.name, "query": destination.query,
+                               "time": destination.time, "uid": destinationUid] as [String: Any]
 
         FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)
@@ -88,14 +77,11 @@ struct DestinationManager {
                         guard  let name  = destinationInfo["name"] as? String else {return}
                         guard  let latitude  = destinationInfo["lat"] as? Double else {return}
                         guard  let longitude = destinationInfo["long"] as? Double else {return}
-                        guard  let date = destinationInfo["date"] as? String else {return}
                         guard  let query = destinationInfo["query"] as? String else {return}
                         guard  let uid = destinationInfo["uid"] as? String else {return}
 
-                        let destination =  Destination(name: name, time: time, date: date, category: category, latitude: latitude, longitude: longitude, query: query, uid: uid)
+                        let destination =  Destination(name: name, time: time, category: category, latitude: latitude, longitude: longitude, query: query, uid: uid)
                         destinationInfoArray.append(destination)
-                        print("----------99")
-                        print(destinationInfoArray)
                         destinationInfoArray.sort(by: {$0.time < $1.time})
                     }
                     DispatchQueue.main.async {
@@ -104,22 +90,38 @@ struct DestinationManager {
                 }
             })
         }
-
+//Delete
     func deleteDestinationInfo(scheduleUid: String, dayth: String, destinationUid: String) {
-   FireBaseConnect.databaseRef.child("schedules")
-                                .child(scheduleUid)
-                                .child("destination")
-                                .child(dayth)
-                                .child(destinationUid)
-                                .removeValue { error, _ in
-                                    print(error)
+       FireBaseConnect.databaseRef.child("schedules")
+                                    .child(scheduleUid)
+                                    .child("destination")
+                                    .child(dayth)
+                                    .child(destinationUid)
+                                    .removeValue { error, _ in
+                                                    print(error)
                                     }
+        }
+// get DistanceAndTime
+    func getDestinationDateAndTime(completion:@escaping(DistanceAndTime) -> Void) {
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.042837,121.564879&destination=25.058232,121.520560&mode=driving"
 
-//    FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child("uuid").child("-LCy_6MTMs-0cvBYL4SQ")
-//        FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(scheduleId).
-//            //.removeValue { error, _ in
-//            /* 再刪除使用者Schedule下的Schedule_id  */
-////        }
+        Alamofire.request(url).responseJSON { response in
+            //print(response.value)
+            guard let result = response.value as? [String: Any],
+
+            let routes = result["routes"] as? [[String: Any]],
+                let route = routes.first,
+            let legs = route["legs"] as? [[String: Any]],
+            let leg = legs.first,
+            let distances = leg["distance"] as? [String: Any],
+            let durations = leg["duration"] as? [String: Any],
+            let distance = distances["text"] as? String ,
+            let duration = durations["text"] as? String else {return}
+
+            let distanceInfo = DistanceAndTime(distance: distance, time: duration)
+
+             completion(distanceInfo)
 
     }
    }
+}

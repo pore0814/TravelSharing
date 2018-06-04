@@ -15,17 +15,37 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>e346b0a5e09b92e031e7390c417d59e9b0173121</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>comgooglemaps</string>
+		<string>iosamap</string>
+		<string>baidumap</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>TraveSharing want to use your Camera</string>
+	<string>我們要使用您的相機，才能更換您的大頭照。若取消則需再到 設定 &gt; 隱私權 &gt; 照片 開啟。</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We want access your location</string>
+	<string>我們要使您的位置，才能幫您規劃旅遊路線！若取消則需再到 設定 &gt; 隱私權 &gt; 定位服務 開啟。</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Can we user your Photo</string>
+	<string>我們要使用您的相簿，才能更換您的大頭照。若取消則需再到 設定 &gt; 隱私權 &gt; 照片 開啟。</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -37,8 +57,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

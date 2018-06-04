@@ -33,4 +33,8 @@ extension UIStoryboard {
     static func trackLocationStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "TrackLocation", bundle: nil)
     }
+
+    static func friendsStoryboard() -> UIStoryboard {
+        return UIStoryboard(name: "FriendsList", bundle: nil)
+    }
 }

@@ -20,6 +20,10 @@ pod 'SwiftLint'
 pod 'IQKeyboardManagerSwift'
 pod 'SVProgressHUD'
 pod 'SDWebImage'
+pod 'Alamofire'
+pod 'SwiftyJSON'
+pod 'Fabric'
+pod 'Crashlytics'
 
   
 

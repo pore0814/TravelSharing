@@ -9,14 +9,16 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import SCLAlertView
 
-class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var dateSelectedText: UITextField!
     @IBOutlet weak var categoryText: UITextField!
     @IBOutlet weak var timeText: UITextField!
     @IBOutlet weak var destinationText: UITextField!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var saveBtn: UIButton!
 
     let picker =  UIDatePicker()
     let destinationManager = DestinationManager()
@@ -27,41 +29,70 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     var uid: String?
     var pickerView = UIPickerView()
     var daythRow = "Day1"
+    var alert = SCLAlertView()
+    var previousPage = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//中心點設在畫面寛度中心點再+200 , animate設時間帶, 將stackview中心點帶到畫面寬度的中心點
-       stackView.center.x = self.view.frame.width + 200
+//一開始Catagory預設類別為"景點"
 
-        UIView.animate(withDuration: 2.0, delay: 1.0, usingSpringWithDamping: 0.3,
+        stackView.center.x = self.view.frame.width + 200
+
+        UIView.animate(withDuration: 2.0, delay: 0.5, usingSpringWithDamping: 0.3,
                        initialSpringVelocity: 30,
                        options: [] ,
                        animations: {
-                  self.stackView.center.x = self.view.frame.width / 2
+                        self.stackView.center.x = self.view.frame.width / 2
         }, completion: nil)
-//一開始Time顯示現在時間
-        getTime()
-//一開始Catagory預設類別為"景點"
-        categoryText.text = "景點"
-        createDatePicker()
 
-        for index in dateSelected! {
-            print(index.date)
-            dateSelectedText.text = index.date
-        }
-// pickView
+        saveBtn.setConerRect()
+
+//一開始Time顯示現在時間
+      getCurrentTime()
+
+      createDatePicker()
+
+      setPickerView()
+
+      searchPlaceTextGesture()
+
+      categoryTextGesture()
+}
+    func searchPlaceTextGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(searchPlaceTapGesture(_:)))
+
+            destinationText.superview?.addGestureRecognizer(tapGesture)
+    }
+
+    @objc private dynamic func searchPlaceTapGesture(_ gesture: UITapGestureRecognizer) {
+        let autocompleteController = GMSAutocompleteViewController()
+            autocompleteController.secondaryTextColor = UIColor.black
+            autocompleteController.delegate = self
+        self.present(autocompleteController, animated: true, completion: nil)
+    }
+
+    func categoryTextGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(categoryTapGesture(_:)))
+
+        categoryText.superview?.addGestureRecognizer(tapGesture)
+    }
+
+    @objc private dynamic func categoryTapGesture(_ gesture: UITapGestureRecognizer) {
+       //AlertToUser().alert.showEdit("請選擇類別", subTitle: "")
+    }
+
+    func setPickerView() {
         guard let dateselect = dateSelected else {return}
         pickerView.delegate = self
         pickerView.dataSource = self
         dateSelectedText.inputView = pickerView
         dateSelectedText.textAlignment = .center
         dateSelectedText.text = dateselect[0].date
-
-}
+    }
 
 //取得現在時間
-    func getTime() {
+    func getCurrentTime() {
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
@@ -70,29 +101,43 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         formatter.dateFormat = "HH:mm"
         let timeString = formatter.string(from: date)
         timeText.text = "\(timeString)"
-        //timeText.text = "\(hour):\(minutes)"
+    }
+
+    @IBAction func testBtn(_ sender: Any) {
+        AlertToUser().alert.showEdit("funck", subTitle: "funck")
     }
 
     @IBAction func saveBtn(_ sender: Any) {
-        if destinationText.text! == "" {
-            AlertToUser().alert.showError(Constants.WrongMessage, subTitle: "請選擇目的地")
-        } else {
-        print(dateSelectedText.text)
-         print(dateSelectedText.text! + "_" + timeText.text!)
-        print(uid!)
+        if destinationText.text != "" && dateSelectedText.text != "" && categoryText.text != "" {
 
-            let saveDate = Destination(name: destinationText.text!, time: timeText.text!, date: dateSelectedText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!, uid: "")
-          print(saveDate)
-          destinationManager.saveDestinationInfo(uid: uid!, dayth: daythRow, destination: saveDate)
-          destinationText.text = ""
-          navigationController?.popViewController(animated: true)
+                        let saveDate = Destination(name: destinationText.text!, time: timeText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!, uid: "")
+                      print(saveDate)
+                      destinationManager.saveDestinationInfo(uid: uid!, dayth: daythRow, destination: saveDate)
+                      destinationText.text = ""
+          //   navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
+            guard    let previousViewController = self.navigationController?.viewControllers.last as? ScheduleDetailViewController else {return}
+            previousViewController.backPage = previousPage
+            previousViewController.ggg?.tableView.reloadData()
+
+        //    self.navigationController?.dismiss(animated: true, completion: {
+//                guard let detail = self.storyboard?.instantiateViewController(withIdentifier: "ScheduleDetailViewController ") as? ScheduleDetailViewController else {return}
+//                self.detailVC?.backPage = self.previousPage
+
+  //         })
+
+        } else {
+            AlertToUser().alert.showError(Constants.WrongMessage, subTitle: "表格不可為空白")
+
         }
+
     }
+
 //Time Picker
     func createDatePicker() {
         let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-//Done button for toolbar
+            toolbar.sizeToFit()
+        //Done button for toolbar
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
             toolbar.setItems([done], animated: false)
 
@@ -102,7 +147,7 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
 
     @objc func donePressed() {
-// format date
+// formatdate
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         let timeString = formatter.string(from: picker.date)
@@ -114,20 +159,34 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
 //MARK： category 類別設定，要換圖
     @IBAction func spotBtn(_ sender: Any) {
         categoryText.text = "景點"
+        categoryText.textColor =  TSColor.gradientBlue.color()
     }
     @IBAction func restaurantBtn(_ sender: Any) {
          categoryText.text = "餐廳"
+         categoryText.textColor = TSColor.gradientPurple.color()
+
     }
     @IBAction func hotelBtn(_ sender: Any) {
      categoryText.text = "住宿"
+     categoryText.textColor = TSColor.gradientBlue.color()
+    }
+
+    @IBAction func otherBtn(_ sender: Any) {
+        categoryText.text = "其它"
+        categoryText.textColor = TSColor.gradientPurple.color()
     }
 
 //Search Location
-    @IBAction func searchLocation(_ sender: Any) {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.secondaryTextColor = UIColor.black
-        autocompleteController.delegate = self
-        self.present(autocompleteController, animated: true, completion: nil)
+    @IBAction func streetViewBtn(_ sender: Any) {
+                    if lat != 0.0 && long != 0.0 {
+                        guard let dismenstionViewController = UIStoryboard(name: "Schedule", bundle: nil)
+                                        .instantiateViewController(withIdentifier: "DismenstionViewController")as? GoogleStreeViewController else {return}
+                        dismenstionViewController.lat = lat
+                        dismenstionViewController.long  = long
+                        self.navigationController?.pushViewController(dismenstionViewController, animated: true)
+                    } else {
+                    AlertToUser().alert.showEdit("新增目的地", subTitle: "才能觀看街景圖哦")
+        }
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -142,34 +201,26 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         guard let selected = dateSelected else {return ""}
         daythRow = selected[row].dayth
         return selected[row].date + "   " + selected[row].dayth
+
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let selected = dateSelected else {return}
         dateSelectedText.text = selected[row].date
+        previousPage  = row
     }
-
 }
 
 //Search Location  (Auto complete)
-extension AddLocationViewController: GMSAutocompleteViewControllerDelegate {
+extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate {
 
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 15.0)
 
-        lat = place.coordinate.latitude
-        long = place.coordinate.longitude
+            lat = place.coordinate.latitude
+            long = place.coordinate.longitude
 
-            if lat != nil && long != nil {
-                guard let dismenstionViewController = UIStoryboard(name: "Schedule", bundle: nil)
-                                .instantiateViewController(withIdentifier: "DismenstionViewController")as? DismenstionViewController else {return}
-                dismenstionViewController.lat = place.coordinate.latitude
-                dismenstionViewController.long  = place.coordinate.longitude
-                self.navigationController?.pushViewController(dismenstionViewController, animated: true)
-              } else {
-                AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "需要正確位置哦")
-            }
 //placeText 顯示 Locaion Name
-        destinationText.text = place.name
+            destinationText.text = place.name
         self.dismiss(animated: true, completion: nil) // dismiss after select place
     }
 

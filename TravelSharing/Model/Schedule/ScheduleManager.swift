@@ -18,9 +18,22 @@ class ScheduleManager {
     weak var delegate: ScheduleManagerDelegate?
     var scheduleDataInfo: ScheduleInfo?
     var scheduleDataArray = [ScheduleInfo]()
+    var destinagionManager = DestinationManager()
 
-    //新增Schedule資料
-    func saveScheduleInfo(uid: String?, scheduleName: String, scheudleDate: String, scheduleDay: String) {
+//    func firstScheduleExample(firstScheduleId: String, userId: String) {
+//
+//        let  scheduleUid = FireBaseConnect.databaseRef.childByAutoId().key
+//        let  scheduleInfo = ["uid": firstScheduleId, "name": "範例",
+//                             "date": "2019 01 01", "days": "2", "host": userId]
+//        FireBaseConnect.databaseRef
+//            .child(Constants.FireBaseSchedules)
+//            .child(scheduleUid)
+//            .setValue(scheduleInfo)
+//
+//    }
+
+//新增Schedule資料
+    func saveScheduleInfo(scheduleName: String, scheudleDate: String, scheduleDay: String) {
         //User Id
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
               let  scheduleUid = FireBaseConnect.databaseRef.childByAutoId().key
@@ -33,26 +46,22 @@ class ScheduleManager {
         }
 
 //刪除(同時刪除Schedule下的uid 和User下Schedule的uid)
-    func deleteSchedule(scheduleId: String) {
+    func deleteSchedule(scheduleId: String, arrrayIndexPath: Int) {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
         /* 先刪除Schedule_id */ FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(scheduleId).removeValue { error, _ in
-            /* 再刪除使用者Schedule下的Schedule_id  */
-            if error == nil {
-                FireBaseConnect.databaseRef.child(Constants.FireBaseUsers).child(userid).child(Constants.FireBaseSchedule).child(scheduleId).removeValue { error, _ in
-                    if error != nil {
+                   self.scheduleDataArray.remove(at: arrrayIndexPath)
+                   if error != nil {
                         AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "刪除失敗")
                     }
                 }
             }
-        }
-    }
 
     //修改
     func updateaveScheduleInfo(scheduleUid: String?, scheduleName: String, scheudleDate: String, scheduleDay: String) {
          guard let userid = UserManager.shared.getFireBaseUID(), let scheduleUUid = scheduleUid else {return}
          let  updateScheduleInfo = ["uid": scheduleUid, "name": scheduleName,
                                     "date": scheudleDate, "days": scheduleDay, "host": userid]
-        FireBaseConnect.databaseRef
+         FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)
             .child(scheduleUUid)
             .updateChildValues(updateScheduleInfo)
@@ -91,11 +100,17 @@ class ScheduleManager {
     }
 */
 
-    // 到FireBase  schedules 撈使用者的post的 Scheudle內容
+    // 到FireBase  撈schedules資料
     func getScheduleContent() {
-       guard let userid = UserManager.shared.getFireBaseUID() else {return}
+
+        guard let userid = UserManager.shared.getFireBaseUID() else {
+
+            return
+
+        }
         scheduleDataArray.removeAll()
-             FireBaseConnect
+
+        FireBaseConnect
                 .databaseRef
                 .child(Constants.FireBaseSchedules)
                 .queryOrdered(byChild: "host")
@@ -111,7 +126,7 @@ class ScheduleManager {
 
                         let schedule = ScheduleInfo(uid: uid, date: date, name: name, days: days)
                         self.scheduleDataArray.append(schedule)
-                        self.scheduleDataArray.sort(by: {$0.date < $1.date})
+                        self.scheduleDataArray.sort(by: {$0.date > $1.date})
 
                         NotificationCenter.default.post(
                             name: .scheduleInfo,
