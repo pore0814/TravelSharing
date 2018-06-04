@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class InvitedListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -52,20 +53,28 @@ class InvitedListViewController: UIViewController, UITableViewDelegate, UITableV
 
    @objc func  permitted(sender: UIButton) {
     guard let myinfo = myInfo else {return}
+    if invitedListArray.count > 0 {
+       SVProgressHUD.show(withStatus: "delete")
       invitedFriendsManager.beFriend(myInfo: myinfo, friendInfo: invitedListArray[sender.tag])
       invitedFriendsManager.deletePermission(friendID: invitedListArray[sender.tag].uid)
       invitedFriendsManager.deletRequetFromMe(friendID: invitedListArray[sender.tag].uid)
       invitedListArray.remove(at: sender.tag)
-
+     tableView.reloadData()
+    }else {
+        AlertToUser().alert.showEdit("目前無資料", subTitle: "")
+    }
     print("permitted")
-
+    SVProgressHUD.dismiss()
     }
 
     @objc func canceled(sender: UIButton) {
         if  invitedListArray.count > 0 {
         invitedFriendsManager.cancelPermission(friendID: invitedListArray[sender.tag].uid)
         invitedFriendsManager.cancelRequestFromMe(friendID: invitedListArray[sender.tag].uid)
+        invitedFriendsManager.deletePermission(friendID: invitedListArray[sender.tag].uid)
+        invitedFriendsManager.deletRequetFromMe(friendID: invitedListArray[sender.tag].uid)
         invitedListArray.remove(at: sender.tag)
+        tableView.reloadData()
         }
         print("cancel")
     }

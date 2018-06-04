@@ -12,8 +12,6 @@
 		D1010DF220BFAC03007F4959 /* FriendsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1010DF120BFAC03007F4959 /* FriendsList.storyboard */; };
 		D1010DF520BFD73E007F4959 /* InvitatedFriendManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */; };
 		D1010DF720C00084007F4959 /* SearchFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */; };
-		D1010DFA20C02601007F4959 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1010DF820C02601007F4959 /* FriendsTableViewCell.swift */; };
-		D1010DFB20C02601007F4959 /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1010DF920C02601007F4959 /* FriendsTableViewCell.xib */; };
 		D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */; };
 		D10418F0209982770084952E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EF209982770084952E /* CustomCell.swift */; };
 		D116C34320BD33C30034C84C /* DistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D116C34220BD33C30034C84C /* DistanceManager.swift */; };
@@ -69,6 +67,8 @@
 		D1DA0A2920A654D4002D8CF6 /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1DA0A2820A654D4002D8CF6 /* LocationView.xib */; };
 		D1DA0A2D20A656CB002D8CF6 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */; };
 		D1DA0A3720A6FFF4002D8CF6 /* GoogleStreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DA0A3620A6FFF4002D8CF6 /* GoogleStreeViewController.swift */; };
+		D1DE2FBA20C580A400A6AB2A /* GuildLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1DE2FB920C580A400A6AB2A /* GuildLine.storyboard */; };
+		D1DE2FBD20C581ED00A6AB2A /* GuildLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DE2FBC20C581ED00A6AB2A /* GuildLineViewController.swift */; };
 		D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E6CD6120914CA900310121 /* AppDelegate.swift */; };
 		D1E6CD6720914CA900310121 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6520914CA900310121 /* Main.storyboard */; };
 		D1E6CD6920914CAA00310121 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1E6CD6820914CAA00310121 /* Assets.xcassets */; };
@@ -92,8 +92,6 @@
 		D1010DF120BFAC03007F4959 /* FriendsList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendsList.storyboard; sourceTree = "<group>"; };
 		D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitatedFriendManager.swift; sourceTree = "<group>"; };
 		D1010DF620C00084007F4959 /* SearchFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsViewController.swift; sourceTree = "<group>"; };
-		D1010DF820C02601007F4959 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
-		D1010DF920C02601007F4959 /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
 		D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditScheduleViewController.swift; sourceTree = "<group>"; };
 		D10418EF209982770084952E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		D116C34220BD33C30034C84C /* DistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DistanceManager.swift; path = /Users/Annie/Desktop/TravelSharing/TravelSharing/Model/Destination/DistanceManager.swift; sourceTree = "<absolute>"; };
@@ -149,6 +147,8 @@
 		D1DA0A2820A654D4002D8CF6 /* LocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
 		D1DA0A2C20A656CB002D8CF6 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		D1DA0A3620A6FFF4002D8CF6 /* GoogleStreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStreeViewController.swift; sourceTree = "<group>"; };
+		D1DE2FB920C580A400A6AB2A /* GuildLine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GuildLine.storyboard; sourceTree = "<group>"; };
+		D1DE2FBC20C581ED00A6AB2A /* GuildLineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildLineViewController.swift; sourceTree = "<group>"; };
 		D1E6CD5E20914CA900310121 /* TravelSharing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelSharing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E6CD6120914CA900310121 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1E6CD6620914CA900310121 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -227,8 +227,6 @@
 				D180477C20B5A964000DC705 /* AllUsersTableViewCell.xib */,
 				D155BF3620BBC488001EC4DD /* PrivacyTableViewCell.swift */,
 				D155BF3720BBC488001EC4DD /* PrivacyTableViewCell.xib */,
-				D1010DF820C02601007F4959 /* FriendsTableViewCell.swift */,
-				D1010DF920C02601007F4959 /* FriendsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -277,6 +275,7 @@
 		D1BBA31920957222005E5AAE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D1DE2FBB20C581D200A6AB2A /* GuildLine */,
 				D1010DEE20BFABA5007F4959 /* FriendList */,
 				D155BF3A20BBC581001EC4DD /* Privacy */,
 				D127E17020A53F7800EBB5F7 /* Track */,
@@ -339,6 +338,14 @@
 			path = getUserData;
 			sourceTree = "<group>";
 		};
+		D1DE2FBB20C581D200A6AB2A /* GuildLine */ = {
+			isa = PBXGroup;
+			children = (
+				D1DE2FBC20C581ED00A6AB2A /* GuildLineViewController.swift */,
+			);
+			path = GuildLine;
+			sourceTree = "<group>";
+		};
 		D1E6CD5520914CA900310121 = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +393,7 @@
 				D1E6CD7A20914E2700310121 /* Schedule.storyboard */,
 				D1400B3220961E8700B0040B /* Register.storyboard */,
 				D1010DF120BFAC03007F4959 /* FriendsList.storyboard */,
+				D1DE2FB920C580A400A6AB2A /* GuildLine.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -537,13 +545,13 @@
 				D180477E20B5A964000DC705 /* AllUsersTableViewCell.xib in Resources */,
 				D1E6CD7B20914E2700310121 /* Schedule.storyboard in Resources */,
 				D1DA0A2920A654D4002D8CF6 /* LocationView.xib in Resources */,
+				D1DE2FBA20C580A400A6AB2A /* GuildLine.storyboard in Resources */,
 				D1BBA32620958FF8005E5AAE /* GoogleService-Info.plist in Resources */,
 				D1F542322099FF42007EBE96 /* ScheduleTableViewCell.xib in Resources */,
 				D1010DF220BFAC03007F4959 /* FriendsList.storyboard in Resources */,
 				D155BF3920BBC488001EC4DD /* PrivacyTableViewCell.xib in Resources */,
 				D1400B3320961E8700B0040B /* Register.storyboard in Resources */,
 				D127E16F20A5360300EBB5F7 /* TrackLocation.storyboard in Resources */,
-				D1010DFB20C02601007F4959 /* FriendsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,7 +697,6 @@
 				D1E6CD7E20914EB700310121 /* UIStoryboard.swift in Sources */,
 				D11E007220B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift in Sources */,
 				D18B9B6420A0248500EB8D16 /* Date.swift in Sources */,
-				D1010DFA20C02601007F4959 /* FriendsTableViewCell.swift in Sources */,
 				D1010DF720C00084007F4959 /* SearchFriendsViewController.swift in Sources */,
 				D1658268209AE78800C37F8D /* Struct.swift in Sources */,
 				D15B3DF320C11083003A68E2 /* ProfileTableViewController.swift in Sources */,
@@ -700,6 +707,7 @@
 				D1E6CD6220914CA900310121 /* AppDelegate.swift in Sources */,
 				D1A01CA520AAC5FE00E00988 /* TSdateFormatter1.swift in Sources */,
 				D18B75FD209729C400D27B86 /* RoundImage.swift in Sources */,
+				D1DE2FBD20C581ED00A6AB2A /* GuildLineViewController.swift in Sources */,
 				D11FBBE020B40ECF000B8284 /* LukeCollectionView.swift in Sources */,
 				D127E17420A541AD00EBB5F7 /* TSColor.swift in Sources */,
 				D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */,
@@ -865,7 +873,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -885,7 +893,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2CWMHA84T8;
 				INFOPLIST_FILE = TravelSharing/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

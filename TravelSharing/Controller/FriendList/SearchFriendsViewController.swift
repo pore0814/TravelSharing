@@ -25,25 +25,42 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
 
     @IBOutlet weak var waitingtableView: UITableView!
 
-    @IBOutlet weak var addFriendLabel: UILabel!
+    @IBOutlet weak var friendProfileImg: UIImageView!
+    @IBOutlet weak var friendUserNamerLabel: UILabel!
+    @IBOutlet weak var friendEmailLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initModelManager()
+        
+        initSearchBar()
+
+        initTableView()
+        
+        addFriendsBtn.setRounded10()
+
+    }
+    
+    func initModelManager(){
         getUserInfoManager.delegate = self
         getUserInfoManager.getAllUserInfo()
         getUserInfoManager.getMyInfo()
-
+        
         invitedFriendManager.delegate = self
         invitedFriendManager.requestsFromMeList()
-
+    }
+    
+    func initSearchBar(){
         friendSearchBar.delegate = self
         friendSearchBar.returnKeyType  = UIReturnKeyType.done
-
-      waitingtableView.dataSource = self
-      waitingtableView.delegate = self
-      let nib  = UINib(nibName: "AllUsersTableViewCell", bundle: nil)
+    }
+    
+    func initTableView(){
+        waitingtableView.dataSource = self
+        waitingtableView.delegate = self
+        
+        let nib  = UINib(nibName: "AllUsersTableViewCell", bundle: nil)
         waitingtableView.register(nib, forCellReuseIdentifier: "AllUsersTableViewCell")
-
     }
 
 //加朋友
@@ -54,22 +71,43 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
                 invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendinfomation)
                 invitedFriendManager.waitingPermission(myinfo, sendRtoF: friendinfomation)
                 addFriendsBtn.isHidden = true
-                addFriendLabel.text = ""
+                friendEmailLabel.text = ""
+                friendUserNamerLabel.text = ""
+                friendProfileImg.isHidden =  true
 
             }
 
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.showsCancelButton = true
+        searchBar.resignFirstResponder()
+        return true
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+       
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+    
+
      func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         var friendEmail = friendSearchBar.text
+        friendSearchBar.enablesReturnKeyAutomatically = true
+        friendSearchBar.resignFirstResponder()
+        friendSearchBar.showsCancelButton = true
+        
                 for index in 0...allUserInfo.count - 1 {
                     if friendEmail! == allUserInfo[index].email {
-                        addFriendLabel.text = allUserInfo[index].email
-                        friendInfo =  allUserInfo[index]
+                        friendEmailLabel.text = allUserInfo[index].email
+                        friendUserNamerLabel.text = allUserInfo[index].userName
+                        friendProfileImg.sd_setImage(with: URL(string: allUserInfo[index].photoUrl), completed: nil)
+                         friendInfo =  allUserInfo[index]
                          addFriendsBtn.isHidden = false
+                        
                         searchBar.text = ""
                        return
 
                     } else {
-                        addFriendLabel.text = "無資料"
+                        friendEmailLabel.text = "無資料"
                     }
                 }
     }

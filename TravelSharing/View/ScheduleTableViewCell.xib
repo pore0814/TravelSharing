@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -62,7 +63,7 @@
                                     <constraint firstAttribute="width" constant="30" id="9yN-HK-KpG"/>
                                     <constraint firstAttribute="height" constant="30" id="Agp-pa-8Ro"/>
                                 </constraints>
-                                <state key="normal" image="users"/>
+                                <state key="normal" image="share"/>
                                 <connections>
                                     <action selector="coEditedBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Eep-Do-Nj7"/>
                                 </connections>
@@ -103,7 +104,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="users" width="24" height="24"/>
+        <image name="share" width="24" height="24"/>
         <image name="view" width="1920" height="1200"/>
     </resources>
 </document>

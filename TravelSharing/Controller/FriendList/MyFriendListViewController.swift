@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SCLAlertView
 
 class MyFriendListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -26,11 +27,12 @@ class MyFriendListViewController: UIViewController, UITableViewDelegate, UITable
 
         lisTableView.dataSource = self
         lisTableView.delegate =  self
+        
+        
+      
+
     }
 
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.view.endEditing(true)
-//    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friendListArray.count
     }
@@ -45,14 +47,32 @@ class MyFriendListViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let scheduleid = scheduleId else {return}
+        
+           guard let scheduleid = scheduleId else {return}
+        var title = "確定分享行程給" + friendListArray[indexPath.row].userName
+        
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+        
+        alertView.addButton("確定") {
+            self.shareScheduleManager.getMyScheduleId(scheduleId: scheduleid.uid
+                , friendId: self.friendListArray[indexPath.row].uid)
+            self.navigationController?.popViewController(animated: true)
+        }
+        alertView.addButton("取消") {}
+        alertView.showSuccess("", subTitle: NSLocalizedString(title, comment: ""))
+    }
+        
+        
+        
+    
 
-        print(friendListArray[indexPath.row].uid)
-            shareScheduleManager.getMyScheduleId(scheduleId: scheduleid.uid, friendId: friendListArray[indexPath.row].uid)
-        navigationController?.popViewController(animated: true)
+    
 
     }
-}
+
 
 extension MyFriendListViewController: InvitedFriendsManagerDelegate {
 

@@ -32,18 +32,20 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nc-vr-GRn">
                                 <rect key="frame" x="82" y="22" width="154" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.78823529410000004" green="0.78823529410000004" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJI-NO-VYb">
                                 <rect key="frame" x="268" y="52" width="51" height="30"/>
                                 <color key="backgroundColor" red="0.51226327049999998" green="0.77030299680000003" blue="0.7101946884" alpha="0.70058473929999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="取消"/>
+                                <state key="normal" title="取消">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="cancelBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nyI-oi-hxX"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Vg-Mk-OsX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Vg-Mk-OsX" customClass="RoundedUIImageView" customModule="TravelSharing" customModuleProvider="target">
                                 <rect key="frame" x="10" y="22" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="nJs-8j-wcH"/>
@@ -55,7 +57,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="51" id="au0-xC-6GU"/>
                                 </constraints>
-                                <state key="normal" title="確認"/>
+                                <state key="normal" title="確認">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="addFriendBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="F2c-DM-l5n"/>
                                 </connections>
