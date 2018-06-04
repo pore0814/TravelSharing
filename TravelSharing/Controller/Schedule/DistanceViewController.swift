@@ -9,8 +9,7 @@
 import UIKit
 
 class DistanceViewController: UIViewController {
-    
-    
+
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var removeBtn: UIButton!
     @IBOutlet weak var timeMinsLabel: UILabel!
@@ -21,7 +20,6 @@ class DistanceViewController: UIViewController {
         timeMinsLabel.setRounded10()
         distanceKmLabel.setRounded10()
     }
-
 
     @IBAction func reMoveBtn(_ sender: UIButton) {
     }

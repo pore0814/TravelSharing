@@ -18,34 +18,33 @@ class AllUsersTableViewCell: UITableViewCell {
     @IBOutlet weak var addFriendBtn: UIButton!
     var getUserInfoManager = GetUserProfileManager()
     var getFriendManager = InvitedFriendsManager()
-    var userInfo:UserInfo?
-    var myInfo:UserInfo?
-   
+    var userInfo: UserInfo?
+    var myInfo: UserInfo?
+
     var invitedFriendManager = InvitedFriendsManager()
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         getUserInfoManager.delegate = self
         getUserInfoManager.getMyInfo()
-        
-       
+
     }
-    
+
     func getCell(allUsers: UserInfo) {
         userInfo = allUsers
-        
+
         allUserNamerLabel.text = allUsers.userName
         allUserEmailLabel.text = allUsers.email
         let url = URL(string: allUsers.photoUrl)
         allUsersImage.sd_setImage(with: url) { (_, _, _, _) in
             print("yes")
-         
+
         }
-        
+
     }
 
-    @IBAction func addFriendBtn(_ sender:Any) {
+    @IBAction func addFriendBtn(_ sender: Any) {
 //        guard let myinfo = myInfo , let friendInfo = userInfo else {return}
 //     if  !isSelected {
 //        print("addFriend")
@@ -55,7 +54,7 @@ class AllUsersTableViewCell: UITableViewCell {
 //        print(userInfo?.userName)
 //
 //        invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendInfo)
-        
+
 //     }else{
 ////        print("deleteFriend")
 ////        isSelected = false
@@ -65,21 +64,20 @@ class AllUsersTableViewCell: UITableViewCell {
 ////
 ////        }
     }
-    
+
     @IBAction func cancelBtn(_ sender: Any) {
-        
+
     }
-    
+
 }
 
-extension AllUsersTableViewCell:GetUserInfoManagerDelegate{
+extension AllUsersTableViewCell: GetUserInfoManagerDelegate {
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
         myInfo = userInfo
     }
-    
+
     func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {
-        
+
     }
-    
-    
+
 }

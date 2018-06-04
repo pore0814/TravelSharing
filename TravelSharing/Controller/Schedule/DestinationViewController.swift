@@ -63,7 +63,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
      let fullscreen = UIScreen.main.bounds
         if indexPath.row == tag {
             if cellExpanded {
-                
+
                return fullscreen.height * 0.6
                 } else if indexPath.row != previous {
                   return fullscreen.height * 0.6
@@ -87,7 +87,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
                              longitude: testArray[indexPath.row].longitude,
                              destination: testArray[indexPath.row].name)
             cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
-        
+
             cell.mapView.bringSubview(toFront: cell.deleteBtn)
             cell.mapView.bringSubview(toFront: cell.drawPathBtn)
             cell.mapView.bringSubview(toFront: cell.googleMapBtn)
@@ -95,10 +95,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
             cell.selectionStyle =  .none
         return cell
     }
-  
-    
-    
-    
+
 @objc    func deleteTapBtn(_ sender: UIButton) {
 // Fetch Item
       //  guard let superview = sender.superview,

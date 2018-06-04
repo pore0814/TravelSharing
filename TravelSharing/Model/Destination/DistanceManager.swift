@@ -14,9 +14,9 @@ class DistanceManager {
 
     var locationManager = CLLocationManager()
     //var locationSelected = Location.myLocaion
- 
-   func getDestinationDateAndTime(myLocaion: CLLocation, endLocation: CLLocation,completion:@escaping(DistanceAndTime
-    ) -> Void){
+
+   func getDestinationDateAndTime(myLocaion: CLLocation, endLocation: CLLocation, completion:@escaping(DistanceAndTime
+    ) -> Void) {
 
         let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
         let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
@@ -35,8 +35,7 @@ class DistanceManager {
                 let durations = leg["duration"] as? [String: Any],
                 let distance = distances["text"] as? String,
                 let duration = durations ["text"] as? String  else {return}
-          
-            
+
             let distanceInfo = DistanceAndTime(distance: distance, time: duration)
             print("class--------")
             completion(distanceInfo)

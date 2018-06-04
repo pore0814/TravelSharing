@@ -56,9 +56,7 @@ enum Locaion {
     case destinationLocation
 }
 
-
 struct DistanceAndTime {
     var distance: String
     var time: String
 }
-

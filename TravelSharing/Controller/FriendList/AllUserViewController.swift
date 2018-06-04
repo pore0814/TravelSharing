@@ -15,7 +15,6 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
      var selectedIndexs = [Int]()
     var selectedCell: Bool = false
 
-
     @IBOutlet weak var allUserTableview: UITableView!
 
     override func viewDidLoad() {
@@ -25,7 +24,7 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
 
         getUserInfoManager.delegate = self
         getUserInfoManager.getAllUserInfo()
-        
+
         allUserTableview.separatorStyle  =  .none
 
      //   allUserTableview.allowsMultipleSelection = true
@@ -64,7 +63,7 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
 
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     }
     }

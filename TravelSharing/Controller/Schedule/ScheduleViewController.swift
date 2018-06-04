@@ -10,17 +10,10 @@ import UIKit
 import SVProgressHUD
 import SCLAlertView
 
-class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,PlayVideoCellProtocol{
-    func playVideoButtonDidSelect() {
-        
-      
-        guard let friendListVc = UIStoryboard(name: "FriendsList", bundle: nil).instantiateViewController(withIdentifier: "FriendListViewController") as? FriendListViewController else {return}
-        navigationController?.pushViewController(friendListVc, animated: true)
-        
-//        guard  let allUsersPage = UIStoryboard.friendsStoryboard().instantiateInitialViewController() else {return}
-//        present(allUsersPage, animated: true, completion: nil)
+class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PlayVideoCellProtocol {
+    func playVideoButtonDidSelect(_ cell: ScheduleTableViewCell, row: Int) {
+
     }
-    
 
      var schedules = [ScheduleInfo]()
      var userProfile: UserInfo?
@@ -33,7 +26,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
      let destination = DestinationManager()
      var alert = SCLAlertView()
      var indicator = true
-     var backgroundArray = ["view","logoPage1","schedulePage-1","schedulePage-2","schedulePage-1"]
+     var backgroundArray = ["view", "logoPage1", "schedulePage-1", "schedulePage-2", "schedulePage-1"]
      @IBOutlet weak var tableView: UITableView!
 
 // display progress before loading data
@@ -65,6 +58,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 //Timer Stop laodingPage
 
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ScheduleViewController.stoplodingIcon), userInfo: nil, repeats: true)
+
     }
 
     @objc func stoplodingIcon() {
@@ -112,17 +106,29 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let  index = indexPath.row % 5
         if  let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as? ScheduleTableViewCell {
-                    let data = self.schedules[indexPath.row]
-                    cell.backgroundColor  = UIColor.clear
-                    cell.updateCell(with: data)
-                    cell.leftImageView.image = UIImage(named: backgroundArray[index])
-                    cell.selectionStyle = .none
-                    cell.delegate = self
+                let data = self.schedules[indexPath.row]
+                cell.backgroundColor  = UIColor.clear
+                cell.updateCell(with: data)
+                cell.leftImageView.image = UIImage(named: backgroundArray[index])
+                cell.selectionStyle = .none
+                cell.delegate = self
+                cell.coEditedBtn.tag = indexPath.row
+            cell.coEditedBtn.addTarget(self, action: #selector(shareSchedule(sender:)), for: .touchUpInside)
                   return cell
              } else {
                     return UITableViewCell()
              }
         }
+
+    @objc func shareSchedule(sender: UIButton) {
+        guard let friendListVc = UIStoryboard(name: "FriendsList", bundle: nil)
+            .instantiateViewController(withIdentifier: "MyFriendListViewController") as? MyFriendListViewController else {return}
+        friendListVc.scheduleId = schedules[sender.tag]
+        print(schedules[sender.tag].name)
+        print(schedules[sender.tag].uid)
+        navigationController?.pushViewController(friendListVc, animated: true)
+
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        if let scheduleDetailViewController = UIStoryboard(name: "Schedule", bundle: nil)
@@ -130,6 +136,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
                     as? ScheduleDetailViewController {
           let data = self.schedules[indexPath.row]
         scheduleDetailViewController.schedulDetail = data
+        self.indexNumber = indexPath.row
         self.navigationController?.pushViewController(scheduleDetailViewController, animated: true)
         }
     }
@@ -172,5 +179,18 @@ extension ScheduleViewController: ScheduleManagerDelegate {
         schedules[indexNumber] = schedule
         schedules.sort(by: {$0.date < $1.date})
         tableView.reloadData()
+    }
+
+    func playVideoButtonDidSelect() {
+
+//        guard let friendListVc = UIStoryboard(name: "FriendsList", bundle: nil)
+//            .instantiateViewController(withIdentifier: "MyFriendListViewController") as? MyFriendListViewController else {return}
+//        friendListVc.scheduleId = schedules[indexNumber]
+//        print(schedules[indexNumber].name)
+//        print(schedules[indexNumber].uid)
+//        navigationController?.pushViewController(friendListVc, animated: true)
+//        
+        //        guard  let allUsersPage = UIStoryboard.friendsStoryboard().instantiateInitialViewController() else {return}
+        //        present(allUsersPage, animated: true, completion: nil)
     }
 }

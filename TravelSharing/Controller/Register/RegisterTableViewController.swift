@@ -11,9 +11,8 @@ import FirebaseAuth
 import Fusuma
 import SVProgressHUD
 
-class RegisterTableViewController: UITableViewController,FusumaDelegate {
+class RegisterTableViewController: UITableViewController, FusumaDelegate {
 
-    
     @IBOutlet weak var conerView: UIView!
     @IBOutlet weak var photoBtn: UIButton!
     @IBOutlet weak var registImageView: UIImageView!
@@ -24,18 +23,13 @@ class RegisterTableViewController: UITableViewController,FusumaDelegate {
     var indicator = true
     @IBOutlet weak var viewforBtns: UIView!
     @IBOutlet weak var protectedBtn: UIButton!
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
         viewforBtns.setConerRect()
         //protectedBtn.setConerRect()
-        
 
-     
     }
 
     //Fusuma
@@ -53,23 +47,23 @@ class RegisterTableViewController: UITableViewController,FusumaDelegate {
         fusuma.cropHeightRatio = 1
         self.present(fusuma, animated: true, completion: nil)
     }
-    
+
     @IBAction func privacyBtn(_ sender: Any) {
-        
+
         let storyboard = PrivacyViewController()
-        
+
         present(storyboard, animated: true, completion: nil)
-        
+
     }
     //Register
     @IBAction func registerBtn(_ sender: Any) {
-        
+
         guard let imageCheck = registImageView.image else {
             AlertToUser().alert.showEdit("", subTitle: "請選擇照片哦")
             return
         }
         let data = UIImageJPEGRepresentation(imageCheck, 0.1)
-        
+
         //表格需全部填寫
         if userNameText.text != "", emailText.text != "", passwordText.text != "", reEnterPasswordText.text != "" {
             //密碼需大於六碼
@@ -85,7 +79,7 @@ class RegisterTableViewController: UITableViewController,FusumaDelegate {
             } else {
                 UserManager.shared.singUp(email: emailText.text!, password: passwordText.text!, username: userNameText.text!, userphoto: data) { (message) in
                     AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: message!)
-                    
+
                 }
                 if indicator  == true {
                     SVProgressHUD.show(withStatus: "loading")
@@ -94,25 +88,19 @@ class RegisterTableViewController: UITableViewController,FusumaDelegate {
             }
         } else {
             AlertToUser().alert.showEdit("請填寫完整", subTitle: "所有空格都需填寫")
-            
+
         }
     }
-    
+
     // Cancel
     @IBAction func cancelBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 
-    
-    
-    
     // MARK: - Table view data source
 
-   
     }
-
-

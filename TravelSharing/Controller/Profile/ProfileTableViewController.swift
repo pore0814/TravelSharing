@@ -11,32 +11,29 @@ import SDWebImage
 import Fusuma
 import SCLAlertView
 
-
-class ProfileTableViewController: UITableViewController, FusumaDelegate  {
+class ProfileTableViewController: UITableViewController, FusumaDelegate {
     var getUserInfoManager = GetUserProfileManager()
     @IBOutlet weak var userNameText: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var logOutBtn: UIButton!
     @IBOutlet weak var saveBtn: UIButton!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         getUserInfoManager.delegate = self
         getUserInfoManager.getMyInfo()
         profileImage.setRounded()
         //        profileImage.clipsToBounds = true
         //        profileImage.layer.cornerRadius = profileImage.frame.width / 2
-        
+
         logOutBtn.setConerRect()
         saveBtn.setConerRect()
         tableView.separatorStyle = .none
-        
+
     }
-    
-    
+
     @IBAction func updateProfileImage(_ sender: Any) {
         let fusuma = FusumaViewController()
         fusuma.delegate = self
@@ -48,40 +45,40 @@ class ProfileTableViewController: UITableViewController, FusumaDelegate  {
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false
         )
-        
+
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("確定") {
             let imageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1)
             print(imageData)
             print(self.userNameText.text!)
-            
+
             self.getUserInfoManager.updateUserInfo(username: self.userNameText.text!, photo: imageData!)
         }
-        
+
         alertView.addButton("取消") {
         }
-        
+
         alertView.showSuccess("", subTitle: "更新個人資料?")
     }
-    
+
     @IBAction func logOutBtn(_ sender: Any) {
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false
         )
-        
+
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("確定") {
-            
+
             guard let switchToLoginPage = AppDelegate.shared?.switchToLoginViewController() else {return}
             UserManager.shared.logout()
             switchToLoginPage
         }
-        
+
         alertView.addButton("取消") {}
-        
+
         alertView.showWait("", subTitle: "是否登出")
     }
-    
+
     //Fusuma 選照片
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
         profileImage.image = image
@@ -90,13 +87,13 @@ class ProfileTableViewController: UITableViewController, FusumaDelegate  {
     func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {}
     func fusumaVideoCompleted(withFileURL fileURL: URL) {}
     func fusumaCameraRollUnauthorized() {}
-    
+
 }
 
-extension ProfileTableViewController:GetUserInfoManagerDelegate {
-    
+extension ProfileTableViewController: GetUserInfoManagerDelegate {
+
     func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {}
-    
+
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
         userNameText.text = userInfo.userName
         emailLabel.text = userInfo.email

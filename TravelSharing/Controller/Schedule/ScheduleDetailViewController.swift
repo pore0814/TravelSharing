@@ -11,7 +11,7 @@ import UIKit
 class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     var detailVC: AddDestinationViewController?
-    
+
     var getDateInfo = [DateInfo]() {
         didSet {
             print("set data in ScheduleDetailViewController")
@@ -23,16 +23,16 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     var backPage = 0
     @IBOutlet weak var destinationScrollView: LukeScrollView!
     @IBOutlet weak var detailCollectionViwe: LukeCollectionView!
-    
+
     var ggg: DestinationViewController?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
       //  self.destinationScrollView.contentOffset = CGPoint(x: self.view.frame.width * CGFloat((detailVC?.previousPage)!), y: 0)
         self.destinationScrollView.contentOffset = CGPoint(x: self.view.frame.width * CGFloat(backPage), y: 0)
-        
+
     }
-    
+
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
 //
 //        if let sdetailVC = segue.destination as? AddDestinationViewController {
@@ -68,7 +68,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
             guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as? DestinationViewController else {return}
 
             ggg = obj1
-            
+
             obj1.scheduleUid = schedulDetail?.uid
 
             obj1.dayths = getDateInfo[index].dayth
@@ -200,7 +200,7 @@ extension ScheduleDetailViewController: UIScrollViewDelegate {
         let fullScreen =  UIScreen.main.bounds.width
         let offsetFactor = screenshotsDistanceBetweenItemsCenter / fullScreen
         // let offsetFactor1 = screenshotsDistanceBetweenItemsCenter / self.view.frame.size.width
-        if(scrollView == destinationScrollView) {
+        if(scrollView === destinationScrollView) {
             let xOffset = scrollView.contentOffset.x - scrollView.frame.origin.x
 
             detailCollectionViwe.bounds.origin = CGPoint(x: xOffset * offsetFactor, y: detailCollectionViwe.bounds.origin.y)
@@ -211,7 +211,7 @@ extension ScheduleDetailViewController: UIScrollViewDelegate {
 
         }
 
-        if(scrollView == detailCollectionViwe) {
+        if(scrollView === detailCollectionViwe) {
             let xOffset = scrollView.contentOffset.x - scrollView.frame.origin.x
             destinationScrollView.bounds.origin = CGPoint(x: xOffset / offsetFactor, y: destinationScrollView.bounds.origin.y)
 

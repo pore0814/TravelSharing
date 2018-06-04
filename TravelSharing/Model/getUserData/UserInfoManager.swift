@@ -14,7 +14,7 @@ protocol GetUserInfoManagerDelegate: class {
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo)
 
     func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo])
-    
+
 }
 
 protocol GetAllUserInfoManagerDelegate: class {
@@ -56,13 +56,15 @@ class GetUserProfileManager {
         metadate.contentType = "img/jpeg"
 
         if let imageData = photo {
-            FireBaseConnect.storeageProfileRef.child(userid).putData(imageData, metadata: metadate, completion: { (metadata, imageError) in
+             FireBaseConnect.storeageProfileRef.child(userid)
+                .putData(imageData, metadata: metadate, completion: { (metadata, imageError) in
+
                 if imageError != nil {
                     guard let imgError = imageError as? String else {return}
                     AlertToUser().alert.showEdit("錯誤訊息", subTitle: imgError)
                 }
-                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-                    let userData = [Constants.UserName: username, Constants.PhotoUrl: profileImageUrl] as [String: Any]
+                    if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                       let userData = [Constants.UserName: username, Constants.PhotoUrl: profileImageUrl] as [String: Any]
                     FireBaseConnect.databaseRef.child("users").child(userid).updateChildValues(userData)
                 }
             })
@@ -74,34 +76,28 @@ class GetUserProfileManager {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
         FireBaseConnect.databaseRef.child("users").observe(.value) { (snapshot) in
             if let allUserInfos = snapshot.value as?  [String: Any] {
-                print(allUserInfos)
+
                 for allUserInfo in allUserInfos {
 
-                   if let allUsersInfo = snapshot.value as?  [String: Any] {
-                    print(allUserInfo.value)
-                    if let allUsers = allUserInfo.value as? [String: String] {
-                        let uid = allUsers["uid"] as? String
-                        let email = allUsers["email"] as? String
-                        let photoUrl = allUsers["photoUrl"] as? String
-                        let username = allUsers["username"] as? String
+                    if let allUsersInfo = snapshot.value as?  [String: Any] {
 
-                        let userProfile = UserInfo(email: email!, photoUrl: photoUrl!, uid: uid!, userName: username!)
-                        
-                        if userProfile.uid != userid {
-                        allUsersInfoArray.append(userProfile)
-                        }
-                       }
-                    DispatchQueue.main.async {
-                        self.delegate?.managerArray(self, didGet: allUsersInfoArray)
+                         if let allUsers = allUserInfo.value as? [String: String] {
+                            let uid = allUsers["uid"] as? String
+                            let email = allUsers["email"] as? String
+                            let photoUrl = allUsers["photoUrl"] as? String
+                            let username = allUsers["username"] as? String
+                            let userProfile = UserInfo(email: email!, photoUrl: photoUrl!,
+                                                       uid: uid!, userName: username!)
+                             if userProfile.uid != userid {
+                                allUsersInfoArray.append(userProfile)
+                             }
+                         }
+                            DispatchQueue.main.async {
+                                self.delegate?.managerArray(self, didGet: allUsersInfoArray)
+                            }
                     }
-                    }
-
                 }
-
             }
-
         }
-
     }
-
 }

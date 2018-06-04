@@ -74,7 +74,6 @@ var window: UIWindow?
     func switchScheduleViewController() {
         guard  let schedulePage = UIStoryboard.scheduleStoryboard().instantiateInitialViewController() else {return}
         window?.rootViewController = schedulePage
-
     }
 
 }

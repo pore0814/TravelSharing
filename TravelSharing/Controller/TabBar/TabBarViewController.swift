@@ -15,7 +15,7 @@ enum TabBar {
     case schedule
 
     case profile
-    
+
     case friend
 
     func controller() -> UIViewController {
@@ -29,7 +29,7 @@ enum TabBar {
         case .friend:
             return
            UIStoryboard.friendsStoryboard().instantiateInitialViewController()!
-        
+
         }
     }
 
@@ -37,19 +37,19 @@ enum TabBar {
 
         switch self {
         case .trackLocation:
-            
+
                 return #imageLiteral(resourceName: "foot")
-            
+
         case .schedule:
-            
+
                 return #imageLiteral(resourceName: "calendar1")
-            
+
         case .profile:
-            
+
                 return #imageLiteral(resourceName: "user")
-            
+
         case .friend:
-            
+
                 return #imageLiteral(resourceName: "add-friend-1")
         }
     }
@@ -69,9 +69,9 @@ enum TabBar {
         case .profile:
 
             return #imageLiteral(resourceName: "user1").withRenderingMode(.alwaysTemplate)
-            
+
         case .friend:
-            
+
             return #imageLiteral(resourceName: "add-friend1").withRenderingMode(.alwaysTemplate)
         }
     }
@@ -83,7 +83,7 @@ func changeColor() {
 class TabBarViewController: UITabBarController {
 
    // let tabs: [TabBar] = [.trackLocation, .schedule, .profile]
-    let tabs: [TabBar] = [.schedule ,.friend, .profile]
+    let tabs: [TabBar] = [.schedule, .friend, .profile]
     override func viewDidLoad() {
         super.viewDidLoad()
 

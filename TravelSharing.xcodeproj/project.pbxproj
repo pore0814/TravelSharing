@@ -82,6 +82,7 @@
 		D1F542312099FF42007EBE96 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5422F2099FF42007EBE96 /* ScheduleTableViewCell.swift */; };
 		D1F542322099FF42007EBE96 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F542302099FF42007EBE96 /* ScheduleTableViewCell.xib */; };
 		D1F5C83A20A3BDD30066C636 /* logoPage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D1F5C83920A3BDD30066C636 /* logoPage.jpg */; };
+		D1F70A1620C4A66400576606 /* shareScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F70A1520C4A66400576606 /* shareScheduleManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,6 +164,7 @@
 		D1F5422F2099FF42007EBE96 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		D1F542302099FF42007EBE96 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		D1F5C83920A3BDD30066C636 /* logoPage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logoPage.jpg; sourceTree = "<group>"; };
+		D1F70A1520C4A66400576606 /* shareScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shareScheduleManager.swift; sourceTree = "<group>"; };
 		F353853584E1967591DC1429 /* Pods_TravelSharing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravelSharing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -399,6 +401,7 @@
 		D1E6CD7720914DAC00310121 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1F70A1420C4A63D00576606 /* New Group */,
 				D1D45E9920B0613C00E3E7BE /* getUserData */,
 				D1D45E9820B0611600E3E7BE /* Destination */,
 				D1F5422E2099FE37007EBE96 /* Schedule */,
@@ -445,6 +448,14 @@
 				D1F5422C2099F09D007EBE96 /* ScheduleManager.swift */,
 			);
 			path = Schedule;
+			sourceTree = "<group>";
+		};
+		D1F70A1420C4A63D00576606 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				D1F70A1520C4A66400576606 /* shareScheduleManager.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -658,6 +669,7 @@
 				D116C34520BD689B0034C84C /* DistanceViewController.swift in Sources */,
 				D1DA0A3720A6FFF4002D8CF6 /* GoogleStreeViewController.swift in Sources */,
 				D126D05920AD2F6400F46AE3 /* TrackViewController.swift in Sources */,
+				D1F70A1620C4A66400576606 /* shareScheduleManager.swift in Sources */,
 				D116C34320BD33C30034C84C /* DistanceManager.swift in Sources */,
 				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,
 				D14C0FEE209823A800026AF1 /* Constants.swift in Sources */,

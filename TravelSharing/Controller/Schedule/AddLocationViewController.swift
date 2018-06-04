@@ -11,8 +11,6 @@ import GoogleMaps
 import GooglePlaces
 import SCLAlertView
 
-
-
 class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var dateSelectedText: UITextField!
@@ -21,9 +19,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBOutlet weak var destinationText: UITextField!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var saveBtn: UIButton!
-    
-   
-    
+
     let picker =  UIDatePicker()
     let destinationManager = DestinationManager()
 
@@ -35,7 +31,6 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     var daythRow = "Day1"
     var alert = SCLAlertView()
     var previousPage = 0
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +45,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
                        animations: {
                         self.stackView.center.x = self.view.frame.width / 2
         }, completion: nil)
-        
+
         saveBtn.setConerRect()
 
 //一開始Time顯示現在時間
@@ -107,11 +102,10 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         let timeString = formatter.string(from: date)
         timeText.text = "\(timeString)"
     }
-    
+
     @IBAction func testBtn(_ sender: Any) {
         AlertToUser().alert.showEdit("funck", subTitle: "funck")
     }
-    
 
     @IBAction func saveBtn(_ sender: Any) {
         if destinationText.text != "" && dateSelectedText.text != "" && categoryText.text != "" {
@@ -125,27 +119,20 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
             guard    let previousViewController = self.navigationController?.viewControllers.last as? ScheduleDetailViewController else {return}
             previousViewController.backPage = previousPage
             previousViewController.ggg?.tableView.reloadData()
-           
-         
-            
-            
-            
-            
+
         //    self.navigationController?.dismiss(animated: true, completion: {
 //                guard let detail = self.storyboard?.instantiateViewController(withIdentifier: "ScheduleDetailViewController ") as? ScheduleDetailViewController else {return}
 //                self.detailVC?.backPage = self.previousPage
-                
+
   //         })
-            
+
         } else {
             AlertToUser().alert.showError(Constants.WrongMessage, subTitle: "表格不可為空白")
 
         }
 
     }
-    
-    
-    
+
 //Time Picker
     func createDatePicker() {
         let toolbar = UIToolbar()
@@ -214,7 +201,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         guard let selected = dateSelected else {return ""}
         daythRow = selected[row].dayth
         return selected[row].date + "   " + selected[row].dayth
-        
+
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let selected = dateSelected else {return}

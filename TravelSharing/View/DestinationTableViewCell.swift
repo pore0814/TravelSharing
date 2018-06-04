@@ -51,8 +51,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         //rightUiview.setConerRectWithBorder()
           rightUiview.setShadow()
       //  rightUiview.setGradientBackground(colorOne: UIColor.blue, colorTwo: UIColor.white)
-       
-       
+
         mapDelegateAndInitiation()
     }
 
@@ -63,24 +62,23 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
                 guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
                 distanceViewController.view.frame = mapView.bounds
                 distanceVC = distanceViewController
-        
+
                 if mapView.myLocation != nil {
-                 distanceManager.getDestinationDateAndTime(myLocaion: mapView.myLocation!,endLocation: destinationLocaion) { (bbb:DistanceAndTime) in
+                 distanceManager.getDestinationDateAndTime(myLocaion: mapView.myLocation!, endLocation: destinationLocaion) { (bbb: DistanceAndTime) in
                     if bbb != nil {
-                       
+
               distanceViewController.distanceKmLabel.text = bbb.distance
               distanceViewController.timeMinsLabel.text = bbb.time
                     }
                     }
-                }else{
+                } else {
                         AlertToUser().alert.showEdit("點選您所在位置", subTitle: "或到設定開啓定位功能")
                     }
-      
+
               mapView.addSubview(distanceViewController.view)
               distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
-    @objc func buttonClicked(sender:UIButton)
-    {
+    @objc func buttonClicked(sender: UIButton) {
         distanceVC?.view.removeFromSuperview()
     }
     @IBAction func drawRouteBtn(_ sender: Any) {

@@ -9,46 +9,42 @@
 import UIKit
 
 class FriendListViewController: UIViewController {
-    
+
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     var tabIndex: Int?
-    
+
 //    var invitedFriendsManager = InvitedFriendsManager()
-    var myInfo:UserInfo?
-    
+    var myInfo: UserInfo?
 
     @IBOutlet weak var firstView: UIView!
-    
+
 //
     @IBOutlet weak var secondview: UIView!
-    
+
     @IBOutlet weak var thirdView: UIView!
-    
+
     @IBAction func indexChange(_ sender: UISegmentedControl) {
-        switch segmentedControl.selectedSegmentIndex
-        {
+        switch segmentedControl.selectedSegmentIndex {
         case 0:
             firstView.isHidden = false
             secondview.isHidden = true
             thirdView.isHidden = true
-            
+
         case 1:
             firstView.isHidden = true
             secondview.isHidden = false
              thirdView.isHidden = true
-            
+
         case 2:
             firstView.isHidden = true
             secondview.isHidden = true
             thirdView.isHidden = false
-            
+
         default:
-            break;
+            break
         }
     }
-   
-    
-    
+
     //    var currentViewController: UIViewController?
 //    lazy var firstChildTabVC: UIViewController? = {
 //        let firstChildTabVC = self.storyboard?.instantiateViewController(withIdentifier: "InvitedListViewController")
@@ -60,34 +56,32 @@ class FriendListViewController: UIViewController {
 //        return secondChildTabVC
 //    }()
 //
-    
+
 //    func viewControllerForSelectedSegmentIndex(_ index: Int) -> UIViewController? {
 //
 //    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
       //setupView()
         firstView.isHidden = false
         secondview.isHidden = true
         thirdView.isHidden = true
-        
 
     }
 
-    //MARK: - View Methods
+    // MARK: - View Methods
     private func setupView() {
      //  setupSegmentedController()
        // updateview()
      }
-    
+
 //    private func updateview(){
 //        firstChildTabVC?.view.isHidden = !(segmentedControl.selectedSegmentIndex == 0)
 //        secondChildTabVC?.view.isHidden = (segmentedControl.selectedSegmentIndex == 0)
 //
 //    }
-    
-    
+
 //    private func setupSegmentedController(){
 //        segmentedControl.removeAllSegments()
 //        segmentedControl.insertSegment(withTitle: "aaa", at: 0, animated: false)
@@ -113,13 +107,7 @@ class FriendListViewController: UIViewController {
 //        childController.didMove(toParentViewController: self)
 //
 //    }
-    
-    
-    
 
-    
-    
-    
     @IBAction func addFriends(_ sender: Any) {
         print("Aaaaaaaaaddfriends")
 //        
@@ -130,15 +118,10 @@ class FriendListViewController: UIViewController {
     }
 }
 
-
-extension FriendListViewController: GetUserInfoManagerDelegate{
+extension FriendListViewController: GetUserInfoManagerDelegate {
     func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {}
-    
+
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
        myInfo = userInfo
         }
     }
-
-
-
-

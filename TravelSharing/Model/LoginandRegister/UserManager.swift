@@ -75,9 +75,9 @@ class UserManager {
 //                        ScheduleManager.shared.saveScheduleInfo(scheduleName: "範例",
 //                                                                scheudleDate: "2019 01 01",
 //                                                                scheduleDay: "2")
-                        let  scheduleUid = FireBaseConnect.databaseRef.childByAutoId().key
-                          ScheduleManager.shared.firstScheduleExample(firstScheduleId: scheduleUid, userId: uid)
-                        self.destinationManager.savefisrtDestinationInfo(uid: scheduleUid)
+//                        let  scheduleUid = FireBaseConnect.databaseRef.childByAutoId().key
+//                          ScheduleManager.shared.firstScheduleExample(firstScheduleId: scheduleUid, userId: uid)
+//                        self.destinationManager.savefisrtDestinationInfo(uid: scheduleUid)
 
                        NotificationCenter.default.post(name: .switchtoMainPage, object: nil)
                     }
