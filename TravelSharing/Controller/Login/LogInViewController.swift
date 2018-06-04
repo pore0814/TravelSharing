@@ -23,7 +23,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         logInImageView.imageSetRounded()
-       
+
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     /*
@@ -52,17 +52,19 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 */
 
     @IBAction func logIn(_ sender: Any) {
+
         if emailTextField.text != "" && passwordTextField.text != "" {
 
             UserManager.shared.loginUser(email: emailTextField.text!, password: passwordTextField.text!) { (message) in
-                if message != nil {
-                AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: message!)
+                if  message != nil {
+                      AlertToUser().alert.showError(Constants.WrongMessage, subTitle: message!)
                 } else {
-                  AppDelegate.shared.switchMainViewController()
+                   // passToNextPage
+                   guard let passToNextPage = AppDelegate.shared?.switchMainViewController() else {return}
                 }
             }
         } else {
-            AlertToUser.shared.alerTheUserPurple(title: "請填寫表格", message: "填寫正確的Email和密碼")
+            AlertToUser().alert.showEdit("請填寫表格", subTitle: "填寫正確的Email和密碼")
         }
 
     }

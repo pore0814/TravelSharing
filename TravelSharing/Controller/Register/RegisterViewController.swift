@@ -22,17 +22,16 @@ class RegisterViewController: UIViewController, FusumaDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+
         registImageView.setCircle()
         photoBtn.isUserInteractionEnabled = true
-       
-        
+
       //換頁notification
         NotificationCenter.default.addObserver(self, selector: #selector(toMainPage), name: .switchtoMainPage, object: nil)
     }
 
     @objc func toMainPage(notification: Notification) {
-        AppDelegate.shared.switchMainViewController()
+        guard let switchMainPage = AppDelegate.shared?.switchMainViewController() else {return}
     }
 
     //Fusuma
@@ -54,34 +53,33 @@ class RegisterViewController: UIViewController, FusumaDelegate {
 
     //Register
     @IBAction func registerBtn(_ sender: Any) {
-        
+
         guard let imageCheck = registImageView.image else {
-              AlertToUser.shared.alerTheUserPurple(title: "", message: "請選擇照片哦")
+              AlertToUser().alert.showEdit("", subTitle: "請選擇照片哦")
             return
         }
-        let data = UIImageJPEGRepresentation(imageCheck , 0.1)
-          
-      
+        let data = UIImageJPEGRepresentation(imageCheck, 0.1)
 
-       //表格需全部填寫
+    //表格需全部填寫
         if userNameText.text != "", emailText.text != "", passwordText.text != "", reEnterPasswordText.text != "" {
-            //密碼需大於六碼
+         //密碼需大於六碼
             if (passwordText.text?.count)! < 6 {
-                  AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: ">6")
-            //密碼與再次確認密碼
+                  AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: ">6")
+        //密碼與再次確認密碼
             } else if passwordText.text != reEnterPasswordText.text {
-                AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: "二個密碼不同")
-            //Email格式
-            } else if emailText.text!.isValidEmail() == false {
-                AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: "無效Email")
-            //開始註冊＋FireBaseApi Error檢柏
+                AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "二個密碼不同")
+        //Email格式
+            } else if emailText.text!.isEmail == false {
+                AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "無效Email")
+        //開始註冊＋FireBaseApi Error檢查
             } else {
-              UserManager.shared.SingUp(email: emailText.text!, password: passwordText.text!, username: userNameText.text!, userphoto: data) { (message) in
-                         AlertToUser.shared.alerTheUserPurple(title: Constants.Wrong_Message, message: message!)
+              UserManager.shared.singUp(email: emailText.text!, password: passwordText.text!, username: userNameText.text!, userphoto: data) { (message) in
+                         AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: message!)
                 }
             }
         } else {
-              AlertToUser.shared.alerTheUserPurple(title: "請填寫完整", message: "所有空格都需填寫")
+              AlertToUser().alert.showEdit("請填寫完整", subTitle: "所有空格都需填寫")
+
         }
     }
 

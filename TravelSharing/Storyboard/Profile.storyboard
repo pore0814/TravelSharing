@@ -22,26 +22,20 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PiO-ay-b8a" customClass="RoundedUIImageView" customModule="TravelSharing" customModuleProvider="target">
-                                <rect key="frame" x="10" y="164" width="355" height="120"/>
+                                <rect key="frame" x="10" y="164" width="355" height="180"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="khI-lK-4ZF">
-                                        <rect key="frame" x="10" y="10" width="335" height="100"/>
+                                        <rect key="frame" x="10" y="10" width="335" height="160"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8x-ve-6Ry">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="LaL-4W-KZa"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
+                                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="24"/>
+                                                <color key="textColor" red="0.48672703912466841" green="0.48672703912466841" blue="0.48672703912466841" alpha="0.75698571699999995" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="UserName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Dq-G2-Mjy">
-                                                <rect key="frame" x="0.0" y="50" width="335" height="50"/>
+                                                <rect key="frame" x="0.0" y="80" width="335" height="80"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="aCe-pd-dkq"/>
-                                                </constraints>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="24"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -54,15 +48,17 @@
                                     <constraint firstAttribute="trailing" secondItem="khI-lK-4ZF" secondAttribute="trailing" constant="10" id="8SX-72-vVf"/>
                                     <constraint firstAttribute="bottom" secondItem="khI-lK-4ZF" secondAttribute="bottom" constant="10" id="AYD-zs-F4W"/>
                                     <constraint firstItem="khI-lK-4ZF" firstAttribute="top" secondItem="PiO-ay-b8a" secondAttribute="top" constant="10" id="KOo-dA-cOs"/>
+                                    <constraint firstAttribute="height" constant="180" id="R5I-AR-PG1"/>
                                     <constraint firstItem="khI-lK-4ZF" firstAttribute="leading" secondItem="PiO-ay-b8a" secondAttribute="leading" constant="10" id="riE-KN-sj9"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="target" translatesAutoresizingMaskIntoConstraints="NO" id="Vn1-qh-v8v">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="target" translatesAutoresizingMaskIntoConstraints="NO" id="Vn1-qh-v8v">
                                 <rect key="frame" x="205" y="423" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.77710410279999997" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                 </accessibility>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Lgz-fE-XaS"/>
                                     <constraint firstAttribute="width" constant="150" id="vfD-BM-3FE"/>
@@ -72,6 +68,9 @@
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="53O-MN-Q0S" appends="YES" id="K3K-1I-PWo"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,8 +96,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="e8x-ve-6Ry" id="b0L-lY-ebp"/>
+                        <outlet property="profileImage" destination="Vn1-qh-v8v" id="OE3-BS-R4l"/>
+                        <outlet property="userNameText" destination="2Dq-G2-Mjy" id="bmS-zn-rPI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jet-Ug-eZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="53O-MN-Q0S">
+                    <connections>
+                        <action selector="updateProfileImage:" destination="raj-es-Lyr" id="WoQ-Hh-Y8o"/>
+                        <outlet property="delegate" destination="Vn1-qh-v8v" id="eia-Pn-IgY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="480.80000000000001" y="123.68815592203899"/>
         </scene>

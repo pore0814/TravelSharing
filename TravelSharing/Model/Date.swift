@@ -8,12 +8,10 @@
 
 import Foundation
 
-class DateModel{
-    
+class DateModel {
+
     static let sharded = DateModel()
-   
-    
-    
+
     let formatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = Calendar.current.timeZone
@@ -21,5 +19,5 @@ class DateModel{
         dateFormatter.dateFormat = "yyyy MM dd"
         return dateFormatter
     }()
-    
+
 }
