@@ -28,14 +28,16 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var long: Double?
     var indexPathInGlobal: IndexPath?
     var userLocation:CLLocation?
-    var showDistanceTag:Int?
+    var cellIndexPath:IndexPath?
+    var distanceVC:DistanceViewController?
+    
 
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
          tableView.reloadData()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,10 +55,9 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
         tableView.register(nib, forCellReuseIdentifier: "DestinationTableViewCell")
         tableView.separatorStyle = .none
-      
+
     }
-    
-    
+
 //    func initMapLocaionManager() {
 //        locationManager = CLLocationManager()
 //        //配置 locationManager
@@ -82,7 +83,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
                     return fullscreen.height * 0.6
                 }
             }
-                return 75
+             return 75
          }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -143,7 +144,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 //展開
             guard let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
 
-                    if cellExpanded {//關
+                    if cellExpanded {        //關
                         cellExpanded = false
                         selectedCell.direction.image = UIImage(named: "down-arrow")
                     } else if cellExpanded == false{
@@ -163,46 +164,49 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         
             guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
         
-            distanceViewController.view.frame = self.view.frame
-          //  distanceVC = distanceViewController
         
-//            guard let aaa =
-//            distanceManager
-//            .getDestinationDateAndTime(myLocaion: userLocation,
-//            endLocation: destinationLocaion)
-        guard let aaa = userLocation else {return}
         
-        distanceManager.getDestinationDateAndTime(myLocaion:aaa, endLocation: aaa, completion:
+        guard let aaa = userLocation,let cellindexPath = cellIndexPath else {return}
+        
+        distanceManager.getDestinationDateAndTime(myLocaion:aaa, endLocation:testArray[cellindexPath .row], completion:
             { (data: DistanceAndTime) in
 
             if data != nil {
             distanceViewController.distanceKmLabel.text = data.distance
             distanceViewController.timeMinsLabel.text = data.time
                 }
-
             })
-//            else {
-//            AlertToUser.showError(title:
-//            Constants.Map.YourLocation, subTitle: Constants.Map.SettingYourLocation)
-//            }
+        self.addChildViewController(distanceViewController)
+        distanceVC = distanceViewController
+        distanceViewController.view.frame = self.view.frame
+        self.view.addSubview(distanceViewController.view)
+        distanceViewController.didMove(toParentViewController: self)
+        distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+//
+//
+//
         
-//                self.view.addChildViewController(<#T##childController: UIViewController##UIViewController#>)
-//            self.addSubview(distanceViewController.view)
-          self.view.addSubview(distanceViewController.view)
-         distanceViewController.didMove(toParentViewController: self)
-     //      distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
         }
+    @objc func buttonClicked(sender: UIButton) {
     
+        distanceVC?.willMove(toParentViewController: nil)
+        distanceVC?.removeFromParentViewController()
+        distanceVC?.view.removeFromSuperview()
+        
+    
+            }
+//    
     }
     
 
 
 //extension DestinationViewController: DestinationManagerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate {
+
 extension DestinationViewController: showDistanceDelegate,DestinationManagerDelegate{
     func callDistanceView(_ cell: DestinationTableViewCell, myLocation: CLLocation, at index: IndexPath) {
         userLocation = myLocation
-        showDistanceTag = index.row
-    callDistanceVC()
+        cellIndexPath = index
+        callDistanceVC()
         
     }
     

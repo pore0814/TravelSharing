@@ -63,12 +63,14 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     @IBAction func distanceInfoBtn(_ sender: UIButton) {
         self.delegate?.callDistanceView(self, myLocation: mapView.myLocation!, at: self.indexPath)
         
-//
+
 //        if mapView.myLocation != nil{
-//            AlertToUser.showError(title: "無法存取你的位置", subTitle: "")
+//            AlertToUser1().alert.showEdit("無法存取你的位置", subTitle: "")
+//           // AlertToUser1.alert.showEdit("無法存取你的位置", subTitle: "")
+//           // AlertToUser.showError(title: "無法存取你的位置", subTitle: "")
 //        }else{
-//           self.delegate?.callDistanceView(self, myLocation: mapView.myLocation!, sender: sender.tag)
-//        }
+       //   self.delegate?.callDistanceView(self, myLocation: mapView.myLocation!, at: self.indexPath)
+        //}
         
 //        let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
 //
@@ -79,9 +81,12 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
 //
 //                if mapView.myLocation != nil {
 //
+////                   distanceManager
+////                        .getDestinationDateAndTime(myLocaion: mapView.myLocation!,
+////                              endLocation: destinationLocaion)
 //                    distanceManager
 //                        .getDestinationDateAndTime(myLocaion: mapView.myLocation!,
-//                              endLocation: destinationLocaion)
+//                                        endLocation: destinationLocaion)
 //                                { (data: DistanceAndTime) in
 //
 //                                    if data != nil {
@@ -97,7 +102,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
 //                  mapView.addSubview(distanceViewController.view)
 //                  distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
-    
+//
 //    @objc func buttonClicked(sender: UIButton) {
 //            distanceVC?.view.removeFromSuperview()
 //    }

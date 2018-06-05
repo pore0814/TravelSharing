@@ -20,10 +20,12 @@ struct AlertToUser {
 }
 
 struct AlertToUser1 {
-    static var alert = SCLAlertView()
+    var alert = SCLAlertView()
+    
 }
 
 class AlertToUserShared {
     static let shared = AlertToUserShared()
+          var alert = SCLAlertView()
     
 }
