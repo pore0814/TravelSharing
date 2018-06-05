@@ -64,12 +64,6 @@ class MyFriendListViewController: UIViewController, UITableViewDelegate, UITable
         alertView.addButton("取消") {}
         alertView.showSuccess("", subTitle: NSLocalizedString(title, comment: ""))
     }
-        
-        
-        
-    
-
-    
 
     }
 

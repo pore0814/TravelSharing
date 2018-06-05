@@ -51,9 +51,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
         tableView.register(nib, forCellReuseIdentifier: "DestinationTableViewCell")
         tableView.separatorStyle = .none
-        print("Destination---------")
-        print (UIScreen.main.traitCollection)
-        
+      
     }
     
     
@@ -79,7 +77,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
                 } else if indexPath.row != previous {
 
-                              return fullscreen.height * 0.6
+                    return fullscreen.height * 0.6
                 }
             }
                 return 75
@@ -141,13 +139,15 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 //展開
             guard let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
 
-                    if cellExpanded {
+                    if cellExpanded {//關
                         cellExpanded = false
                         selectedCell.direction.image = UIImage(named: "down-arrow")
-                    } else {
-                        cellExpanded = true
+                    } else if cellExpanded == false{
+                        cellExpanded = true //打開
                         selectedCell.direction.image = UIImage(named: "up")
-                    }
+//                    } else if indexPath.row != previous {
+                        
+        }
 
             tableView.beginUpdates()
             tableView.endUpdates()

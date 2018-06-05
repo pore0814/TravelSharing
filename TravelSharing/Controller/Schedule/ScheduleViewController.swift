@@ -58,8 +58,6 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 //Timer Stop laodingPage
 
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ScheduleViewController.stoplodingIcon), userInfo: nil, repeats: true)
-       // popUpView()
-
     }
 
     @objc func stoplodingIcon() {
@@ -69,6 +67,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
             timer.invalidate()
             SVProgressHUD.dismiss()
             indicator =  false
+            popUpView()
         }
 
     }
@@ -120,6 +119,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
         let  index = indexPath.row % 5
         if  let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as? ScheduleTableViewCell {
                 let data = self.schedules[indexPath.row]
@@ -129,22 +129,22 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell.selectionStyle = .none
                 cell.delegate = self
                 cell.coEditedBtn.tag = indexPath.row
-            cell.coEditedBtn.addTarget(self, action: #selector(shareSchedule(sender:)), for: .touchUpInside)
+//            cell.coEditedBtn.addTarget(self, action: #selector(shareSchedule(sender:)), for: .touchUpInside)
                   return cell
              } else {
                     return UITableViewCell()
              }
         }
 
-    @objc func shareSchedule(sender: UIButton) {
-        guard let friendListVc = UIStoryboard(name: "FriendsList", bundle: nil)
-            .instantiateViewController(withIdentifier: "MyFriendListViewController") as? MyFriendListViewController else {return}
-        friendListVc.scheduleId = schedules[sender.tag]
-        print(schedules[sender.tag].name)
-        print(schedules[sender.tag].uid)
-        navigationController?.pushViewController(friendListVc, animated: true)
-
-    }
+//    @objc func shareSchedule(sender: UIButton) {
+//        guard let friendListVc = UIStoryboard(name: "FriendsList", bundle: nil)
+//            .instantiateViewController(withIdentifier: "MyFriendListViewController") as? MyFriendListViewController else {return}
+//        friendListVc.scheduleId = schedules[sender.tag]
+//        print(schedules[sender.tag].name)
+//        print(schedules[sender.tag].uid)
+//        navigationController?.pushViewController(friendListVc, animated: true)
+//
+//    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        if let scheduleDetailViewController = UIStoryboard(name: "Schedule", bundle: nil)
@@ -169,24 +169,34 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         }
            editButton.backgroundColor = UIColor.orange
 //Delete
-
         let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (_, _) in
 //Alert
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false)
 
                     let alertView = SCLAlertView(appearance: appearance)
-                    alertView.addButton("確定") {
-                    ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid, arrrayIndexPath: indexPath.row)
-                    self.schedules.remove(at: indexPath.row)
-                    self.tableView.deleteRows(at: [indexPath], with: .fade)
-                    tableView.reloadData()
-            }
-                    alertView.addButton("取消") {}
-                    alertView.showSuccess("", subTitle: NSLocalizedString("是否刪除", comment: ""))
+                        alertView.addButton("確定")
+                            {
+                            ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid, arrrayIndexPath: indexPath.row)
+                            self.schedules.remove(at: indexPath.row)
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            tableView.reloadData()
+                            }
+    
+                        alertView.addButton("取消") {}
+                        alertView.showSuccess("", subTitle: NSLocalizedString("是否刪除", comment: ""))
+                    }
+                deleteButton.backgroundColor = UIColor.red
+//分享
+        let shareButton = UITableViewRowAction(style: .normal, title: "Shard") { (_, _) in
+            guard let friendListVc = UIStoryboard(name: "FriendsList", bundle: nil)
+                .instantiateViewController(withIdentifier: "MyFriendListViewController") as? MyFriendListViewController else {return}
+                    friendListVc.scheduleId = self.schedules[indexPath.row]
+            self.navigationController?.pushViewController(friendListVc, animated: true)
         }
-            deleteButton.backgroundColor = UIColor.red
-            return[editButton, deleteButton]
+             shareButton.backgroundColor = UIColor.brown
+
+            return[editButton, deleteButton,shareButton]
      }
 }
 extension ScheduleViewController: ScheduleManagerDelegate {

@@ -72,8 +72,15 @@ class InvitedFriendsManager {
                                 .child("requestsFromMe")
                                 .queryOrderedByKey()
                                 .queryEqual(toValue: userid)
-                                .observe(.value, with: { (snapshot) in
+                    //.observeSingleEvent(of: .value, with: { (snapshot) in
+                   // .observe(.childChanged) { (snapshot) in
+                    .observe(.value) { (snapshot) in
+                        print(snapshot.childrenCount)
 
+        
+                       
+                      
+            
                 waitingListArray.removeAll()
 
             guard let lists = snapshot.value as? [String: [String: [String: Any]]]  else {return}
@@ -88,7 +95,7 @@ class InvitedFriendsManager {
                         }
                self.delegate?.manager(self, didRequests: waitingListArray)
             }
-})
+}
 }
 //交友邀請
     func requestsWaitForPermission() {

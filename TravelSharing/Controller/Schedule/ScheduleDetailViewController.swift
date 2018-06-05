@@ -38,8 +38,8 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 //nagivation Bar 顯示Scheudle名稱
 
        navigationItem.title = schedulDetail?.name
-        
-       addrightBarButtonItem()
+
+        addrightBarButtonItem()
 
         dateFormatterToCollectionView()
 
