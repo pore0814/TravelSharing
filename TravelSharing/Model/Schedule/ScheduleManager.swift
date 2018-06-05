@@ -51,7 +51,7 @@ class ScheduleManager {
         /* 先刪除Schedule_id */ FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(scheduleId).removeValue { error, _ in
                    self.scheduleDataArray.remove(at: arrrayIndexPath)
                    if error != nil {
-                        AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "刪除失敗")
+                        AlertToUser.showError(title: Constants.WrongMessage, subTitle: Constants.FailToDelete)
                     }
                 }
             }

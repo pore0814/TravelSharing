@@ -79,7 +79,8 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
                                     }
                                 }
                 } else {
-                            AlertToUser().alert.showEdit("點選您所在位置", subTitle: "或到設定開啓定位功能")
+                           AlertToUser.showError(title:
+                            Constants.Map.YourLocation, subTitle: Constants.Map.SettingYourLocation)
                         }
 
                   mapView.addSubview(distanceViewController.view)

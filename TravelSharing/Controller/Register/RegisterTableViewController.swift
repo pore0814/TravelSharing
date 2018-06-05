@@ -59,7 +59,7 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
     @IBAction func registerBtn(_ sender: Any) {
 
         guard let imageCheck = registImageView.image else {
-            AlertToUser().alert.showEdit("", subTitle: "請選擇照片哦")
+            AlertToUser.showError(title: "", subTitle: "請選擇照片哦")
             return
         }
         let data = UIImageJPEGRepresentation(imageCheck, 0.1)
@@ -68,18 +68,20 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
         if userNameText.text != "", emailText.text != "", passwordText.text != "", reEnterPasswordText.text != "" {
             //密碼需大於六碼
             if (passwordText.text?.count)! < 6 {
-                AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "密碼需大於6碼")
+                AlertToUser.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.PwdMoreThan6)
                 //密碼與再次確認密碼
             } else if passwordText.text != reEnterPasswordText.text {
-                AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "二個密碼不同")
+                
+                AlertToUser.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.Diff2Password)
+
                 //Email格式
             } else if emailText.text!.isEmail == false {
-                AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: "無效Email")
+                AlertToUser.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.InvalidEmail)
                 //開始註冊＋FireBaseApi Error檢查
             } else {
                 UserManager.shared.singUp(email: emailText.text!, password: passwordText.text!, username: userNameText.text!, userphoto: data) { (message) in
-                    AlertToUser().alert.showEdit(Constants.WrongMessage, subTitle: message!)
-
+                    guard let msg = message else {return}
+                    AlertToUser.showError(title: Constants.WrongMessage, subTitle: msg)
                 }
                 if indicator  == true {
                     SVProgressHUD.show(withStatus: "loading")
@@ -87,7 +89,8 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
                 AppDelegate.shared?.switchMainViewController()
             }
         } else {
-            AlertToUser().alert.showEdit("請填寫完整", subTitle: "所有空格都需填寫")
+                 AlertToUser.showError(title: "", subTitle: Constants.NoEmpty)
+          
 
         }
     }

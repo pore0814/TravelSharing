@@ -58,14 +58,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
             UserManager.shared.loginUser(email: emailTextField.text!, password: passwordTextField.text!) { (message) in
                 if  message != nil {
-                      AlertToUser().alert.showError(Constants.WrongMessage, subTitle: message!)
+                      AlertToUser.showError(title: Constants.WrongMessage, subTitle: message!)
                 } else {
                    // passToNextPage
                    guard let passToNextPage = AppDelegate.shared?.switchMainViewController() else {return}
                 }
             }
         } else {
-            AlertToUser().alert.showEdit("請填寫表格", subTitle: "填寫正確的Email和密碼")
+            AlertToUser.showError(title: "", subTitle: Constants.LoginAndRegister.CorrectInfo)
         }
 
     }

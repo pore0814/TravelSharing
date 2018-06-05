@@ -10,7 +10,13 @@ import Foundation
 import SCLAlertView
 
 struct AlertToUser {
-    let alert = SCLAlertView()
+
+    private static let alert = SCLAlertView()
+
+    static func showError(title: String, subTitle: String) {
+
+    self.alert.showError(title, subTitle: subTitle)
+    }
 }
 
 struct AlertToUser1 {
@@ -19,4 +25,5 @@ struct AlertToUser1 {
 
 class AlertToUserShared {
     static let shared = AlertToUserShared()
+    
 }

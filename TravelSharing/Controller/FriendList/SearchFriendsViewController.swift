@@ -38,7 +38,6 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
         initTableView()
         
         addFriendsBtn.setRounded10()
-
     }
     
     func initModelManager(){

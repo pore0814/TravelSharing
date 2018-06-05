@@ -75,7 +75,7 @@ class InvitedFriendsManager {
                     //.observeSingleEvent(of: .value, with: { (snapshot) in
                    // .observe(.childChanged) { (snapshot) in
                     .observe(.value) { (snapshot) in
-                        print(snapshot.childrenCount)
+
 
         
                        
@@ -136,7 +136,7 @@ class InvitedFriendsManager {
 //刪除 Permission名單裡我的邀請
     func cancelPermission(friendID: String) {
          guard let userid = UserManager.shared.getFireBaseUID() else {return}
-    /* 先刪除Schedule_id */
+/* 先刪除Schedule_id */
                     FireBaseConnect.databaseRef
                         .child("requestsWaitForPermission")
                         .child(friendID)

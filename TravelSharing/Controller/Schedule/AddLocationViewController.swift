@@ -79,7 +79,6 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
 
     @objc private dynamic func categoryTapGesture(_ gesture: UITapGestureRecognizer) {
-       //AlertToUser().alert.showEdit("請選擇類別", subTitle: "")
     }
 
     func setPickerView() {
@@ -103,9 +102,6 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         timeText.text = "\(timeString)"
     }
 
-    @IBAction func testBtn(_ sender: Any) {
-        AlertToUser().alert.showEdit("funck", subTitle: "funck")
-    }
 
     @IBAction func saveBtn(_ sender: Any) {
         if destinationText.text != "" && dateSelectedText.text != "" && categoryText.text != "" {
@@ -127,8 +123,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
   //         })
 
         } else {
-            AlertToUser().alert.showError(Constants.WrongMessage, subTitle: "表格不可為空白")
-
+            AlertToUser.showError(title: Constants.WrongMessage, subTitle: Constants.NoEmpty)
         }
 
     }
@@ -185,7 +180,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
                         dismenstionViewController.long  = long
                         self.navigationController?.pushViewController(dismenstionViewController, animated: true)
                     } else {
-                    AlertToUser().alert.showEdit("新增目的地", subTitle: "才能觀看街景圖哦")
+                        AlertToUser.showError(title: Constants.Destination.AddDestination, subTitle: Constants.Destination.StreetView)
         }
     }
 
