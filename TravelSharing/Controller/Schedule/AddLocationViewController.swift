@@ -25,7 +25,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 
     var lat = 0.0
     var long = 0.0
-    var dateSelected: [DateInfo]?
+    var dateSelected: [ScheduleDateInfo]?
     var uid: String?
     var pickerView = UIPickerView()
     var daythRow = "Day1"

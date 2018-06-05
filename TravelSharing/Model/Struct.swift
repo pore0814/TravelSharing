@@ -35,7 +35,7 @@ struct ScheduleInfo {
     var days: String
 }
 
-struct DateInfo {
+struct ScheduleDateInfo {
     var weekDay: Int
     var date: String
     var dayth: String
@@ -51,10 +51,10 @@ struct Destination {
     var uid: String
 }
 
-enum Locaion {
-    case myLocation
-    case destinationLocation
-}
+//enum Locaion {
+//    case myLocation
+//    case destinationLocation
+//}
 
 struct DistanceAndTime {
     var distance: String

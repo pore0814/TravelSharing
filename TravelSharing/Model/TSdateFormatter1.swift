@@ -12,7 +12,7 @@ class TSDateFormatter1 {
 
     let dateformate = DateFormatter()
 
-    func getYYMMDD(indexNumber: ScheduleInfo) -> [DateInfo] {
+    func getYYMMDD(indexNumber: ScheduleInfo) -> [ScheduleDateInfo] {
 
         dateformate.dateFormat = "yyyy MM dd"
         dateformate.timeZone = TimeZone(abbreviation: "GMT+0:00")
@@ -22,7 +22,7 @@ class TSDateFormatter1 {
         print("----------")
         print("23", startDate)
 
-        var TSDateArray = [DateInfo]()
+        var TSDateArray = [ScheduleDateInfo]()
 
         for day in 0...days - 1 {
             guard let enddate = Calendar.current.date(byAdding: .day, value: day, to: startDate) else {return []}
@@ -34,7 +34,7 @@ class TSDateFormatter1 {
             let dayth = "Day"+String(day+1)
 
             let endDateStr = dateformate.string(from: enddate)
-            let TSDate = DateInfo(weekDay: weekday, date: endDateStr, dayth: dayth)
+            let TSDate = ScheduleDateInfo(weekDay: weekday, date: endDateStr, dayth: dayth)
             TSDateArray.append(TSDate)
         }
       return TSDateArray

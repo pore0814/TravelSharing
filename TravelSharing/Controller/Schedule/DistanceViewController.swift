@@ -16,6 +16,7 @@ class DistanceViewController: UIViewController {
     @IBOutlet weak var distanceKmLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         backgroundView.setRounded10()
         timeMinsLabel.setRounded10()
         distanceKmLabel.setRounded10()

@@ -30,8 +30,10 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-       tableView.reloadData()
+
+         tableView.reloadData()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,59 +42,72 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         guard let dayth = dayths, let scheduleuid = scheduleUid else {return}
         destinationManger.getDestinationInfo(destinationUid: scheduleuid, dayth: dayth)
 
+        initTableView()
+
+    }
+    
+    func initTableView(){
         let nib = UINib(nibName: "DestinationTableViewCell", bundle: nil)
+
         tableView.register(nib, forCellReuseIdentifier: "DestinationTableViewCell")
         tableView.separatorStyle = .none
         print("Destination---------")
         print (UIScreen.main.traitCollection)
-
+        
     }
-    func initMapLocaionManager() {
-        locationManager = CLLocationManager()
-        //配置 locationManager
-        locationManager.delegate = self
-        //詢問使用者權限
-        locationManager.requestAlwaysAuthorization()
-        //開始接收目前位置資訊
-        locationManager.startUpdatingLocation()
-    locationManager.startMonitoringSignificantLocationChanges()
-    }
+    
+    
+//    func initMapLocaionManager() {
+//        locationManager = CLLocationManager()
+//        //配置 locationManager
+//        locationManager.delegate = self
+//        //詢問使用者權限
+//        locationManager.requestAlwaysAuthorization()
+//        //開始接收目前位置資訊
+//        locationManager.startUpdatingLocation()
+//    locationManager.startMonitoringSignificantLocationChanges()
+//    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//         guard   let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return 0}
-     let fullscreen = UIScreen.main.bounds
-        if indexPath.row == tag {
-            if cellExpanded {
 
-               return fullscreen.height * 0.6
+        let fullscreen = UIScreen.main.bounds
+
+            if indexPath.row == tag {
+
+                if cellExpanded {
+                     return fullscreen.height * 0.6
+
                 } else if indexPath.row != previous {
-                  return fullscreen.height * 0.6
+
+                              return fullscreen.height * 0.6
                 }
-             }
-              return 75
-        }
+            }
+                return 75
+         }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testArray.count
+         return testArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("CellForRAowAT---------------")
-        guard let  cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell") as? DestinationTableViewCell else {return UITableViewCell()}
-            cell.categoryImage.image = UIImage(named: testArray[indexPath.row].category)
-            cell.categoryLabel.text = testArray[indexPath.row].category
-            cell.daysLabel.text = testArray[indexPath.row].time
-            cell.nameLabel.text = testArray[indexPath.row].name
-            cell.mapView.clear()
-            cell.mapViewCell(latitude: testArray[indexPath.row].latitude,
-                             longitude: testArray[indexPath.row].longitude,
-                             destination: testArray[indexPath.row].name)
-            cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
 
-            cell.mapView.bringSubview(toFront: cell.deleteBtn)
-            cell.mapView.bringSubview(toFront: cell.drawPathBtn)
-            cell.mapView.bringSubview(toFront: cell.googleMapBtn)
-            cell.mapView.bringSubview(toFront: cell.distanceBtn)
-            cell.selectionStyle =  .none
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell") as? DestinationTableViewCell
+                        else {return UITableViewCell()}
+                cell.categoryImage.image = UIImage(named: testArray[indexPath.row].category)
+                cell.categoryLabel.text = testArray[indexPath.row].category
+                cell.daysLabel.text = testArray[indexPath.row].time
+                cell.nameLabel.text = testArray[indexPath.row].name
+                cell.mapView.clear()
+                cell.mapViewCell(latitude: testArray[indexPath.row].latitude,
+                                 longitude: testArray[indexPath.row].longitude,
+                                 destination: testArray[indexPath.row].name)
+                cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
+
+                cell.mapView.bringSubview(toFront: cell.deleteBtn)
+                cell.mapView.bringSubview(toFront: cell.drawPathBtn)
+                cell.mapView.bringSubview(toFront: cell.googleMapBtn)
+                cell.mapView.bringSubview(toFront: cell.distanceBtn)
+                cell.selectionStyle =  .none
         return cell
     }
 
@@ -101,24 +116,24 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
       //  guard let superview = sender.superview,
       //     let cell = superview.superview as? DestinationTableViewCell else {return}
 
-//刪除Destination
-    let appearance = SCLAlertView.SCLAppearance(
-        showCloseButton: false
-    )
-    let alertView = SCLAlertView(appearance: appearance)
+//刪除Destination Alert
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false)
+    
+            let alertView = SCLAlertView(appearance: appearance)
 
-    alertView.addButton("確定") {
-            guard let scheduleId = self.scheduleUid, let dayth = self.dayths else {return}
+                alertView.addButton("確定") {
+                        guard let scheduleId = self.scheduleUid, let dayth = self.dayths else {return}
 
-            self.destinationManger.deleteDestinationInfo(scheduleUid: self.scheduleUid!, dayth: dayth ,
-                                                         destinationUid: self.testArray[self.tag!].uid)
-            self.testArray.remove(at: self.tag!)
-            self.tableView.deleteRows(at: [self.indexPathInGlobal!], with: .automatic)
-            self.tableView.reloadData()
-    }
-    alertView.addButton("取消") {}
-    alertView.showSuccess("", subTitle: NSLocalizedString("確定刪除?", comment: ""))
-    }
+                        self.destinationManger.deleteDestinationInfo(scheduleUid: self.scheduleUid!, dayth: dayth ,
+                                                                     destinationUid: self.testArray[self.tag!].uid)
+                        self.testArray.remove(at: self.tag!)
+                        self.tableView.deleteRows(at: [self.indexPathInGlobal!], with: .automatic)
+                        self.tableView.reloadData()
+                }
+                alertView.addButton("取消") {}
+                alertView.showSuccess("", subTitle: NSLocalizedString("確定刪除?", comment: ""))
+            }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             tag = indexPath.row
@@ -126,24 +141,17 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 //展開
             guard let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
 
-            if cellExpanded {
-                cellExpanded = false
-                selectedCell.direction.image = UIImage(named: "down-arrow")
-            } else {
-                cellExpanded = true
-                selectedCell.direction.image = UIImage(named: "up")
-            }
+                    if cellExpanded {
+                        cellExpanded = false
+                        selectedCell.direction.image = UIImage(named: "down-arrow")
+                    } else {
+                        cellExpanded = true
+                        selectedCell.direction.image = UIImage(named: "up")
+                    }
 
             tableView.beginUpdates()
             tableView.endUpdates()
             previous = tag
-    }
-
-    @IBAction func inviteFrineds(_ sender: Any) {
-
-//        let allUsersPage = UIStoryboard.allUsersStoryboard().instantiateInitialViewController()
-//        present(allUsersPage!, animated: true, completion: nil)
-
     }
 }
 

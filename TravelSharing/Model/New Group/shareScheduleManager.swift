@@ -14,13 +14,13 @@ class ShareScheduleManager {
     // 到FireBase  schedules 撈使用者的post的 Scheudle內容
     func getMyScheduleId(scheduleId: String, friendId: String) {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
-        FireBaseConnect
-            .databaseRef
-            .child("schedules")
-            .queryOrderedByKey()
-            .queryEqual(toValue: scheduleId)
-            .observe(.value, with: { (snapshot) in
-                print(snapshot.value)
+              FireBaseConnect
+                    .databaseRef
+                    .child("schedules")
+                    .queryOrderedByKey()
+                    .queryEqual(toValue: scheduleId)
+                    .observe(.value, with: { (snapshot) in
+               
                 guard  let aaa = snapshot.value as? [String: Any] else {return}
                 for ggg in aaa {
                     guard  var ccc = ggg.value as? [String: Any] else {return}

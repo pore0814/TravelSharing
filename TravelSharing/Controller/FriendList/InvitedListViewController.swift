@@ -86,14 +86,14 @@ class InvitedListViewController: UIViewController, UITableViewDelegate, UITableV
 }
 
 extension InvitedListViewController: InvitedFriendsManagerDelegate, GetUserInfoManagerDelegate {
-    func managerFriendList(_ manager: InvitedFriendsManager, getPermission friendList: [UserInfo]) {}
+    func managerFriendList(_ manager: InvitedFriendsManager, getFriendList friendList: [UserInfo]) {}
 
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
         myInfo = userInfo
     }
     func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {}
 
-    func manager(_ manager: InvitedFriendsManager, didGet invitedList: [UserInfo]) {}
+    func manager(_ manager: InvitedFriendsManager, didRequests invitedList: [UserInfo]) {}
 
     func manager(_ manager: InvitedFriendsManager, getPermission permissionList: [UserInfo]) {
         invitedListArray = permissionList

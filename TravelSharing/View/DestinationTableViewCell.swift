@@ -57,52 +57,61 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
 
     @IBAction func deleteBtn(_ sender: Any) {
     }
-    @IBAction func distanceInfo(_ sender: Any) {
-         let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
-                guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
+    
+    @IBAction func distanceInfoBtn(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
+    
+         guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
+        
                 distanceViewController.view.frame = mapView.bounds
                 distanceVC = distanceViewController
 
                 if mapView.myLocation != nil {
-                 distanceManager.getDestinationDateAndTime(myLocaion: mapView.myLocation!, endLocation: destinationLocaion) { (bbb: DistanceAndTime) in
-                    if bbb != nil {
 
-              distanceViewController.distanceKmLabel.text = bbb.distance
-              distanceViewController.timeMinsLabel.text = bbb.time
-                    }
-                    }
+                    distanceManager
+                        .getDestinationDateAndTime(myLocaion: mapView.myLocation!,
+                              endLocation: destinationLocaion)
+                                { (data: DistanceAndTime) in
+                           
+                                    if data != nil {
+                                      distanceViewController.distanceKmLabel.text = data.distance
+                                      distanceViewController.timeMinsLabel.text = data.time
+                                    }
+                                }
                 } else {
-                        AlertToUser().alert.showEdit("點選您所在位置", subTitle: "或到設定開啓定位功能")
-                    }
+                            AlertToUser().alert.showEdit("點選您所在位置", subTitle: "或到設定開啓定位功能")
+                        }
 
-              mapView.addSubview(distanceViewController.view)
-              distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+                  mapView.addSubview(distanceViewController.view)
+                  distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
+    
     @objc func buttonClicked(sender: UIButton) {
-        distanceVC?.view.removeFromSuperview()
+            distanceVC?.view.removeFromSuperview()
     }
+
     @IBAction func drawRouteBtn(_ sender: Any) {
-    drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
+                drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
 
-        if let myLocation = mapView.myLocation {
-            let path = GMSMutablePath()
-            path.add(myLocation.coordinate)
-            path.add(destinationLocaion.coordinate)
-            //add other coordinates
-            //path.addCoordinate(model.coordinate)
+                if let myLocation = mapView.myLocation {
+                    let path = GMSMutablePath()
+                    path.add(myLocation.coordinate)
+                    path.add(destinationLocaion.coordinate)
+                    //add other coordinates
+                    //path.addCoordinate(model.coordinate)
 
-            let bounds = GMSCoordinateBounds(path: path)
-            mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
-        }
+                    let bounds = GMSCoordinateBounds(path: path)
+                    mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
+                }
     }
 //Google導航
     @IBAction func googleMapBtn(_ sender: Any) {
-        if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)) {
-            UIApplication.shared.openURL(NSURL(string:
-                "comgooglemaps://?saddr=&daddr=\(Float(destinationLocaion.coordinate.latitude)),\(Float(destinationLocaion.coordinate.longitude))&directionsmode=driving")! as URL)
-        } else {
-            NSLog("Can't use com.google.maps://")
-        }
+                if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)) {
+                    UIApplication.shared.openURL(NSURL(string:
+                        "comgooglemaps://?saddr=&daddr=\(Float(destinationLocaion.coordinate.latitude)),\(Float(destinationLocaion.coordinate.longitude))&directionsmode=driving")! as URL)
+                } else {
+                    NSLog("Can't use com.google.maps://")
+                }
     }
 
     func mapDelegateAndInitiation() {
@@ -119,7 +128,6 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         self.mapView.settings.myLocationButton = true
         self.mapView.settings.compassButton = true
         self.mapView.settings.zoomGestures = true
-
     }
 
     func mapViewCell(latitude: Double, longitude: Double, destination: String) {
@@ -127,20 +135,19 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
         guard let lat = latitude as? Double,
             let long = longitude as? Double,
             let name = destination as? String else {return}
-            print("---------------CEll")
-            print("68", lat)
-            print("69", long)
-        destinationLocaion = CLLocation(latitude: lat, longitude: long)
-        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 16)
-        let cellMapview = mapView
-        cellMapview?.camera = camera
-        cellMapview?.animate(to: camera)
 
-        let position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let marker = GMSMarker(position: position)
-        marker.title = name
-        marker.map = cellMapview
+            destinationLocaion = CLLocation(latitude: lat, longitude: long)
+                let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 16)
+                let cellMapview = mapView
+                cellMapview?.camera = camera
+                cellMapview?.animate(to: camera)
+
+            let position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let marker = GMSMarker(position: position)
+            marker.title = name
+            marker.map = cellMapview
     }
+
     // MARK: CLLocation Manager Delegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while get location\(error)")
@@ -152,31 +159,33 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
             withLatitude: (location?.coordinate.latitude)!,
             longitude: (location?.coordinate.longitude)!, zoom: 5)
 
-        guard let lat = location?.coordinate.latitude, let long = location?.coordinate.longitude else {return}
-        locationstart = CLLocation(latitude: lat, longitude: long)
-        self.locationManager.stopUpdatingHeading()
+         guard let lat = location?.coordinate.latitude, let long = location?.coordinate.longitude else {return}
+                locationstart = CLLocation(latitude: lat, longitude: long)
+                self.locationManager.stopUpdatingHeading()
     }
 
 // Mark: - GMSMapViewDelegate
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        mapView.isMyLocationEnabled = true
+         mapView.isMyLocationEnabled = true
     }
 
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
-        mapView.isMyLocationEnabled = true
-        if (gesture) {
-            mapView.selectedMarker = nil
-        }
+         mapView.isMyLocationEnabled = true
+    
+            if (gesture) {
+                mapView.selectedMarker = nil
+            }
     }
 
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        mapView.isMyLocationEnabled = true
-        return false
+         mapView.isMyLocationEnabled = true
+         return false
     }
 
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print("coordinatio\(coordinate)")
     }
+
     func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
         mapView.isMyLocationEnabled = true
         mapView.selectedMarker = nil
@@ -202,23 +211,23 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
 
           let json = try? JSON(data: response.data!)
 
-            let routes = json!["routes"].arrayValue
-            print(json)
-            print("routes-----------------")
+                let routes = json!["routes"].arrayValue
+                print(json)
+                print("routes-----------------")
 
             // print route using Polyline
-            for route in routes {
-                let routeOverviewPolyline = route["overview_polyline"].dictionary
-                let points = routeOverviewPolyline?["points"]?.stringValue
-                let distance = routeOverviewPolyline?["distance"]?.stringValue
-               // let duration = routeOverviewPolyline?["duration"]?.stringValue
-                let path = GMSPath.init(fromEncodedPath: points!)
-                let polyline = GMSPolyline.init(path: path)
-                polyline.strokeWidth = 5
-                polyline.strokeColor = UIColor.blue
-                polyline.map = self.mapView
-                print("----------------------------------------")
-            }
+                for route in routes {
+                    let routeOverviewPolyline = route["overview_polyline"].dictionary
+                    let points = routeOverviewPolyline?["points"]?.stringValue
+                    let distance = routeOverviewPolyline?["distance"]?.stringValue
+                   // let duration = routeOverviewPolyline?["duration"]?.stringValue
+                    let path = GMSPath.init(fromEncodedPath: points!)
+                    let polyline = GMSPolyline.init(path: path)
+                    polyline.strokeWidth = 5
+                    polyline.strokeColor = UIColor.blue
+                    polyline.map = self.mapView
+                    print("----------------------------------------")
+                }
         }
     }
 

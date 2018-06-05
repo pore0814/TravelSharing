@@ -58,6 +58,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 //Timer Stop laodingPage
 
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ScheduleViewController.stoplodingIcon), userInfo: nil, repeats: true)
+       // popUpView()
 
     }
 
@@ -71,6 +72,21 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         }
 
     }
+    
+    func popUpView() {
+        guard let popUpRecordView = UIStoryboard.guildlineStoryboard().instantiateViewController(withIdentifier: "GuildLineViewController") as? GuildLineViewController else { return }
+        self.addChildViewController(popUpRecordView)
+        popUpRecordView.view.frame = self.view.frame
+        self.view.addSubview(popUpRecordView.view)
+        popUpRecordView.view.alpha = 0
+      //  popUpRecordView.popUpIntro()
+        
+        UIView.animate(withDuration: 0.2) {
+            popUpRecordView.view.alpha = 1
+            popUpRecordView.didMove(toParentViewController: self)
+        }
+    }
+    
 
     func setTableView() {
         tableView.dataSource = self

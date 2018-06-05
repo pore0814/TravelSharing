@@ -44,7 +44,8 @@ struct DestinationManager {
         print("101-------")
         let destinationUid = FireBaseConnect.databaseRef.childByAutoId().key
         let destinationInfo = ["category": destination.category,
-                               "lat": destination.latitude, "long": destination.longitude,
+                               "lat": destination.latitude,
+                               "long": destination.longitude,
                                "name": destination.name, "query": destination.query,
                                "time": destination.time, "uid": destinationUid] as [String: Any]
 
@@ -81,9 +82,10 @@ struct DestinationManager {
                         guard  let uid = destinationInfo["uid"] as? String else {return}
 
                         let destination =  Destination(name: name, time: time, category: category, latitude: latitude, longitude: longitude, query: query, uid: uid)
-                        destinationInfoArray.append(destination)
-                        destinationInfoArray.sort(by: {$0.time < $1.time})
+                            destinationInfoArray.append(destination)
+                            destinationInfoArray.sort(by: {$0.time < $1.time})
                     }
+
                     DispatchQueue.main.async {
                         self.delegate?.manager(self, didGet: destinationInfoArray)
                     }
@@ -92,36 +94,38 @@ struct DestinationManager {
         }
 //Delete
     func deleteDestinationInfo(scheduleUid: String, dayth: String, destinationUid: String) {
-       FireBaseConnect.databaseRef.child("schedules")
-                                    .child(scheduleUid)
-                                    .child("destination")
-                                    .child(dayth)
-                                    .child(destinationUid)
-                                    .removeValue { error, _ in
-                                                    print(error)
-                                    }
-        }
+        
+           FireBaseConnect
+                .databaseRef
+                .child("schedules")
+                .child(scheduleUid)
+                .child("destination")
+                .child(dayth)
+                .child(destinationUid)
+                .removeValue { error, _ in
+                    print(error)
+            }
+    }
 // get DistanceAndTime
     func getDestinationDateAndTime(completion:@escaping(DistanceAndTime) -> Void) {
+
         let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.042837,121.564879&destination=25.058232,121.520560&mode=driving"
 
-        Alamofire.request(url).responseJSON { response in
-            //print(response.value)
-            guard let result = response.value as? [String: Any],
+            Alamofire.request(url).responseJSON { response in
+           
+                  guard let result = response.value as? [String: Any],
+                        let routes = result["routes"] as? [[String: Any]],
+                        let route = routes.first,
+                        let legs = route["legs"] as? [[String: Any]],
+                        let leg = legs.first,
+                        let distances = leg["distance"] as? [String: Any],
+                        let durations = leg["duration"] as? [String: Any],
+                        let distance = distances["text"] as? String ,
+                        let duration = durations["text"] as? String else {return}
 
-            let routes = result["routes"] as? [[String: Any]],
-                let route = routes.first,
-            let legs = route["legs"] as? [[String: Any]],
-            let leg = legs.first,
-            let distances = leg["distance"] as? [String: Any],
-            let durations = leg["duration"] as? [String: Any],
-            let distance = distances["text"] as? String ,
-            let duration = durations["text"] as? String else {return}
+                        let distanceInfo = DistanceAndTime(distance: distance, time: duration)
 
-            let distanceInfo = DistanceAndTime(distance: distance, time: duration)
-
-             completion(distanceInfo)
-
+                completion(distanceInfo)
+            }
     }
-   }
 }

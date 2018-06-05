@@ -55,13 +55,13 @@ class TSDateFormatter {
         return dateInfoEE
     }
 
-    func getTSDate(indexNumer: ScheduleInfo) -> [DateInfo] {
+    func getTSDate(indexNumer: ScheduleInfo) -> [ScheduleDateInfo] {
         let aArray = getMMDD(indexNumber: indexNumer)
         let weekArray = getEE(indexNumber: indexNumer)
-        var TSDateArray = [DateInfo]()
+        var TSDateArray = [ScheduleDateInfo]()
 
             for day in 0...aArray.count - 1 {
-                let TSDate = DateInfo(weekDay: weekArray[day], date: aArray[day], dayth: "1" )
+                let TSDate = ScheduleDateInfo(weekDay: weekArray[day], date: aArray[day], dayth: "1" )
                 TSDateArray.append(TSDate)
             }
 

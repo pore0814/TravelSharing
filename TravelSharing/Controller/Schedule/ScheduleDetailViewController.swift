@@ -12,14 +12,14 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 
     var detailVC: AddDestinationViewController?
 
-    var getDateInfo = [DateInfo]() {
+    var getDateInfo = [ScheduleDateInfo]() {
         didSet {
             print("set data in ScheduleDetailViewController")
         }
     }
     var schedulDetail: ScheduleInfo?
     let dateFormatter1 = TSDateFormatter1()
-    var destinationManger = DestinationManager()
+    //var destinationManger = DestinationManager()
     var backPage = 0
     @IBOutlet weak var destinationScrollView: LukeScrollView!
     @IBOutlet weak var detailCollectionViwe: LukeCollectionView!
@@ -33,63 +33,74 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 
     }
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-//
-//        if let sdetailVC = segue.destination as? AddDestinationViewController {
-//            self.detailVC = sdetailVC
-//        }
-//
-//    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 //nagivation Bar 顯示Scheudle名稱
 
-        navigationItem.title = schedulDetail?.name
-//日期dateFormatter function 用起程日期及天數計算出所有date
+       navigationItem.title = schedulDetail?.name
+        
+       addrightBarButtonItem()
+
+        dateFormatterToCollectionView()
+
+        createDestinationVC()
+
+        initScrollView()
+
+        initCollectionView()
+
+        setCollectionViewLayout()
+
+    }
+    
+    func addrightBarButtonItem(){
+        let addBarButtonItem = UIBarButtonItem.init(title: "＋", style: .done, target: self,action: #selector(addTapped))
+        addBarButtonItem.tintColor = UIColor.white
+        navigationItem.rightBarButtonItem = addBarButtonItem
+    }
+    
+    func dateFormatterToCollectionView(){
+        //日期dateFormatter function 用起程日期及天數計算出所有date
         guard let detail = schedulDetail else {return}
         getDateInfo =  dateFormatter1.getYYMMDD(indexNumber: detail)
+    }
 
-//ScrollView 設定
+    func createDestinationVC(){
+//呼叫DestinationDetailViewController內容
+    for index in 0..<(getDateInfo.count) {
+        guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as? DestinationViewController else {return}
+        
+        ggg = obj1
+        
+        obj1.scheduleUid = schedulDetail?.uid
+        
+        obj1.dayths = getDateInfo[index].dayth
+        
+        var frame = CGRect(x: self.view.frame.width * CGFloat(index), y: 0, width: destinationScrollView.frame.width, height: destinationScrollView.frame.height)
+        
+        obj1.view.frame = frame
+        destinationScrollView.addSubview(obj1.view)
+        
+        }
+    }
+    
+    func initScrollView(){
+        //ScrollView 設定
         destinationScrollView.isDirectionalLockEnabled = true
         // 是否限制滑動時只能單個方向 垂直或水平滑動
         destinationScrollView.alwaysBounceVertical = false
         destinationScrollView.showsHorizontalScrollIndicator = true
         destinationScrollView.bounces = false //無彈回效果
         destinationScrollView.delegate = self
-       // destinationScrollView.isPagingEnabled = true
-
+        // destinationScrollView.isPagingEnabled = true
+        
         destinationScrollView.contentSize = CGSize(
             width: self.view.bounds.width * CGFloat(getDateInfo.count),
             height: 100)
-//呼叫DestinationDetailViewController內容
-
-        for index in 0..<(getDateInfo.count) {
-            guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as? DestinationViewController else {return}
-
-            ggg = obj1
-
-            obj1.scheduleUid = schedulDetail?.uid
-
-            obj1.dayths = getDateInfo[index].dayth
-
-            var frame = CGRect(x: self.view.frame.width * CGFloat(index), y: 0, width: destinationScrollView.frame.width, height: destinationScrollView.frame.height)
-
-            obj1.view.frame = frame
-            destinationScrollView.addSubview(obj1.view)
-
-        }
-
-        let addBarButtonItem = UIBarButtonItem.init(title: "＋", style: .done, target: self,
-                                                    action: #selector(addTapped))
-        addBarButtonItem.tintColor = UIColor.white
-        navigationItem.rightBarButtonItem = addBarButtonItem
-        setCollectionView()
-        setCollectionViewLayout()
-
     }
-
-    func setCollectionView() {
+    
+    
+    func initCollectionView() {
     // CollectionView
         detailCollectionViwe.delegate =  self
         detailCollectionViwe.dataSource =  self

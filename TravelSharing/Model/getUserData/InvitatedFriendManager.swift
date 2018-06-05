@@ -11,9 +11,9 @@ import FirebaseDatabase
 import Firebase
 
 protocol InvitedFriendsManagerDelegate: class {
-    func manager (_ manager: InvitedFriendsManager, didGet invitedList: [UserInfo])
+    func manager (_ manager: InvitedFriendsManager, didRequests invitedList: [UserInfo])
     func manager (_ manager: InvitedFriendsManager, getPermission permissionList: [UserInfo])
-    func managerFriendList  (_ manager: InvitedFriendsManager, getPermission friendList: [UserInfo])
+    func managerFriendList  (_ manager: InvitedFriendsManager, getFriendList friendList: [UserInfo])
 }
 
 class InvitedFriendsManager {
@@ -66,7 +66,7 @@ class InvitedFriendsManager {
     func requestsFromMeList() {
         guard let userid = UserManager.shared.getFireBaseUID() else { return}
 
-       var  waitingListArray: [UserInfo] = []
+              var  waitingListArray: [UserInfo] = []
 
                 FireBaseConnect.databaseRef
                                 .child("requestsFromMe")
@@ -74,19 +74,19 @@ class InvitedFriendsManager {
                                 .queryEqual(toValue: userid)
                                 .observe(.value, with: { (snapshot) in
 
-              waitingListArray.removeAll()
+                waitingListArray.removeAll()
 
             guard let lists = snapshot.value as? [String: [String: [String: Any]]]  else {return}
                       for list in lists.values {
                         for llll in list.values {
-                           guard let email = llll["email"] as? String,
+                              guard let email = llll["email"] as? String,
                                     let id    = llll["id"] as? String,
                                     let username = llll["username"] as? String,
                                     let photo    = llll["photo"] as? String else {return}
                                     let watingList = UserInfo(email: email, photoUrl: photo, uid: id, userName: username)
                             waitingListArray.append(watingList)
                         }
-               self.delegate?.manager(self, didGet: waitingListArray)
+               self.delegate?.manager(self, didRequests: waitingListArray)
             }
 })
 }
@@ -103,13 +103,12 @@ class InvitedFriendsManager {
                     .observe(.value, with: { (snapshot) in
                         guard let lists = snapshot.value as? [String: [String: [String: Any]]]  else {return}
                         for list in lists.values {
-                            print(list.values)
                             for llll in list.values {
-                                guard let email = llll["email"] as? String,
-                                    let id    = llll["id"] as? String,
-                                    let username = llll["username"] as? String,
-                                    let photo    = llll["photo"] as? String else {return}
-                                let watingList = UserInfo(email: email, photoUrl: photo, uid: id, userName: username)
+                                  guard let email = llll["email"] as? String,
+                                        let id    = llll["id"] as? String,
+                                        let username = llll["username"] as? String,
+                                        let photo    = llll["photo"] as? String else {return}
+                                        let watingList = UserInfo(email: email, photoUrl: photo, uid: id, userName: username)
                                 waitingListArray.append(watingList)
                             }
                         self.delegate?.manager(self, getPermission: waitingListArray)
@@ -120,39 +119,45 @@ class InvitedFriendsManager {
 //取消邀請
     func cancelRequestFromMe(friendID: String) {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
-        /* 先刪除Schedule_id */
-        FireBaseConnect.databaseRef
-            .child("requestsFromMe")
-            .child(userid)
-            .child(friendID)
-            .removeValue()
+/* 先刪除Schedule_id */
+                FireBaseConnect.databaseRef
+                    .child("requestsFromMe")
+                    .child(userid)
+                    .child(friendID)
+                    .removeValue()
         }
 //刪除 Permission名單裡我的邀請
     func cancelPermission(friendID: String) {
-        guard let userid = UserManager.shared.getFireBaseUID() else {return}
-        /* 先刪除Schedule_id */
-        FireBaseConnect.databaseRef
-            .child("requestsWaitForPermission")
-            .child(friendID)
-            .child(userid)
-            .removeValue()
+         guard let userid = UserManager.shared.getFireBaseUID() else {return}
+    /* 先刪除Schedule_id */
+                    FireBaseConnect.databaseRef
+                        .child("requestsWaitForPermission")
+                        .child(friendID)
+                        .child(userid)
+                        .removeValue()
     }
 //確認好友
     func  beFriend(myInfo: UserInfo, friendInfo: UserInfo) {
 
-//      let myData = ["id":myInfo.uid,"email":myInfo.email,"photo":myInfo.photoUrl,"username":myInfo.userName]
-//      let friendData = ["id":friendInfo.uid,"email":friendInfo.email,"photo":friendInfo.photoUrl,"username":friendInfo.userName]
-//
-//        let data = [myInfo.uid:friendData,friendInfo.uid:myData]
-        FireBaseConnect.databaseRef.child("friends").child(myInfo.uid).child(friendInfo.uid).setValue(["email": friendInfo.email])
+            FireBaseConnect
+                .databaseRef
+                .child("friends")
+                .child(myInfo.uid)
+                .child(friendInfo.uid)
+                .setValue(["email": friendInfo.email])
 
-        FireBaseConnect.databaseRef.child("friends").child(friendInfo.uid).child(myInfo.uid).setValue(["email": myInfo.email])
+            FireBaseConnect
+                .databaseRef
+                .child("friends")
+                .child(friendInfo.uid)
+                .child(myInfo.uid)
+                .setValue(["email": myInfo.email])
     }
 
- //確認好友後要從Request名單中移出
+//確認好友後要從Request名單中移出
     func deletRequetFromMe(friendID: String) {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
-        /* 先刪除Schedule_id */
+/* 先刪除Schedule_id */
         FireBaseConnect.databaseRef
             .child("requestsFromMe")
             .child(friendID)
@@ -162,7 +167,7 @@ class InvitedFriendsManager {
 //確認好友後要從Permission名單中移出
     func deletePermission(friendID: String) {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
-        /* 先刪除Schedule_id */
+/* 先刪除Schedule_id */
         FireBaseConnect.databaseRef
             .child("requestsWaitForPermission")
             .child(userid)
@@ -190,30 +195,33 @@ class InvitedFriendsManager {
     }
     func getMyFriendsList(Id: Dictionary<String, Any>.Keys) {
          var  friendsListArray: [UserInfo] = []
-        for id in Id {
-        FireBaseConnect.databaseRef
-            .child("users")
-            .queryOrderedByKey()
-            .queryEqual(toValue: id)
-            .observeSingleEvent(of: .value, with: { (snapshot) in
-               print(snapshot.childrenCount)
-                guard  let friendInfos = snapshot.value as? [String: Any] else {return}
-                for frinedInfo in friendInfos {
-                   guard let json = frinedInfo.value as? [String: String],
-                    let email = json["email"] as? String,
-                    let uid = json["uid"] as? String,
-                    let photo = json["photoUrl"] as? String,
-                    let username = json["username"] as? String else {return}
-                let friendsInstance = UserInfo(email: email, photoUrl: photo, uid: uid, userName: username)
-                    friendsListArray.append(friendsInstance)
 
+                for id in Id {
+                    FireBaseConnect.databaseRef
+                        .child("users")
+                        .queryOrderedByKey()
+                        .queryEqual(toValue: id)
+                        .observeSingleEvent(of: .value, with: { (snapshot) in
+                   
+                                guard  let friendInfos = snapshot.value as? [String: Any] else {return}
+                            
+                                for frinedInfo in friendInfos {
+                                      guard let json = frinedInfo.value as? [String: String],
+                                            let email = json["email"] as? String,
+                                            let uid = json["uid"] as? String,
+                                            let photo = json["photoUrl"] as? String,
+                                            let username = json["username"] as? String else {return}
+
+                                            let friendsInstance = UserInfo(email: email
+                                                                            , photoUrl: photo, uid: uid
+                                                                            , userName: username)
+
+                                                friendsListArray.append(friendsInstance)
+                                 }
+                                                self.delegate?.managerFriendList(self, getFriendList: friendsListArray)
+                    })
                 }
-
-                print(friendsListArray)
-                self.delegate?.managerFriendList(self, getPermission: friendsListArray)
-            })
-        }
-    }
+      }
 }
 
             /*
