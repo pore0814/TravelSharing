@@ -20,28 +20,11 @@ struct DestinationManager {
     var totalDistance: String!
     var totalDurationInSeconds: UInt = 0
     var totalDuration: String!
-////第一次登入會產生的範例
-//    func savefisrtDestinationInfo(uid: String) {
-//
-//        let destinationUid = FireBaseConnect.databaseRef.childByAutoId().key
-//        let destinationInfo = ["category": "景點",
-//                               "lat": 23.003012, "long": 120.211601,
-//                               "name": "台南公園", "query": "2019 01 01_11:00",
-//            "time": "11:00", "uid": destinationUid ] as [String: Any]
-//
-//        FireBaseConnect.databaseRef
-//            .child(Constants.FireBaseSchedules)
-//            .child(uid)
-//            .child("destination")
-//            .child("Day1")
-//            .child(destinationUid)
-//            .setValue(destinationInfo)
-//    }
+
 
 //SaveDate
     func saveDestinationInfo(uid: String, dayth: String, destination: Destination) {
 
-        print("101-------")
         let destinationUid = FireBaseConnect.databaseRef.childByAutoId().key
         let destinationInfo = ["category": destination.category,
                                "lat": destination.latitude,

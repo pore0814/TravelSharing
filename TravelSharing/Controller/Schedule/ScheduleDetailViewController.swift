@@ -42,14 +42,14 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         addrightBarButtonItem()
 
         dateFormatterToCollectionView()
-
-        createDestinationVC()
+        
+        initCollectionView()
+        
+        setCollectionViewLayout()
 
         initScrollView()
-
-        initCollectionView()
-
-        setCollectionViewLayout()
+        
+        createDestinationVC()
 
     }
     
@@ -80,7 +80,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         
         obj1.view.frame = frame
         destinationScrollView.addSubview(obj1.view)
-        
+        obj1.didMove(toParentViewController: self)
         }
     }
     

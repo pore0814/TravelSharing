@@ -12,11 +12,11 @@ import GooglePlaces
 import Alamofire
 import SwiftyJSON
 import Firebase
+import SCLAlertView
 
-//enum Location {
-//    case myLocaion
-//    case destinationLocation
-//}
+protocol showDistanceDelegate:class {
+    func callDistanceView(_ cell:DestinationTableViewCell ,myLocation:CLLocation,at index: IndexPath)
+}
 
 class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationManagerDelegate {
 
@@ -31,7 +31,9 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var direction: UIImageView!
-
+    
+    weak var delegate:showDistanceDelegate? = nil
+    var indexPath:IndexPath! = nil
     var locationManager = CLLocationManager()
    // var locationSelected = Location.myLocaion
     var locationstart     = CLLocation()
@@ -58,38 +60,47 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     @IBAction func deleteBtn(_ sender: Any) {
     }
     
-    @IBAction func distanceInfoBtn(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
-    
-         guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
+    @IBAction func distanceInfoBtn(_ sender: UIButton) {
+        self.delegate?.callDistanceView(self, myLocation: mapView.myLocation!, at: self.indexPath)
         
-                distanceViewController.view.frame = mapView.bounds
-                distanceVC = distanceViewController
-
-                if mapView.myLocation != nil {
-
-                    distanceManager
-                        .getDestinationDateAndTime(myLocaion: mapView.myLocation!,
-                              endLocation: destinationLocaion)
-                                { (data: DistanceAndTime) in
-                           
-                                    if data != nil {
-                                      distanceViewController.distanceKmLabel.text = data.distance
-                                      distanceViewController.timeMinsLabel.text = data.time
-                                    }
-                                }
-                } else {
-                           AlertToUser.showError(title:
-                            Constants.Map.YourLocation, subTitle: Constants.Map.SettingYourLocation)
-                        }
-
-                  mapView.addSubview(distanceViewController.view)
-                  distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+//
+//        if mapView.myLocation != nil{
+//            AlertToUser.showError(title: "無法存取你的位置", subTitle: "")
+//        }else{
+//           self.delegate?.callDistanceView(self, myLocation: mapView.myLocation!, sender: sender.tag)
+//        }
+        
+//        let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
+//
+//         guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
+//
+//                distanceViewController.view.frame = mapView.bounds
+//                distanceVC = distanceViewController
+//
+//                if mapView.myLocation != nil {
+//
+//                    distanceManager
+//                        .getDestinationDateAndTime(myLocaion: mapView.myLocation!,
+//                              endLocation: destinationLocaion)
+//                                { (data: DistanceAndTime) in
+//
+//                                    if data != nil {
+//                                      distanceViewController.distanceKmLabel.text = data.distance
+//                                      distanceViewController.timeMinsLabel.text = data.time
+//                                    }
+//                                }
+//                } else {
+//                           AlertToUser.showError(title:
+//                            Constants.Map.YourLocation, subTitle: Constants.Map.SettingYourLocation)
+//                        }
+//
+//                  mapView.addSubview(distanceViewController.view)
+//                  distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
     
-    @objc func buttonClicked(sender: UIButton) {
-            distanceVC?.view.removeFromSuperview()
-    }
+//    @objc func buttonClicked(sender: UIButton) {
+//            distanceVC?.view.removeFromSuperview()
+//    }
 
     @IBAction func drawRouteBtn(_ sender: Any) {
                 drawPath(myLocaion: locationstart, endLocation: destinationLocaion)
@@ -140,13 +151,13 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
             destinationLocaion = CLLocation(latitude: lat, longitude: long)
                 let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 16)
                 let cellMapview = mapView
-                cellMapview?.camera = camera
-                cellMapview?.animate(to: camera)
+                    cellMapview?.camera = camera
+                    cellMapview?.animate(to: camera)
 
-            let position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            let marker = GMSMarker(position: position)
-            marker.title = name
-            marker.map = cellMapview
+                let position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                let marker = GMSMarker(position: position)
+                    marker.title = name
+                    marker.map = cellMapview
     }
 
     // MARK: CLLocation Manager Delegate
@@ -155,10 +166,10 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        let camera = GMSCameraPosition.camera(
-            withLatitude: (location?.coordinate.latitude)!,
-            longitude: (location?.coordinate.longitude)!, zoom: 5)
+                let location = locations.last
+                let camera = GMSCameraPosition.camera(
+                    withLatitude: (location?.coordinate.latitude)!,
+                    longitude: (location?.coordinate.longitude)!, zoom: 5)
 
          guard let lat = location?.coordinate.latitude, let long = location?.coordinate.longitude else {return}
                 locationstart = CLLocation(latitude: lat, longitude: long)

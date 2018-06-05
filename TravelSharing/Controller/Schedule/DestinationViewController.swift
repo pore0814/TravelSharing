@@ -23,14 +23,16 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var testArray = [Destination]()
     var schedulePassDataToDestination: ScheduleInfo?
     var destinationManger = DestinationManager()
-    var locationManager = CLLocationManager()
+    var distanceManager = DistanceManager()
     var lat: Double?
     var long: Double?
     var indexPathInGlobal: IndexPath?
+    var userLocation:CLLocation?
+    var showDistanceTag:Int?
+
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-
          tableView.reloadData()
     }
     
@@ -105,6 +107,8 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.mapView.bringSubview(toFront: cell.drawPathBtn)
                 cell.mapView.bringSubview(toFront: cell.googleMapBtn)
                 cell.mapView.bringSubview(toFront: cell.distanceBtn)
+                cell.delegate = self
+                cell.indexPath = indexPath
                 cell.selectionStyle =  .none
         return cell
     }
@@ -153,9 +157,58 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
             tableView.endUpdates()
             previous = tag
     }
-}
+    func callDistanceVC(){
+        
+            let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
+        
+            guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
+        
+            distanceViewController.view.frame = self.view.frame
+          //  distanceVC = distanceViewController
+        
+//            guard let aaa =
+//            distanceManager
+//            .getDestinationDateAndTime(myLocaion: userLocation,
+//            endLocation: destinationLocaion)
+        guard let aaa = userLocation else {return}
+        
+        distanceManager.getDestinationDateAndTime(myLocaion:aaa, endLocation: aaa, completion:
+            { (data: DistanceAndTime) in
 
-extension DestinationViewController: DestinationManagerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate {
+            if data != nil {
+            distanceViewController.distanceKmLabel.text = data.distance
+            distanceViewController.timeMinsLabel.text = data.time
+                }
+
+            })
+//            else {
+//            AlertToUser.showError(title:
+//            Constants.Map.YourLocation, subTitle: Constants.Map.SettingYourLocation)
+//            }
+        
+//                self.view.addChildViewController(<#T##childController: UIViewController##UIViewController#>)
+//            self.addSubview(distanceViewController.view)
+          self.view.addSubview(distanceViewController.view)
+         distanceViewController.didMove(toParentViewController: self)
+     //      distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+        }
+    
+    }
+    
+
+
+//extension DestinationViewController: DestinationManagerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate {
+extension DestinationViewController: showDistanceDelegate,DestinationManagerDelegate{
+    func callDistanceView(_ cell: DestinationTableViewCell, myLocation: CLLocation, at index: IndexPath) {
+        userLocation = myLocation
+        showDistanceTag = index.row
+    callDistanceVC()
+        
+    }
+    
+    
+   
+    
     //Delegate 拿資料
     func manager(_ manager: DestinationManager, didGet schedule: [Destination]) {
             testArray = schedule
