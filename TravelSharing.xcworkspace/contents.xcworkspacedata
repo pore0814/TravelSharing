@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/Annie/Desktop/TravelSharing/TravelSharing/Model/Destination/DistanceManager.swift">
-   </FileRef>
-   <FileRef
       location = "group:TravelSharing.xcodeproj">
    </FileRef>
    <FileRef

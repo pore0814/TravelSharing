@@ -42,49 +42,49 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         addrightBarButtonItem()
 
         dateFormatterToCollectionView()
-        
+
         initCollectionView()
-        
+
         setCollectionViewLayout()
 
         initScrollView()
-        
+
         createDestinationVC()
 
     }
-    
-    func addrightBarButtonItem(){
-        let addBarButtonItem = UIBarButtonItem.init(title: "＋", style: .done, target: self,action: #selector(addTapped))
+
+    func addrightBarButtonItem() {
+        let addBarButtonItem = UIBarButtonItem.init(title: "＋", style: .done, target: self, action: #selector(addTapped))
         addBarButtonItem.tintColor = UIColor.white
         navigationItem.rightBarButtonItem = addBarButtonItem
     }
-    
-    func dateFormatterToCollectionView(){
+
+    func dateFormatterToCollectionView() {
         //日期dateFormatter function 用起程日期及天數計算出所有date
         guard let detail = schedulDetail else {return}
         getDateInfo =  dateFormatter1.getYYMMDD(indexNumber: detail)
     }
 
-    func createDestinationVC(){
+    func createDestinationVC() {
 //呼叫DestinationDetailViewController內容
     for index in 0..<(getDateInfo.count) {
         guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as? DestinationViewController else {return}
-        
+
         ggg = obj1
-        
+
         obj1.scheduleUid = schedulDetail?.uid
-        
+
         obj1.dayths = getDateInfo[index].dayth
-        
+
         var frame = CGRect(x: self.view.frame.width * CGFloat(index), y: 0, width: destinationScrollView.frame.width, height: destinationScrollView.frame.height)
-        
+
         obj1.view.frame = frame
         destinationScrollView.addSubview(obj1.view)
         obj1.didMove(toParentViewController: self)
         }
     }
-    
-    func initScrollView(){
+
+    func initScrollView() {
         //ScrollView 設定
         destinationScrollView.isDirectionalLockEnabled = true
         // 是否限制滑動時只能單個方向 垂直或水平滑動
@@ -93,13 +93,12 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         destinationScrollView.bounces = false //無彈回效果
         destinationScrollView.delegate = self
         // destinationScrollView.isPagingEnabled = true
-        
+
         destinationScrollView.contentSize = CGSize(
             width: self.view.bounds.width * CGFloat(getDateInfo.count),
             height: 100)
     }
-    
-    
+
     func initCollectionView() {
     // CollectionView
         detailCollectionViwe.delegate =  self

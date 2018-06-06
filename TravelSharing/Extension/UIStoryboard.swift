@@ -37,8 +37,8 @@ extension UIStoryboard {
     static func friendsStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "FriendsList", bundle: nil)
     }
-    
-    static func guildlineStoryboard() -> UIStoryboard{
+
+    static func guildlineStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "GuildLine", bundle: nil)
     }
 }

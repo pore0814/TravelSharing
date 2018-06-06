@@ -32,32 +32,32 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
         super.viewDidLoad()
 
         initModelManager()
-        
+
         initSearchBar()
 
         initTableView()
-        
+
         addFriendsBtn.setRounded10()
     }
-    
-    func initModelManager(){
+
+    func initModelManager() {
         getUserInfoManager.delegate = self
         getUserInfoManager.getAllUserInfo()
         getUserInfoManager.getMyInfo()
-        
+
         invitedFriendManager.delegate = self
         invitedFriendManager.requestsFromMeList()
     }
-    
-    func initSearchBar(){
+
+    func initSearchBar() {
         friendSearchBar.delegate = self
         friendSearchBar.returnKeyType  = UIReturnKeyType.done
     }
-    
-    func initTableView(){
+
+    func initTableView() {
         waitingtableView.dataSource = self
         waitingtableView.delegate = self
-        
+
         let nib  = UINib(nibName: "AllUsersTableViewCell", bundle: nil)
         waitingtableView.register(nib, forCellReuseIdentifier: "AllUsersTableViewCell")
     }
@@ -82,18 +82,17 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
         return true
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-       
+
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
     }
-    
 
      func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         var friendEmail = friendSearchBar.text
         friendSearchBar.enablesReturnKeyAutomatically = true
         friendSearchBar.resignFirstResponder()
         friendSearchBar.showsCancelButton = true
-        
+
                 for index in 0...allUserInfo.count - 1 {
                     if friendEmail! == allUserInfo[index].email {
                         friendEmailLabel.text = allUserInfo[index].email
@@ -101,7 +100,7 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
                         friendProfileImg.sd_setImage(with: URL(string: allUserInfo[index].photoUrl), completed: nil)
                          friendInfo =  allUserInfo[index]
                          addFriendsBtn.isHidden = false
-                        
+
                         searchBar.text = ""
                        return
 

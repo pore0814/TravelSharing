@@ -9,7 +9,7 @@
 import Foundation
 
 struct Constants {
-    
+
     struct LoginAndRegister {
         static let Diff2Password = "二個密碼不同"
         static let InvalidEmail = "無效Email"
@@ -32,14 +32,13 @@ struct Constants {
     static let PhotoUrl = "photoUrl"
     static let Uid = "uid"
     static let UserName = "username"
-    
+
     static let ProfileImage = "profileImage"
 
     static let WrongMessage = "錯誤訊息"
     static let NoEmpty = "表格需填寫完整，不可為空白"
     static let FailToDelete = "刪除失敗"
     static let NoData = "目前無資料"
-    
 
     static let FireBaseSchedules = "schedules"
     static let FireBaseSchedule = "schedule"

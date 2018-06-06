@@ -60,7 +60,7 @@ class InvitedListViewController: UIViewController, UITableViewDelegate, UITableV
       invitedFriendsManager.deletRequetFromMe(friendID: invitedListArray[sender.tag].uid)
       invitedListArray.remove(at: sender.tag)
      tableView.reloadData()
-    }else {
+    } else {
         AlertManager.showError(title: Constants.NoData, subTitle: "")
     }
     print("permitted")

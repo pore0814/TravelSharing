@@ -25,26 +25,24 @@ struct AlertToUser1 {
 }
 
 class Alertmanager1 {
-    
+
     static let shared = Alertmanager1()
-    
+
     func showCheck(with title: String, message: String, delete: @escaping () -> Void, cancel: @escaping () -> Void) {
-        
+
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false)
-        
+
         let alertView = SCLAlertView(appearance: appearance)
-        
-        
+
         alertView.addButton(Check.yes.setButtonTitle()) {
             delete()
         }
         alertView.addButton(Check.no.setButtonTitle()) {
             cancel()
         }
-        
+
         alertView.showSuccess("", subTitle: NSLocalizedString(title, comment: message))
     }
-    
-    
+
 }

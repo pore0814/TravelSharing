@@ -28,7 +28,7 @@ class AllUsersTableViewCell: UITableViewCell {
 
         getUserInfoManager.delegate = self
         getUserInfoManager.getMyInfo()
-        
+
         addFriendBtn.setRounded10()
         cancelFriendInvitedBtn.setRounded10()
 

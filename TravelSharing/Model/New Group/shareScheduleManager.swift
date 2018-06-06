@@ -20,7 +20,7 @@ class ShareScheduleManager {
                     .queryOrderedByKey()
                     .queryEqual(toValue: scheduleId)
                     .observe(.value, with: { (snapshot) in
-               
+
                 guard  let aaa = snapshot.value as? [String: Any] else {return}
                 for ggg in aaa {
                     guard  var ccc = ggg.value as? [String: Any] else {return}

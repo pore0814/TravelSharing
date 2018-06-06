@@ -102,7 +102,6 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
         timeText.text = "\(timeString)"
     }
 
-
     @IBAction func saveBtn(_ sender: Any) {
         if destinationText.text != "" && dateSelectedText.text != "" && categoryText.text != "" {
 

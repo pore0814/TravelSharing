@@ -14,9 +14,9 @@ class DistanceViewController: UIViewController {
     @IBOutlet weak var removeBtn: UIButton!
     @IBOutlet weak var timeMinsLabel: UILabel!
     @IBOutlet weak var distanceKmLabel: UILabel!
-    
+
     @IBOutlet weak var destinationNamer: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

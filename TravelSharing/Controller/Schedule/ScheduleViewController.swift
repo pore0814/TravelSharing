@@ -67,11 +67,11 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
             timer.invalidate()
             SVProgressHUD.dismiss()
             indicator =  false
-            popUpView()
+           // popUpView()
         }
 
     }
-    
+
     func popUpView() {
         guard let popUpRecordView = UIStoryboard.guildlineStoryboard().instantiateViewController(withIdentifier: "GuildLineViewController") as? GuildLineViewController else { return }
         self.addChildViewController(popUpRecordView)
@@ -79,13 +79,12 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         self.view.addSubview(popUpRecordView.view)
         popUpRecordView.view.alpha = 0
       //  popUpRecordView.popUpIntro()
-        
+
         UIView.animate(withDuration: 0.2) {
             popUpRecordView.view.alpha = 1
             popUpRecordView.didMove(toParentViewController: self)
         }
     }
-    
 
     func setTableView() {
         tableView.dataSource = self
@@ -119,7 +118,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+
         let  index = indexPath.row % 5
         if  let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as? ScheduleTableViewCell {
                 let data = self.schedules[indexPath.row]
@@ -165,7 +164,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
                 guard let editViewController = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as? AddEditScheduleViewController else {return}
 
                 self.navigationController?.pushViewController(editViewController, animated: true)
-            
+
                 editViewController.scheduleInfoDetail = self.schedules[indexPath.row]
 
                 self.indexNumber = indexPath.row
@@ -178,14 +177,13 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
                 showCloseButton: false)
 
                     let alertView = SCLAlertView(appearance: appearance)
-                        alertView.addButton("確定")
-                            {
+                        alertView.addButton("確定") {
                             ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid, arrrayIndexPath: indexPath.row)
                             self.schedules.remove(at: indexPath.row)
                             self.tableView.deleteRows(at: [indexPath], with: .fade)
                             tableView.reloadData()
                             }
-    
+
                         alertView.addButton("取消") {}
                         alertView.showSuccess("", subTitle: NSLocalizedString("是否刪除", comment: ""))
                     }
@@ -199,11 +197,11 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         }
              shareButton.backgroundColor = UIColor.brown
 
-            return[editButton, deleteButton,shareButton]
+            return[editButton, deleteButton, shareButton]
      }
 }
 extension ScheduleViewController: ScheduleManagerDelegate {
-    
+
     func manager(_ manager: ScheduleManager, didGet schedule: ScheduleInfo) {
         print("107", schedule)
         schedules[indexNumber] = schedule

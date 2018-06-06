@@ -27,9 +27,6 @@ class MyFriendListViewController: UIViewController, UITableViewDelegate, UITable
 
         lisTableView.dataSource = self
         lisTableView.delegate =  self
-        
-        
-      
 
     }
 
@@ -47,18 +44,17 @@ class MyFriendListViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
            guard let scheduleid = scheduleId else {return}
         var title = "確定分享行程給" + friendListArray[indexPath.row].userName
-        
+
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false
         )
         let alertView = SCLAlertView(appearance: appearance)
-        
+
         alertView.addButton("確定") {
-            self.shareScheduleManager.getMyScheduleId(scheduleId: scheduleid.uid
-                , friendId: self.friendListArray[indexPath.row].uid)
+            self.shareScheduleManager.getMyScheduleId(scheduleId: scheduleid.uid, friendId: self.friendListArray[indexPath.row].uid)
             self.navigationController?.popViewController(animated: true)
         }
         alertView.addButton("取消") {}
@@ -66,7 +62,6 @@ class MyFriendListViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     }
-
 
 extension MyFriendListViewController: InvitedFriendsManagerDelegate {
 

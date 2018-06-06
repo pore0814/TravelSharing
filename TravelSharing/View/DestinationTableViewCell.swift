@@ -14,8 +14,8 @@ import SwiftyJSON
 import Firebase
 import SCLAlertView
 
-protocol showDistanceDelegate:class {
-    func callDistanceView(_ cell:DestinationTableViewCell ,myLocation:CLLocation,at index: IndexPath)
+protocol showDistanceDelegate: class {
+    func callDistanceView(_ cell: DestinationTableViewCell, myLocation: CLLocation, at index: IndexPath)
 }
 
 class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationManagerDelegate {
@@ -31,9 +31,9 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var direction: UIImageView!
-    
-    weak var delegate:showDistanceDelegate? = nil
-    var indexPath:IndexPath! = nil
+
+    weak var delegate: showDistanceDelegate?
+    var indexPath: IndexPath! = nil
     var locationManager = CLLocationManager()
    // var locationSelected = Location.myLocaion
     var locationstart     = CLLocation()
@@ -59,10 +59,9 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
 
     @IBAction func deleteBtn(_ sender: Any) {
     }
-    
+
     @IBAction func distanceInfoBtn(_ sender: UIButton) {
         self.delegate?.callDistanceView(self, myLocation: mapView.myLocation!, at: self.indexPath)
-        
 
 //        if mapView.myLocation != nil{
 //            AlertToUser1().alert.showEdit("無法存取你的位置", subTitle: "")
@@ -71,7 +70,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
 //        }else{
        //   self.delegate?.callDistanceView(self, myLocation: mapView.myLocation!, at: self.indexPath)
         //}
-        
+
 //        let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
 //
 //         guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
@@ -188,7 +187,7 @@ class DestinationTableViewCell: UITableViewCell, GMSMapViewDelegate, CLLocationM
 
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
          mapView.isMyLocationEnabled = true
-    
+
             if (gesture) {
                 mapView.selectedMarker = nil
             }

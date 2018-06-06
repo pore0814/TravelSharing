@@ -21,7 +21,6 @@ struct DestinationManager {
     var totalDurationInSeconds: UInt = 0
     var totalDuration: String!
 
-
 //SaveDate
     func saveDestinationInfo(uid: String, dayth: String, destination: Destination) {
 
@@ -77,7 +76,7 @@ struct DestinationManager {
         }
 //Delete
     func deleteDestinationInfo(scheduleUid: String, dayth: String, destinationUid: String) {
-        
+
            FireBaseConnect
                 .databaseRef
                 .child("schedules")
@@ -95,7 +94,7 @@ struct DestinationManager {
         let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.042837,121.564879&destination=25.058232,121.520560&mode=driving"
 
             Alamofire.request(url).responseJSON { response in
-           
+
                   guard let result = response.value as? [String: Any],
                         let routes = result["routes"] as? [[String: Any]],
                         let route = routes.first,

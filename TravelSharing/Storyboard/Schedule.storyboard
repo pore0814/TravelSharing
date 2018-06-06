@@ -207,7 +207,7 @@
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoB-oW-y0R">
-                                <rect key="frame" x="0.0" y="167" width="188" height="334"/>
+                                <rect key="frame" x="0.0" y="167" width="375" height="334"/>
                                 <connections>
                                     <action selector="reMoveBtn:" destination="IUX-UY-tda" eventType="touchUpInside" id="ETe-k7-HDt"/>
                                 </connections>
@@ -220,7 +220,7 @@
                             <constraint firstItem="NoB-oW-y0R" firstAttribute="height" secondItem="WhF-NG-fEC" secondAttribute="height" multiplier="0.5" id="emy-7m-e97"/>
                             <constraint firstItem="83e-Tb-QAq" firstAttribute="bottom" secondItem="NoB-oW-y0R" secondAttribute="bottom" id="l7u-9A-odG"/>
                             <constraint firstItem="NoB-oW-y0R" firstAttribute="centerY" secondItem="WhF-NG-fEC" secondAttribute="centerY" id="llq-6z-h62"/>
-                            <constraint firstItem="NoB-oW-y0R" firstAttribute="width" secondItem="WhF-NG-fEC" secondAttribute="width" multiplier="0.5" id="tn8-IJ-5iw"/>
+                            <constraint firstItem="NoB-oW-y0R" firstAttribute="width" secondItem="WhF-NG-fEC" secondAttribute="width" id="tn8-IJ-5iw"/>
                             <constraint firstItem="83e-Tb-QAq" firstAttribute="leading" secondItem="NoB-oW-y0R" secondAttribute="leading" id="wjE-3m-WLu"/>
                             <constraint firstItem="NoB-oW-y0R" firstAttribute="leading" secondItem="WhF-NG-fEC" secondAttribute="leading" id="y0m-el-lMR"/>
                         </constraints>
@@ -236,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yTv-6X-agm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1216.8" y="1739.2803598200901"/>
+            <point key="canvasLocation" x="1009" y="1665"/>
         </scene>
         <!--Add Destination View Controller-->
         <scene sceneID="NIY-eX-RVK">

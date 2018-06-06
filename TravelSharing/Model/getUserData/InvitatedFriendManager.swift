@@ -76,11 +76,6 @@ class InvitedFriendsManager {
                    // .observe(.childChanged) { (snapshot) in
                     .observe(.value) { (snapshot) in
 
-
-        
-                       
-                      
-            
                 waitingListArray.removeAll()
 
             guard let lists = snapshot.value as? [String: [String: [String: Any]]]  else {return}
@@ -209,9 +204,9 @@ class InvitedFriendsManager {
                         .queryOrderedByKey()
                         .queryEqual(toValue: id)
                         .observeSingleEvent(of: .value, with: { (snapshot) in
-                   
+
                                 guard  let friendInfos = snapshot.value as? [String: Any] else {return}
-                            
+
                                 for frinedInfo in friendInfos {
                                       guard let json = frinedInfo.value as? [String: String],
                                             let email = json["email"] as? String,
@@ -219,9 +214,7 @@ class InvitedFriendsManager {
                                             let photo = json["photoUrl"] as? String,
                                             let username = json["username"] as? String else {return}
 
-                                            let friendsInstance = UserInfo(email: email
-                                                                            , photoUrl: photo, uid: uid
-                                                                            , userName: username)
+                                            let friendsInstance = UserInfo(email: email, photoUrl: photo, uid: uid, userName: username)
 
                                                 friendsListArray.append(friendsInstance)
                                  }

@@ -71,7 +71,7 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
                 AlertManager.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.PwdMoreThan6)
                 //密碼與再次確認密碼
             } else if passwordText.text != reEnterPasswordText.text {
-                
+
                 AlertManager.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.Diff2Password)
 
                 //Email格式
@@ -90,7 +90,6 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
             }
         } else {
                  AlertManager.showError(title: "", subTitle: Constants.NoEmpty)
-          
 
         }
     }
