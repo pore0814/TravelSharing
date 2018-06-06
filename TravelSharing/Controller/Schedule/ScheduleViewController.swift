@@ -162,15 +162,18 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         let editButton = UITableViewRowAction(style: .normal, title: "Edit") { (_, _) in
             let mainstoryboard: UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
 //換頁＋傳資
-            guard let editViewController = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as? AddEditScheduleViewController else {return}
-            self.navigationController?.pushViewController(editViewController, animated: true)
-            editViewController.scheduleInfoDetail = self.schedules[indexPath.row]
-            self.indexNumber = indexPath.row
+                guard let editViewController = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as? AddEditScheduleViewController else {return}
+
+                self.navigationController?.pushViewController(editViewController, animated: true)
+            
+                editViewController.scheduleInfoDetail = self.schedules[indexPath.row]
+
+                self.indexNumber = indexPath.row
         }
            editButton.backgroundColor = UIColor.orange
 //Delete
         let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (_, _) in
-//Alert
+
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false)
 
@@ -200,6 +203,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
      }
 }
 extension ScheduleViewController: ScheduleManagerDelegate {
+    
     func manager(_ manager: ScheduleManager, didGet schedule: ScheduleInfo) {
         print("107", schedule)
         schedules[indexNumber] = schedule

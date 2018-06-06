@@ -159,45 +159,38 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
             previous = tag
     }
     func callDistanceVC(){
-        
-            let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
-        
-            guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
-        
-        
-        
-        guard let aaa = userLocation,let cellindexPath = cellIndexPath else {return}
-        
-        distanceManager.getDestinationDateAndTime(myLocaion:aaa, endLocation:testArray[cellindexPath .row], completion:
-            { (data: DistanceAndTime) in
 
-            if data != nil {
-            distanceViewController.distanceKmLabel.text = data.distance
-            distanceViewController.timeMinsLabel.text = data.time
-                }
+        let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
+
+        guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
+ 
+        guard let userlocation = userLocation,let cellindexPath = cellIndexPath else {return}
+        
+        distanceManager
+            .getDestinationDateAndTime(myLocaion:userlocation,
+                                       endLocation:testArray[cellindexPath .row],
+                                       completion:{ (data: DistanceAndTime) in
+
+                        if data != nil {
+                            distanceViewController.distanceKmLabel.text = data.distance
+                            distanceViewController.timeMinsLabel.text = data.time
+                            distanceViewController.destinationNamer.text = self.testArray[cellindexPath.row].name
+                        }
             })
-        self.addChildViewController(distanceViewController)
-        distanceVC = distanceViewController
-        distanceViewController.view.frame = self.view.frame
-        self.view.addSubview(distanceViewController.view)
-        distanceViewController.didMove(toParentViewController: self)
-        distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
-//
-//
-//
-        
+
+            add(distanceViewController)
+
+            distanceVC = distanceViewController
+            distanceViewController.view.frame = self.view.frame
+            distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+
         }
+    
     @objc func buttonClicked(sender: UIButton) {
-    
-        distanceVC?.willMove(toParentViewController: nil)
-        distanceVC?.removeFromParentViewController()
-        distanceVC?.view.removeFromSuperview()
-        
-    
+            guard let vc = distanceVC else {return}
+            removeFromOtherChild(vc)
             }
-//    
-    }
-    
+         }
 
 
 //extension DestinationViewController: DestinationManagerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate {
@@ -207,12 +200,7 @@ extension DestinationViewController: showDistanceDelegate,DestinationManagerDele
         userLocation = myLocation
         cellIndexPath = index
         callDistanceVC()
-        
     }
-    
-    
-   
-    
     //Delegate 拿資料
     func manager(_ manager: DestinationManager, didGet schedule: [Destination]) {
             testArray = schedule
