@@ -123,7 +123,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
   //         })
 
         } else {
-            AlertToUser.showError(title: Constants.WrongMessage, subTitle: Constants.NoEmpty)
+            AlertManager.showError(title: Constants.WrongMessage, subTitle: Constants.NoEmpty)
         }
 
     }
@@ -180,7 +180,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
                         dismenstionViewController.long  = long
                         self.navigationController?.pushViewController(dismenstionViewController, animated: true)
                     } else {
-                        AlertToUser.showError(title: Constants.Destination.AddDestination, subTitle: Constants.Destination.StreetView)
+                        AlertManager.showError(title: Constants.Destination.AddDestination, subTitle: Constants.Destination.StreetView)
         }
     }
 

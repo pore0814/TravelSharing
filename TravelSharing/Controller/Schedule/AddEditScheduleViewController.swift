@@ -72,7 +72,7 @@ class AddEditScheduleViewController: UIViewController {
                                                              scheduleDay: scheduleDaysText.text!)
                      self.navigationController?.popViewController(animated: true)
                  } else {
-                       AlertToUser.showError(title: Constants.WrongMessage, subTitle: "表格不可為空白")
+                       AlertManager.showError(title: Constants.WrongMessage, subTitle: "表格不可為空白")
                 }
          } else {
     //更新資料  pop 回上頁

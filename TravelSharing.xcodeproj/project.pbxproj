@@ -31,7 +31,7 @@
 		D14C0FEA209801CF00026AF1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FE9209801CF00026AF1 /* String.swift */; };
 		D14C0FEE209823A800026AF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FED209823A800026AF1 /* Constants.swift */; };
 		D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FEF2098695B00026AF1 /* NotificationName.swift */; };
-		D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FF1209873E100026AF1 /* AlertToUser.swift */; };
+		D14C0FF2209873E100026AF1 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C0FF1209873E100026AF1 /* AlertManager.swift */; };
 		D151103F20B4B77900527420 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D151103E20B4B77900527420 /* GradientView.swift */; };
 		D155BF3C20BBC5C3001EC4DD /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D155BF3B20BBC5C3001EC4DD /* PrivacyViewController.swift */; };
 		D157B69D20B7D37D00C759DA /* ButtonIBIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D157B69C20B7D37D00C759DA /* ButtonIBIn.swift */; };
@@ -110,7 +110,7 @@
 		D14C0FE9209801CF00026AF1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D14C0FED209823A800026AF1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D14C0FEF2098695B00026AF1 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
-		D14C0FF1209873E100026AF1 /* AlertToUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertToUser.swift; sourceTree = "<group>"; };
+		D14C0FF1209873E100026AF1 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		D151103E20B4B77900527420 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		D155BF3B20BBC5C3001EC4DD /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		D157B69C20B7D37D00C759DA /* ButtonIBIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonIBIn.swift; sourceTree = "<group>"; };
@@ -416,7 +416,7 @@
 				D1A01CA620AB047600E00988 /* WeekDayEnum.swift */,
 				D1DA0A2620A5D6F6002D8CF6 /* TSDateFormatter.swift */,
 				D14C0FED209823A800026AF1 /* Constants.swift */,
-				D14C0FF1209873E100026AF1 /* AlertToUser.swift */,
+				D14C0FF1209873E100026AF1 /* AlertManager.swift */,
 				D1F5422A2099EBAA007EBE96 /* FirBaseConnect.swift */,
 				D1658267209AE78800C37F8D /* Struct.swift */,
 				D18B9B6320A0248500EB8D16 /* Date.swift */,
@@ -717,7 +717,7 @@
 				D195C9ED20C084D000942354 /* RegisterTableViewController.swift in Sources */,
 				D1A01CA720AB047600E00988 /* WeekDayEnum.swift in Sources */,
 				D1DA0A2D20A656CB002D8CF6 /* LocationView.swift in Sources */,
-				D14C0FF2209873E100026AF1 /* AlertToUser.swift in Sources */,
+				D14C0FF2209873E100026AF1 /* AlertManager.swift in Sources */,
 				D1F5422B2099EBAA007EBE96 /* FirBaseConnect.swift in Sources */,
 				D18B9B6720A030E300EB8D16 /* DestinationManager.swift in Sources */,
 				D151103F20B4B77900527420 /* GradientView.swift in Sources */,

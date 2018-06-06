@@ -113,30 +113,32 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.selectionStyle =  .none
         return cell
     }
-
-@objc    func deleteTapBtn(_ sender: UIButton) {
+    
+    @objc func deleteTapBtn(_ sender: UIButton) {
 // Fetch Item
       //  guard let superview = sender.superview,
       //     let cell = superview.superview as? DestinationTableViewCell else {return}
 
 //刪除Destination Alert
-            let appearance = SCLAlertView.SCLAppearance(
-                showCloseButton: false)
-    
-            let alertView = SCLAlertView(appearance: appearance)
-
-                alertView.addButton("確定") {
-                        guard let scheduleId = self.scheduleUid, let dayth = self.dayths else {return}
-
-                        self.destinationManger.deleteDestinationInfo(scheduleUid: self.scheduleUid!, dayth: dayth ,
-                                                                     destinationUid: self.testArray[self.tag!].uid)
-                        self.testArray.remove(at: self.tag!)
-                        self.tableView.deleteRows(at: [self.indexPathInGlobal!], with: .automatic)
-                        self.tableView.reloadData()
-                }
-                alertView.addButton("取消") {}
-                alertView.showSuccess("", subTitle: NSLocalizedString("確定刪除?", comment: ""))
-            }
+//            let appearance = SCLAlertView.SCLAppearance(
+//                showCloseButton: false)
+//    
+//            let alertView = SCLAlertView(appearance: appearance)
+//
+//        
+//                alertView.addButton(Check.yes.setButtonTitle()) {
+//                    self.delete()
+//                }
+//                alertView.addButton(Check.no.setButtonTitle()) {}
+//                alertView.showSuccess("", subTitle: NSLocalizedString("確定刪除?", comment: ""))
+        
+        
+        let alert = Alertmanager1.shared.showCheck(with: "確定刪除?", message: "", delete: {
+            self.delete()
+        }) {
+            print("cancel")
+        }
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             tag = indexPath.row
@@ -187,10 +189,22 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         }
     
     @objc func buttonClicked(sender: UIButton) {
-            guard let vc = distanceVC else {return}
-            removeFromOtherChild(vc)
-            }
-         }
+        guard let vc = distanceVC else {return}
+        removeFromOtherChild(vc)
+    }
+    
+    // MARK: private func
+    private func delete() {
+        
+        guard let scheduleId = self.scheduleUid, let dayth = self.dayths else {return}
+        
+        self.destinationManger.deleteDestinationInfo(scheduleUid: self.scheduleUid!, dayth: dayth ,
+                                                     destinationUid: self.testArray[self.tag!].uid)
+        self.testArray.remove(at: self.tag!)
+        self.tableView.deleteRows(at: [self.indexPathInGlobal!], with: .automatic)
+        self.tableView.reloadData()
+    }
+}
 
 
 //extension DestinationViewController: DestinationManagerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate {
@@ -206,4 +220,21 @@ extension DestinationViewController: showDistanceDelegate,DestinationManagerDele
             testArray = schedule
             tableView.reloadData()
     }
+}
+
+enum Check: String {
+    
+    case yes = "Yes"
+    
+    case no = "No"
+    
+    func setButtonTitle() -> String {
+        switch self {
+        case .yes:
+            return "確定"
+        case .no:
+            return "不要喇～～～～"
+        }
+    }
+    
 }

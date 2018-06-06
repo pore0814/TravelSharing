@@ -59,7 +59,7 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
     @IBAction func registerBtn(_ sender: Any) {
 
         guard let imageCheck = registImageView.image else {
-            AlertToUser.showError(title: "", subTitle: "請選擇照片哦")
+            AlertManager.showError(title: "", subTitle: "請選擇照片哦")
             return
         }
         let data = UIImageJPEGRepresentation(imageCheck, 0.1)
@@ -68,20 +68,20 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
         if userNameText.text != "", emailText.text != "", passwordText.text != "", reEnterPasswordText.text != "" {
             //密碼需大於六碼
             if (passwordText.text?.count)! < 6 {
-                AlertToUser.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.PwdMoreThan6)
+                AlertManager.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.PwdMoreThan6)
                 //密碼與再次確認密碼
             } else if passwordText.text != reEnterPasswordText.text {
                 
-                AlertToUser.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.Diff2Password)
+                AlertManager.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.Diff2Password)
 
                 //Email格式
             } else if emailText.text!.isEmail == false {
-                AlertToUser.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.InvalidEmail)
+                AlertManager.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.InvalidEmail)
                 //開始註冊＋FireBaseApi Error檢查
             } else {
                 UserManager.shared.singUp(email: emailText.text!, password: passwordText.text!, username: userNameText.text!, userphoto: data) { (message) in
                     guard let msg = message else {return}
-                    AlertToUser.showError(title: Constants.WrongMessage, subTitle: msg)
+                    AlertManager.showError(title: Constants.WrongMessage, subTitle: msg)
                 }
                 if indicator  == true {
                     SVProgressHUD.show(withStatus: "loading")
@@ -89,7 +89,7 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
                 AppDelegate.shared?.switchMainViewController()
             }
         } else {
-                 AlertToUser.showError(title: "", subTitle: Constants.NoEmpty)
+                 AlertManager.showError(title: "", subTitle: Constants.NoEmpty)
           
 
         }

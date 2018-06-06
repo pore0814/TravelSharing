@@ -61,7 +61,7 @@ class InvitedListViewController: UIViewController, UITableViewDelegate, UITableV
       invitedListArray.remove(at: sender.tag)
      tableView.reloadData()
     }else {
-        AlertToUser.showError(title: Constants.NoData, subTitle: "")
+        AlertManager.showError(title: Constants.NoData, subTitle: "")
     }
     print("permitted")
     SVProgressHUD.dismiss()
