@@ -143,10 +143,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         cell.daysLabel.text = testArray[indexPath.row].time
         cell.nameLabel.text = testArray[indexPath.row].name
         cell.mapView.clear()
-        cell.mapViewCell(latitude: testArray[indexPath.row].latitude,
-                         longitude: testArray[indexPath.row].longitude,
-                         destination: testArray[indexPath.row].name)
-        
+        cell.mapViewCell(data: testArray[indexPath.row])
         cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
         cell.drawPathBtn.addTarget(self, action: #selector(drawpathBtn(_:)), for: .touchUpInside)
 
@@ -155,7 +152,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         cell.mapView.bringSubview(toFront: cell.googleMapBtn)
         cell.mapView.bringSubview(toFront: cell.distanceBtn)
         cell.delegate = self
-        cell.indexPath = indexPath
+       // cell.indexPath = indexPath
         cell.selectionStyle =  .none
         return cell
     }
@@ -250,6 +247,11 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
 extension DestinationViewController: showDistanceDelegate, DestinationManagerDelegate,GMSMapViewDelegate, CLLocationManagerDelegate
 {
+    func callFunctionTodrawPath() {
+          guard let cellindexPath = indexPathInGlobal else {return}
+        destinationManger.drawPath(myLocaion: locationstart, endLocation: testArray[cellindexPath.row])
+    }
+    
     func callDistanceView() {
        
         callDistanceVC()
@@ -305,10 +307,28 @@ extension DestinationViewController: showDistanceDelegate, DestinationManagerDel
     
     func managerdrawPath(_ manager: DestinationManager, getPolyline polyline: GMSPolyline) {
         guard let indexpath = indexPathInGlobal else {return}
-       // let  cell = tableView.cellForRow(at: indexpath) as? DestinationTableViewCell
-        gmsPolyline?.strokeColor = UIColor.blue
-        gmsPolyline?.strokeWidth = 5
-        gmsPolyline?.map = destinationCell?.mapView
+        gmsPolyline = polyline
+        guard let  cell = tableView.cellForRow(at: indexpath) as? DestinationTableViewCell else {return}
+        destinationLocaion = CLLocation(latitude: testArray[indexpath.row].latitude, longitude: testArray[indexpath.row].longitude)
+        
+        gmsPolyline!.strokeColor = UIColor.blue
+        gmsPolyline!.strokeWidth = 5
+        gmsPolyline!.map = cell.mapView
+        
+        if let myLocation = cell.mapView.myLocation {
+                        let path = GMSMutablePath()
+                        path.add(myLocation.coordinate)
+                        path.add(destinationLocaion.coordinate)
+                        //add other coordinates
+                        //path.addCoordinate(model.coordinate)
+            
+                        let bounds = GMSCoordinateBounds(path: path)
+                        cell.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
+                    }
+        
+        
+        
+        
     }
     
 //    func callDistanceView(_ cell: DestinationTableViewCell, myLocation: CLLocation, at index: IndexPath) {

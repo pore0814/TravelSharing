@@ -212,7 +212,6 @@ extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate {
 
             lat = place.coordinate.latitude
             long = place.coordinate.longitude
-
 //placeText 顯示 Locaion Name
             destinationText.text = place.name
         self.dismiss(animated: true, completion: nil) // dismiss after select place

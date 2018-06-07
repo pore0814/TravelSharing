@@ -118,7 +118,7 @@ struct DestinationManager {
     
     
     
-    func drawPath(myLocaion: CLLocation, endLocation: CLLocation) {
+    func drawPath(myLocaion: CLLocation, endLocation: Destination) {
         Analytics.logEvent("drawPath", parameters: nil)
         
         print("drawPath--------------------")
@@ -126,11 +126,11 @@ struct DestinationManager {
         print("endLocation", endLocation)
         
         let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
-        let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
+       // let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
+         let destination = "\(endLocation.latitude),\(endLocation.longitude)"
+       let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
         
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
-        
-        // let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=22.9998999,120.2268758&mode=driving"
+         //let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=22.9998999,120.2268758&mode=driving"
         
         Alamofire.request(url).responseJSON { response in
             
@@ -149,10 +149,10 @@ struct DestinationManager {
                 let path = GMSPath.init(fromEncodedPath: points!)
                 let polyline = GMSPolyline.init(path: path)
                 self.delegate?.managerdrawPath(self, getPolyline: polyline)
-//                polyline.strokeWidth = 5
-//                polyline.strokeColor = UIColor.blue
-//                polyline.map = self.mapView
-//                print("----------------------------------------")
+                polyline.strokeWidth = 5
+                polyline.strokeColor = UIColor.blue
+          //      polyline.map = self.mapView
+                print("----------------------------------------")
             }
         }
     }
