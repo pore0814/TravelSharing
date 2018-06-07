@@ -49,7 +49,7 @@
 		D18B9B6720A030E300EB8D16 /* DestinationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18B9B6620A030E300EB8D16 /* DestinationManager.swift */; };
 		D195C9ED20C084D000942354 /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195C9EC20C084D000942354 /* RegisterTableViewController.swift */; };
 		D19639B020C77A9A0081A6C1 /* addChildVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19639AF20C77A9A0081A6C1 /* addChildVC.swift */; };
-		D19639D620C814AB0081A6C1 /* DistanceManager 21-08-57-955.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19639D520C814AA0081A6C1 /* DistanceManager 21-08-57-955.swift */; };
+		D19639D620C814AB0081A6C1 /* DistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19639D520C814AA0081A6C1 /* DistanceManager.swift */; };
 		D19B2C2A20A4EACD0076E4ED /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */; };
 		D19B2C2B20A4EACD0076E4ED /* DetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */; };
 		D1A01CA520AAC5FE00E00988 /* TSdateFormatter1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A01CA420AAC5FE00E00988 /* TSdateFormatter1.swift */; };
@@ -128,7 +128,7 @@
 		D18B9B6620A030E300EB8D16 /* DestinationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationManager.swift; sourceTree = "<group>"; };
 		D195C9EC20C084D000942354 /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
 		D19639AF20C77A9A0081A6C1 /* addChildVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addChildVC.swift; sourceTree = "<group>"; };
-		D19639D520C814AA0081A6C1 /* DistanceManager 21-08-57-955.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DistanceManager 21-08-57-955.swift"; sourceTree = "<group>"; };
+		D19639D520C814AA0081A6C1 /* DistanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceManager.swift; sourceTree = "<group>"; };
 		D19B2C2820A4EACD0076E4ED /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		D19B2C2920A4EACD0076E4ED /* DetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		D1A01CA420AAC5FE00E00988 /* TSdateFormatter1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSdateFormatter1.swift; sourceTree = "<group>"; };
@@ -319,7 +319,7 @@
 		D1D45E9820B0611600E3E7BE /* Destination */ = {
 			isa = PBXGroup;
 			children = (
-				D19639D520C814AA0081A6C1 /* DistanceManager 21-08-57-955.swift */,
+				D19639D520C814AA0081A6C1 /* DistanceManager.swift */,
 				D18B9B6620A030E300EB8D16 /* DestinationManager.swift */,
 			);
 			path = Destination;
@@ -719,7 +719,7 @@
 				D14C0FF2209873E100026AF1 /* AlertManager.swift in Sources */,
 				D1F5422B2099EBAA007EBE96 /* FirBaseConnect.swift in Sources */,
 				D18B9B6720A030E300EB8D16 /* DestinationManager.swift in Sources */,
-				D19639D620C814AB0081A6C1 /* DistanceManager 21-08-57-955.swift in Sources */,
+				D19639D620C814AB0081A6C1 /* DistanceManager.swift in Sources */,
 				D151103F20B4B77900527420 /* GradientView.swift in Sources */,
 				D127E16D20A52EE300EBB5F7 /* NavigationCotroller.swift in Sources */,
 			);

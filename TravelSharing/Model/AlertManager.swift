@@ -10,12 +10,12 @@ import Foundation
 import SCLAlertView
 
 struct AlertManager {
-
-    static let alert = SCLAlertView()
-
+    
     static func showError(title: String, subTitle: String) {
-
-    self.alert.showError(title, subTitle: subTitle)
+        
+        let alert = SCLAlertView()
+        
+        alert.showError(title, subTitle: subTitle)
     }
 }
 

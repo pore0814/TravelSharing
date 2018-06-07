@@ -27,8 +27,23 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var long: Double?
     var indexPathInGlobal: IndexPath?
     var userLocation: CLLocation?
-    var cellIndexPath: IndexPath?
     var distanceVC: DistanceViewController?
+    var destinationCell: DestinationTableViewCell?
+    var gmsPolyline: GMSPolyline?
+    
+    //----------
+
+    var locationManager = CLLocationManager()
+
+    var locationstart     = CLLocation()
+    var destinationLocaion = CLLocation()
+    var showInfo =  false
+    
+    var totalDistanceInMeters: UInt = 0
+    var totalDistance: String!
+    var totalDurationInSeconds: UInt = 0
+    var totalDuration: String!
+    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -44,6 +59,8 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         destinationManger.getDestinationInfo(destinationUid: scheduleuid, dayth: dayth)
 
         initTableView()
+        
+        mapDelegateAndInitiation()
 
     }
 
@@ -54,6 +71,37 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.separatorStyle = .none
 
     }
+    
+    
+    
+    
+    func mapDelegateAndInitiation() {
+        
+        
+        
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startMonitoringSignificantLocationChanges()
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        guard let indexpath = indexPathInGlobal else {return}
+        guard let cell = tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
+        
+        
+        let camera = GMSCameraPosition.camera(withLatitude: -7.9293122, longitude: 112.5879156, zoom: 15.0)
+
+        cell.mapView.camera = camera
+        cell.mapView.isMyLocationEnabled = true
+        cell.mapView.settings.myLocationButton = true
+        cell.mapView.settings.compassButton = true
+        cell.mapView.settings.zoomGestures = true
+    }
+
+    
 
     //    func initMapLocaionManager() {
     //        locationManager = CLLocationManager()
@@ -86,8 +134,10 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell") as? DestinationTableViewCell
-            else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DestinationTableViewCell") as? DestinationTableViewCell   else {return UITableViewCell()}
+
+        
+
         cell.categoryImage.image = UIImage(named: testArray[indexPath.row].category)
         cell.categoryLabel.text = testArray[indexPath.row].category
         cell.daysLabel.text = testArray[indexPath.row].time
@@ -96,7 +146,9 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         cell.mapViewCell(latitude: testArray[indexPath.row].latitude,
                          longitude: testArray[indexPath.row].longitude,
                          destination: testArray[indexPath.row].name)
+        
         cell.deleteBtn.addTarget(self, action: #selector(deleteTapBtn(_:)), for: .touchUpInside)
+        cell.drawPathBtn.addTarget(self, action: #selector(drawpathBtn(_:)), for: .touchUpInside)
 
         cell.mapView.bringSubview(toFront: cell.deleteBtn)
         cell.mapView.bringSubview(toFront: cell.drawPathBtn)
@@ -108,6 +160,11 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
 
+   @objc func drawpathBtn(_ sender: UIButton){
+    
+    }
+    
+    
     @objc func deleteTapBtn(_ sender: UIButton) {
         // Fetch Item
         //  guard let superview = sender.superview,
@@ -152,11 +209,11 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
         guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
 
-        guard let userlocation = userLocation, let cellindexPath = cellIndexPath else {return}
+        guard let cellindexPath = indexPathInGlobal else {return}
 
         distanceManager
-            .getDestinationDateAndTime(myLocaion: userlocation,
-                                       endLocation: testArray[cellindexPath .row],
+            .getDestinationDateAndTime(myLocaion: locationstart,
+                                       endLocation: testArray[cellindexPath.row],
                                        completion: { (data: DistanceAndTime) in
 
                 if data != nil {
@@ -191,18 +248,81 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
 //extension DestinationViewController: DestinationManagerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate {
 
-extension DestinationViewController: showDistanceDelegate, DestinationManagerDelegate {
-    func callDistanceView(_ cell: DestinationTableViewCell, myLocation: CLLocation, at index: IndexPath) {
-        userLocation = myLocation
-        cellIndexPath = index
+extension DestinationViewController: showDistanceDelegate, DestinationManagerDelegate,GMSMapViewDelegate, CLLocationManagerDelegate
+{
+    func callDistanceView() {
+       
         callDistanceVC()
     }
-//Delegate 拿資料
+    
+    // MARK: CLLocation Manager Delegate
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error while get location\(error)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let camera = GMSCameraPosition.camera(
+            withLatitude: (location?.coordinate.latitude)!,
+            longitude: (location?.coordinate.longitude)!, zoom: 5)
+        
+        guard let lat = location?.coordinate.latitude, let long = location?.coordinate.longitude else {return}
+        locationstart = CLLocation(latitude: lat, longitude: long)
+        self.locationManager.stopUpdatingHeading()
+    }
+    
+    
+    
+    // Mark: - GMSMapViewDelegate
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        mapView.isMyLocationEnabled = true
+    }
+    
+    func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
+        mapView.isMyLocationEnabled = true
+        
+        if (gesture) {
+            mapView.selectedMarker = nil
+        }
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        mapView.isMyLocationEnabled = true
+        return false
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        print("coordinatio\(coordinate)")
+    }
+    
+    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+//        mapView.isMyLocationEnabled = true
+//        mapView.selectedMarker = nil
+        return false
+    }
+    
+    //MARK:- delegate
+    
+    func managerdrawPath(_ manager: DestinationManager, getPolyline polyline: GMSPolyline) {
+        guard let indexpath = indexPathInGlobal else {return}
+       // let  cell = tableView.cellForRow(at: indexpath) as? DestinationTableViewCell
+        gmsPolyline?.strokeColor = UIColor.blue
+        gmsPolyline?.strokeWidth = 5
+        gmsPolyline?.map = destinationCell?.mapView
+    }
+    
+//    func callDistanceView(_ cell: DestinationTableViewCell, myLocation: CLLocation, at index: IndexPath) {
+//        userLocation = myLocation
+//        cellIndexPath = index
+//        callDistanceVC()
+//    }
+
     func manager(_ manager: DestinationManager, didGet schedule: [Destination]) {
         testArray = schedule
         tableView.reloadData()
     }
 }
+
 
 enum Check: String {
 
@@ -219,3 +339,4 @@ enum Check: String {
         }
     }
 }
+
