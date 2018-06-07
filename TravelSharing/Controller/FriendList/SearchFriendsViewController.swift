@@ -13,6 +13,7 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
 
     @IBOutlet weak var friendSearchBar: UISearchBar!
     var allUserInfo = [UserInfo]()
+    var friendsArray = [UserInfo]()
     var getUserInfoManager = GetUserProfileManager()
     var invitedFriendManager = InvitedFriendsManager()
 
@@ -20,6 +21,7 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
     var friendInfo: UserInfo?
     var myInfo: UserInfo?
     var invitate = [UserInfo]()
+    var friendEmail:String?
 
     @IBOutlet weak var addFriendsBtn: UIButton!
 
@@ -47,8 +49,9 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
 
         invitedFriendManager.delegate = self
         invitedFriendManager.requestsFromMeList()
+        invitedFriendManager.myFriendList()
     }
-
+  
     func configureSearchBar() {
         friendSearchBar.delegate = self
         friendSearchBar.returnKeyType  = UIReturnKeyType.done
@@ -62,18 +65,29 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
         waitingtableView.register(nib, forCellReuseIdentifier: "AllUsersTableViewCell")
     }
 
-//加朋友
+//加朋友Query
     @IBAction func addFriends(_ sender: Any) {
         guard let friendinfomation = friendInfo else {return}
         
         guard let myinfo = myInfo else {return}
-        invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendinfomation)
-        invitedFriendManager.waitingPermission(myinfo, sendRtoF: friendinfomation)
-        addFriendsBtn.isHidden = true
-        friendEmailLabel.text = ""
-        friendUserNamerLabel.text = ""
-        friendProfileImg.isHidden =  true
         
+        if friendsArray.count >  0 {
+        for index in 0...friendsArray.count - 1 {
+    //是否就有在朋友列表內，如果有就Alert，沒有就丟到列表
+            if friendEmail! == friendsArray[index].email {
+               AlertManager.showError(title: "你們已經是朋友了", subTitle: "")
+               return
+            } else {
+                invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendinfomation)
+                invitedFriendManager.waitingPermission(myinfo, sendRtoF: friendinfomation)
+                addFriendsBtn.isHidden = true
+                friendEmailLabel.text = ""
+                friendUserNamerLabel.text = ""
+                friendProfileImg.isHidden =  true
+                
+            }
+        }
+     }
     }
 
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
@@ -87,29 +101,45 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
     }
-
+// 搜尋好友
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        var friendEmail = friendSearchBar.text
+        friendEmail = friendSearchBar.text
 
         friendSearchBar.enablesReturnKeyAutomatically = true
         friendSearchBar.resignFirstResponder()
         friendSearchBar.showsCancelButton = true
         
         for index in 0...allUserInfo.count - 1 {
-            if friendEmail! == allUserInfo[index].email {
-                friendEmailLabel.text = allUserInfo[index].email
-                friendUserNamerLabel.text = allUserInfo[index].userName
-                friendProfileImg.sd_setImage(with: URL(string: allUserInfo[index].photoUrl), completed: nil)
-                friendInfo =  allUserInfo[index]
-                
-                addFriendsBtn.isHidden = false
-                searchBar.text = ""
-                return
+            //搜詢的Eamil，在所有使用者裡看看。
+            if friendEmail! == allUserInfo[index].email  {
+                if  isFriendArry(friendemail: friendEmail!) == true {
+                    friendEmailLabel.text = allUserInfo[index].email
+                    friendUserNamerLabel.text = allUserInfo[index].userName
+                    friendProfileImg.sd_setImage(with: URL(string: allUserInfo[index].photoUrl), completed: nil)
+                    friendInfo =  allUserInfo[index]
+                    addFriendsBtn.isHidden = false
+                    searchBar.text = ""
+                    return
+                }
             } else {
                 friendEmailLabel.text = "無資料"
             }
         }
     }
+    
+    func isFriendArry(friendemail:String) -> Bool{
+        for index in 0...friendsArray.count - 1 {
+            //是否就有在朋友列表內，如果有就Alert，沒有就丟到列表
+            if friendEmail == friendsArray[index].email {
+                AlertManager.showError(title: "你們已經是朋友了", subTitle: "")
+                return false
+            }
+        }
+        return true
+    }
+    
+    
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(invitate.count)
@@ -140,7 +170,9 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
 }
 
 extension SearchFriendsViewController: GetUserInfoManagerDelegate, InvitedFriendsManagerDelegate {
-    func managerFriendList(_ manager: InvitedFriendsManager, getFriendList friendList: [UserInfo]) {}
+    func managerFriendList(_ manager: InvitedFriendsManager, getFriendList friendList: [UserInfo]) {
+     friendsArray = friendList
+    }
 
     func manager(_ manager: InvitedFriendsManager, didRequests invitedList: [UserInfo]) {
         invitate.removeAll()

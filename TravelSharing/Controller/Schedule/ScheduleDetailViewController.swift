@@ -43,11 +43,11 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 
         dateFormatterToCollectionView()
 
-        initCollectionView()
+        setUpCollectionView()
 
         setCollectionViewLayout()
 
-        initScrollView()
+        setUpScrollView()
 
         createDestinationVC()
 
@@ -84,7 +84,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
         }
     }
 
-    func initScrollView() {
+    func setUpScrollView() {
         //ScrollView 設定
         destinationScrollView.isDirectionalLockEnabled = true
         // 是否限制滑動時只能單個方向 垂直或水平滑動
@@ -99,7 +99,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
             height: 100)
     }
 
-    func initCollectionView() {
+    func setUpCollectionView() {
     // CollectionView
         detailCollectionViwe.delegate =  self
         detailCollectionViwe.dataSource =  self
