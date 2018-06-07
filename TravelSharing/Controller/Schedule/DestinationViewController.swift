@@ -195,7 +195,7 @@ extension DestinationViewController: showDistanceDelegate, DestinationManagerDel
     func callDistanceView(_ cell: DestinationTableViewCell, myLocation: CLLocation, at index: IndexPath) {
         userLocation = myLocation
         cellIndexPath = index
-       // callDistanceVC()
+        callDistanceVC()
     }
 //Delegate 拿資料
     func manager(_ manager: DestinationManager, didGet schedule: [Destination]) {
