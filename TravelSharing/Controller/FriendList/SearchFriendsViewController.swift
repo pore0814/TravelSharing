@@ -77,7 +77,6 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
     }
 
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-    
         searchBar.showsCancelButton = true
         searchBar.resignFirstResponder()
         return true
@@ -102,11 +101,10 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
                 friendUserNamerLabel.text = allUserInfo[index].userName
                 friendProfileImg.sd_setImage(with: URL(string: allUserInfo[index].photoUrl), completed: nil)
                 friendInfo =  allUserInfo[index]
-                addFriendsBtn.isHidden = false
                 
+                addFriendsBtn.isHidden = false
                 searchBar.text = ""
                 return
-                
             } else {
                 friendEmailLabel.text = "無資料"
             }
@@ -114,7 +112,6 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("invitate.count-----------")
         print(invitate.count)
         return invitate.count
 
@@ -122,15 +119,14 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell") as? AllUsersTableViewCell else {return UITableViewCell()}
-
-        cell.allUserEmailLabel.text = invitate[indexPath.row].email
-        cell.allUserNamerLabel.text = invitate[indexPath.row].userName
-        cell.allUsersImage.sd_setImage(with: URL(string: invitate[indexPath.row].photoUrl), completed: nil)
-        cell.addFriendBtn.setTitle("取消", for: .normal)
-
-        cell.cancelFriendInvitedBtn.isHidden = false
-
-        cell.cancelFriendInvitedBtn.addTarget(self, action: #selector(cancel(sender:)), for: .touchUpInside)
+        
+            cell.allUserEmailLabel.text = invitate[indexPath.row].email
+            cell.allUserNamerLabel.text = invitate[indexPath.row].userName
+            cell.allUsersImage.sd_setImage(with: URL(string: invitate[indexPath.row].photoUrl), completed: nil)
+            cell.addFriendBtn.setTitle("取消", for: .normal)
+            cell.cancelFriendInvitedBtn.isHidden = false
+            cell.cancelFriendInvitedBtn.addTarget(self, action: #selector(cancel(sender:)), for: .touchUpInside)
+        
         return cell
     }
 
@@ -140,10 +136,9 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
         invitedFriendManager.cancelRequestFromMe(friendID: invitate[sender.tag].uid)
         invitate.remove(at: sender.tag)
         waitingtableView.reloadData()
-        print("abc")
     }
-
 }
+
 extension SearchFriendsViewController: GetUserInfoManagerDelegate, InvitedFriendsManagerDelegate {
     func managerFriendList(_ manager: InvitedFriendsManager, getFriendList friendList: [UserInfo]) {}
 
@@ -168,5 +163,4 @@ extension SearchFriendsViewController: GetUserInfoManagerDelegate, InvitedFriend
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
 }

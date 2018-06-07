@@ -90,11 +90,6 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
-
-        //tableView.backgroundView =  UIImageView(image: UIImage(named: "schedulePage-1"))
-
-      //  tableView.backgroundView =  UIImageView(image: UIImage(named: "schedulePage"))
-
     }
 
 //註冊tableViewCell
@@ -135,16 +130,6 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
              }
         }
 
-//    @objc func shareSchedule(sender: UIButton) {
-//        guard let friendListVc = UIStoryboard(name: "FriendsList", bundle: nil)
-//            .instantiateViewController(withIdentifier: "MyFriendListViewController") as? MyFriendListViewController else {return}
-//        friendListVc.scheduleId = schedules[sender.tag]
-//        print(schedules[sender.tag].name)
-//        print(schedules[sender.tag].uid)
-//        navigationController?.pushViewController(friendListVc, animated: true)
-//
-//    }
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        if let scheduleDetailViewController = UIStoryboard(name: "Schedule", bundle: nil)
                     .instantiateViewController(withIdentifier: "ScheduleDetailViewController")
@@ -171,6 +156,9 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         }
            editButton.backgroundColor = UIColor.orange
 //Delete
+        
+    
+        
         let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (_, _) in
 
             let appearance = SCLAlertView.SCLAppearance(

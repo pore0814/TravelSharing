@@ -21,26 +21,25 @@ class ShareScheduleManager {
                     .queryEqual(toValue: scheduleId)
                     .observe(.value, with: { (snapshot) in
 
-                guard  let aaa = snapshot.value as? [String: Any] else {return}
-                for ggg in aaa {
-                    guard  var ccc = ggg.value as? [String: Any] else {return}
-                   // let aaaa = ["host": "ddddddd"] as? [String:Any]
-                    ccc.updateValue(friendId, forKey: "host")
+                guard  let allSchedules = snapshot.value as? [String: Any] else {return}
+                for allschedule in allSchedules {
+                    guard  var schedule = allschedule.value as? [String: Any] else {return}
+                    schedule.updateValue(friendId, forKey: "host")
 
-                    print(ccc)
-                    self.savevalue(value: ccc)
+                    self.savevalue(value: schedule)
                 }
             })
       }
 
     func savevalue(value: [String: Any]) {
             let autoKey = FireBaseConnect.databaseRef.childByAutoId().key
-        var aaa = value
-        aaa.updateValue(autoKey, forKey: "uid")
-        print(aaa)
+        
+        var shareValue = value
+        shareValue.updateValue(autoKey, forKey: "uid")
+
         FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)
             .child(autoKey )
-            .setValue(aaa)
+            .setValue(shareValue)
     }
 }

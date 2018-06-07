@@ -57,19 +57,25 @@ class AddEditScheduleViewController: UIViewController {
         scheduleDaysText.text = scheduleInfoDetail?.days
         scheduleDateText.text = scheduleInfoDetail?.date
         scheduleNameText.text = scheduleInfoDetail?.name
+        
+        
+        scheduleDaysText.delegate = self
+        scheduleDaysText.keyboardType = .numberPad
     }
     //FireBase資料寫入
     @objc func toSchedulePage(notification: Notification) {
     }
 
     @objc func addTapped(sender: AnyObject) {
-
+        
         if scheduleInfoDetail == nil {
-            if scheduleDateText.text != "", scheduleDaysText.text != "", scheduleNameText.text != "" {
+            if scheduleDateText.text != "", scheduleDaysText.text != "", scheduleNameText.text != ""  {
+               
     //新增資料  pop 回上頁
                      ScheduleManager.shared.saveScheduleInfo(scheduleName: scheduleNameText.text!,
                                                              scheudleDate: scheduleDateText.text!,
                                                              scheduleDay: scheduleDaysText.text!)
+                
                      self.navigationController?.popViewController(animated: true)
                  } else {
                        AlertManager.showError(title: Constants.WrongMessage, subTitle: "表格不可為空白")
@@ -138,7 +144,8 @@ func configureCell(cell: JTAppleCell?, cellState: CellState) {
     }
 }
 
-extension AddEditScheduleViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
+extension AddEditScheduleViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate,UITextFieldDelegate  {
+    
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
       let startDate = formatter.date(from: "2018 01 01")!
       let endData = formatter.date(from: "2018 12 31")!
@@ -173,7 +180,30 @@ extension AddEditScheduleViewController: JTAppleCalendarViewDataSource, JTAppleC
 
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
     }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if (Int(string) != nil && textField.text != "0") || string == "" {
+//            return true
+//        }
+//    return false
+        
+        print("textField.text: \(textField.text!)")
+        print("range: \(range.location)")
+        print("string: \(string)")
+        print("")
+        
+        // 長度不得大於10
+        if range.location > 1{
+            return false
+        }
+        return true
+    }
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return true
+    }
+
 }
+    
+
 
 extension UIColor {
 

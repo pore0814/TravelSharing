@@ -58,6 +58,8 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
       searchPlaceTextGesture()
 
       categoryTextGesture()
+        
+     timeText.delegate = self
 }
     func searchPlaceTextGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(searchPlaceTapGesture(_:)))
@@ -205,7 +207,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 }
 
 //Search Location  (Auto complete)
-extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate {
+extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate,UITextFieldDelegate {
 
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 15.0)
@@ -224,5 +226,12 @@ extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate {
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         self.dismiss(animated: true, completion: nil)
 }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.text!.characters.count > 0 {
+            return false
+        }
+        return true
+    }
+    
 
 }

@@ -9,6 +9,24 @@
 import Foundation
 import SCLAlertView
 
+
+
+enum Check: String {
+    
+    case yes = "Yes"
+    
+    case no = "No"
+    
+    func setButtonTitle() -> String {
+        switch self {
+        case .yes:
+            return "確定"
+        case .no:
+            return "不要喇～～～～"
+        }
+    }
+}
+
 struct AlertManager {
     
     static func showError(title: String, subTitle: String) {
@@ -28,7 +46,7 @@ class Alertmanager1 {
 
     static let shared = Alertmanager1()
 
-    func showCheck(with title: String, message: String, delete: @escaping () -> Void, cancel: @escaping () -> Void) {
+    func showCheck(with title: String, message: String , delete: @escaping () -> Void, cancel: @escaping () -> Void) {
 
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false)
