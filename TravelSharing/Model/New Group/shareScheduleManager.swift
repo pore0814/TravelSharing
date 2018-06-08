@@ -39,7 +39,7 @@ class ShareScheduleManager {
 
         FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)
-            .child(autoKey )
+            .child(autoKey)
             .setValue(shareValue)
     }
 }

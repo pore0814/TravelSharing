@@ -34,6 +34,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var locationstart     = CLLocation()
     var destinationLocaion = CLLocation()
     var showInfo =  false
+    var cellExpanded:Bool = false
     
 
     override func viewWillAppear(_ animated: Bool) {
@@ -84,17 +85,23 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-           let fullscreen = UIScreen.main.bounds
+        let fullscreen = UIScreen.main.bounds
 
         if let selectedCell = tableView.cellForRow(at: indexPath) as? DestinationTableViewCell{
                selectedCell.direction.image = UIImage(named: "down-arrow")
             
-            if indexPath.row == tag && indexPath.row != previous {
-                selectedCell.direction.image = UIImage(named: "up")
-                return fullscreen.height * 0.6
+            if indexPath.row == tag {
+                if cellExpanded {
+                    selectedCell.direction.image = UIImage(named: "up")
+                    return fullscreen.height * 0.6
+                } else if indexPath.row != previous {
+                    selectedCell.direction.image = UIImage(named: "up")
+                    return fullscreen.height * 0.6
+                }
             }
         }
-        return 75
+            return 75
+        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -139,6 +146,15 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         tag = indexPath.row
         indexPathInGlobal = indexPath
         guard let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
+        
+        if cellExpanded {
+            cellExpanded = false
+        } else if cellExpanded == false{
+            cellExpanded = true
+        }
+       
+        
+        
         tableView.beginUpdates()
         tableView.endUpdates()
         previous = tag
