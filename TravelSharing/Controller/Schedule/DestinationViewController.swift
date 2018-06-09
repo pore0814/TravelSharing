@@ -300,15 +300,7 @@ extension DestinationViewController: showDistanceDelegate, DestinationManagerDel
         let bounds = GMSCoordinateBounds(path: path)
         cell.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
         
-//        if let myLocation = cell.mapView.myLocation {
-//            let path = GMSMutablePath()
-//            path.add(startLcoation.coordinate)
-//            path.add(destinationLocaion.coordinate)
-//
-//            let bounds = GMSCoordinateBounds(path: path)
-//            cell.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
-//
-//        }
+
         oldPolylin = polyline
       
 //         let path = GMSMutablePath()
