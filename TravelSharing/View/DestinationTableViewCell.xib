@@ -137,12 +137,26 @@
                                     <action selector="distanceInfoBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cgR-J9-3I4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4g8-uZ-ybi">
+                                <rect key="frame" x="326" y="189" width="32" height="32"/>
+                                <color key="backgroundColor" red="0.87798293969999996" green="0.47912479330000002" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="iI1-Zp-bFa"/>
+                                    <constraint firstAttribute="width" constant="32" id="oqy-6p-RX8"/>
+                                </constraints>
+                                <state key="normal" image="autoComplete"/>
+                                <connections>
+                                    <action selector="previousSpotBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="SIJ-HE-pgb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zVK-hC-V95" firstAttribute="top" secondItem="hrH-lN-VcW" secondAttribute="bottom" constant="15" id="11a-8x-dY3"/>
                             <constraint firstAttribute="trailing" secondItem="hrH-lN-VcW" secondAttribute="trailing" priority="999" constant="21" id="C4u-ea-mH7"/>
+                            <constraint firstItem="4g8-uZ-ybi" firstAttribute="top" secondItem="ygA-ll-wKT" secondAttribute="bottom" constant="9" id="INu-Xr-AZO"/>
                             <constraint firstAttribute="trailing" secondItem="fAE-hN-1pn" secondAttribute="trailing" constant="25" id="P0F-jw-ZYQ"/>
+                            <constraint firstAttribute="trailing" secondItem="4g8-uZ-ybi" secondAttribute="trailing" constant="17" id="UGX-Fa-sjf"/>
                             <constraint firstItem="fAE-hN-1pn" firstAttribute="top" secondItem="IyD-BT-1Yc" secondAttribute="top" constant="10" id="XVt-hS-gTV"/>
                             <constraint firstItem="hrH-lN-VcW" firstAttribute="top" secondItem="fAE-hN-1pn" secondAttribute="bottom" priority="999" constant="15" id="jSv-fR-PVa"/>
                             <constraint firstAttribute="trailing" secondItem="zVK-hC-V95" secondAttribute="trailing" priority="999" constant="21" id="q0L-5b-u7L"/>
@@ -174,6 +188,7 @@
                 <outlet property="googleMapBtn" destination="zVK-hC-V95" id="4a2-Se-LMR"/>
                 <outlet property="mapView" destination="IyD-BT-1Yc" id="IrJ-tL-ipn"/>
                 <outlet property="nameLabel" destination="6D8-a4-elY" id="IzI-7D-QKa"/>
+                <outlet property="previousSpotBtn" destination="4g8-uZ-ybi" id="qjt-r5-gaI"/>
                 <outlet property="rightUiview" destination="hkY-na-HaN" id="DkM-ro-nNT"/>
             </connections>
             <point key="canvasLocation" x="648.5" y="-85"/>

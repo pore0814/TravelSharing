@@ -186,20 +186,31 @@ extension AddEditScheduleViewController: JTAppleCalendarViewDataSource, JTAppleC
 //        }
 //    return false
         
+        
+        let newText = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
+        
+        if newText.isEmpty { return true }
+        
+        if Int(newText) != nil { return true }
+        
         print("textField.text: \(textField.text!)")
         print("range: \(range.location)")
         print("string: \(string)")
         print("")
         
-        // 長度不得大於10
-        if range.location > 1{
+        let countOfWords = string.characters.count +  textField.text!.characters.count - range.length
+        if countOfWords < 1{
             return false
         }
-        return true
+        // 長度不得大於10
+        return false
     }
+    
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return true
     }
+    
+    
 
 }
     

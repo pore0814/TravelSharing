@@ -14,6 +14,7 @@ protocol showDistanceDelegate: class {
     func callDistanceView()
     func callFunctionTodrawPath()
     func callGoogleMap()
+    func callpreviousSpot()
 }
 
 class DestinationTableViewCell: UITableViewCell, CLLocationManagerDelegate{
@@ -30,6 +31,7 @@ class DestinationTableViewCell: UITableViewCell, CLLocationManagerDelegate{
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var direction: UIImageView!
     
+    @IBOutlet weak var previousSpotBtn: UIButton!
     
     
     weak var delegate: showDistanceDelegate?
@@ -63,6 +65,11 @@ class DestinationTableViewCell: UITableViewCell, CLLocationManagerDelegate{
     @IBAction func googleMapBtn(_ sender: Any) {
         self.delegate?.callGoogleMap()
     }
+    
+    @IBAction func previousSpotBtn(_ sender: Any) {
+        self.delegate?.callpreviousSpot()
+    }
+    
 
     func mapDelegateAndInitiation() {
         locationManager = CLLocationManager()
@@ -88,6 +95,10 @@ class DestinationTableViewCell: UITableViewCell, CLLocationManagerDelegate{
         let marker = GMSMarker(position: position)
         marker.title = name
         marker.map = cellMapview
+        
+        
+        
+       
     }
 }
 

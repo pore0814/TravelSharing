@@ -35,6 +35,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var destinationLocaion = CLLocation()
     var showInfo =  false
     var cellExpanded:Bool = false
+    var oldPolylin:GMSPolyline?
     
 
     override func viewWillAppear(_ animated: Bool) {
@@ -125,6 +126,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
             cell.mapView.bringSubview(toFront: cell.drawPathBtn)
             cell.mapView.bringSubview(toFront: cell.googleMapBtn)
             cell.mapView.bringSubview(toFront: cell.distanceBtn)
+            cell.mapView.bringSubview(toFront: cell.previousSpotBtn)
             cell.delegate = self
             cell.selectionStyle =  .none
         return cell
@@ -203,6 +205,10 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
 extension DestinationViewController: showDistanceDelegate, DestinationManagerDelegate,GMSMapViewDelegate, CLLocationManagerDelegate
 {
+   
+    
+    
+    
 
     // MARK: CLLocation Manager Delegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -249,7 +255,8 @@ extension DestinationViewController: showDistanceDelegate, DestinationManagerDel
     
     //MARK:- delegate
     
-    func managerdrawPath(_ manager: DestinationManager, getPolyline polyline: GMSPolyline) {
+    func managerMyLocationdrawPath(_ manager: DestinationManager, getPolyline polyline: GMSPolyline) {
+        oldPolylin?.map = nil
         guard let indexpath = indexPathInGlobal else {return}
         gmsPolyline = polyline
         guard let  cell = tableView.cellForRow(at: indexpath) as? DestinationTableViewCell else {return}
@@ -266,9 +273,62 @@ extension DestinationViewController: showDistanceDelegate, DestinationManagerDel
             
                         let bounds = GMSCoordinateBounds(path: path)
                         cell.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
-                    }
+            oldPolylin = polyline
+        }
     }
+    
+   
+    func managerPreviousSpotDrawPath(_ manager: DestinationManager, getPolyline polyline: GMSPolyline) {
+        oldPolylin?.map = nil
+        guard let indexpath = indexPathInGlobal else {return}
+        gmsPolyline = polyline
+        guard let  cell = tableView.cellForRow(at: indexpath) as? DestinationTableViewCell else {return}
+       let  startLcoation = CLLocation(latitude: testArray[indexpath.row].latitude, longitude: testArray[indexpath.row].longitude)
+        destinationLocaion = CLLocation(latitude: testArray[indexpath.row - 1].latitude, longitude: testArray[indexpath.row - 1].longitude)
+        
+        gmsPolyline!.strokeColor = UIColor.blue
+        gmsPolyline!.strokeWidth = 5
+        gmsPolyline!.map = cell.mapView
+        
+  
+        
+        let path = GMSMutablePath()
+        path.add(startLcoation.coordinate)
 
+        path.add(destinationLocaion.coordinate)
+        
+        let bounds = GMSCoordinateBounds(path: path)
+        cell.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
+        
+//        if let myLocation = cell.mapView.myLocation {
+//            let path = GMSMutablePath()
+//            path.add(startLcoation.coordinate)
+//            path.add(destinationLocaion.coordinate)
+//
+//            let bounds = GMSCoordinateBounds(path: path)
+//            cell.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
+//
+//        }
+        oldPolylin = polyline
+      
+//         let path = GMSMutablePath()
+//        path.add(startLcoation.coordinate)
+//        path.add(destinationLocaion.coordinate)
+//        let bounds = GMSCoordinateBounds(path: path)
+//        let update = GMSCameraUpdate.fit(bounds, withPadding: 60)
+//        cell.mapView.animate(with: update)
+        
+//        if let myLocation = cell.mapView.myLocation {
+//            let path = GMSMutablePath()
+//
+//            path.add(startLcoation.coordinate)
+//            path.add(destinationLocaion.coordinate)
+//
+//            let bounds = GMSCoordinateBounds(path: path)
+//            cell.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
+//        }
+        cell.mapViewCell(lat: testArray[indexpath.row - 1].latitude, long: testArray[indexpath.row - 1].longitude, name: testArray[indexpath.row - 1].name)
+    }
     func manager(_ manager: DestinationManager, didGet schedule: [Destination]) {
         testArray = schedule
         tableView.reloadData()
@@ -292,6 +352,19 @@ extension DestinationViewController: showDistanceDelegate, DestinationManagerDel
     func callDistanceView() {
         callDistanceVC()
     }
+    
+    func callpreviousSpot() {
+        guard let cellindexPath = indexPathInGlobal else {return}
+        if cellindexPath.row > 0 {
+            destinationManger.drawPathPreviousSpot(startLocation: testArray[cellindexPath.row - 1], endLocation: testArray[cellindexPath.row])
+        }else {
+            AlertManager.showError(title: "沒有上一個景點哦", subTitle: "")
+        }
+            
+    }
+    
+
+    
     
 }
 

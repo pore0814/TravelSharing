@@ -58,6 +58,22 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 //Timer Stop laodingPage
 
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ScheduleViewController.stoplodingIcon), userInfo: nil, repeats: true)
+        
+        firstLogin()
+    }
+    
+    
+    func firstLogin(){
+     var firstLogin = UserDefaults.standard.object(forKey: "firstLogin") as? Bool
+        if firstLogin == nil {
+            AlertManager.showError(title: "第一次登入", subTitle: "")
+            UserDefaults.standard.set(true, forKey: "firstLogin")
+            UserDefaults.standard.synchronize()
+        }
+            
+       
+        
+        
     }
 
     @objc func stoplodingIcon() {

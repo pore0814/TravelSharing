@@ -227,10 +227,13 @@ extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate,UI
         self.dismiss(animated: true, completion: nil)
 }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField.text!.characters.count > 0 {
-            return false
-        }
-        return true
+        let newText = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
+        
+        if newText.isEmpty { return true }
+        
+        if Int(newText) != nil { return true }
+        
+        return false 
     }
     
 
