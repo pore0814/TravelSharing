@@ -62,21 +62,14 @@ class ProfileTableViewController: UITableViewController, FusumaDelegate {
     }
 
     @IBAction func logOutBtn(_ sender: Any) {
-        let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: false
-        )
-
-        let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("確定") {
-
+        Alertmanager1.shared.showCheck(with: "是否登出", message: "", delete: {
             guard let switchToLoginPage = AppDelegate.shared?.switchToLoginViewController() else {return}
-            UserManager.shared.logout()
-            switchToLoginPage
+                UserManager.shared.logout()
+                switchToLoginPage
+        }) {
+            print("取消")
         }
 
-        alertView.addButton("取消") {}
-
-        alertView.showWait("", subTitle: "是否登出")
     }
 
     //Fusuma 選照片

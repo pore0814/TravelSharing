@@ -22,7 +22,7 @@ enum Check: String {
         case .yes:
             return "確定"
         case .no:
-            return "不要喇～～～～"
+            return "取消"
         }
     }
 }

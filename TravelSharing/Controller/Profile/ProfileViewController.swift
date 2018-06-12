@@ -58,22 +58,30 @@ class ProfileViewController: UIViewController, FusumaDelegate {
         alertView.showSuccess("", subTitle: "更新個人資料?")
     }
 
-    @IBAction func logOutBtn(_ sender: Any) {
-        let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: false
-        )
-
-        let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("確定") {
-
-        guard let switchToLoginPage = AppDelegate.shared?.switchToLoginViewController() else {return}
-        UserManager.shared.logout()
-        switchToLoginPage
+    @IBAction func logOutBtn(_ sender: Any){
+        
+        Alertmanager1.shared.showCheck(with: "aaa", message: "", delete: {
+            guard let switchToLoginPage = AppDelegate.shared?.switchToLoginViewController() else {return}
+            UserManager.shared.logout()
+        }) {
+            print("登出")
         }
-
-        alertView.addButton("取消") {}
-
-        alertView.showWait("", subTitle: "是否登出")
+        
+//        let appearance = SCLAlertView.SCLAppearance(
+//            showCloseButton: false
+//        )
+//
+//        let alertView = SCLAlertView(appearance: appearance)
+//        alertView.addButton("確定") {
+//
+//        guard let switchToLoginPage = AppDelegate.shared?.switchToLoginViewController() else {return}
+//        UserManager.shared.logout()
+//        switchToLoginPage
+//        }
+//
+//        alertView.addButton("取消") {}
+//
+//        alertView.showWait("", subTitle: "是否登出")
     }
 
 //Fusuma 選照片

@@ -65,27 +65,24 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func firstLogin(){
      var firstLogin = UserDefaults.standard.object(forKey: "firstLogin") as? Bool
-        if firstLogin == nil {
-            AlertManager.showError(title: "第一次登入", subTitle: "")
-            UserDefaults.standard.set(true, forKey: "firstLogin")
-            UserDefaults.standard.synchronize()
-        }
-            
+//        if firstLogin == nil {
+//            AlertManager.showError(title: "第一次登入", subTitle: "")
+//            UserDefaults.standard.set(true, forKey: "firstLogin")
+//            UserDefaults.standard.synchronize()
+//        }
+        
        
         
         
     }
 
     @objc func stoplodingIcon() {
-        timeCount += 1
-
+            timeCount += 1
         if  (indicator == true) && (timeCount > 5) {
             timer.invalidate()
             SVProgressHUD.dismiss()
             indicator =  false
-           // popUpView()
         }
-
     }
 
     func popUpView() {
@@ -94,7 +91,6 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         popUpRecordView.view.frame = self.view.frame
         self.view.addSubview(popUpRecordView.view)
         popUpRecordView.view.alpha = 0
-      //  popUpRecordView.popUpIntro()
 
         UIView.animate(withDuration: 0.2) {
             popUpRecordView.view.alpha = 1
@@ -211,18 +207,5 @@ extension ScheduleViewController: ScheduleManagerDelegate {
         schedules[indexNumber] = schedule
         schedules.sort(by: {$0.date < $1.date})
         tableView.reloadData()
-    }
-
-    func playVideoButtonDidSelect() {
-
-//        guard let friendListVc = UIStoryboard(name: "FriendsList", bundle: nil)
-//            .instantiateViewController(withIdentifier: "MyFriendListViewController") as? MyFriendListViewController else {return}
-//        friendListVc.scheduleId = schedules[indexNumber]
-//        print(schedules[indexNumber].name)
-//        print(schedules[indexNumber].uid)
-//        navigationController?.pushViewController(friendListVc, animated: true)
-//        
-        //        guard  let allUsersPage = UIStoryboard.friendsStoryboard().instantiateInitialViewController() else {return}
-        //        present(allUsersPage, animated: true, completion: nil)
     }
 }
