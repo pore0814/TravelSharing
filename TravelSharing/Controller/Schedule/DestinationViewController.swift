@@ -163,32 +163,62 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func callDistanceVC() {
+        
+       
         let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
-        guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
-        guard let cellindexPath = indexPathInGlobal else {return}
-
-            distanceManager
-                .getDestinationDateAndTime(myLocaion: locationstart,
-                                           endLocation: testArray[cellindexPath.row],
-                                           completion: { (data: DistanceAndTime) in
-                if data != nil {
-                    distanceViewController.distanceKmLabel.text = data.distance
-                    distanceViewController.timeMinsLabel.text = data.time
-                    distanceViewController.destinationNamer.text = self.testArray[cellindexPath.row].name
-                }
-            })
-        add(distanceViewController)
-
+    guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
+        self.view.addSubview(distanceViewController.view)
         distanceVC = distanceViewController
-        distanceViewController.view.frame = self.view.frame
-        distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+        guard  let screen = distanceViewController.view else {return};
+        distanceViewController.view.center = CGPoint(x: screen.frame.size.height * 0.27, y: screen.frame.size.height / 2)
+        
+        
+                guard let cellindexPath = indexPathInGlobal else {return}
+        
+                    distanceManager
+                        .getDestinationDateAndTime(myLocaion: locationstart,
+                                                   endLocation: testArray[cellindexPath.row],
+                                                   completion: { (data: DistanceAndTime) in
+                        if data != nil {
+                            distanceViewController.distanceKmLabel.text = data.distance
+                            distanceViewController.timeMinsLabel.text = data.time
+                            distanceViewController.destinationNamer.text = self.testArray[cellindexPath.row].name
+                        }
+                    })
+        
+        
+             distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
+
+
+//        guard let cellindexPath = indexPathInGlobal else {return}
+//
+//            distanceManager
+//                .getDestinationDateAndTime(myLocaion: locationstart,
+//                                           endLocation: testArray[cellindexPath.row],
+//                                           completion: { (data: DistanceAndTime) in
+//                if data != nil {
+//                    distanceViewController.distanceKmLabel.text = data.distance
+//                    distanceViewController.timeMinsLabel.text = data.time
+//                    distanceViewController.destinationNamer.text = self.testArray[cellindexPath.row].name
+//                }
+//            })
+//
+        //add(distanceViewController)
+     
+      //  distanceVC = distanceViewController
+   
+      //  self.view.addSubview((distanceVC?.backgroundView)!)
+//        distanceVC?.backgroundView
+//        distanceViewController.view.frame = self.view.frame
+//        distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+   
 
     @objc func buttonClicked(sender: UIButton) {
         guard let vc = distanceVC else {return}
         removeFromOtherChild(vc)
     }
-    
+//
     // MARK: private func  Alert  delet動作
     private func delete() {
 
@@ -289,14 +319,9 @@ extension DestinationViewController: showDistanceDelegate, DestinationManagerDel
         gmsPolyline!.strokeColor = UIColor.blue
         gmsPolyline!.strokeWidth = 5
         gmsPolyline!.map = cell.mapView
-        
-  
-        
         let path = GMSMutablePath()
         path.add(startLcoation.coordinate)
-
         path.add(destinationLocaion.coordinate)
-        
         let bounds = GMSCoordinateBounds(path: path)
         cell.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
         

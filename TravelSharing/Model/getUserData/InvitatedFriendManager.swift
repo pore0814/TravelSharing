@@ -103,19 +103,19 @@ class InvitedFriendsManager {
             .queryOrderedByKey()
             .queryEqual(toValue: userid)
             .observe(.value, with: { (snapshot) in
-                guard let lists = snapshot.value as? [String: [String: [String: Any]]]  else {return}
+            guard let lists = snapshot.value as? [String: [String: [String: Any]]]  else {return}
                 for list in lists.values {
                     for llll in list.values {
                         guard let email = llll["email"] as? String,
-                            let id    = llll["id"] as? String,
+                            let id    =   llll["id"] as? String,
                             let username = llll["username"] as? String,
                             let photo    = llll["photo"] as? String else {return}
-                        let watingList = UserInfo(email: email, photoUrl: photo, uid: id, userName: username)
-                        waitingListArray.append(watingList)
+                            let watingList = UserInfo(email: email, photoUrl: photo, uid: id, userName: username)
+                            waitingListArray.append(watingList)
+                        }
+                        self.delegate?.manager(self, getPermission: waitingListArray)
                     }
-                    self.delegate?.manager(self, getPermission: waitingListArray)
-                }
-        })
+            })
     }
 
 //取消邀請
