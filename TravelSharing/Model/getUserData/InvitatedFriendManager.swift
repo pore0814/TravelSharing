@@ -18,8 +18,8 @@ protocol InvitedFriendsManagerDelegate: class {
 
 class InvitedFriendsManager {
 
-     var delegate: InvitedFriendsManagerDelegate?
-    let autoKey = FireBaseConnect.databaseRef.childByAutoId().key
+  weak var delegate: InvitedFriendsManagerDelegate?
+       let autoKey = FireBaseConnect.databaseRef.childByAutoId().key
 
 //    func sendRequestToFriend1(_ from: UserInfo, sendRtoF to: UserInfo){
 //        var ref = Database.database().reference()
@@ -94,29 +94,29 @@ class InvitedFriendsManager {
 }
 //交友邀請
     func requestsWaitForPermission() {
-                guard let userid = UserManager.shared.getFireBaseUID() else { return}
-
-                var  waitingListArray: [UserInfo] = []
-                     waitingListArray.removeAll()
-                FireBaseConnect.databaseRef
-                    .child("requestsWaitForPermission")
-                    .queryOrderedByKey()
-                    .queryEqual(toValue: userid)
-                    .observe(.value, with: { (snapshot) in
-                        guard let lists = snapshot.value as? [String: [String: [String: Any]]]  else {return}
-                        for list in lists.values {
-                            for llll in list.values {
-                                  guard let email = llll["email"] as? String,
-                                        let id    = llll["id"] as? String,
-                                        let username = llll["username"] as? String,
-                                        let photo    = llll["photo"] as? String else {return}
-                                        let watingList = UserInfo(email: email, photoUrl: photo, uid: id, userName: username)
-                                waitingListArray.append(watingList)
-                            }
-                        self.delegate?.manager(self, getPermission: waitingListArray)
-                        }
-               })
-     }
+        guard let userid = UserManager.shared.getFireBaseUID() else { return}
+        
+        var  waitingListArray: [UserInfo] = []
+        waitingListArray.removeAll()
+        FireBaseConnect.databaseRef
+            .child("requestsWaitForPermission")
+            .queryOrderedByKey()
+            .queryEqual(toValue: userid)
+            .observe(.value, with: { (snapshot) in
+                guard let lists = snapshot.value as? [String: [String: [String: Any]]]  else {return}
+                for list in lists.values {
+                    for llll in list.values {
+                        guard let email = llll["email"] as? String,
+                            let id    = llll["id"] as? String,
+                            let username = llll["username"] as? String,
+                            let photo    = llll["photo"] as? String else {return}
+                        let watingList = UserInfo(email: email, photoUrl: photo, uid: id, userName: username)
+                        waitingListArray.append(watingList)
+                    }
+                    self.delegate?.manager(self, getPermission: waitingListArray)
+                }
+        })
+    }
 
 //取消邀請
     func cancelRequestFromMe(friendID: String) {

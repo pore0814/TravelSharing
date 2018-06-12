@@ -22,7 +22,7 @@ protocol GetAllUserInfoManagerDelegate: class {
 }
 
 class GetUserProfileManager {
-    var delegate: GetUserInfoManagerDelegate?
+    weak var delegate: GetUserInfoManagerDelegate?
 
 // 到FireBase  schedules 撈使用者的post的 Scheudle內容
     func getMyInfo() {
