@@ -137,7 +137,7 @@
                                     <action selector="distanceInfoBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cgR-J9-3I4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4g8-uZ-ybi">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4g8-uZ-ybi">
                                 <rect key="frame" x="326" y="189" width="32" height="32"/>
                                 <color key="backgroundColor" red="0.87798293969999996" green="0.47912479330000002" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
