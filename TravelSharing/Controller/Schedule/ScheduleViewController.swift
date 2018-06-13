@@ -59,22 +59,18 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ScheduleViewController.stoplodingIcon), userInfo: nil, repeats: true)
         
-        firstLogin()
+      //  firstLogin()
     }
     
     
-    func firstLogin(){
-     var firstLogin = UserDefaults.standard.object(forKey: "firstLogin") as? Bool
+//    func firstLogin(){
+//     var firstLogin = UserDefaults.standard.object(forKey: "firstLogin") as? Bool
 //        if firstLogin == nil {
 //            AlertManager.showError(title: "第一次登入", subTitle: "")
 //            UserDefaults.standard.set(true, forKey: "firstLogin")
 //            UserDefaults.standard.synchronize()
 //        }
-        
-       
-        
-        
-    }
+  //  }
 
     @objc func stoplodingIcon() {
             timeCount += 1
@@ -82,19 +78,6 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
             timer.invalidate()
             SVProgressHUD.dismiss()
             indicator =  false
-        }
-    }
-
-    func popUpView() {
-        guard let popUpRecordView = UIStoryboard.guildlineStoryboard().instantiateViewController(withIdentifier: "GuildLineViewController") as? GuildLineViewController else { return }
-        self.addChildViewController(popUpRecordView)
-        popUpRecordView.view.frame = self.view.frame
-        self.view.addSubview(popUpRecordView.view)
-        popUpRecordView.view.alpha = 0
-
-        UIView.animate(withDuration: 0.2) {
-            popUpRecordView.view.alpha = 1
-            popUpRecordView.didMove(toParentViewController: self)
         }
     }
 

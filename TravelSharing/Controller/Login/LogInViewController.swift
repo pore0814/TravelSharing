@@ -58,14 +58,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
             UserManager.shared.loginUser(email: emailTextField.text!, password: passwordTextField.text!) { (message) in
                 if  message != nil {
-                      AlertManager.showError(title: Constants.WrongMessage, subTitle: message!)
+                      AlertManager.showEdit(title: Constants.WrongMessage, subTitle: message!)
                 } else {
                    // passToNextPage
                    guard let passToNextPage = AppDelegate.shared?.switchMainViewController() else {return}
                 }
             }
         } else {
-            AlertManager.showError(title: "", subTitle: Constants.LoginAndRegister.CorrectInfo)
+            AlertManager.showEdit(title: "", subTitle: Constants.LoginAndRegister.CorrectInfo)
         }
 
     }

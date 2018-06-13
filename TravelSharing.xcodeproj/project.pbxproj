@@ -15,6 +15,7 @@
 		D10418ED2099803B0084952E /* AddEditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */; };
 		D10418F0209982770084952E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10418EF209982770084952E /* CustomCell.swift */; };
 		D116C34520BD689B0034C84C /* DistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D116C34420BD689B0034C84C /* DistanceViewController.swift */; };
+		D118E14E20D0BD71005E89D5 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D118E14D20D0BD71005E89D5 /* CustomUITextField.swift */; };
 		D11E007220B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */; };
 		D11FBBDC20B3FB5A000B8284 /* AllUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11FBBDB20B3FB5A000B8284 /* AllUserViewController.swift */; };
 		D11FBBDE20B40EB4000B8284 /* LukeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11FBBDD20B40EB4000B8284 /* LukeScrollView.swift */; };
@@ -94,6 +95,7 @@
 		D10418EC2099803B0084952E /* AddEditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditScheduleViewController.swift; sourceTree = "<group>"; };
 		D10418EF209982770084952E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		D116C34420BD689B0034C84C /* DistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceViewController.swift; sourceTree = "<group>"; };
+		D118E14D20D0BD71005E89D5 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POMCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		D11FBBDB20B3FB5A000B8284 /* AllUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserViewController.swift; sourceTree = "<group>"; };
 		D11FBBDD20B40EB4000B8284 /* LukeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LukeScrollView.swift; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				D1F70A1520C4A66400576606 /* shareScheduleManager.swift */,
+				D118E14D20D0BD71005E89D5 /* CustomUITextField.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				D18B9B60209DFA6300EB8D16 /* AddLocationViewController.swift in Sources */,
 				D14C0FF02098695B00026AF1 /* NotificationName.swift in Sources */,
 				D155BF3C20BBC5C3001EC4DD /* PrivacyViewController.swift in Sources */,
+				D118E14E20D0BD71005E89D5 /* CustomUITextField.swift in Sources */,
 				D11FBBDC20B3FB5A000B8284 /* AllUserViewController.swift in Sources */,
 				D1F5422D2099F09D007EBE96 /* ScheduleManager.swift in Sources */,
 				D1B1608020A332A900B69222 /* UIView.swift in Sources */,

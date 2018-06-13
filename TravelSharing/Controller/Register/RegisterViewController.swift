@@ -65,7 +65,7 @@ class RegisterViewController: UIViewController, FusumaDelegate {
     @IBAction func registerBtn(_ sender: Any) {
 
         guard let imageCheck = registImageView.image else {
-              AlertManager.showError(title: "", subTitle: "請選擇照片哦")
+              AlertManager.showEdit(title: "", subTitle: "請選擇照片哦")
             return
         }
         let data = UIImageJPEGRepresentation(imageCheck, 0.1)
@@ -74,25 +74,25 @@ class RegisterViewController: UIViewController, FusumaDelegate {
         if userNameText.text != "", emailText.text != "", passwordText.text != "", reEnterPasswordText.text != "" {
          //密碼需大於六碼
             if (passwordText.text?.count)! < 6 {
-                  AlertManager.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.PwdMoreThan6)
+                  AlertManager.showEdit(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.PwdMoreThan6)
         //密碼與再次確認密碼
             } else if passwordText.text != reEnterPasswordText.text {
-                AlertManager.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.Diff2Password)
+                AlertManager.showEdit(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.Diff2Password)
         //Email格式
             } else if emailText.text!.isEmail == false {
-                AlertManager.showError(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.InvalidEmail)
+                AlertManager.showEdit(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.InvalidEmail)
         //開始註冊＋FireBaseApi Error檢查
             } else {
               UserManager.shared.singUp(email: emailText.text!, password: passwordText.text!, username: userNameText.text!, userphoto: data) { (message) in
                 guard let msg = message else {return}
-                         AlertManager.showError(title: Constants.WrongMessage, subTitle: msg)
+                         AlertManager.showEdit(title: Constants.WrongMessage, subTitle: msg)
                 }
                 if indicator  == true {
                     SVProgressHUD.show(withStatus: "loading")
                 }
             }
         } else {
-              AlertManager.showError(title: "", subTitle: Constants.NoEmpty)
+              AlertManager.showEdit(title: "", subTitle: Constants.NoEmpty)
         }
     }
 

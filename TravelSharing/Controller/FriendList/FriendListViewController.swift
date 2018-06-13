@@ -45,21 +45,6 @@ class FriendListViewController: UIViewController {
         }
     }
 
-    //    var currentViewController: UIViewController?
-//    lazy var firstChildTabVC: UIViewController? = {
-//        let firstChildTabVC = self.storyboard?.instantiateViewController(withIdentifier: "InvitedListViewController")
-//        return firstChildTabVC
-//    }()
-//    lazy var secondChildTabVC : UIViewController? = {
-//        let secondChildTabVC = self.storyboard?.instantiateViewController(withIdentifier: "MyFriendListViewController")
-//
-//        return secondChildTabVC
-//    }()
-//
-
-//    func viewControllerForSelectedSegmentIndex(_ index: Int) -> UIViewController? {
-//
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

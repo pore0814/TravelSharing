@@ -29,11 +29,11 @@ enum Check: String {
 
 struct AlertManager {
     
-    static func showError(title: String, subTitle: String) {
+    static func showEdit(title: String, subTitle: String) {
         
         let alert = SCLAlertView()
         
-        alert.showError(title, subTitle: subTitle)
+        alert.showEdit(title, subTitle: subTitle)
     }
 }
 

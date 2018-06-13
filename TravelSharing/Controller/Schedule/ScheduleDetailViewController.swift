@@ -54,7 +54,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     }
 
     func addrightBarButtonItem() {
-        let addBarButtonItem = UIBarButtonItem.init(title: "＋", style: .done, target: self, action: #selector(addTapped))
+        let addBarButtonItem = UIBarButtonItem.init(title: "新增", style: .done, target: self, action: #selector(addTapped))
         addBarButtonItem.tintColor = UIColor.white
         navigationItem.rightBarButtonItem = addBarButtonItem
     }

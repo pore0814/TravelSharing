@@ -65,7 +65,7 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
         waitingtableView.register(nib, forCellReuseIdentifier: "AllUsersTableViewCell")
     }
 
-//加朋友,手火大尸
+//加朋友
     @IBAction func addFriends(_ sender: Any) {
         guard let friendinfomation = friendInfo else {return}
         
@@ -87,8 +87,15 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
                     friendEmailLabel.text = ""
                     friendUserNamerLabel.text = ""
                     friendProfileImg.isHidden =  true
-                    AlertManager.showError(title: "你們已經是朋友了", subTitle: "")
+                    AlertManager.showEdit(title: "你們已經是朋友了", subTitle: "")
                     return
+                }else {
+                    invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendinfomation)
+                    invitedFriendManager.waitingPermission(myinfo, sendRtoF: friendinfomation)
+                    addFriendsBtn.isHidden = true
+                    friendEmailLabel.text = ""
+                    friendUserNamerLabel.text = ""
+                    friendProfileImg.isHidden =  true
                 }
             }
         }
@@ -122,6 +129,7 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
                     friendProfileImg.sd_setImage(with: URL(string: allUserInfo[index].photoUrl), completed: nil)
                     friendInfo =  allUserInfo[index]
                     addFriendsBtn.isHidden = false
+                    friendProfileImg.isHidden = false
                     searchBar.text = ""
                     return
             } else {
@@ -130,20 +138,20 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
         }
     }
     
-//    func isFriendArry(friendemail:String) -> Bool{
-//        if friendsArray.count > 0 {
-//            for index in 0...friendsArray.count - 1 {
-//                //是否就有在朋友列表內，如果有就Alert，沒有就丟到列表
-//                if friendEmail == friendsArray[index].email {
-//                    invitedFriendManager.cancelPermission(friendID: friendsArray[index].uid)
-//                    invitedFriendManager.cancelRequestFromMe(friendID: friendsArray[index].uid)
-//                    AlertManager.showError(title: "你們已經是朋友了", subTitle: "")
-//                    return false
-//                }
-//            }
-//        }
-//        return true
-//    }
+    func isFriendArry(friendemail:String) -> Bool{
+        if friendsArray.count > 0 {
+            for index in 0...friendsArray.count - 1 {
+                //是否就有在朋友列表內，如果有就Alert，沒有就丟到列表
+                if friendEmail == friendsArray[index].email {
+                    invitedFriendManager.cancelPermission(friendID: friendsArray[index].uid)
+                    invitedFriendManager.cancelRequestFromMe(friendID: friendsArray[index].uid)
+                    AlertManager.showEdit(title: "你們已經是朋友了", subTitle: "")
+                    return false
+                }
+            }
+        }
+        return true
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(invitate.count)

@@ -61,7 +61,7 @@ class GetUserProfileManager {
 
                 if imageError != nil {
                     guard let imgError = imageError as? String else {return}
-                    AlertManager.showError(title: Constants.WrongMessage, subTitle: imgError)
+                    AlertManager.showEdit(title: Constants.WrongMessage, subTitle: imgError)
                 }
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                        let userData = [Constants.UserName: username, Constants.PhotoUrl: profileImageUrl] as [String: Any]

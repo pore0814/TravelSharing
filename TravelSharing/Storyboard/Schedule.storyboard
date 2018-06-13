@@ -37,7 +37,7 @@
                         <viewLayoutGuide key="safeArea" id="o0O-l3-2aW"/>
                     </view>
                     <navigationItem key="navigationItem" title="我的行程" id="50R-x8-yMG">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rCJ-av-oKP">
+                        <barButtonItem key="rightBarButtonItem" title="新增" id="rCJ-av-oKP">
                             <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="FOA-4s-0sI" kind="show" id="scU-cL-moh"/>
@@ -60,6 +60,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ro7-WI-Acb" customClass="LukeScrollView" customModule="TravelSharing" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="375" height="582.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x51-i8-sp7" customClass="LukeCollectionView" customModule="TravelSharing" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="18" width="375" height="66.5"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -84,10 +88,6 @@
                                     <outlet property="delegate" destination="BEf-nW-9ZD" id="Qh6-rG-1yg"/>
                                 </connections>
                             </collectionView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ro7-WI-Acb" customClass="LukeScrollView" customModule="TravelSharing" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84.5" width="375" height="582.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -342,7 +342,7 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ug5-2i-37O">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ug5-2i-37O" customClass="CustomUITextField" customModule="TravelSharing" customModuleProvider="target">
                                                 <rect key="frame" x="152" y="0.0" width="152" height="50"/>
                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="textColor" red="0.64313725489999995" green="0.45882352939999999" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -635,28 +635,28 @@
                                             <constraint firstAttribute="height" constant="50" id="qNg-JD-7vv"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="aaaa" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IH4-Db-4Ta">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bha-vs-HVQ">
                                         <rect key="frame" x="0.0" y="50" width="295" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="HTa-BN-ldY"/>
-                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="天數(數字)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h0p-vD-S9n">
                                         <rect key="frame" x="0.0" y="100" width="295" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="TFa-K3-UkA"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" textContentType="cc-number"/>
                                     </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Bha-vs-HVQ" firstAttribute="height" secondItem="NrC-Pj-qZe" secondAttribute="height" id="gSe-xf-Wxq"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="trw-am-fPz">
                                 <rect key="frame" x="10" y="79" width="40" height="138"/>
@@ -707,7 +707,7 @@
                     <connections>
                         <outlet property="calendarView" destination="iwK-G9-cFW" id="na9-11-iyb"/>
                         <outlet property="month" destination="OVU-18-4OW" id="IaS-a5-kus"/>
-                        <outlet property="scheduleDateText" destination="IH4-Db-4Ta" id="3LH-HC-YFD"/>
+                        <outlet property="scheduleDateLabel" destination="Bha-vs-HVQ" id="A3q-1I-Ol9"/>
                         <outlet property="scheduleDaysText" destination="h0p-vD-S9n" id="Eeh-CU-gT9"/>
                         <outlet property="scheduleNameText" destination="NrC-Pj-qZe" id="vhh-Xq-wSB"/>
                         <outlet property="year" destination="0S8-7z-6B0" id="RN8-MD-Ys2"/>

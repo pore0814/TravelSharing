@@ -22,7 +22,9 @@ class AddEditScheduleViewController: UIViewController {
 
     @IBOutlet weak var scheduleDaysText: UITextField!
     @IBOutlet weak var scheduleNameText: UITextField!
-    @IBOutlet weak var scheduleDateText: UITextField!
+    
+    @IBOutlet weak var scheduleDateLabel: UILabel!
+   
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
@@ -55,7 +57,7 @@ class AddEditScheduleViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(toSchedulePage), name: .switchtoSchedulePage, object: nil)
         scheduleDaysText.text = scheduleInfoDetail?.days
-        scheduleDateText.text = scheduleInfoDetail?.date
+        scheduleDateLabel.text = scheduleInfoDetail?.date
         scheduleNameText.text = scheduleInfoDetail?.name
         
         
@@ -69,22 +71,22 @@ class AddEditScheduleViewController: UIViewController {
     @objc func addTapped(sender: AnyObject) {
         
         if scheduleInfoDetail == nil {
-            if scheduleDateText.text != "", scheduleDaysText.text != "", scheduleNameText.text != ""  {
+            if scheduleDateLabel.text != "", scheduleDaysText.text != "", scheduleNameText.text != ""  {
                
     //新增資料  pop 回上頁
                      ScheduleManager.shared.saveScheduleInfo(scheduleName: scheduleNameText.text!,
-                                                             scheudleDate: scheduleDateText.text!,
+                                                             scheudleDate: scheduleDateLabel.text!,
                                                              scheduleDay: scheduleDaysText.text!)
                 
                      self.navigationController?.popViewController(animated: true)
                  } else {
-                       AlertManager.showError(title: Constants.WrongMessage, subTitle: "表格不可為空白")
+                       AlertManager.showEdit(title: Constants.WrongMessage, subTitle: "表格不可為空白")
                 }
          } else {
     //更新資料  pop 回上頁
               ScheduleManager.shared.updateaveScheduleInfo(scheduleUid: scheduleInfoDetail?.uid,
                                                            scheduleName: scheduleNameText.text!,
-                                                           scheudleDate: scheduleDateText.text!,
+                                                           scheudleDate: scheduleDateLabel.text!,
                                                            scheduleDay: scheduleDaysText.text!)
              self.navigationController?.popViewController(animated: true)
         }
@@ -167,7 +169,7 @@ extension AddEditScheduleViewController: JTAppleCalendarViewDataSource, JTAppleC
         configureCell(cell: cell, cellState: cellState)
 
         formatter.dateFormat = "yyyy MM dd"
-        scheduleDateText.text = formatter.string(from: date)
+        scheduleDateLabel.text = formatter.string(from: date)
      }
 
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {

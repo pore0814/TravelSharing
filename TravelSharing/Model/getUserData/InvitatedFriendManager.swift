@@ -97,7 +97,8 @@ class InvitedFriendsManager {
         guard let userid = UserManager.shared.getFireBaseUID() else { return}
         
         var  waitingListArray: [UserInfo] = []
-        waitingListArray.removeAll()
+        print(waitingListArray.count)
+      //  waitingListArray.removeAll()
         FireBaseConnect.databaseRef
             .child("requestsWaitForPermission")
             .queryOrderedByKey()
@@ -187,7 +188,6 @@ class InvitedFriendsManager {
             .queryEqual(toValue: userid)
             .observe(.value, with: { (snapshot) in
                 guard let frinedList = snapshot.value as? [String: Any] else {return}
-                print(frinedList.values)
                 for aaa in frinedList.values {
                     guard   let bbb = aaa as? [String: Any] else {return}
                     let ccc = bbb.keys

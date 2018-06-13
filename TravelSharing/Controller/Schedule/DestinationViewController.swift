@@ -190,28 +190,6 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
              distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
 
-
-//        guard let cellindexPath = indexPathInGlobal else {return}
-//
-//            distanceManager
-//                .getDestinationDateAndTime(myLocaion: locationstart,
-//                                           endLocation: testArray[cellindexPath.row],
-//                                           completion: { (data: DistanceAndTime) in
-//                if data != nil {
-//                    distanceViewController.distanceKmLabel.text = data.distance
-//                    distanceViewController.timeMinsLabel.text = data.time
-//                    distanceViewController.destinationNamer.text = self.testArray[cellindexPath.row].name
-//                }
-//            })
-//
-        //add(distanceViewController)
-     
-      //  distanceVC = distanceViewController
-   
-      //  self.view.addSubview((distanceVC?.backgroundView)!)
-//        distanceVC?.backgroundView
-//        distanceViewController.view.frame = self.view.frame
-//        distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
    
 
     @objc func buttonClicked(sender: UIButton) {
@@ -375,7 +353,7 @@ extension DestinationViewController: showDistanceDelegate, DestinationManagerDel
         if cellindexPath.row > 0 {
             destinationManger.drawPathPreviousSpot(startLocation: testArray[cellindexPath.row - 1], endLocation: testArray[cellindexPath.row])
         }else {
-            AlertManager.showError(title: "沒有上一個景點哦", subTitle: "")
+            AlertManager.showEdit(title: "沒有上一個景點哦", subTitle: "")
         }
             
     }

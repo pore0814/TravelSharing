@@ -58,11 +58,14 @@ class InvitedListViewController: UIViewController, UITableViewDelegate, UITableV
             if invitedListArray.count > 0 {
                 SVProgressHUD.show(withStatus: "delete")
                 invitedFriendsManager.beFriend(myInfo: myinfo, friendInfo: invitedListArray[sender.tag])
-                
+                invitedFriendsManager.deletRequetFromMe(friendID: invitedListArray[sender.tag].uid)
+                invitedFriendsManager.deletePermission(friendID: invitedListArray[sender.tag].uid)
+//                invitedFriendsManager.cancelPermission(friendID: invitedListArray[sender.tag].uid)
+//                invitedFriendsManager.cancelRequestFromMe(friendID: invitedListArray[sender.tag].uid)
                 invitedListArray.remove(at: sender.tag)
                 tableView.reloadData()
             } else {
-                AlertManager.showError(title: Constants.NoData, subTitle: "")
+                AlertManager.showEdit(title: Constants.NoData, subTitle: "")
             }
         SVProgressHUD.dismiss()
     }
