@@ -56,11 +56,6 @@ class FriendListViewController: UIViewController {
 
     @IBAction func addFriends(_ sender: Any) {
         print("Aaaaaaaaaddfriends")
-//        
-//            guard let allUserVC = UIStoryboard(name: "FriendsList", bundle: nil).instantiateInitialViewController as? SearchFriendsViewController else {return}
-//            self.navigationController?.pushViewController(allUserVC, animated: true)
-//        guard let allUserVC = UIStoryboard(name: "FriendsList", bundle: nil).instantiateInitialViewController as? InvitedListViewController else {return}
-//                self.navigationController?.pushViewController(allUserVC, animated: true)
     }
 }
 
@@ -69,6 +64,7 @@ extension FriendListViewController: GetUserInfoManagerDelegate {
     func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {}
 
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
+
         myInfo = userInfo
     }
 }

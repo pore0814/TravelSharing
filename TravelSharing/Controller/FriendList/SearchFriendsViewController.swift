@@ -30,6 +30,14 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
     @IBOutlet weak var friendProfileImg: UIImageView!
     @IBOutlet weak var friendUserNamerLabel: UILabel!
     @IBOutlet weak var friendEmailLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+         invitedFriendManager.requestsFromMeList()
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,7 +56,7 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
         getUserInfoManager.getMyInfo()
 
         invitedFriendManager.delegate = self
-        invitedFriendManager.requestsFromMeList()
+       // invitedFriendManager.requestsFromMeList()
         invitedFriendManager.myFriendList()
     }
 

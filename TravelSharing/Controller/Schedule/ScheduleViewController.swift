@@ -37,10 +37,8 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        ScheduleManager.shared.getScheduleContent()
 
-         NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
+       ScheduleManager.shared.getScheduleContent()
         tableView.reloadData()
     }
     
@@ -52,28 +50,27 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         setTableView()
         
         setTableViewCell()
-        
-        //FireBase 撈資料
-//        ScheduleManager.shared.getScheduleContent()
-        
+
         //收通知
-       
+        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
         
         //Timer Stop laodingPage
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ScheduleViewController.stoplodingIcon), userInfo: nil, repeats: true)
         
-        //  firstLogin()
+        ScheduleManager.shared.getScheduleContent()
+        
+          firstLogin()
     }
     
-    //    func firstLogin(){
-    //     var firstLogin = UserDefaults.standard.object(forKey: "firstLogin") as? Bool
-    //        if firstLogin == nil {
-    //            AlertManager.showError(title: "第一次登入", subTitle: "")
-    //            UserDefaults.standard.set(true, forKey: "firstLogin")
-    //            UserDefaults.standard.synchronize()
-    //        }
-    //  }
+        func firstLogin(){
+         var firstLogin = UserDefaults.standard.object(forKey: "firstLogin") as? Bool
+            if firstLogin == nil {
+                AlertManager.showEdit(title: "按右上角新增旅程", subTitle: "")
+                UserDefaults.standard.set(true, forKey: "firstLogin")
+                UserDefaults.standard.synchronize()
+            }
+      }
     
     @objc func stoplodingIcon() {
         timeCount += 1
@@ -143,11 +140,11 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         //Edit
         let editButton = UITableViewRowAction(style: .normal, title: "Edit") { (_, _) in
             let mainstoryboard: UIStoryboard = UIStoryboard(name: "Schedule", bundle: nil)
-            //換頁＋傳資
+        //換頁＋傳資
             guard let editViewController = mainstoryboard.instantiateViewController(withIdentifier: "AddScheduleViewController") as? AddEditScheduleViewController else {return}
-            
+           
             self.navigationController?.pushViewController(editViewController, animated: true)
-            
+
             editViewController.scheduleInfoDetail = self.schedules[indexPath.row]
             
             self.indexNumber = indexPath.row
@@ -171,7 +168,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
             alertView.addButton("取消") {}
             alertView.showSuccess("", subTitle: NSLocalizedString("是否刪除", comment: ""))
         }
-        deleteButton.backgroundColor = UIColor.red
+           deleteButton.backgroundColor = UIColor.red
         //分享
         let shareButton = UITableViewRowAction(style: .normal, title: "Shard") { (_, _) in
             guard let friendListVc = UIStoryboard(name: "FriendsList", bundle: nil)
@@ -179,9 +176,9 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
             friendListVc.scheduleId = self.schedules[indexPath.row]
             self.navigationController?.pushViewController(friendListVc, animated: true)
         }
-        shareButton.backgroundColor = UIColor.brown
+            shareButton.backgroundColor = UIColor.brown
         
-        return[editButton, deleteButton, shareButton]
+            return[editButton, deleteButton, shareButton]
     }
 }
 extension ScheduleViewController: ScheduleManagerDelegate {
