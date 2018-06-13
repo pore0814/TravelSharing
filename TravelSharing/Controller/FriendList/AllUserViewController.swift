@@ -10,9 +10,9 @@ import UIKit
 
 class AllUserViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-     let getUserInfoManager = GetUserProfileManager()
-     var allUserInfo = [UserInfo]()
-     var selectedIndexs = [Int]()
+    let getUserInfoManager = GetUserProfileManager()
+    var allUserInfo = [UserInfo]()
+    var selectedIndexs = [Int]()
     var selectedCell: Bool = false
 
     @IBOutlet weak var allUserTableview: UITableView!
@@ -27,16 +27,11 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
 
         allUserTableview.separatorStyle  =  .none
 
-     //   allUserTableview.allowsMultipleSelection = true
-
     }
     @IBAction func backBtn(_ sender: Any) {
-//        let detailPage = UIStoryboard(name: "Schedule", bundle: nil).instantiateViewController(withIdentifier: "ScheduleDetailViewController") as?
-//        ScheduleDetailViewController
-//
-//        present(detailPage!, animated: true, completion: nil)
         dismiss(animated: true, completion: nil)
     }
+
     func initUITableView() {
         allUserTableview.dataSource = self
         allUserTableview.delegate = self
@@ -51,24 +46,18 @@ class AllUserViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard  let cell = allUserTableview.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell") as? AllUsersTableViewCell else {return UITableViewCell()}
 
-          let allUsers = allUserInfo[indexPath.row]
-              cell.getCell(allUsers: allUsers)
-           cell.selectionStyle = .none
-
-//        if selectedIndexs.contains(indexPath.row) {
-//            cell.accessoryType = .checkmark
-//        } else {
-//            cell.accessoryType = .none
-//        }
-
+        let allUsers = allUserInfo[indexPath.row]
+        cell.getCell(allUsers: allUsers)
+        cell.selectionStyle = .none
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
-    }
+}
 
 extension AllUserViewController: GetUserInfoManagerDelegate {
+
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {}
 
     func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {
@@ -76,4 +65,5 @@ extension AllUserViewController: GetUserInfoManagerDelegate {
         allUserInfo = userInfo
         allUserTableview.reloadData()
     }
+
 }

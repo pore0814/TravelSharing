@@ -58,15 +58,15 @@ class ProfileViewController: UIViewController, FusumaDelegate {
         alertView.showSuccess("", subTitle: "更新個人資料?")
     }
 
-    @IBAction func logOutBtn(_ sender: Any){
-        
+    @IBAction func logOutBtn(_ sender: Any) {
+
         Alertmanager1.shared.showCheck(with: "aaa", message: "", delete: {
             guard let switchToLoginPage = AppDelegate.shared?.switchToLoginViewController() else {return}
             UserManager.shared.logout()
         }) {
             print("登出")
         }
-        
+
 //        let appearance = SCLAlertView.SCLAppearance(
 //            showCloseButton: false
 //        )

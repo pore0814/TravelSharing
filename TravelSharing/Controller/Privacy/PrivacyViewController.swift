@@ -31,7 +31,6 @@ class PrivacyViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     func pathdraw() {
-        print("-----------")
         // let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=22.9998999,120.2268758&mode=driving"
         //25.042837, 121.564879     //25.041195, 121.565104
         let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.042837,121.564879&destination=25.058232,121.520560&mode=driving"

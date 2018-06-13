@@ -270,6 +270,14 @@
 			path = Privacy;
 			sourceTree = "<group>";
 		};
+		D1A7A4A620D0F347001D5110 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
 		D1BBA31920957222005E5AAE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,13 +335,12 @@
 			path = Destination;
 			sourceTree = "<group>";
 		};
-		D1D45E9920B0613C00E3E7BE /* getUserData */ = {
+		D1D45E9920B0613C00E3E7BE /* UserData */ = {
 			isa = PBXGroup;
 			children = (
 				D1D45E9A20B0617700E3E7BE /* UserInfoManager.swift */,
-				D1010DF420BFD73D007F4959 /* InvitatedFriendManager.swift */,
 			);
-			path = getUserData;
+			path = UserData;
 			sourceTree = "<group>";
 		};
 		D1DE2FBB20C581D200A6AB2A /* GuildLine */ = {
@@ -407,8 +414,9 @@
 		D1E6CD7720914DAC00310121 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D1F70A1420C4A63D00576606 /* New Group */,
-				D1D45E9920B0613C00E3E7BE /* getUserData */,
+				D1A7A4A620D0F347001D5110 /* Friend */,
+				D1F70A1420C4A63D00576606 /* ShereSchedule */,
+				D1D45E9920B0613C00E3E7BE /* UserData */,
 				D1D45E9820B0611600E3E7BE /* Destination */,
 				D1F5422E2099FE37007EBE96 /* Schedule */,
 				D1F542292099EAD3007EBE96 /* LoginandRegister */,
@@ -420,6 +428,7 @@
 				D14C0FED209823A800026AF1 /* Constants.swift */,
 				D14C0FF1209873E100026AF1 /* AlertManager.swift */,
 				D1F5422A2099EBAA007EBE96 /* FirBaseConnect.swift */,
+				D118E14D20D0BD71005E89D5 /* CustomUITextField.swift */,
 				D1658267209AE78800C37F8D /* Struct.swift */,
 				D18B9B6320A0248500EB8D16 /* Date.swift */,
 				D11E007120B2C3DC002CD945 /* POMCollectionViewFlowLayout.swift */,
@@ -457,13 +466,12 @@
 			path = Schedule;
 			sourceTree = "<group>";
 		};
-		D1F70A1420C4A63D00576606 /* New Group */ = {
+		D1F70A1420C4A63D00576606 /* ShereSchedule */ = {
 			isa = PBXGroup;
 			children = (
 				D1F70A1520C4A66400576606 /* shareScheduleManager.swift */,
-				D118E14D20D0BD71005E89D5 /* CustomUITextField.swift */,
 			);
-			path = "New Group";
+			path = ShereSchedule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -34,9 +34,8 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
     var locationstart     = CLLocation()
     var destinationLocaion = CLLocation()
     var showInfo =  false
-    var cellExpanded:Bool = false
-    var oldPolylin:GMSPolyline?
-    
+    var cellExpanded: Bool = false
+    var oldPolylin: GMSPolyline?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -70,13 +69,13 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         locationManager.startUpdatingLocation()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startMonitoringSignificantLocationChanges()
-        
+
         let indexPath = IndexPath(row: 0, section: 0)
         guard let indexpath = indexPathInGlobal else {return}
         guard let cell = tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
-        
+
         let camera = GMSCameraPosition.camera(withLatitude: -7.9293122, longitude: 112.5879156, zoom: 15.0)
-        
+
         cell.mapView.camera = camera
         cell.mapView.isMyLocationEnabled = true
         cell.mapView.settings.myLocationButton = true
@@ -88,9 +87,9 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
         let fullscreen = UIScreen.main.bounds
 
-        if let selectedCell = tableView.cellForRow(at: indexPath) as? DestinationTableViewCell{
+        if let selectedCell = tableView.cellForRow(at: indexPath) as? DestinationTableViewCell {
                selectedCell.direction.image = UIImage(named: "down-arrow")
-            
+
             if indexPath.row == tag {
                 if cellExpanded {
                     selectedCell.direction.image = UIImage(named: "up")
@@ -102,7 +101,7 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
             return 75
-        
+
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -132,9 +131,9 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
 
-    @objc func googleMapBtn(_ sender: UIButton){}
-    
-    @objc func drawpathBtn(_ sender: UIButton){ }
+    @objc func googleMapBtn(_ sender: UIButton) {}
+
+    @objc func drawpathBtn(_ sender: UIButton) { }
 
     @objc func deleteTapBtn(_ sender: UIButton) {
         let alert = Alertmanager1.shared.showCheck(with: "確定刪除?", message: "", delete: {
@@ -148,33 +147,29 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         tag = indexPath.row
         indexPathInGlobal = indexPath
         guard let selectedCell =  tableView.cellForRow(at: indexPath) as? DestinationTableViewCell else {return}
-        
+
         if cellExpanded {
             cellExpanded = false
-        } else if cellExpanded == false{
+        } else if cellExpanded == false {
             cellExpanded = true
         }
-       
-        
-        
+
         tableView.beginUpdates()
         tableView.endUpdates()
         previous = tag
     }
 
     func callDistanceVC() {
-        
-       
+
         let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
     guard let distanceViewController = storyboard.instantiateViewController(withIdentifier: "DistanceViewController") as? DistanceViewController else {return}
         self.view.addSubview(distanceViewController.view)
         distanceVC = distanceViewController
-        guard  let screen = distanceViewController.view else {return};
+        guard  let screen = distanceViewController.view else {return}
         distanceViewController.view.center = CGPoint(x: screen.frame.size.height * 0.27, y: screen.frame.size.height / 2)
-        
-        
+
                 guard let cellindexPath = indexPathInGlobal else {return}
-        
+
                     distanceManager
                         .getDestinationDateAndTime(myLocaion: locationstart,
                                                    endLocation: testArray[cellindexPath.row],
@@ -185,12 +180,9 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
                             distanceViewController.destinationNamer.text = self.testArray[cellindexPath.row].name
                         }
                     })
-        
-        
+
              distanceViewController.removeBtn.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
-
-   
 
     @objc func buttonClicked(sender: UIButton) {
         guard let vc = distanceVC else {return}
@@ -211,81 +203,75 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
 
 //extension DestinationViewController: DestinationManagerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate {
 
-extension DestinationViewController: showDistanceDelegate, DestinationManagerDelegate,GMSMapViewDelegate, CLLocationManagerDelegate
-{
-   
-    
-    
-    
+extension DestinationViewController: showDistanceDelegate, DestinationManagerDelegate, GMSMapViewDelegate, CLLocationManagerDelegate {
 
     // MARK: CLLocation Manager Delegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while get location\(error)")
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         let camera = GMSCameraPosition.camera(
             withLatitude: (location?.coordinate.latitude)!,
             longitude: (location?.coordinate.longitude)!, zoom: 5)
-        
+
         guard let lat = location?.coordinate.latitude, let long = location?.coordinate.longitude else {return}
         //MyLocation
         locationstart = CLLocation(latitude: lat, longitude: long)
         self.locationManager.stopUpdatingHeading()
     }
-    
+
     // Mark: - GMSMapViewDelegate
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         mapView.isMyLocationEnabled = true
     }
-    
+
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         mapView.isMyLocationEnabled = true
-        
+
         if (gesture) {
             mapView.selectedMarker = nil
         }
     }
-    
+
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         mapView.isMyLocationEnabled = true
         return false
     }
-    
+
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         print("coordinatio\(coordinate)")
     }
-    
+
     func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
         return false
     }
-    
-    //MARK:- delegate
-    
+
+    // MARK: - delegate
+
     func managerMyLocationdrawPath(_ manager: DestinationManager, getPolyline polyline: GMSPolyline) {
         oldPolylin?.map = nil
         guard let indexpath = indexPathInGlobal else {return}
         gmsPolyline = polyline
         guard let  cell = tableView.cellForRow(at: indexpath) as? DestinationTableViewCell else {return}
         destinationLocaion = CLLocation(latitude: testArray[indexpath.row].latitude, longitude: testArray[indexpath.row].longitude)
-        
+
         gmsPolyline!.strokeColor = UIColor.blue
         gmsPolyline!.strokeWidth = 5
         gmsPolyline!.map = cell.mapView
-        
+
         if let myLocation = cell.mapView.myLocation {
                         let path = GMSMutablePath()
                         path.add(myLocation.coordinate)
                         path.add(destinationLocaion.coordinate)
-            
+
                         let bounds = GMSCoordinateBounds(path: path)
                         cell.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
             oldPolylin = polyline
         }
     }
-    
-   
+
     func managerPreviousSpotDrawPath(_ manager: DestinationManager, getPolyline polyline: GMSPolyline) {
         oldPolylin?.map = nil
         guard let indexpath = indexPathInGlobal else {return}
@@ -293,7 +279,7 @@ extension DestinationViewController: showDistanceDelegate, DestinationManagerDel
         guard let  cell = tableView.cellForRow(at: indexpath) as? DestinationTableViewCell else {return}
        let  startLcoation = CLLocation(latitude: testArray[indexpath.row].latitude, longitude: testArray[indexpath.row].longitude)
         destinationLocaion = CLLocation(latitude: testArray[indexpath.row - 1].latitude, longitude: testArray[indexpath.row - 1].longitude)
-        
+
         gmsPolyline!.strokeColor = UIColor.blue
         gmsPolyline!.strokeWidth = 5
         gmsPolyline!.map = cell.mapView
@@ -302,17 +288,16 @@ extension DestinationViewController: showDistanceDelegate, DestinationManagerDel
         path.add(destinationLocaion.coordinate)
         let bounds = GMSCoordinateBounds(path: path)
         cell.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 40))
-        
 
         oldPolylin = polyline
-      
+
 //         let path = GMSMutablePath()
 //        path.add(startLcoation.coordinate)
 //        path.add(destinationLocaion.coordinate)
 //        let bounds = GMSCoordinateBounds(path: path)
 //        let update = GMSCameraUpdate.fit(bounds, withPadding: 60)
 //        cell.mapView.animate(with: update)
-        
+
 //        if let myLocation = cell.mapView.myLocation {
 //            let path = GMSMutablePath()
 //
@@ -328,7 +313,7 @@ extension DestinationViewController: showDistanceDelegate, DestinationManagerDel
         testArray = schedule
         tableView.reloadData()
     }
-    
+
     func callGoogleMap() {
         guard let index = indexPathInGlobal else {return}
         if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)) {
@@ -338,31 +323,24 @@ extension DestinationViewController: showDistanceDelegate, DestinationManagerDel
             NSLog("Can't use com.google.maps://")
         }
     }
-    
+
     func callFunctionTodrawPath() {
         guard let cellindexPath = indexPathInGlobal else {return}
         destinationManger.drawPath(myLocaion: locationstart, endLocation: testArray[cellindexPath.row])
     }
-    
+
     func callDistanceView() {
         callDistanceVC()
     }
-    
+
     func callpreviousSpot() {
         guard let cellindexPath = indexPathInGlobal else {return}
         if cellindexPath.row > 0 {
             destinationManger.drawPathPreviousSpot(startLocation: testArray[cellindexPath.row - 1], endLocation: testArray[cellindexPath.row])
-        }else {
+        } else {
             AlertManager.showEdit(title: "沒有上一個景點哦", subTitle: "")
         }
-            
+
     }
-    
 
-    
-    
 }
-
-
-
-

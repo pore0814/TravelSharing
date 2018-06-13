@@ -58,10 +58,10 @@ class ScheduleManager {
 
     //修改
     func updateaveScheduleInfo(scheduleUid: String?, scheduleName: String, scheudleDate: String, scheduleDay: String) {
-         guard let userid = UserManager.shared.getFireBaseUID(), let scheduleUUid = scheduleUid else {return}
-         let  updateScheduleInfo = ["uid": scheduleUid, "name": scheduleName,
-                                    "date": scheudleDate, "days": scheduleDay, "host": userid]
-         FireBaseConnect.databaseRef
+        guard let userid = UserManager.shared.getFireBaseUID(), let scheduleUUid = scheduleUid else {return}
+        let  updateScheduleInfo = ["uid": scheduleUid, "name": scheduleName,
+                                   "date": scheudleDate, "days": scheduleDay, "host": userid]
+        FireBaseConnect.databaseRef
             .child(Constants.FireBaseSchedules)
             .child(scheduleUUid)
             .updateChildValues(updateScheduleInfo)

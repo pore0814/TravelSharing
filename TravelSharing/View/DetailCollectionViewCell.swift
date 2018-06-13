@@ -14,7 +14,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var weekLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         backGroundView.setRounded()

@@ -25,7 +25,7 @@ class TSDateFormatter1 {
         var TSDateArray = [ScheduleDateInfo]()
         if days == 0 {
             AlertManager.showEdit(title: "天數需大於0天", subTitle: "請到編輯重新設定")
-        }else {
+        } else {
         for day in 0...days - 1 {
             guard let enddate = Calendar.current.date(byAdding: .day, value: day, to: startDate) else {return []}
             dateformate.dateFormat = "MM/dd"

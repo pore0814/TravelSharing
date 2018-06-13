@@ -45,7 +45,6 @@ class FriendListViewController: UIViewController {
         }
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
       //setupView()
@@ -54,44 +53,6 @@ class FriendListViewController: UIViewController {
         thirdView.isHidden = true
 
     }
-
-    // MARK: - View Methods
-    private func setupView() {
-     //  setupSegmentedController()
-       // updateview()
-     }
-
-//    private func updateview(){
-//        firstChildTabVC?.view.isHidden = !(segmentedControl.selectedSegmentIndex == 0)
-//        secondChildTabVC?.view.isHidden = (segmentedControl.selectedSegmentIndex == 0)
-//
-//    }
-
-//    private func setupSegmentedController(){
-//        segmentedControl.removeAllSegments()
-//        segmentedControl.insertSegment(withTitle: "aaa", at: 0, animated: false)
-//       segmentedControl.insertSegment(withTitle: "bbb", at: 1, animated: false)
-//        segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
-//        segmentedControl.selectedSegmentIndex = 0
-//    }
-//
-//    //Mark: Sctions
-//    @objc func selectionDidChange(sender:UISegmentedControl){
-//        updateview()
-//    }
-//
-//override func addChildViewController(_ childController: UIViewController) {
-//
-//
-//
-//        addChildViewController(childController)
-//        view.addSubview(childController.view)
-//
-//        childController.view.frame = view.bounds
-//        childController.view.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-//        childController.didMove(toParentViewController: self)
-//
-//    }
 
     @IBAction func addFriends(_ sender: Any) {
         print("Aaaaaaaaaddfriends")
@@ -104,9 +65,10 @@ class FriendListViewController: UIViewController {
 }
 
 extension FriendListViewController: GetUserInfoManagerDelegate {
+
     func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {}
 
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
-       myInfo = userInfo
-        }
+        myInfo = userInfo
     }
+}

@@ -58,7 +58,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
       searchPlaceTextGesture()
 
       categoryTextGesture()
-        
+
      timeText.delegate = self
 }
     func searchPlaceTextGesture() {
@@ -113,7 +113,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
                       destinationText.text = ""
           //   navigationController?.popViewController(animated: true)
             _ = self.navigationController?.popViewController(animated: true)
-            guard    let previousViewController = self.navigationController?.viewControllers.last as? ScheduleDetailViewController else {return}
+            guard  let previousViewController = self.navigationController?.viewControllers.last as? ScheduleDetailViewController else {return}
             previousViewController.backPage = previousPage
             previousViewController.ggg?.tableView.reloadData()
 
@@ -207,7 +207,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 }
 
 //Search Location  (Auto complete)
-extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate,UITextFieldDelegate {
+extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate, UITextFieldDelegate {
 
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 15.0)
@@ -228,13 +228,12 @@ extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate,UI
 }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newText = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
-        
+
         if newText.isEmpty { return true }
-        
+
         if Int(newText) != nil { return true }
-        
-        return false 
+
+        return false
     }
-    
 
 }

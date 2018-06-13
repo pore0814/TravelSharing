@@ -45,7 +45,7 @@ class MyFriendListViewController: UIViewController, UITableViewDelegate, UITable
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-           guard let scheduleid = scheduleId else {return}
+        guard let scheduleid = scheduleId else {return}
         var title = "確定分享行程給" + friendListArray[indexPath.row].userName
 
         let appearance = SCLAlertView.SCLAppearance(
@@ -61,7 +61,7 @@ class MyFriendListViewController: UIViewController, UITableViewDelegate, UITable
         alertView.showSuccess("", subTitle: NSLocalizedString(title, comment: ""))
     }
 
-    }
+}
 
 extension MyFriendListViewController: InvitedFriendsManagerDelegate {
 

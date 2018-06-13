@@ -33,7 +33,7 @@ class ShareScheduleManager {
 
     func savevalue(value: [String: Any]) {
             let autoKey = FireBaseConnect.databaseRef.childByAutoId().key
-        
+
         var shareValue = value
         shareValue.updateValue(autoKey, forKey: "uid")
 

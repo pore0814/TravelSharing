@@ -32,7 +32,7 @@ class TravelSharingNavigationController: UINavigationController {
 }
 //漸層
 extension CAGradientLayer {
-
+    
     convenience init(frame: CGRect, colors: [UIColor]) {
         self.init()
         self.frame = frame
@@ -45,7 +45,7 @@ extension CAGradientLayer {
     }
 
     func createGradientImage() -> UIImage? {
-
+        
         var image: UIImage? = nil
         UIGraphicsBeginImageContext(bounds.size)
         if let context = UIGraphicsGetCurrentContext() {

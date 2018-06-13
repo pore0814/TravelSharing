@@ -22,9 +22,9 @@ class AddEditScheduleViewController: UIViewController {
 
     @IBOutlet weak var scheduleDaysText: UITextField!
     @IBOutlet weak var scheduleNameText: UITextField!
-    
+
     @IBOutlet weak var scheduleDateLabel: UILabel!
-   
+
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
@@ -59,8 +59,7 @@ class AddEditScheduleViewController: UIViewController {
         scheduleDaysText.text = scheduleInfoDetail?.days
         scheduleDateLabel.text = scheduleInfoDetail?.date
         scheduleNameText.text = scheduleInfoDetail?.name
-        
-        
+
         scheduleDaysText.delegate = self
         scheduleDaysText.keyboardType = .numberPad
     }
@@ -69,15 +68,15 @@ class AddEditScheduleViewController: UIViewController {
     }
 
     @objc func addTapped(sender: AnyObject) {
-        
+
         if scheduleInfoDetail == nil {
-            if scheduleDateLabel.text != "", scheduleDaysText.text != "", scheduleNameText.text != ""  {
-               
+            if scheduleDateLabel.text != "", scheduleDaysText.text != "", scheduleNameText.text != "" {
+
     //新增資料  pop 回上頁
                      ScheduleManager.shared.saveScheduleInfo(scheduleName: scheduleNameText.text!,
                                                              scheudleDate: scheduleDateLabel.text!,
                                                              scheduleDay: scheduleDaysText.text!)
-                
+
                      self.navigationController?.popViewController(animated: true)
                  } else {
                        AlertManager.showEdit(title: Constants.WrongMessage, subTitle: "表格不可為空白")
@@ -146,8 +145,8 @@ func configureCell(cell: JTAppleCell?, cellState: CellState) {
     }
 }
 
-extension AddEditScheduleViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate,UITextFieldDelegate  {
-    
+extension AddEditScheduleViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate, UITextFieldDelegate {
+
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
       let startDate = formatter.date(from: "2018 01 01")!
       let endData = formatter.date(from: "2018 12 31")!
@@ -187,36 +186,31 @@ extension AddEditScheduleViewController: JTAppleCalendarViewDataSource, JTAppleC
 //            return true
 //        }
 //    return false
-        
-        
+
         let newText = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
-        
+
         if newText.isEmpty { return true }
-        
+
         if Int(newText) != nil { return true }
-        
+
         print("textField.text: \(textField.text!)")
         print("range: \(range.location)")
         print("string: \(string)")
         print("")
-        
+
         let countOfWords = string.characters.count +  textField.text!.characters.count - range.length
-        if countOfWords < 1{
+        if countOfWords < 1 {
             return false
         }
         // 長度不得大於10
         return false
     }
-    
+
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return true
     }
-    
-    
 
 }
-    
-
 
 extension UIColor {
 

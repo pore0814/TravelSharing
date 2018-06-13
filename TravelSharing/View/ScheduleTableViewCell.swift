@@ -41,15 +41,7 @@ class ScheduleTableViewCell: UITableViewCell {
     }
 
     @IBAction func coEditedBtn(_ sender: UIButton) {
-
         self.delegate?.playVideoButtonDidSelect(self, row: sender.tag)
-
-//        guard  let allUsersPage = UIStoryboard.allUsersStoryboard().instantiateInitialViewController() else {return}
-//
-//
-//
-//        present(allUsersPage, animated: true, completion: nil)
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

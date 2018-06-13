@@ -21,7 +21,7 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
     var friendInfo: UserInfo?
     var myInfo: UserInfo?
     var invitate = [UserInfo]()
-    var friendEmail:String?
+    var friendEmail: String?
 
     @IBOutlet weak var addFriendsBtn: UIButton!
 
@@ -51,7 +51,7 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
         invitedFriendManager.requestsFromMeList()
         invitedFriendManager.myFriendList()
     }
-  
+
     func configureSearchBar() {
         friendSearchBar.delegate = self
         friendSearchBar.returnKeyType  = UIReturnKeyType.done
@@ -68,9 +68,9 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
 //加朋友
     @IBAction func addFriends(_ sender: Any) {
         guard let friendinfomation = friendInfo else {return}
-        
+
         guard let myinfo = myInfo else {return}
-        
+
         if friendsArray.count <= 0 {
             invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendinfomation)
             invitedFriendManager.waitingPermission(myinfo, sendRtoF: friendinfomation)
@@ -78,7 +78,7 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
             friendEmailLabel.text = ""
             friendUserNamerLabel.text = ""
             friendProfileImg.isHidden =  true
-        }else{
+        } else {
             for index in 0...friendsArray.count - 1 {
                 //是否就有在朋友列表內，如果有就Alert，沒有就丟到列表
                 if friendEmail! == friendsArray[index].email {
@@ -89,7 +89,7 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
                     friendProfileImg.isHidden =  true
                     AlertManager.showEdit(title: "你們已經是朋友了", subTitle: "")
                     return
-                }else {
+                } else {
                     invitedFriendManager.sendRequestToFriend(myinfo, sendRtoF: friendinfomation)
                     invitedFriendManager.waitingPermission(myinfo, sendRtoF: friendinfomation)
                     addFriendsBtn.isHidden = true
@@ -100,7 +100,6 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
             }
         }
     }
-  
 
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.showsCancelButton = true
@@ -120,10 +119,10 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
         friendSearchBar.enablesReturnKeyAutomatically = true
         friendSearchBar.resignFirstResponder()
         friendSearchBar.showsCancelButton = true
-        
+
         for index in 0...allUserInfo.count - 1 {
 //搜詢的Eamil，在所有使用者裡看看。
-            if friendEmail! == allUserInfo[index].email  {
+            if friendEmail! == allUserInfo[index].email {
                     friendEmailLabel.text = allUserInfo[index].email
                     friendUserNamerLabel.text = allUserInfo[index].userName
                     friendProfileImg.sd_setImage(with: URL(string: allUserInfo[index].photoUrl), completed: nil)
@@ -137,8 +136,8 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
             }
         }
     }
-    
-    func isFriendArry(friendemail:String) -> Bool{
+
+    func isFriendArry(friendemail: String) -> Bool {
         if friendsArray.count > 0 {
             for index in 0...friendsArray.count - 1 {
                 //是否就有在朋友列表內，如果有就Alert，沒有就丟到列表
@@ -161,14 +160,14 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell") as? AllUsersTableViewCell else {return UITableViewCell()}
-        
+
             cell.allUserEmailLabel.text = invitate[indexPath.row].email
             cell.allUserNamerLabel.text = invitate[indexPath.row].userName
             cell.allUsersImage.sd_setImage(with: URL(string: invitate[indexPath.row].photoUrl), completed: nil)
             cell.addFriendBtn.setTitle("取消", for: .normal)
             cell.cancelFriendInvitedBtn.isHidden = false
             cell.cancelFriendInvitedBtn.addTarget(self, action: #selector(cancel(sender:)), for: .touchUpInside)
-        
+
         return cell
     }
 

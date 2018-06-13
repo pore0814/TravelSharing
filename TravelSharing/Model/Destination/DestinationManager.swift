@@ -116,31 +116,25 @@ struct DestinationManager {
                 completion(distanceInfo)
             }
     }
-    
-    
-    
+
     func drawPath(myLocaion: CLLocation, endLocation: Destination) {
         Analytics.logEvent("drawPath", parameters: nil)
-        
-        print("drawPath--------------------")
-        print("myLocation", myLocaion)
-        print("endLocation", endLocation)
-        
+
         let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
-       // let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
-         let destination = "\(endLocation.latitude),\(endLocation.longitude)"
-       let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
-        
-         //let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=22.9998999,120.2268758&mode=driving"
-        
+        // let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
+        let destination = "\(endLocation.latitude),\(endLocation.longitude)"
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
+
+        //let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=22.9998999,120.2268758&mode=driving"
+
         Alamofire.request(url).responseJSON { response in
-            
+
             let json = try? JSON(data: response.data!)
-            
+
             let routes = json!["routes"].arrayValue
             print(json)
             print("routes-----------------")
-            
+
             // print route using Polyline
             for route in routes {
                 let routeOverviewPolyline = route["overview_polyline"].dictionary
@@ -149,31 +143,30 @@ struct DestinationManager {
                 let path = GMSPath.init(fromEncodedPath: points!)
                 let polyline = GMSPolyline.init(path: path)
                 self.delegate?.managerMyLocationdrawPath(self, getPolyline: polyline)
-             
+
             }
         }
     }
-   
-    
+
     func drawPathPreviousSpot(startLocation: Destination, endLocation: Destination) {
         Analytics.logEvent("drawPath", parameters: nil)
-        
-      let origin = "\(startLocation.latitude),\(startLocation.longitude)"
-      //  let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
+
+        let origin = "\(startLocation.latitude),\(startLocation.longitude)"
+        //  let origin = "\(myLocaion.coordinate.latitude),\(myLocaion.coordinate.longitude)"
         // let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
         let destination = "\(endLocation.latitude),\(endLocation.longitude)"
         let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
-        
+
         //let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=22.9998999,120.2268758&mode=driving"
-        
+
         Alamofire.request(url).responseJSON { response in
-            
+
             let json = try? JSON(data: response.data!)
-            
+
             let routes = json!["routes"].arrayValue
             print(json)
             print("routes-----------------")
-            
+
             // print route using Polyline
             for route in routes {
                 let routeOverviewPolyline = route["overview_polyline"].dictionary
@@ -182,9 +175,9 @@ struct DestinationManager {
                 let path = GMSPath.init(fromEncodedPath: points!)
                 let polyline = GMSPolyline.init(path: path)
                 self.delegate?.managerPreviousSpotDrawPath(self, getPolyline: polyline)
-                
+
             }
         }
     }
-    
+
 }

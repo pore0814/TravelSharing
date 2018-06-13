@@ -17,7 +17,7 @@ protocol showDistanceDelegate: class {
     func callpreviousSpot()
 }
 
-class DestinationTableViewCell: UITableViewCell, CLLocationManagerDelegate{
+class DestinationTableViewCell: UITableViewCell, CLLocationManagerDelegate {
 
     @IBOutlet weak var distanceBtn: UIButton!
     @IBOutlet weak var googleMapBtn: UIButton!
@@ -30,17 +30,16 @@ class DestinationTableViewCell: UITableViewCell, CLLocationManagerDelegate{
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var direction: UIImageView!
-    
+
     @IBOutlet weak var previousSpotBtn: UIButton!
-    
-    
+
     weak var delegate: showDistanceDelegate?
     var locationManager = CLLocationManager()
     var locationstart     = CLLocation()
     var destinationLocaion = CLLocation()
     var distanceManager = DistanceManager()
     var destinationManager = DestinationManager()
-    var destinationData :Destination?
+    var destinationData: Destination?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,9 +48,8 @@ class DestinationTableViewCell: UITableViewCell, CLLocationManagerDelegate{
 
         mapDelegateAndInitiation()
     }
-    
+
     @IBAction func deleteBtn(_ sender: Any) {}
-    
 
     @IBAction func distanceInfoBtn(_ sender: UIButton) {
         self.delegate?.callDistanceView()
@@ -65,11 +63,10 @@ class DestinationTableViewCell: UITableViewCell, CLLocationManagerDelegate{
     @IBAction func googleMapBtn(_ sender: Any) {
         self.delegate?.callGoogleMap()
     }
-    
+
     @IBAction func previousSpotBtn(_ sender: Any) {
         self.delegate?.callpreviousSpot()
     }
-    
 
     func mapDelegateAndInitiation() {
         locationManager = CLLocationManager()
@@ -83,7 +80,7 @@ class DestinationTableViewCell: UITableViewCell, CLLocationManagerDelegate{
         self.mapView.settings.myLocationButton = true
     }
 
-    func mapViewCell(lat:Double,long:Double,name:String) {
+    func mapViewCell(lat: Double, long: Double, name: String) {
 
         destinationLocaion = CLLocation(latitude: lat, longitude: long)
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 16)
@@ -95,14 +92,6 @@ class DestinationTableViewCell: UITableViewCell, CLLocationManagerDelegate{
         let marker = GMSMarker(position: position)
         marker.title = name
         marker.map = cellMapview
-        
-        
-        
-       
+
     }
 }
-
-
-
-
-

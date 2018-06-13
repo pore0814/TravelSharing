@@ -26,7 +26,7 @@ class InvitedListViewController: UIViewController, UITableViewDelegate, UITableV
         configureTableView()
     }
 
-    func configureTableView(){
+    func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         let nib = UINib(nibName: "AllUsersTableViewCell", bundle: nil)
@@ -55,18 +55,18 @@ class InvitedListViewController: UIViewController, UITableViewDelegate, UITableV
 
     @objc func  permitted(sender: UIButton) {
         guard let myinfo = myInfo else {return}
-            if invitedListArray.count > 0 {
-                SVProgressHUD.show(withStatus: "delete")
-                invitedFriendsManager.beFriend(myInfo: myinfo, friendInfo: invitedListArray[sender.tag])
-                invitedFriendsManager.deletRequetFromMe(friendID: invitedListArray[sender.tag].uid)
-                invitedFriendsManager.deletePermission(friendID: invitedListArray[sender.tag].uid)
-//                invitedFriendsManager.cancelPermission(friendID: invitedListArray[sender.tag].uid)
-//                invitedFriendsManager.cancelRequestFromMe(friendID: invitedListArray[sender.tag].uid)
-                invitedListArray.remove(at: sender.tag)
-                tableView.reloadData()
-            } else {
-                AlertManager.showEdit(title: Constants.NoData, subTitle: "")
-            }
+        if invitedListArray.count > 0 {
+            SVProgressHUD.show(withStatus: "delete")
+            invitedFriendsManager.beFriend(myInfo: myinfo, friendInfo: invitedListArray[sender.tag])
+            invitedFriendsManager.deletRequetFromMe(friendID: invitedListArray[sender.tag].uid)
+            invitedFriendsManager.deletePermission(friendID: invitedListArray[sender.tag].uid)
+            invitedFriendsManager.cancelPermission(friendID: invitedListArray[sender.tag].uid)
+            invitedFriendsManager.cancelRequestFromMe(friendID: invitedListArray[sender.tag].uid)
+            invitedListArray.remove(at: sender.tag)
+            tableView.reloadData()
+        } else {
+            AlertManager.showEdit(title: Constants.NoData, subTitle: "")
+        }
         SVProgressHUD.dismiss()
     }
 
@@ -77,7 +77,7 @@ class InvitedListViewController: UIViewController, UITableViewDelegate, UITableV
             invitedFriendsManager.deletePermission(friendID: invitedListArray[sender.tag].uid)
             invitedFriendsManager.deletRequetFromMe(friendID: invitedListArray[sender.tag].uid)
             invitedListArray.remove(at: sender.tag)
-        tableView.reloadData()
+            tableView.reloadData()
         }
         print("cancel")
     }
@@ -85,15 +85,16 @@ class InvitedListViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return invitedListArray.count
     }
-
 }
 
 extension InvitedListViewController: InvitedFriendsManagerDelegate, GetUserInfoManagerDelegate {
+
     func managerFriendList(_ manager: InvitedFriendsManager, getFriendList friendList: [UserInfo]) {}
 
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
         myInfo = userInfo
     }
+
     func managerArray(_ manager: GetUserProfileManager, didGet userInfo: [UserInfo]) {}
 
     func manager(_ manager: InvitedFriendsManager, didRequests invitedList: [UserInfo]) {}
