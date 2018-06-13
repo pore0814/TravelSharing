@@ -74,40 +74,11 @@ class ScheduleManager {
         }
     }
 
-/*取users裡將使用者的schedule_id放到Array裡，再到Schedules裡將這些uid的內容撈出來
-    func getUserInfo() {
-        var ScheduleUidArray = [Schedule]()
-        guard let userid = UserManager.shared.getFireBaseUID() else {return}
-        FireBaseConnect.databaseRef.child("users").child(userid).observeSingleEvent(of: .value) { (snapshot) in
-            if let userData = snapshot.value as? [String: Any] {
-                guard let username = userData["username"] as? String else {return}
-                guard let email = userData["email"] as? String  else {return}
-                guard let id = userData["uid"]  as? String  else {return}
-                guard let photo = userData["photoUrl"] as? String else {return}
-                guard let scheudle = userData["schedule"] as? [String: Any] else {return}
-                for index in scheudle {
-                    if let scheduleIndex = index.value as? [String: Any] {
-                        guard let name = scheduleIndex["name"] as? String else {return}
-                        guard let id = scheduleIndex["uid"] as? String else {return}
-                        let schedule = Schedule(uid: id, name: name)
-                        ScheduleUidArray.append(schedule)
-                    }
-                }
-                let userInfo = User(email: email, photo: photo, schedule: ScheduleUidArray, uid: id, userName: username)
-             //   self.getScheduleContent(uid: userInfo.schedule)
-            }
-        }
-    }
-*/
-
-    // 到FireBase  撈schedules資料
+// 到FireBase  撈schedules資料
     func getScheduleContent() {
 
-        guard let userid = UserManager.shared.getFireBaseUID() else {
+        guard let userid = UserManager.shared.getFireBaseUID() else {return}
 
-            return
-
-        }
         scheduleDataArray.removeAll()
 
         FireBaseConnect

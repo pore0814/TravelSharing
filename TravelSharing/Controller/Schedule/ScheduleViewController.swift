@@ -53,7 +53,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         ScheduleManager.shared.getScheduleContent()
 
 //收通知
-        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: .scheduleInfo, object: nil)
 
 //Timer Stop laodingPage
 
@@ -94,14 +94,14 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
 //Notification 通知
-    @objc func getData(notification: Notification) {
-        DispatchQueue.main.async {
-            self.schedules = ScheduleManager.shared.scheduleDataArray
-            self.tableView.reloadData()
-        }
-            SVProgressHUD.dismiss()
-            self.indicator = false
-        }
+//    @objc func getData(notification: Notification) {
+//        DispatchQueue.main.async {
+//            self.schedules = ScheduleManager.shared.scheduleDataArray
+//            self.tableView.reloadData()
+//        }
+//            SVProgressHUD.dismiss()
+//            self.indicator = false
+//        }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return schedules.count
