@@ -73,9 +73,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="firstView" destination="vTj-UZ-iCI" id="P53-tj-fPe"/>
+                        <outlet property="myFriendListUIView" destination="GtR-Cu-bXE" id="cQK-SK-hCr"/>
                         <outlet property="secondview" destination="Itc-Lk-zcJ" id="gxd-3o-5FZ"/>
                         <outlet property="segmentedControl" destination="6AZ-G9-iUe" id="xvR-0E-mCN"/>
-                        <outlet property="thirdView" destination="GtR-Cu-bXE" id="cQK-SK-hCr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="20o-bG-GBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -249,7 +249,7 @@
                         <viewLayoutGuide key="safeArea" id="XMt-VY-VSW"/>
                     </view>
                     <connections>
-                        <outlet property="lisTableView" destination="W7h-hO-jZA" id="Sih-f1-kK2"/>
+                        <outlet property="listTableView" destination="W7h-hO-jZA" id="Sih-f1-kK2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYx-TF-Fa5" userLabel="First Responder" sceneMemberID="firstResponder"/>

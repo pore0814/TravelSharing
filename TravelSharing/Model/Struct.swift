@@ -51,11 +51,6 @@ struct Destination {
     var uid: String
 }
 
-//enum Locaion {
-//    case myLocation
-//    case destinationLocation
-//}
-
 struct DistanceAndTime {
     var distance: String
     var time: String

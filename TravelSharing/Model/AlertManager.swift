@@ -36,6 +36,7 @@ struct AlertManager {
 }
 
 struct AlertToUser1 {
+    
     var alert = SCLAlertView()
 
 }
@@ -46,15 +47,16 @@ class Alertmanager1 {
 
     func showCheck(with title: String, message: String, delete: @escaping () -> Void, cancel: @escaping () -> Void) {
 
-        let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: false)
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
 
         let alertView = SCLAlertView(appearance: appearance)
 
         alertView.addButton(Check.yes.setButtonTitle()) {
+            
             delete()
         }
         alertView.addButton(Check.no.setButtonTitle()) {
+            
             cancel()
         }
 

@@ -41,6 +41,7 @@ class DistanceManager {
                 let duration = durations ["text"] as? String  else {return}
 
             let distanceInfo = DistanceAndTime(distance: distance, time: duration)
+            
             completion(distanceInfo)
         }
     }

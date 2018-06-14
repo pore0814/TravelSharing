@@ -40,7 +40,7 @@ class ScheduleManager {
               let  scheduleInfo = ["uid": scheduleUid, "name": scheduleName,
                                   "date": scheudleDate, "days": scheduleDay, "host": userid]
               FireBaseConnect.databaseRef
-                    .child(Constants.FireBaseSchedules)
+                    .child(Constants.Firebase.Schedules)
                     .child(scheduleUid)
                     .setValue(scheduleInfo)
         }
@@ -48,7 +48,7 @@ class ScheduleManager {
 //刪除(同時刪除Schedule下的uid 和User下Schedule的uid)
     func deleteSchedule(scheduleId: String, arrrayIndexPath: Int) {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
-        /* 先刪除Schedule_id */ FireBaseConnect.databaseRef.child(Constants.FireBaseSchedules).child(scheduleId).removeValue { error, _ in
+        /* 先刪除Schedule_id */ FireBaseConnect.databaseRef.child(Constants.Firebase.Schedules).child(scheduleId).removeValue { error, _ in
                    self.scheduleDataArray.remove(at: arrrayIndexPath)
                    if error != nil {
                         AlertManager.showEdit(title: Constants.WrongMessage, subTitle: Constants.FailToDelete)
@@ -62,7 +62,7 @@ class ScheduleManager {
         let  updateScheduleInfo = ["uid": scheduleUid, "name": scheduleName,
                                    "date": scheudleDate, "days": scheduleDay, "host": userid]
         FireBaseConnect.databaseRef
-            .child(Constants.FireBaseSchedules)
+            .child(Constants.Firebase.Schedules)
             .child(scheduleUUid)
             .updateChildValues(updateScheduleInfo)
 
@@ -83,19 +83,24 @@ class ScheduleManager {
         
         FireBaseConnect
             .databaseRef
-            .child(Constants.FireBaseSchedules)
+            .child(Constants.Firebase.Schedules)
             .queryOrdered(byChild: "host")
             .queryEqual(toValue: userid)
             .observeSingleEvent(of: .value) { (snapshot) in
                 
                 guard let values = snapshot.value as? [String: [String: Any]] else { return }
+                
                 for value in values.values {
+                    
                     guard let uid = value["uid"] as? String ,
                         let name  = value["name"] as? String ,
                         let date  = value["date"] as? String ,
                         let days  = value["days"] as? String else {return}
+                    
                     let schedule = ScheduleInfo(uid: uid, date: date, name: name, days: days)
+                    
                     self.scheduleDataArray.append(schedule)
+                    
                 }
                 
                 self.scheduleDataArray.sort(by: {$0.date > $1.date})
@@ -103,6 +108,7 @@ class ScheduleManager {
                 NotificationCenter.default.post(
                     name: .scheduleInfo,
                     object: nil)
+                
         }
     }
 }

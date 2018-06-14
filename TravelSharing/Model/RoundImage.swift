@@ -13,28 +13,25 @@ class RoundedUIImageView: UIImageView {
     @IBInspectable var round: Bool = true {
         didSet { self.setNeedsLayout() }
     }
-
+    
     @IBInspectable var width: CGFloat = 1 {
         didSet { self.setNeedsLayout() }
     }
-
+    
     @IBInspectable var color: CGColor = UIColor.gray.cgColor {
         didSet { self.setNeedsLayout() }
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.clipsToBounds = true
-
+        
         if round {
             self.layer.cornerRadius = self.frame.width / 2
-           // self.layer.cornerRadius = 10
         } else {
             self.layer.cornerRadius = 0
         }
-
-       // self.layer.borderWidth = self.width
-        //self.layer.borderColor = self.color
-}
-
+        
+    }
+    
 }
