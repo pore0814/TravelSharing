@@ -58,7 +58,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ScheduleViewController.stoplodingIcon), userInfo: nil, repeats: true)
         
-        ScheduleManager.shared.getScheduleContent()
+        //ScheduleManager.shared.getScheduleContent()
         
           firstLogin()
     }

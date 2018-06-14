@@ -76,33 +76,33 @@ class ScheduleManager {
 
 // 到FireBase  撈schedules資料
     func getScheduleContent() {
-
+        
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
-
+        
         scheduleDataArray.removeAll()
-
+        
         FireBaseConnect
-                .databaseRef
-                .child(Constants.FireBaseSchedules)
-                .queryOrdered(byChild: "host")
-                .queryEqual(toValue: userid)
-                .observe(.childAdded, with: { (snapshot) in
-                 //放background做
-//                    DispatchQueue.global(qos: .background).async{
-                        guard    let scheduleInfo =  snapshot.value as? [String: Any] else {return}
-                        guard    let uid = scheduleInfo["uid"] as? String else {return}
-                        guard    let name  = scheduleInfo["name"] as? String else {return}
-                        guard    let date  = scheduleInfo["date"] as? String else {return}
-                        guard    let days  = scheduleInfo["days"] as? String else {return}
-
-                        let schedule = ScheduleInfo(uid: uid, date: date, name: name, days: days)
-                        self.scheduleDataArray.append(schedule)
-                        self.scheduleDataArray.sort(by: {$0.date > $1.date})
-
-                        NotificationCenter.default.post(
-                            name: .scheduleInfo,
-                            object: nil)
-//                    }
-                })
-           }
-      }
+            .databaseRef
+            .child(Constants.FireBaseSchedules)
+            .queryOrdered(byChild: "host")
+            .queryEqual(toValue: userid)
+            .observeSingleEvent(of: .value) { (snapshot) in
+                
+                guard let values = snapshot.value as? [String: [String: Any]] else { return }
+                for value in values.values {
+                    guard let uid = value["uid"] as? String ,
+                        let name  = value["name"] as? String ,
+                        let date  = value["date"] as? String ,
+                        let days  = value["days"] as? String else {return}
+                    let schedule = ScheduleInfo(uid: uid, date: date, name: name, days: days)
+                    self.scheduleDataArray.append(schedule)
+                }
+                
+                self.scheduleDataArray.sort(by: {$0.date > $1.date})
+                
+                NotificationCenter.default.post(
+                    name: .scheduleInfo,
+                    object: nil)
+        }
+    }
+}

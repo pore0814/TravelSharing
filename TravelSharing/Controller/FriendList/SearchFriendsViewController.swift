@@ -33,6 +33,10 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        getrequestsFromMeList()
+    }
+    
+    func getrequestsFromMeList(){
          invitedFriendManager.requestsFromMeList()
     }
     

@@ -20,13 +20,13 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTj-UZ-iCI">
                                 <rect key="frame" x="0.0" y="46" width="375" height="557"/>
                                 <connections>
-                                    <segue destination="kdE-Ad-bA7" kind="embed" id="9fj-qK-9LN"/>
+                                    <segue destination="kdE-Ad-bA7" kind="embed" identifier="MyFriendListViewController" id="9fj-qK-9LN"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GtR-Cu-bXE">
                                 <rect key="frame" x="0.0" y="46" width="375" height="557"/>
                                 <connections>
-                                    <segue destination="D84-Gd-Qp0" kind="embed" id="LIY-GT-5dR"/>
+                                    <segue destination="D84-Gd-Qp0" kind="embed" identifier="SearchFriendsViewController " id="LIY-GT-5dR"/>
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6AZ-G9-iUe">
@@ -44,7 +44,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Itc-Lk-zcJ">
                                 <rect key="frame" x="0.0" y="46" width="375" height="557"/>
                                 <connections>
-                                    <segue destination="CDC-fx-ayG" kind="embed" id="lp4-V2-dut"/>
+                                    <segue destination="CDC-fx-ayG" kind="embed" identifier="InvitedListViewController" id="lp4-V2-dut"/>
                                 </connections>
                             </containerView>
                         </subviews>

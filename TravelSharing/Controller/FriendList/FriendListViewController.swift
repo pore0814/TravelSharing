@@ -15,6 +15,9 @@ class FriendListViewController: UIViewController {
 
 //    var invitedFriendsManager = InvitedFriendsManager()
     var myInfo: UserInfo?
+    var nnn1: InvitedListViewController?
+    var nnn2: SearchFriendsViewController?
+    var nnn3: MyFriendListViewController?
 
     @IBOutlet weak var firstView: UIView!
 
@@ -26,6 +29,7 @@ class FriendListViewController: UIViewController {
     @IBAction func indexChange(_ sender: UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
+            
             firstView.isHidden = false
             secondview.isHidden = true
             thirdView.isHidden = true
@@ -36,6 +40,8 @@ class FriendListViewController: UIViewController {
              thirdView.isHidden = true
 
         case 2:
+            nnn2?.getrequestsFromMeList()
+
             firstView.isHidden = true
             secondview.isHidden = true
             thirdView.isHidden = false
@@ -44,6 +50,27 @@ class FriendListViewController: UIViewController {
             break
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "InvitedListViewController" {
+            guard let nav1 = segue.destination as? InvitedListViewController else {return}
+            nav1.loadViewIfNeeded()
+            self.nnn1 = nav1
+            
+        } else if segue.identifier == "SearchFriendsViewController"{
+            guard let nav2 = segue.destination as? SearchFriendsViewController else {return}
+            nav2.loadViewIfNeeded()
+            self.nnn2 = nav2
+        } else if segue.identifier == "MyFriendListViewController"{
+            guard let nav3 = segue.destination as? MyFriendListViewController else {return}
+            nav3.loadViewIfNeeded()
+            self.nnn3 = nav3
+            
+        }
+    }
+       
+    
+ 
 
     override func viewDidLoad() {
         super.viewDidLoad()
