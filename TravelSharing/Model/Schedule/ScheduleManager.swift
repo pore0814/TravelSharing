@@ -86,7 +86,9 @@ class ScheduleManager {
             .child(Constants.Firebase.Schedules)
             .queryOrdered(byChild: "host")
             .queryEqual(toValue: userid)
-            .observeSingleEvent(of: .value) { (snapshot) in
+            .observe(.value, with: { (snapshot) in
+                
+                self.scheduleDataArray.removeAll()
                 
                 guard let values = snapshot.value as? [String: [String: Any]] else { return }
                 
@@ -109,6 +111,10 @@ class ScheduleManager {
                     name: .scheduleInfo,
                     object: nil)
                 
+            })
+         // .observe(of: .value) { (snapshot) in
+                
+        
         }
     }
-}
+
