@@ -72,7 +72,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
             
             if firstLogin == nil {
                 
-                AlertManager.showEdit(title: "按右上角新增旅程", subTitle: "")
+                AlertManager.showEdit(title: "按右上角＋", subTitle: "開始規劃您的旅程")
                 
                 UserDefaults.standard.set(true, forKey: "firstLogin")
                 
