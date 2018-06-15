@@ -70,9 +70,19 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
          var firstLogin = UserDefaults.standard.object(forKey: "firstLogin") as? Bool
 
             if firstLogin == nil {
+<<<<<<< HEAD
 
                 AlertManager.showEdit(title: "按右上角新增旅程", subTitle: "")
 
+||||||| merged common ancestors
+                
+                AlertManager.showEdit(title: "按右上角新增旅程", subTitle: "")
+                
+=======
+                
+                AlertManager.showEdit(title: "按右上角＋", subTitle: "開始規劃您的旅程")
+                
+>>>>>>> develop
                 UserDefaults.standard.set(true, forKey: "firstLogin")
 
                 UserDefaults.standard.synchronize()
