@@ -36,7 +36,7 @@ struct AlertManager {
 }
 
 struct AlertToUser1 {
-    
+
     var alert = SCLAlertView()
 
 }
@@ -52,11 +52,11 @@ class Alertmanager1 {
         let alertView = SCLAlertView(appearance: appearance)
 
         alertView.addButton(Check.yes.setButtonTitle()) {
-            
+
             delete()
         }
         alertView.addButton(Check.no.setButtonTitle()) {
-            
+
             cancel()
         }
 

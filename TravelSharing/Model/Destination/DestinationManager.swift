@@ -132,10 +132,10 @@ struct DestinationManager {
             let json = try? JSON(data: response.data!)
 
             let routes = json!["routes"].arrayValue
-          
+
             // print route using Polyline
             for route in routes {
-                
+
                 let routeOverviewPolyline = route["overview_polyline"].dictionary
                 let points = routeOverviewPolyline?["points"]?.stringValue
                 let distance = routeOverviewPolyline?["distance"]?.stringValue
@@ -151,9 +151,9 @@ struct DestinationManager {
         Analytics.logEvent("drawPath", parameters: nil)
 
         let origin = "\(startLocation.latitude),\(startLocation.longitude)"
-     
+
         let destination = "\(endLocation.latitude),\(endLocation.longitude)"
-        
+
         let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving"
 
         //let url = "https://maps.googleapis.com/maps/api/directions/json?origin=25.034028,121.56426&destination=22.9998999,120.2268758&mode=driving"
@@ -166,13 +166,13 @@ struct DestinationManager {
 
             // print route using Polyline
             for route in routes {
-                
+
                 let routeOverviewPolyline = route["overview_polyline"].dictionary
                 let points = routeOverviewPolyline?["points"]?.stringValue
                 let distance = routeOverviewPolyline?["distance"]?.stringValue
                 let path = GMSPath.init(fromEncodedPath: points!)
                 let polyline = GMSPolyline.init(path: path)
-                
+
                 self.delegate?.managerPreviousSpotDrawPath(self, getPolyline: polyline)
 
             }

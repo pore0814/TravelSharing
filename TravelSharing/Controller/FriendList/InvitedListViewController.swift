@@ -12,11 +12,11 @@ import SVProgressHUD
 class InvitedListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var invitedFriendsManager = InvitedFriendsManager()
-    
+
     var getUserInfoManager = GetUserProfileManager()
-    
+
     var invitedListArray = [UserInfo]()
-    
+
     var myInfo: UserInfo?
 
     @IBOutlet weak var tableView: UITableView!
@@ -30,103 +30,102 @@ class InvitedListViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func configureTableView() {
-        
+
         tableView.delegate = self
-        
+
         tableView.dataSource = self
-        
+
         let nib = UINib(nibName: "AllUsersTableViewCell", bundle: nil)
-        
+
         tableView.register(nib, forCellReuseIdentifier: "AllUsersTableViewCell")
-        
+
     }
 
     func setDelegateAndCallFunction() {
-        
+
         invitedFriendsManager.delegate =  self
-        
+
         invitedFriendsManager.requestsWaitForPermission()
-        
 
         getUserInfoManager.delegate = self
-        
+
         getUserInfoManager.getMyInfo()
-    
+
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell") as? AllUsersTableViewCell else {return UITableViewCell()}
-        
+
             cell.allUserEmailLabel.text = invitedListArray[indexPath.row].email
-        
+
             cell.allUserNamerLabel.text = invitedListArray[indexPath.row].userName
-        
+
             cell.allUsersImage.sd_setImage(with: URL(string: invitedListArray[indexPath.row].photoUrl), completed: nil)
-        
+
             cell.addFriendBtn.isHidden = false
-        
+
             cell.cancelFriendInvitedBtn.isHidden =  false
-        
+
             cell.addFriendBtn.tag = indexPath.row
-        
+
             cell.addFriendBtn.addTarget(self, action: #selector(permitted(sender:)), for: .touchUpInside)
-        
+
             cell.cancelFriendInvitedBtn.addTarget(self, action: #selector(canceled(sender:)), for: .touchUpInside)
-        
+
         return cell
     }
 
     @objc func  permitted(sender: UIButton) {
-        
+
         guard let myinfo = myInfo else {return}
-        
+
         if invitedListArray.count > 0 {
-            
+
             SVProgressHUD.show(withStatus: "delete")
             invitedFriendsManager.beFriend(myInfo: myinfo, friendInfo: invitedListArray[sender.tag])
-            
+
             invitedFriendsManager.deletRequetFromMe(friendID: invitedListArray[sender.tag].uid)
-            
+
             invitedFriendsManager.deletePermission(friendID: invitedListArray[sender.tag].uid)
-            
+
             invitedFriendsManager.cancelPermission(friendID: invitedListArray[sender.tag].uid)
-            
+
             invitedFriendsManager.cancelRequestFromMe(friendID: invitedListArray[sender.tag].uid)
-            
+
             invitedListArray.remove(at: sender.tag)
-            
+
             tableView.reloadData()
-            
+
         } else {
-            
+
             AlertManager.showEdit(title: Constants.NoData, subTitle: "")
-            
+
         }
-        
+
         SVProgressHUD.dismiss()
     }
 
     @objc func canceled(sender: UIButton) {
-        
+
         if  invitedListArray.count > 0 {
-            
+
             invitedFriendsManager.cancelPermission(friendID: invitedListArray[sender.tag].uid)
-            
+
             invitedFriendsManager.cancelRequestFromMe(friendID: invitedListArray[sender.tag].uid)
-            
+
             invitedFriendsManager.deletePermission(friendID: invitedListArray[sender.tag].uid)
-            
+
             invitedFriendsManager.deletRequetFromMe(friendID: invitedListArray[sender.tag].uid)
-            
+
             invitedListArray.remove(at: sender.tag)
-            
+
             tableView.reloadData()
-            
+
         }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+
         return invitedListArray.count
     }
 }
@@ -136,7 +135,7 @@ extension InvitedListViewController: InvitedFriendsManagerDelegate, GetUserInfoM
     func managerFriendList(_ manager: InvitedFriendsManager, getFriendList friendList: [UserInfo]) {}
 
     func manager(_ manager: GetUserProfileManager, didGet userInfo: UserInfo) {
-        
+
         myInfo = userInfo
     }
 
@@ -145,9 +144,9 @@ extension InvitedListViewController: InvitedFriendsManagerDelegate, GetUserInfoM
     func manager(_ manager: InvitedFriendsManager, didRequests invitedList: [UserInfo]) {}
 
     func manager(_ manager: InvitedFriendsManager, getPermission permissionList: [UserInfo]) {
-        
+
         invitedListArray = permissionList
-        
+
         tableView.reloadData()
     }
 }

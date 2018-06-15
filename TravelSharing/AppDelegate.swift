@@ -24,24 +24,24 @@ var window: UIWindow?
      static let shared = UIApplication.shared.delegate as? AppDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
         Fabric.with([Crashlytics.self])
-        
+
         IQKeyboardManager.shared.enable = true
-        
+
         FirebaseApp.configure()
-        
+
         GMSServices.provideAPIKey(apiKey)
-        
+
         GMSPlacesClient.provideAPIKey(apiKey)
-        
+
 //跳轉到MainViewController()
         if UserManager.shared.getFireBaseUID() != nil {
-            
+
             switchMainViewController()
-            
+
             } else {
-            
+
                 window?.rootViewController = UIStoryboard.logInStoryboard().instantiateInitialViewController()
             }
             return true
@@ -71,23 +71,23 @@ var window: UIWindow?
 
     //換頁_主頁面
     func switchMainViewController() {
-        
+
         let tabBar = TabBarViewController()
-        
+
               window?.rootViewController = tabBar
     }
 
     func switchToLoginViewController() {
-        
+
         guard  let loginPage = UIStoryboard.logInStoryboard().instantiateInitialViewController() else {return}
-       
+
         window?.rootViewController = loginPage
 
     }
     func switchScheduleViewController() {
-        
+
         guard  let schedulePage = UIStoryboard.scheduleStoryboard().instantiateInitialViewController() else {return}
-        
+
         window?.rootViewController = schedulePage
     }
 

@@ -76,45 +76,43 @@ class ScheduleManager {
 
 // 到FireBase  撈schedules資料
     func getScheduleContent() {
-        
+
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
-        
+
         scheduleDataArray.removeAll()
-        
+
         FireBaseConnect
             .databaseRef
             .child(Constants.Firebase.Schedules)
             .queryOrdered(byChild: "host")
             .queryEqual(toValue: userid)
             .observe(.value, with: { (snapshot) in
-                
+
                 self.scheduleDataArray.removeAll()
-                
+
                 guard let values = snapshot.value as? [String: [String: Any]] else { return }
-                
+
                 for value in values.values {
-                    
+
                     guard let uid = value["uid"] as? String ,
                         let name  = value["name"] as? String ,
                         let date  = value["date"] as? String ,
                         let days  = value["days"] as? String else {return}
-                    
+
                     let schedule = ScheduleInfo(uid: uid, date: date, name: name, days: days)
-                    
+
                     self.scheduleDataArray.append(schedule)
-                    
+
                 }
-                
+
                 self.scheduleDataArray.sort(by: {$0.date > $1.date})
-                
+
                 NotificationCenter.default.post(
                     name: .scheduleInfo,
                     object: nil)
-                
+
             })
          // .observe(of: .value) { (snapshot) in
-                
-        
+
         }
     }
-

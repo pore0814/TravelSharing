@@ -27,71 +27,71 @@ class UserManager {
     private init () {}
 
     let userDefaults = UserDefaults.standard
-    
+
     var destinationManager = DestinationManager()
 
     var  storeageProfileRef: StorageReference {
-        
+
         return Storage.storage().reference(forURL:
             "gs://travelshare-d17da.appspot.com")
             .child(Constants.ProfileImage)
-        
+
     }
 
     //登入
     func loginUser(email: String, password: String, loginHandler: LoginHandler?) {
-        
+
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            
+
             if  error  != nil {
-                
+
                 self.handleErrors(err: error! as NSError, loginHandler: loginHandler)
-                
+
             } else {
-                
+
                 loginHandler?(nil)
-                
+
                 self.userDefaults.set(user?.uid, forKey: "FireBaseUID")
-                
+
                 self.userDefaults.synchronize()
-                
+
             }
         }
     }
 
     //註冊
     func  singUp(email: String, password: String, username: String, userphoto: Data?, loginHandler: LoginHandler?) {
-        
+
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            
+
             if error != nil {
-                
+
                 self.handleErrors(err: error! as NSError, loginHandler: loginHandler)
-                
+
                 return
             }
 
             guard let uid = user?.uid else {return}
             //設定image型態
             let metadate = StorageMetadata()
-            
+
             metadate.contentType = "img/jpeg"
 
             if let imageData = userphoto {
-                
+
                 self.storeageProfileRef.child(uid).putData(imageData, metadata: metadate, completion: { (metadata, imageError) in
-                    
+
                     if imageError != nil {
-                        
+
                         guard let imgError = imageError as? String else {return}
-                        
+
                         AlertManager.showEdit(title: Constants.WrongMessage, subTitle: imgError)
-                        
+
                     }
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-                        
+
                         let userData = [Constants.Uid: uid, Constants.Email: email, Constants.Password: password, Constants.PhotoUrl: profileImageUrl, Constants.UserName: username] as [String: Any]
-                        
+
                         FireBaseConnect
                             .databaseRef
                             .child(Constants.Firebase.Users)
@@ -116,19 +116,19 @@ class UserManager {
 
     // 登出
     func logout() {
-        
+
         guard (UserDefaults.standard.value(forKey: "FireBaseUID") as? String) != nil else {return}
-        
+
         try? Auth.auth().signOut()
-        
+
         UserDefaults.standard.removeObject(forKey: "FireBaseUID")
     }
 
     //uid token
     func getFireBaseUID() -> String? {
-        
+
         return UserDefaults.standard.string(forKey: "FireBaseUID")
-        
+
     }
 
     // 錯誤處理

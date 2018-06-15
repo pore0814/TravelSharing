@@ -20,13 +20,13 @@ class ShareScheduleManager {
             .queryOrderedByKey()
             .queryEqual(toValue: scheduleId)
             .observe(.value, with: { (snapshot) in
-                
+
                 guard  let allSchedules = snapshot.value as? [String: Any] else {return}
-                
+
                 for allschedule in allSchedules {
                     guard  var schedule = allschedule.value as? [String: Any] else {return}
                     schedule.updateValue(friendId, forKey: "host")
-                    
+
                     self.savevalue(value: schedule)
                 }
             })
@@ -34,11 +34,11 @@ class ShareScheduleManager {
 
     func savevalue(value: [String: Any]) {
         let autoKey = FireBaseConnect.databaseRef.childByAutoId().key
-        
+
         var shareValue = value
-        
+
         shareValue.updateValue(autoKey, forKey: "uid")
-        
+
         FireBaseConnect.databaseRef
             .child(Constants.Firebase.Schedules)
             .child(autoKey)

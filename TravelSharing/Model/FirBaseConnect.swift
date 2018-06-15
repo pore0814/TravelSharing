@@ -12,17 +12,17 @@ import Firebase
 struct FireBaseConnect {
 
   static var databaseRef: DatabaseReference {
-    
+
         return Database.database().reference()
-    
+
     }
 
   static var  storeageProfileRef: StorageReference {
-    
+
         return Storage.storage()
             .reference(forURL: "gs://travelshare-d17da.appspot.com")
             .child(Constants.ProfileImage)
-    
+
     }
 
 }
