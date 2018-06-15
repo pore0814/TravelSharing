@@ -23,7 +23,6 @@
 		D126D05920AD2F6400F46AE3 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126D05820AD2F6400F46AE3 /* TrackViewController.swift */; };
 		D127E16D20A52EE300EBB5F7 /* NavigationCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */; };
 		D127E16F20A5360300EBB5F7 /* TrackLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */; };
-		D127E17220A53F9B00EBB5F7 /* TrackLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E17120A53F9B00EBB5F7 /* TrackLocationViewController.swift */; };
 		D127E17420A541AD00EBB5F7 /* TSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D127E17320A541AD00EBB5F7 /* TSColor.swift */; };
 		D1400B31209619F700B0040B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1400B30209619F700B0040B /* UserManager.swift */; };
 		D1400B3320961E8700B0040B /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1400B3220961E8700B0040B /* Register.storyboard */; };
@@ -103,7 +102,6 @@
 		D126D05820AD2F6400F46AE3 /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		D127E16C20A52EE300EBB5F7 /* NavigationCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCotroller.swift; sourceTree = "<group>"; };
 		D127E16E20A5360300EBB5F7 /* TrackLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackLocation.storyboard; sourceTree = "<group>"; };
-		D127E17120A53F9B00EBB5F7 /* TrackLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackLocationViewController.swift; sourceTree = "<group>"; };
 		D127E17320A541AD00EBB5F7 /* TSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSColor.swift; sourceTree = "<group>"; };
 		D1400B30209619F700B0040B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		D1400B3220961E8700B0040B /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
@@ -247,7 +245,6 @@
 		D127E17020A53F7800EBB5F7 /* Track */ = {
 			isa = PBXGroup;
 			children = (
-				D127E17120A53F9B00EBB5F7 /* TrackLocationViewController.swift */,
 				D126D05820AD2F6400F46AE3 /* TrackViewController.swift */,
 			);
 			path = Track;
@@ -687,7 +684,6 @@
 				D1F70A1620C4A66400576606 /* shareScheduleManager.swift in Sources */,
 				D1448FDD2096CAB000D699DB /* RegisterViewController.swift in Sources */,
 				D14C0FEE209823A800026AF1 /* Constants.swift in Sources */,
-				D127E17220A53F9B00EBB5F7 /* TrackLocationViewController.swift in Sources */,
 				D157B69D20B7D37D00C759DA /* ButtonIBIn.swift in Sources */,
 				D11FBBDE20B40EB4000B8284 /* LukeScrollView.swift in Sources */,
 				D17BA83420C39A1100164707 /* MyFriendListViewController.swift in Sources */,

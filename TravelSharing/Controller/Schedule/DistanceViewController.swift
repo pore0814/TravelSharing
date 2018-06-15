@@ -21,8 +21,11 @@ class DistanceViewController: UIViewController {
         super.viewDidLoad()
 
         backgroundView.setRounded10()
+        
         timeMinsLabel.setRounded10()
+        
         distanceKmLabel.setRounded10()
+        
     }
 
     @IBAction func reMoveBtn(_ sender: UIButton) {

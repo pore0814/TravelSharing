@@ -26,25 +26,36 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.separatorStyle = .none
-        viewforBtns.setConerRect()
-        //protectedBtn.setConerRect()
         
+        tableView.separatorStyle = .none
+        
+        viewforBtns.setConerRect()
+    
     }
     
     //Fusuma
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
+        
         registImageView.image = image
+        
         registImageView.contentMode = .scaleAspectFill
     }
     func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {}
+    
     func fusumaVideoCompleted(withFileURL fileURL: URL) {}
+    
     func fusumaCameraRollUnauthorized() {}
+    
     //ChoosePhoto
     @IBAction func uploadProfile(_ sender: Any) {
+        
         let fusuma = FusumaViewController()
+        
         fusuma.delegate = self
+        
         fusuma.cropHeightRatio = 1
+        
+        
         self.present(fusuma, animated: true, completion: nil)
     }
     
@@ -59,7 +70,9 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
     @IBAction func registerBtn(_ sender: Any) {
         
         guard let imageCheck = registImageView.image else {
+            
             AlertManager.showEdit(title: "", subTitle: "請選擇照片哦")
+            
             return
         }
         let data = UIImageJPEGRepresentation(imageCheck, 0.1)
@@ -68,6 +81,7 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
         if userNameText.text != "", emailText.text != "", passwordText.text != "", reEnterPasswordText.text != "" {
             //密碼需大於六碼
             if (passwordText.text?.count)! < 6 {
+                
                 AlertManager.showEdit(title: Constants.WrongMessage, subTitle: Constants.LoginAndRegister.PwdMoreThan6)
                 //密碼與再次確認密碼
             } else if passwordText.text != reEnterPasswordText.text {
@@ -80,14 +94,18 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
                 //開始註冊＋FireBaseApi Error檢查
             } else {
                 UserManager.shared.singUp(email: emailText.text!, password: passwordText.text!, username: userNameText.text!, userphoto: data) { (message) in
+                    
                     guard let msg = message else {return}
+                    
                     AlertManager.showEdit(title: Constants.WrongMessage, subTitle: msg)
+                    
                 }
+                
                 AppDelegate.shared?.switchMainViewController()
-                //  AppDelegate.shared?.switchToLoginViewController()
-                //  AlertManager.showEdit(title: "註冊完成請登入", subTitle: "")
+              
             }
         } else {
+            
             AlertManager.showEdit(title: "", subTitle: Constants.NoEmpty)
             
         }
@@ -95,13 +113,13 @@ class RegisterTableViewController: UITableViewController, FusumaDelegate {
     
     // Cancel
     @IBAction func cancelBtn(_ sender: Any) {
+        
         dismiss(animated: true, completion: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         self.view.endEditing(true)
     }
-    
-    // MARK: - Table view data source
     
 }

@@ -11,6 +11,7 @@ import SVProgressHUD
 import SCLAlertView
 
 class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PlayVideoCellProtocol {
+    
     func playVideoButtonDidSelect(_ cell: ScheduleTableViewCell, row: Int) {
         
     }
@@ -29,16 +30,20 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     var backgroundArray = ["view", "logoPage1", "schedulePage-1", "schedulePage-2", "schedulePage-1"]
     @IBOutlet weak var tableView: UITableView!
     
-    // display progress before loading data
+
     override func viewDidAppear(_ animated: Bool) {
+        
         if indicator  == true {
+            
             SVProgressHUD.show(withStatus: "loading")
+            
         }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
        ScheduleManager.shared.getScheduleContent()
+        
         tableView.reloadData()
     }
     
@@ -58,49 +63,71 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ScheduleViewController.stoplodingIcon), userInfo: nil, repeats: true)
         
-        //ScheduleManager.shared.getScheduleContent()
-        
           firstLogin()
     }
     
         func firstLogin(){
+            
          var firstLogin = UserDefaults.standard.object(forKey: "firstLogin") as? Bool
+            
             if firstLogin == nil {
+                
                 AlertManager.showEdit(title: "按右上角新增旅程", subTitle: "")
+                
                 UserDefaults.standard.set(true, forKey: "firstLogin")
+                
                 UserDefaults.standard.synchronize()
+                
             }
       }
     
     @objc func stoplodingIcon() {
+        
         timeCount += 1
+        
         if  (indicator == true) && (timeCount > 3) {
+            
             timer.invalidate()
+            
             SVProgressHUD.dismiss()
+            
             indicator =  false
+            
         }
     }
     
     func setTableView() {
+        
         tableView.dataSource = self
+        
         tableView.delegate = self
+        
         tableView.separatorStyle = .none
     }
     
     //註冊tableViewCell
     func setTableViewCell() {
+        
         let leftNibName = UINib(nibName: "ScheduleTableViewCell", bundle: nil)
+        
         tableView.register(leftNibName, forCellReuseIdentifier: "ScheduleTableViewCell")
+        
     }
     
     //Notification 通知
     @objc func getData(notification: Notification) {
+        
         DispatchQueue.main.async {
+            
             self.schedules = ScheduleManager.shared.scheduleDataArray
+            
             self.tableView.reloadData()
+            
         }
         SVProgressHUD.dismiss()
+        
         self.indicator = false
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,29 +137,49 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let  index = indexPath.row % 5
-        if  let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as? ScheduleTableViewCell {
+        
+        if  let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath)
+            
+            as? ScheduleTableViewCell {
+            
             let data = self.schedules[indexPath.row]
+            
             cell.backgroundColor  = UIColor.clear
+            
             cell.updateCell(with: data)
+            
             cell.leftImageView.image = UIImage(named: backgroundArray[index])
+            
             cell.selectionStyle = .none
+            
             cell.delegate = self
+            
             cell.coEditedBtn.tag = indexPath.row
-            //            cell.coEditedBtn.addTarget(self, action: #selector(shareSchedule(sender:)), for: .touchUpInside)
+            
+          
             return cell
+            
         } else {
+            
             return UITableViewCell()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if let scheduleDetailViewController = UIStoryboard(name: "Schedule", bundle: nil)
             .instantiateViewController(withIdentifier: "ScheduleDetailViewController")
+            
             as? ScheduleDetailViewController {
+            
             let data = self.schedules[indexPath.row]
+            
             scheduleDetailViewController.schedulDetail = data
+            
             self.indexNumber = indexPath.row
+            
             self.navigationController?.pushViewController(scheduleDetailViewController, animated: true)
+            
         }
     }
     //Edit and Delete
@@ -154,26 +201,32 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let deleteButton = UITableViewRowAction(style: .normal, title: "Delete") { (_, _) in
             
-            let appearance = SCLAlertView.SCLAppearance(
-                showCloseButton: false)
-            
-            let alertView = SCLAlertView(appearance: appearance)
-            alertView.addButton("確定") {
+            Alertmanager1.shared.showCheck(with: "是否刪除", message: "", delete: {
+                
                 ScheduleManager.shared.deleteSchedule(scheduleId: self.schedules[indexPath.row].uid, arrrayIndexPath: indexPath.row)
+                
                 self.schedules.remove(at: indexPath.row)
+                
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
+                
                 tableView.reloadData()
-            }
-            
-            alertView.addButton("取消") {}
-            alertView.showSuccess("", subTitle: NSLocalizedString("是否刪除", comment: ""))
+                
+            }, cancel: {
+                
+                print("取消")
+                
+            })
         }
            deleteButton.backgroundColor = UIColor.red
         //分享
         let shareButton = UITableViewRowAction(style: .normal, title: "Shard") { (_, _) in
+            
             guard let friendListVc = UIStoryboard(name: "FriendsList", bundle: nil)
+                
                 .instantiateViewController(withIdentifier: "MyFriendListViewController") as? MyFriendListViewController else {return}
+            
             friendListVc.scheduleId = self.schedules[indexPath.row]
+            
             self.navigationController?.pushViewController(friendListVc, animated: true)
         }
             shareButton.backgroundColor = UIColor.brown
@@ -184,9 +237,12 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
 extension ScheduleViewController: ScheduleManagerDelegate {
     
     func manager(_ manager: ScheduleManager, didGet schedule: ScheduleInfo) {
-        print("107", schedule)
+        
         schedules[indexNumber] = schedule
+        
         schedules.sort(by: {$0.date < $1.date})
+        
         tableView.reloadData()
+        
     }
 }
