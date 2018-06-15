@@ -1,4 +1,4 @@
-//
+ //
 //  FriendListViewController.swift
 //  TravelSharing
 //
@@ -45,9 +45,8 @@ class FriendListViewController: UIViewController {
              myFriendListUIView.isHidden = true
 
         case 2:
-            
+        
             searchVC?.getrequestsFromMeList()
-
             firstView.isHidden = true
             secondview.isHidden = true
             myFriendListUIView.isHidden = false
@@ -59,47 +58,50 @@ class FriendListViewController: UIViewController {
         }
     }
     
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        firstView.isHidden = false
+        
+        secondview.isHidden = true
+        
+        myFriendListUIView.isHidden = true
+        
+        
+    }
+  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "InvitedListViewController" {
             
-            guard let invitedVC = segue.destination as? InvitedListViewController else {return}
+            guard let invitedvc = segue.destination as? InvitedListViewController else {return}
             
-            invitedVC.loadViewIfNeeded()
+            invitedvc.loadViewIfNeeded()
             
-            self.invitedVC = invitedVC
+            self.invitedVC = invitedvc
             
         } else if segue.identifier == "SearchFriendsViewController"{
             
-            guard let searchVC = segue.destination as? SearchFriendsViewController else {return}
+            guard let searchvc = segue.destination as? SearchFriendsViewController else {return}
             
-            searchVC.loadViewIfNeeded()
+            searchvc.loadViewIfNeeded()
             
-            self.searchVC = searchVC
+            self.searchVC = searchvc
             
         } else if segue.identifier == "MyFriendListViewController"{
             
-            guard let myFriendVC = segue.destination as? MyFriendListViewController else {return}
+            guard let myFriendvc = segue.destination as? MyFriendListViewController else {return}
             
-            myFriendVC.loadViewIfNeeded()
+            myFriendvc.loadViewIfNeeded()
             
-            self.myFreindVC = myFriendVC
+            self.myFreindVC = myFriendvc
             
         }
     }
        
-    
- 
 
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-
-        firstView.isHidden = false
-        secondview.isHidden = true
-        myFriendListUIView.isHidden = true
-
-    }
 
     @IBAction func addFriends(_ sender: Any) {
         print("Aaaaaaaaaddfriends")

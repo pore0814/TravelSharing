@@ -41,11 +41,14 @@ class SearchFriendsViewController: UIViewController, UISearchBarDelegate, UITabl
         super.viewWillAppear(true)
         
         getrequestsFromMeList()
+        
     }
     
     func getrequestsFromMeList(){
-        
+
          invitedFriendManager.requestsFromMeList()
+        
+         waitingtableView.reloadData()
     }
     
     

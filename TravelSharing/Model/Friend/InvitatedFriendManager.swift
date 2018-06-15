@@ -58,8 +58,7 @@ class InvitedFriendsManager {
             .child("requestsFromMe")
             .queryOrderedByKey()
             .queryEqual(toValue: userid)
-            .observeSingleEvent(of: .value, with: { (snapshot) in
-                
+            .observe(.value, with: { (snapshot) in
                 waitingListArray.removeAll()
                 
                 if snapshot.value == nil {
