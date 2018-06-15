@@ -27,6 +27,8 @@ class MyFriendListViewController: UIViewController, UITableViewDelegate, UITable
         invitatedFriendManager.delegate = self
         
         invitatedFriendManager.myFriendList()
+        
+        configureTableView()
 
     }
     

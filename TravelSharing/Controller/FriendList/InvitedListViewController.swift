@@ -67,6 +67,8 @@ class InvitedListViewController: UIViewController, UITableViewDelegate, UITableV
         
             cell.cancelFriendInvitedBtn.isHidden =  false
         
+            cell.addFriendBtn.tag = indexPath.row
+        
             cell.addFriendBtn.addTarget(self, action: #selector(permitted(sender:)), for: .touchUpInside)
         
             cell.cancelFriendInvitedBtn.addTarget(self, action: #selector(canceled(sender:)), for: .touchUpInside)
