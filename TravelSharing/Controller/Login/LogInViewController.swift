@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import Crashlytics
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
 
@@ -27,7 +28,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInImageView.setConerRect()
 
     }
-
+    
+   
     @IBAction func logIn(_ sender: Any) {
 
         if emailTextField.text != "" && passwordTextField.text != "" {

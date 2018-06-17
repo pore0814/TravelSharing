@@ -49,7 +49,6 @@ class ScheduleManager {
     func deleteSchedule(scheduleId: String, arrrayIndexPath: Int) {
         guard let userid = UserManager.shared.getFireBaseUID() else {return}
         /* 先刪除Schedule_id */ FireBaseConnect.databaseRef.child(Constants.Firebase.Schedules).child(scheduleId).removeValue { error, _ in
-                   self.scheduleDataArray.remove(at: arrrayIndexPath)
                    if error != nil {
                         AlertManager.showEdit(title: Constants.WrongMessage, subTitle: Constants.FailToDelete)
                     }
