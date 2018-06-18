@@ -28,8 +28,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInImageView.setConerRect()
 
     }
-    
-   
+
     @IBAction func logIn(_ sender: Any) {
 
         if emailTextField.text != "" && passwordTextField.text != "" {

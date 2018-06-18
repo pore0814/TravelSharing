@@ -227,11 +227,11 @@ class DestinationViewController: UIViewController, UITableViewDelegate, UITableV
         distanceManager
             .getDestinationDateAndTime(myLocaion: locationstart,
                                        endLocation: testArray[cellindexPath.row],
-                                       completion: { (data: DistanceAndTime) in
+                                       completion: {[weak self] (data: DistanceAndTime) in
                                         if data != nil {
                                             distanceViewController.distanceKmLabel.text = data.distance
                                             distanceViewController.timeMinsLabel.text = data.time
-                                            distanceViewController.destinationNamer.text = self.testArray[cellindexPath.row].name
+                                            distanceViewController.destinationNamer.text = self?.testArray[cellindexPath.row].name
                                         }
             })
 

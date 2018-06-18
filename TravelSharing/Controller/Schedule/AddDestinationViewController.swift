@@ -106,7 +106,7 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         self.view.endEditing(true)
     }
 
-//MARK： category 類別設定，要換圖
+//category 類別設定，要換圖
     @IBAction func spotBtn(_ sender: Any) {
         categoryText.text = "景點"
     }

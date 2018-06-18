@@ -20,14 +20,14 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var saveBtn: UIButton!
 
-    let picker =  UIDatePicker()
+    let timepicker =  UIDatePicker()
     let destinationManager = DestinationManager()
 
     var lat = 0.0
     var long = 0.0
     var dateSelected: [ScheduleDateInfo]?
     var uid: String?
-    var pickerView = UIPickerView()
+    var selectedDatepickerView = UIPickerView()
     var daythRow = "Day1"
     var alert = SCLAlertView()
     var previousPage = 0
@@ -35,7 +35,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//一開始Catagory預設類別為"景點"
+        //一開始Catagory預設類別為"景點"
 
         stackView.center.x = self.view.frame.width + 200
 
@@ -48,33 +48,33 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 
         saveBtn.setConerRect()
 
-//一開始Time顯示現在時間
-      getCurrentTime()
+        //一開始Time顯示現在時間
+        getCurrentTime()
 
-      createDatePicker()
+        createDatePicker()
 
-      setPickerView()
+        setPickerView()
 
-      searchPlaceTextGesture()
+        searchPlaceTextGesture()
 
-      categoryTextGesture()
+        categoryTextGesture()
 
-     timeText.delegate = self
-}
+        timeText.delegate = self
+    }
     func searchPlaceTextGesture() {
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(searchPlaceTapGesture(_:)))
 
-            destinationText.superview?.addGestureRecognizer(tapGesture)
+        destinationText.superview?.addGestureRecognizer(tapGesture)
     }
 
     @objc private dynamic func searchPlaceTapGesture(_ gesture: UITapGestureRecognizer) {
 
         let autocompleteController = GMSAutocompleteViewController()
 
-            autocompleteController.secondaryTextColor = UIColor.black
+        autocompleteController.secondaryTextColor = UIColor.black
 
-            autocompleteController.delegate = self
+        autocompleteController.delegate = self
 
         self.present(autocompleteController, animated: true, completion: nil)
 
@@ -94,11 +94,11 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 
         guard let dateselect = dateSelected else {return}
 
-        pickerView.delegate = self
+        selectedDatepickerView.delegate = self
 
-        pickerView.dataSource = self
+        selectedDatepickerView.dataSource = self
 
-        dateSelectedText.inputView = pickerView
+        dateSelectedText.inputView = selectedDatepickerView
 
         dateSelectedText.textAlignment = .center
 
@@ -106,7 +106,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 
     }
 
-//取得現在時間
+    //取得現在時間
     func getCurrentTime() {
 
         let date = Date()
@@ -132,6 +132,10 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 
             let saveDate = Destination(name: destinationText.text!, time: timeText.text!, category: categoryText.text!, latitude: lat, longitude: long, query: dateSelectedText.text! + "_" + timeText.text!, uid: "")
 
+            print("saveBtn =======")
+
+            print(daythRow)
+
             destinationManager.saveDestinationInfo(uid: uid!, dayth: daythRow, destination: saveDate)
 
             destinationText.text = ""
@@ -151,38 +155,38 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 
     }
 
-//Time Picker
+    //Time Picker
     func createDatePicker() {
 
         let toolbar = UIToolbar()
 
-            toolbar.sizeToFit()
+        toolbar.sizeToFit()
 
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-            toolbar.setItems([done], animated: false)
+        toolbar.setItems([done], animated: false)
 
-         timeText.inputAccessoryView = toolbar
+        timeText.inputAccessoryView = toolbar
 
-         timeText.inputView = picker
+        timeText.inputView = timepicker
 
-         picker.datePickerMode = .time
+        timepicker.datePickerMode = .time
 
     }
 
     @objc func donePressed() {
-// formatdate
+        // formatdate
         let formatter = DateFormatter()
 
         formatter.dateFormat = "HH:mm"
 
-        let timeString = formatter.string(from: picker.date)
+        let timeString = formatter.string(from: timepicker.date)
 
         timeText.text = "\(timeString)"
 
         self.view.endEditing(true)
     }
 
-//MARK： category 類別設定，要換圖
+    //MARK： category 類別設定，要換圖
     @IBAction func spotBtn(_ sender: Any) {
 
         categoryText.text = "景點"
@@ -192,16 +196,16 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     @IBAction func restaurantBtn(_ sender: Any) {
 
-         categoryText.text = "餐廳"
+        categoryText.text = "餐廳"
 
-         categoryText.textColor = TSColor.gradientPurple.color()
+        categoryText.textColor = TSColor.gradientPurple.color()
 
     }
     @IBAction func hotelBtn(_ sender: Any) {
 
-     categoryText.text = "住宿"
+        categoryText.text = "住宿"
 
-     categoryText.textColor = TSColor.gradientBlue.color()
+        categoryText.textColor = TSColor.gradientBlue.color()
 
     }
 
@@ -213,7 +217,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 
     }
 
-//Search Location
+    //Search Location
     @IBAction func streetViewBtn(_ sender: Any) {
 
         if lat != 0.0 && long != 0.0 {
@@ -248,18 +252,24 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 
-        guard let selected = dateSelected else {return ""}
+            guard let selected = dateSelected else {return ""}
 
-        daythRow = selected[row].dayth
-
-        return selected[row].date + "   " + selected[row].dayth
-
+            return selected[row].date + "   " + selected[row].dayth
     }
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 
         guard let selected = dateSelected else {return}
 
         dateSelectedText.text = selected[row].date
+
+        print("=========")
+
+        daythRow = selected[row].dayth
+
+        print(selected[row].date)
+
+        print(selected[row].dayth)
 
         previousPage  = row
     }
@@ -272,11 +282,11 @@ extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate, U
 
         let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 15.0)
 
-            lat = place.coordinate.latitude
+        lat = place.coordinate.latitude
 
-            long = place.coordinate.longitude
-//placeText 顯示 Locaion Name
-            destinationText.text = place.name
+        long = place.coordinate.longitude
+        //placeText 顯示 Locaion Name
+        destinationText.text = place.name
 
         self.dismiss(animated: true, completion: nil) // dismiss after select place
     }
@@ -289,7 +299,7 @@ extension AddDestinationViewController: GMSAutocompleteViewControllerDelegate, U
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
 
         self.dismiss(animated: true, completion: nil)
-}
+    }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
         let newText = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
