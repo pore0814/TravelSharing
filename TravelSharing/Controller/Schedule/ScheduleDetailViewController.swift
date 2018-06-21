@@ -25,7 +25,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
     @IBOutlet weak var destinationScrollView: LukeScrollView!
     @IBOutlet weak var detailCollectionViwe: LukeCollectionView!
 
-    var ggg: DestinationViewController?
+    var destinationVC: DestinationViewController?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -76,7 +76,7 @@ class ScheduleDetailViewController: UIViewController, UICollectionViewDelegate, 
 
             guard let obj1 = self.storyboard?.instantiateViewController(withIdentifier: "DistinationViewController") as? DestinationViewController else {return}
 
-            ggg = obj1
+            destinationVC = obj1
 
             obj1.scheduleUid = schedulDetail?.uid
 

@@ -146,7 +146,7 @@ class AddDestinationViewController: UIViewController, UIPickerViewDelegate, UIPi
 
             previousViewController.backPage = previousPage
 
-            previousViewController.ggg?.tableView.reloadData()
+            previousViewController.destinationVC?.tableView.reloadData()
 
         } else {
 
