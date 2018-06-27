@@ -26,4 +26,23 @@ RealmSwift
 SDWebImage   
 IQKeyboardManagerSwift  
 
+# ScreenShot
+
+<img src="https://github.com/pore0814/TravelSharing/blob/master/Screen%20Shot/IMG_1620.PNG" width="200" align="center" style="max-width:100%;">    <img src="https://github.com/pore0814/TravelSharing/blob/master/Screen%20Shot/IMG_1626.PNG" width="200" align="center" style="max-width:100%;">    <img src="https://github.com/pore0814/TravelSharing/blob/master/Screen%20Shot/IMG_1625.PNG" width="200" align="center" style="max-width:100%;">    <img src="https://github.com/pore0814/TravelSharing/blob/master/Screen%20Shot/IMG_1618.PNG" width="200" align="center" style="max-width:100%;">
+
+# Requirement
+iOS 11.0+
+Xcode 9.2+
+
+# Contacts
+ANNI Wang
+pore0814@gmail.com
+
+
+
+
+
+
+
+
 
